@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{A97EDE8C0375CA9D}PrefabsEditable/Auto/Props/Military/Compositions/CIV/E_ArsenalBox_EVERYTHING.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

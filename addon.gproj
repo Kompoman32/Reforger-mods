@@ -1,0 +1,8 @@
+GameProject {
+ ID "EditEntityInventoryEveryFix"
+ GUID "65CE919D269B0E6E"
+ TITLE "Edit Entity Inventory EveryFix"
+ Dependencies {
+  "65CCB10717C80EBC" "645AAE6848D75398" "58D0FB3206B6F859"
+ }
+}
