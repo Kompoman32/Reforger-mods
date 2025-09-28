@@ -1,0 +1,176 @@
+SizeLayoutWidgetClass "{65091CC9A23326D5}" {
+ Name "ContentSize"
+ Slot OverlayWidgetSlot "{5CB8B88ACDD7379E}" {
+  HorizontalAlign 3
+  VerticalAlign 3
+ }
+ AllowWidthOverride 1
+ WidthOverride 500
+ HeightOverride 500
+ {
+  VerticalLayoutWidgetClass "{65091CC9A23326D4}" {
+   Name "VerticalLayout0"
+   Slot AlignableSlot "{5CB8B88ACC2F8608}" {
+    HorizontalAlign 3
+    VerticalAlign 3
+   }
+   {
+    ButtonWidgetClass "{65091CC9A23326D9}" : "{4B5AE6E64037FFB4}UI/layouts/WidgetLibrary/ComboBox/WLib_ComboBox.layout" {
+     Name "Type"
+     Slot LayoutSlot "{59EAB3710586976A}" {
+      HorizontalAlign 3
+      Padding 0 4 0 4
+     }
+     components {
+      SCR_ComboBoxComponent "{546B1D464BC32853}" {
+       m_sLabel "#AR-Player_Groups_Type"
+      }
+     }
+     {
+      SizeLayoutWidgetClass "{553AE28F8D0EA0E1}" {
+       Prefab "{553AE28F8D0EA0E1}"
+       {
+        OverlayWidgetClass "{55367D8E531FD623}" {
+         Prefab "{55367D8E531FD623}"
+         Slot AlignableSlot "{55367D8E531FD640}" {
+          Padding 0 2 0 2
+         }
+         {
+          PanelWidgetClass "{55367D8E4A135500}" {
+           Prefab "{55367D8E4A135500}"
+           Slot OverlayWidgetSlot "{55367D8E4A13554A}" {
+            Padding 0 0 0 0
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    ButtonWidgetClass "{65091CC9A23326DA}" : "{97C4F8AF11039BCF}UI/layouts/WidgetLibrary/EditBox/WLib_EditBoxMultiline.layout" {
+     Name "Name"
+     Slot LayoutSlot "{59A8DDA3360415CF}" {
+      HorizontalAlign 3
+      Padding 0 4 0 4
+     }
+     Tooltip SCR_ScriptedWidgetTooltip "{5E3C876D19ACB9AD}" {
+      m_sPresetsConfig "{09CAE70CB5B377CA}Configs/WLib/Tooltips/CommonTooltips.conf"
+      m_sPresetTag "Name"
+     }
+     components {
+      SCR_EditBoxComponent "{59BA916B7193FCE6}" {
+       m_bUseLabel 0
+       m_fSizeWithoutLabel 50
+      }
+     }
+     {
+      SizeLayoutWidgetClass "{59A89A76FD2C98F4}" {
+       Prefab "{59A89A76FD2C98F4}"
+       Slot ButtonWidgetSlot "{5538C205B27B0F74}" {
+        VerticalAlign 3
+       }
+       {
+        OverlayWidgetClass "{55367D8E531FD623}" {
+         Prefab "{55367D8E531FD623}"
+         Slot AlignableSlot "{55367D8E531FD640}" {
+          Padding 0 2 0 2
+         }
+         {
+          PanelWidgetClass "{55367D8E4A135500}" {
+           Prefab "{55367D8E4A135500}"
+           Slot OverlayWidgetSlot "{55367D8E4A13554A}" {
+            Padding 0 0 0 0
+           }
+          }
+          HorizontalLayoutWidgetClass "{55367D8E4592BC6E}" {
+           Prefab "{55367D8E4592BC6E}"
+           {
+            OverlayWidgetClass "{59A89A76FD2C98F3}" {
+             Prefab "{59A89A76FD2C98F3}"
+             {
+              HorizontalLayoutWidgetClass "{59A89A76FD2CACDD}" {
+               Prefab "{59A89A76FD2CACDD}"
+               {
+                MultilineEditBoxWidgetClass "{59A89A76E8CE6B45}" {
+                 Prefab "{59A89A76E8CE6B45}"
+                 "Vertical Alignment" Center
+                 "Max Length" 20
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    ButtonWidgetClass "{65091CC9A23326DC}" : "{97C4F8AF11039BCF}UI/layouts/WidgetLibrary/EditBox/WLib_EditBoxMultiline.layout" {
+     Name "Description"
+     Slot LayoutSlot "{59A8DDA3360415CF}" {
+      HorizontalAlign 3
+      Padding 0 4 0 4
+      FillWeight 4
+     }
+     Tooltip SCR_ScriptedWidgetTooltip "{5E3C876D289305F9}" {
+      m_sPresetsConfig "{09CAE70CB5B377CA}Configs/WLib/Tooltips/CommonTooltips.conf"
+      m_sPresetTag "DescriptionForPlayers"
+     }
+     components {
+      SCR_EditBoxComponent "{59BA916B7193FCE6}" {
+       m_bUseLabel 0
+       m_fSizeWithoutLabel 75
+      }
+     }
+     {
+      SizeLayoutWidgetClass "{59A89A76FD2C98F4}" {
+       Prefab "{59A89A76FD2C98F4}"
+       Slot ButtonWidgetSlot "{5538C205B27B0F74}" {
+        VerticalAlign 3
+       }
+       {
+        OverlayWidgetClass "{55367D8E531FD623}" {
+         Prefab "{55367D8E531FD623}"
+         Slot AlignableSlot "{55367D8E531FD640}" {
+          Padding 0 2 0 2
+         }
+         {
+          PanelWidgetClass "{55367D8E4A135500}" {
+           Prefab "{55367D8E4A135500}"
+           Slot OverlayWidgetSlot "{55367D8E4A13554A}" {
+            Padding 0 0 0 0
+           }
+          }
+          HorizontalLayoutWidgetClass "{55367D8E4592BC6E}" {
+           Prefab "{55367D8E4592BC6E}"
+           {
+            OverlayWidgetClass "{59A89A76FD2C98F3}" {
+             Prefab "{59A89A76FD2C98F3}"
+             {
+              HorizontalLayoutWidgetClass "{59A89A76FD2CACDD}" {
+               Prefab "{59A89A76FD2CACDD}"
+               {
+                MultilineEditBoxWidgetClass "{59A89A76E8CE6B45}" {
+                 Prefab "{59A89A76E8CE6B45}"
+                 "Max Length" 200
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

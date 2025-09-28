@@ -1,0 +1,31 @@
+SizeLayoutWidgetClass {
+ {
+  VerticalLayoutWidgetClass "{5CC4C4C74EB344E3}" {
+   Prefab "{5CC4C4C74EB344E3}"
+   {
+    ButtonWidgetClass "{5CB8B88A402716F1}" {
+     Prefab "{5CB8B88A402716F1}"
+     components {
+      SCR_ComboBoxComponent "{546B1D464BC32853}" {
+      }
+     }
+    }
+    ButtonWidgetClass "{650A67475CCE5FF4}" : "{4A41296C0E9A889F}UI/layouts/WidgetLibrary/WLib_Slider.layout" {
+     Name "MaxGroupSize"
+     Slot LayoutSlot "{650A67477863BF60}" {
+     }
+     components {
+      SCR_SliderComponent "{548294960C7399D9}" {
+       m_sLabel "Max Group Size"
+       m_fValue 6
+       m_fMinValue 2
+       m_fMaxValue 48
+       m_fStep 1
+       m_sFormatText "%1"
+      }
+     }
+    }
+   }
+  }
+ }
+}
