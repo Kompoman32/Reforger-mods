@@ -1,0 +1,8 @@
+GameProject {
+ ID "HideTalkNicknames"
+ GUID "647B03B459B2024E"
+ TITLE "HideTalkNicknames"
+ Dependencies {
+  "58D0FB3206B6F859"
+ }
+}
