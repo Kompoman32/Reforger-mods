@@ -1,0 +1,40 @@
+GenericEntity : "{059484D1484C4F3F}Prefabs/Vehicles/Core/Vehicle_Command_Base.et" {
+ ID "5206D4E7CE97EC05"
+ components {
+  BaseLightManagerComponent "{585AF5F1E70FBA3A}" {
+   LightSlots {
+    SCR_LightSlot "{51E210F3B6509160}" {
+     LightType Brake
+     LightSide 0
+    }
+    SCR_LightSlot "{51E210F3B95B59D0}" {
+     LightType Brake
+     LightSide 1
+    }
+    SCR_LightSlot "{51E210F3BEAB0401}" {
+     LightType Hazard
+     LightSide 0
+     ParentSurface "LIndicator"
+     m_sLightOnEventName "SOUND_TURNSIGNAL_ON"
+     m_sLightOffEventName "SOUND_TURNSIGNAL_OFF"
+    }
+    SCR_LightSlot "{51E210F3A1E9D264}" {
+     LightType Hazard
+     LightSide 1
+     ParentSurface "RIndicator"
+     m_sLightOnEventName "SOUND_TURNSIGNAL_ON"
+     m_sLightOffEventName "SOUND_TURNSIGNAL_OFF"
+    }
+   }
+   EmissiveSurfaceSlots {
+    SCR_EmissiveLightSurfaceSlot LBreaklight {
+     LightType 82
+    }
+    SCR_EmissiveLightSurfaceSlot RBreaklight {
+     LightType 82
+     LightSide 1
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,58 @@
+Vehicle : "{543A50BF3A42AD47}Prefabs/Vehicles/Core/Wheeled_APC_Base.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  BaseLightManagerComponent "{51E210F17D2534F7}" {
+   LightSlots {
+    SCR_LightSlot "{6339349C8D626385}" : "{3F796555FD10152A}Prefabs/Vehicles/Core/Lights/Light_Brake.conf" {
+     LightType Hazard
+     LightPositionInfo EntitySlotInfo "{51E177468DA2D7F8}" {
+      Offset -0.98 1.63 -3.56
+      Angles 0 180 0
+     }
+     LightShouldTick 1
+     LightSide 0
+     ParentSurface "LBrake"
+     m_sLightOnEventName "SOUND_TURNSIGNAL_ON"
+     m_sLightOffEventName "SOUND_TURNSIGNAL_OFF"
+    }
+    SCR_LightSlot "{6339349C952C3804}" : "{3F796555FD10152A}Prefabs/Vehicles/Core/Lights/Light_Brake.conf" {
+     LightType Hazard
+     LightPositionInfo EntitySlotInfo "{51E177468DA2D7F8}" {
+      Offset 0.9879 1.63 -3.56
+      Angles 0 180 0
+     }
+     LightShouldTick 1
+     LightSide 1
+     ParentSurface "RBrake"
+     m_sLightOnEventName "SOUND_TURNSIGNAL_ON"
+     m_sLightOffEventName "SOUND_TURNSIGNAL_OFF"
+    }
+   }
+   EmissiveSurfaceSlots {
+    SCR_EmissiveLightSurfaceSlot LBrake {
+     LightType 322
+    }
+    SCR_EmissiveLightSurfaceSlot RBrake {
+     LightType 322
+    }
+   }
+   LightAction {
+    RT_LightsHazardUserAction "{51E21B904DA4E348}" {
+    }
+   }
+  }
+  BaseVehicleNodeComponent "{20FB66C5B2237133}" {
+   components {
+    RT_CarControllerComponent "{20FB66C5BC92275B}" {
+    }
+   }
+  }
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   ActionContexts {
+    UserActionContext "{54E0B7ED6725874D}" {
+     Radius 0.1
+    }
+   }
+  }
+ }
+}

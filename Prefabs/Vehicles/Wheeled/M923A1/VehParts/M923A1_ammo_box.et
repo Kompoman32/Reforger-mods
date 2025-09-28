@@ -1,0 +1,20 @@
+GenericEntity : "{6C6D4CF5F88AE48D}Prefabs/Vehicles/Core/Vehicle_AmmoBox_Base.et" {
+ ID "4B42E71698F5739C"
+ components {
+  BaseLightManagerComponent "{5CC4F3417CA90A6B}" {
+   LightSlots {
+    SCR_LightSlot "{51E210F3BEAB0401}" {
+     LightSide 0
+    }
+    SCR_LightSlot "{51E210F3A1E9D264}" {
+     LightSide 1
+    }
+   }
+   EmissiveSurfaceSlots {
+    SCR_EmissiveLightSurfaceSlot RBreaklight {
+     LightSide 1
+    }
+   }
+  }
+ }
+}

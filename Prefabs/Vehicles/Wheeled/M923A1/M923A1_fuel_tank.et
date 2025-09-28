@@ -1,0 +1,22 @@
+GenericEntity : "{6B0F3D4B5193FD07}Prefabs/Vehicles/Core/Vehicle_Fuel_Tank_Base.et" {
+ ID "4B42E71698F5739C"
+ components {
+  BaseLightManagerComponent "{585AF5F1DBDA0215}" {
+   LightSlots {
+    SCR_LightSlot "{51E210F3BEAB0401}" {
+     LightSide 0
+     ParentSurface "LBreaklight"
+    }
+    SCR_LightSlot "{51E210F3A1E9D264}" {
+     LightSide 1
+     ParentSurface "RBreaklight"
+    }
+   }
+   EmissiveSurfaceSlots {
+    SCR_EmissiveLightSurfaceSlot RBreaklight {
+     LightSide 1
+    }
+   }
+  }
+ }
+}

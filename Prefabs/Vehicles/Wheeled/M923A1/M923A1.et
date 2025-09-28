@@ -1,0 +1,18 @@
+Vehicle : "{E03D5609EEA6E03D}Prefabs/Vehicles/Core/Wheeled_Truck_Base.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  BaseLightManagerComponent "{51E210F17D2534F7}" {
+   LightAction {
+    RT_LightsHazardUserAction "{51E210F155B6953C}" {
+     m_eLightType Hazard
+    }
+   }
+  }
+  BaseVehicleNodeComponent "{20FB66C5B2237133}" {
+   components {
+    RT_CarControllerComponent "{20FB66C5BC92275B}" {
+    }
+   }
+  }
+ }
+}

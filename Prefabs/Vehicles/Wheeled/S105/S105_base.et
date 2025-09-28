@@ -1,0 +1,36 @@
+Vehicle : "{1F9BB80C3EC3C891}Prefabs/Vehicles/Core/Wheeled_Car_Base.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  BaseLightManagerComponent "{51E210F17D2534F7}" {
+   LightAction {
+    SCR_LightsTurnLeftUserAction "{5F02E39425A0C16C}" {
+    }
+    SCR_LightsTurnRightUserAction "{5F02E394245273F7}" {
+    }
+    RT_LightsHazardUserAction "{5F02E3943BBDEC58}" {
+     m_eLightType Hazard
+    }
+   }
+  }
+  BaseVehicleNodeComponent "{20FB66C5B2237133}" {
+   components {
+    RT_CarControllerComponent "{20FB66C5BC92275B}" {
+    }
+   }
+  }
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   ActionContexts {
+    UserActionContext "{6338A86A7DFE17F7}" {
+     UIInfo SCR_ActionContextUIInfo "{610A7E941B1A22A0}" {
+     }
+     ContextName "light_turn_signal_switch"
+     Position PointInfo "{633741F9AFB3A6DB}" {
+      Offset -0.5061 0.9036 0.6501
+     }
+     Radius 0.08
+     Height 0
+    }
+   }
+  }
+ }
+}

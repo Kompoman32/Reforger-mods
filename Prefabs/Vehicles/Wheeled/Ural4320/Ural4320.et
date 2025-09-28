@@ -1,0 +1,25 @@
+Vehicle : "{E03D5609EEA6E03D}Prefabs/Vehicles/Core/Wheeled_Truck_Base.et" {
+ ID "0000000000000001"
+ components {
+  BaseLightManagerComponent "{51E210F17D2534F7}" {
+   LightAction {
+    RT_LightsHazardUserAction "{51E21B904DA4E348}" {
+     m_eLightType Hazard
+    }
+   }
+  }
+  BaseVehicleNodeComponent "{20FB66C5B2237133}" {
+   components {
+    RT_CarControllerComponent "{20FB66C5BC92275B}" {
+    }
+   }
+  }
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   ActionContexts {
+    UserActionContext "{51E21B9104F1D637}" {
+     Radius 0.25
+    }
+   }
+  }
+ }
+}

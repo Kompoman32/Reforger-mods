@@ -1,0 +1,20 @@
+GenericEntity : "{0CD6E71D33E1CCD0}Prefabs/Vehicles/Core/Vehicle_EngineerBox_Base.et" {
+ ID "4B42E71698F5739C"
+ components {
+  BaseLightManagerComponent "{5CC4F3413F3F1AE2}" {
+   LightSlots {
+    SCR_LightSlot "{51E210F3BEAB0401}" {
+     LightSide 0
+    }
+    SCR_LightSlot "{51E210F3A1E9D264}" {
+     LightSide 1
+    }
+   }
+   EmissiveSurfaceSlots {
+    SCR_EmissiveLightSurfaceSlot RBreaklight {
+     LightSide 1
+    }
+   }
+  }
+ }
+}

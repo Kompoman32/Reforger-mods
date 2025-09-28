@@ -1,0 +1,23 @@
+GenericEntity : "{059484D1484C4F3F}Prefabs/Vehicles/Core/Vehicle_Command_Base.et" {
+ ID "5206D4E7EFE2C051"
+ components {
+  BaseLightManagerComponent "{585AF5F1E9BCE0BD}" {
+   LightSlots {
+    SCR_LightSlot "{51E210F3BEAB0401}" {
+     LightSide 0
+    }
+    SCR_LightSlot "{51E210F3A1E9D264}" {
+     LightSide 1
+    }
+    SCR_LightSlot "{F23D6CBD2205052A}Prefabs/Vehicles/Core/Lights/Light_Hazard.conf" {
+     LightSide 0
+    }
+   }
+   EmissiveSurfaceSlots {
+    SCR_EmissiveLightSurfaceSlot RBreaklight {
+     LightSide 1
+    }
+   }
+  }
+ }
+}

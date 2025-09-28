@@ -1,0 +1,20 @@
+GenericEntity : "{B7DE6834C8563C93}Prefabs/Vehicles/Core/Vehicle_RepairBox_Base.et" {
+ ID "4B42E71698F5739C"
+ components {
+  BaseLightManagerComponent "{60E4C20FACB01334}" {
+   LightSlots {
+    SCR_LightSlot "{51E210F3BEAB0401}" {
+     LightSide 0
+    }
+    SCR_LightSlot "{51E210F3A1E9D264}" {
+     LightSide 1
+    }
+   }
+   EmissiveSurfaceSlots {
+    SCR_EmissiveLightSurfaceSlot RBreaklight {
+     LightSide 1
+    }
+   }
+  }
+ }
+}

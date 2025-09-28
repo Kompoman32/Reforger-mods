@@ -1,0 +1,44 @@
+Vehicle : "{1F9BB80C3EC3C891}Prefabs/Vehicles/Core/Wheeled_Car_Base.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  BaseLightManagerComponent "{51E210F17D2534F7}" {
+   LightAction {
+    RT_LightsHazardUserAction "{51E210F155B6953C}" {
+     m_eLightType Hazard
+    }
+    SCR_LightsTurnLeftUserAction "{6338CC875B9A9DCC}" {
+     ParentContextList {
+      "light_turn_signal_switch"
+     }
+     UIInfo SCR_ActionUIInfo "{6338CE6F0AA1B4E8}" {
+      Name "#AR-UserAction_LeftSignal"
+      m_sIconName "veh_dipped_light"
+     }
+     "Sort Priority" 4
+     m_aDefinedCompartmentSectionsOnly {
+      0
+     }
+    }
+    SCR_LightsTurnRightUserAction "{6338CC87574970DF}" {
+     ParentContextList {
+      "light_turn_signal_switch"
+     }
+     UIInfo SCR_ActionUIInfo "{6338CE6F485C7129}" {
+      Name "#AR-UserAction_RightSignal"
+      m_sIconName "veh_dipped_light"
+     }
+     "Sort Priority" 5
+     m_aDefinedCompartmentSectionsOnly {
+      0
+     }
+    }
+   }
+  }
+  BaseVehicleNodeComponent "{20FB66C5B2237133}" {
+   components {
+    RT_CarControllerComponent "{20FB66C5BC92275B}" {
+    }
+   }
+  }
+ }
+}
