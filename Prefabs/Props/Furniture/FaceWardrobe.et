@@ -1,0 +1,66 @@
+GenericEntity : "{4CC2C69DE1AEF103}Prefabs/Props/Core/Destructible_Props_Base.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  MeshObject "{5872F0EB7FA40561}" {
+   Object "{F6D90BF6B8A347B7}Assets/Props/Furniture/Wardrobe_01/Wardrobe_01.xob"
+  }
+  RigidBody "{5872F0EB7DFB5A9D}" {
+   ResponseIndex "MediumDestructible"
+   ModelGeometry 1
+   Static 1
+  }
+  SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" : "{76DA308CC9E2AB84}Prefabs/Props/Core/DestructionMultiPhase_Base.ct" {
+   m_fBaseHealth 2000
+   m_aDamagePhases {
+    SCR_DamagePhaseData "{6610C4230D17AD5D}" {
+     m_fPhaseHealth 3000
+     m_PhaseModel "{E3960AC7ED8D4A31}Assets/Props/Furniture/Wardrobe_01/dst/Wardrobe_01_dst_01.xob"
+    }
+   }
+   m_eMaterialSoundType BREAK_WOOD_SOLID
+  }
+  SCR_EditableEntityComponent "{6610C42389F88F7A}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{6610C42397A354C4}" {
+    Name "#RT-Face_Wardrobe"
+    Icon "{46B08E1E4A34F452}UI/Textures/Nametags/NameTagsSource/death.edds"
+    m_Image "{BEC3E4677D2E650C}UI/Textures/EditorPreviews/Auto/Props/Furniture/E_Wardrobe_01.edds"
+    m_aAuthoredLabels {
+     1 121
+    }
+   }
+   m_bAutoRegister ALWAYS
+   m_bStatic 1
+   m_Flags 16385
+  }
+  ActionsManagerComponent "{6610C4209F65B6FC}" {
+   ActionContexts {
+    UserActionContext "{6610C4209BCBD6D6}" {
+     ContextName "faceChanger"
+     Position PointInfo "{6610C420B379A485}" {
+      Offset -0.7479 1.1012 0.7839
+     }
+     Radius 0.75
+     Height 0
+     Omnidirectional 0
+    }
+   }
+   additionalActions {
+    RT_ChangeFaceActionComponent "{6610C420E7341C6D}" {
+     ParentContextList {
+      "faceChanger"
+     }
+     UIInfo SCR_ActionContextUIInfo "{6610C4216865CFEA}" {
+      Name "#RT-Face_Wardrobe_Action"
+      m_sIconName "death"
+     }
+     CanAggregate 1
+    }
+   }
+  }
+  RplComponent "{5624A88DC2D9928D}" {
+   Enabled 1
+   "Rpl State Override" Runtime
+  }
+ }
+ coords 0 0 0
+}

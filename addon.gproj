@@ -1,0 +1,83 @@
+GameProject {
+ ID "ChooseYourFace"
+ GUID "65CEF81038D4AF3C"
+ TITLE "ChooseYourFace"
+ Dependencies {
+  "58D0FB3206B6F859"
+ }
+ Configurations {
+  GameProjectConfig PC {
+   WidgetManagerSettings WidgetManagerSettings "{AC4BE58770485E02}" {
+    StringTables {
+     StringTableDefinition "{6610C43ABB641517}" {
+      StringTableSource "{D2782AB3F3F95D3F}Language/RT-Face_Localization.st"
+      Languages {
+       LanguageDefinition "{6610C43AB9C3903B}" {
+        Code "cs_cz"
+        StringTableRuntime "{02ED767B456BA1AC}Language/RT-Face_Localization.cs_cz.conf"
+       }
+       LanguageDefinition "{6610C43AB9C39067}" {
+        Code "de_de"
+        StringTableRuntime "{D7936C4856C8B08C}Language/RT-Face_Localization.de_de.conf"
+       }
+       LanguageDefinition "{6610C43AB9C39073}" {
+        Code "en_us"
+        StringTableRuntime "{8963E6033C3BB58D}Language/RT-Face_Localization.en_us.conf"
+       }
+       LanguageDefinition "{6610C43AB9C3907E}" {
+        Code "es_es"
+        StringTableRuntime "{4C2FAB8AD239DE92}Language/RT-Face_Localization.es_es.conf"
+       }
+       LanguageDefinition "{6610C43AB9C3904D}" {
+        Code "fr_fr"
+        StringTableRuntime "{F7875EBD34BA3D90}Language/RT-Face_Localization.fr_fr.conf"
+       }
+       LanguageDefinition "{6610C43AB9C3905B}" {
+        Code "it_it"
+        StringTableRuntime "{779BD1899998BE69}Language/RT-Face_Localization.it_it.conf"
+       }
+       LanguageDefinition "{6610C43AB9C390A7}" {
+        Code "ja_jp"
+        StringTableRuntime "{67806C1BA7E98EC2}Language/RT-Face_Localization.ja_jp.conf"
+       }
+       LanguageDefinition "{6610C43AB9C390B5}" {
+        Code "ko_kr"
+        StringTableRuntime "{C73E44B734C48DFD}Language/RT-Face_Localization.ko_kr.conf"
+       }
+       LanguageDefinition "{6610C43AB9C39081}" {
+        Code "pl_pl"
+        StringTableRuntime "{9B4FE24D8A2B1181}Language/RT-Face_Localization.pl_pl.conf"
+       }
+       LanguageDefinition "{6610C43AB9C3908F}" {
+        Code "pt_br"
+        StringTableRuntime "{4E387881B1D5DB3B}Language/RT-Face_Localization.pt_br.conf"
+       }
+       LanguageDefinition "{6610C43AB9C3909E}" {
+        Code "ru_ru"
+        StringTableRuntime "{1B796C292CACBE4D}Language/RT-Face_Localization.ru_ru.conf"
+       }
+       LanguageDefinition "{6610C43AB9C390CB}" {
+        Code "uk_ua"
+        StringTableRuntime "{912139DF40820018}Language/RT-Face_Localization.uk_ua.conf"
+       }
+       LanguageDefinition "{6610C43AB9C390DB}" {
+        Code "zh_cn"
+        StringTableRuntime "{4B9157E27922D005}Language/RT-Face_Localization.zh_cn.conf"
+       }
+      }
+     }
+    }
+   }
+  }
+  GameProjectConfig XBOX_ONE {
+  }
+  GameProjectConfig XBOX_SERIES {
+  }
+  GameProjectConfig PS4 {
+  }
+  GameProjectConfig PS5 {
+  }
+  GameProjectConfig HEADLESS {
+  }
+ }
+}

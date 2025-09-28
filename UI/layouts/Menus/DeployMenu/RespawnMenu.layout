@@ -1,0 +1,114 @@
+FrameWidgetClass {
+ {
+  OverlayWidgetClass "{5C7C8A10E08F976D}" {
+   Prefab "{5C7C8A10E08F976D}"
+   {
+    FrameWidgetClass "{5CDEC184DA4DE536}" {
+     Prefab "{5CDEC184DA4DE536}"
+     {
+      FrameWidgetClass "{5C7C8A10D09D8C63}" {
+       Prefab "{5C7C8A10D09D8C63}"
+       {
+        OverlayWidgetClass "{5C927D47FF4135F9}" {
+         Prefab "{5C927D47FF4135F9}"
+         {
+          SizeLayoutWidgetClass "{5D08822079B6553A}" {
+           Prefab "{5D08822079B6553A}"
+           {
+            FrameWidgetClass "{5C92A8C30D069DBF}" {
+             Prefab "{5C92A8C30D069DBF}"
+             {
+              VerticalLayoutWidgetClass "{5D6CA918040A0FC2}" {
+               Prefab "{5D6CA918040A0FC2}"
+               {
+                VerticalLayoutWidgetClass "{5D6CA9275120986F}" {
+                 Prefab "{5D6CA9275120986F}"
+                 {
+                  HorizontalLayoutWidgetClass "{5D6CA92737109EF9}" {
+                   Prefab "{5D6CA92737109EF9}"
+                   "Is Visible" 1
+                  }
+                 }
+                }
+                OverlayWidgetClass "{5D06595B132A2FCC}" {
+                 Prefab "{5D06595B132A2FCC}"
+                 {
+                  SizeLayoutWidgetClass "{5D0A7AA157C0F529}" {
+                   Prefab "{5D0A7AA157C0F529}"
+                   {
+                    VerticalLayoutWidgetClass "{5CCECCCA94548132}" {
+                     Prefab "{5CCECCCA94548132}"
+                     {
+                      FrameWidgetClass "{5CCECCCBB1442600}" {
+                       Prefab "{5CCECCCBB1442600}"
+                       {
+                        OverlayWidgetClass "{5D52652E25BAAA35}" {
+                         Prefab "{5D52652E25BAAA35}"
+                         {
+                          ButtonWidgetClass "{65D678D21C642B24}" : "{4A119D28E23A3999}UI/layouts/WidgetLibrary/Buttons/WLib_ButtonImage.layout" {
+                           Name "ChooseFaceButton"
+                           Slot OverlayWidgetSlot "{65D678D21C642B31}" {
+                            HorizontalAlign 2
+                            VerticalAlign 0
+                            Padding 4 4 4 4
+                           }
+                           "Z Order" 1
+                           components {
+                            SCR_ButtonImageComponent "{55589476821916D2}" {
+                             m_BackgroundDefault 1 1 1 0
+                             m_bShowBorderOnFocus 0
+                             m_bShowBorderOnHover 1
+                             m_sImageName "player"
+                            }
+                           }
+                          }
+                         }
+                        }
+                       }
+                      }
+                     }
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+  FrameWidgetClass "{5F0B00B0D652524B}" {
+   Prefab "{5F0B00B0D652524B}"
+   {
+    FrameWidgetClass "{5F0B00B0D652524A}" {
+     Prefab "{5F0B00B0D652524A}"
+     {
+      VerticalLayoutWidgetClass "{5F0B00B0D6525244}" {
+       Prefab "{5F0B00B0D6525244}"
+       {
+        FrameWidgetClass "{5F0B00B0D6525247}" {
+         Prefab "{5F0B00B0D6525247}"
+         Slot LayoutSlot "{5D44B19A05C7B70A}" {
+         }
+        }
+        FrameWidgetClass "{5F0B00B0D6524FBB}" {
+         Prefab "{5F0B00B0D6524FBB}"
+         "Is Visible" 0
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

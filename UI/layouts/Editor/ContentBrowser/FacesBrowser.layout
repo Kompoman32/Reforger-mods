@@ -1,0 +1,748 @@
+FrameWidgetClass {
+ Name "ContentBrowser"
+ {
+  OverlayWidgetClass "{65E2C4E0457F7C19}" {
+   Name "Overlay0"
+   Slot FrameWidgetSlot "{65E2C4E0457F7C75}" {
+    Anchor 0 0 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+   }
+   {
+    ImageWidgetClass "{65CF069127F3DE83}" {
+     Name "Background"
+     Slot OverlayWidgetSlot "{56EEDE05C871C02C}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     Opacity 0.5
+     Color 0 0 0 1
+    }
+    BlurWidgetClass "{65CF069127F3DE82}" {
+     Name "Blur"
+     Slot OverlayWidgetSlot "{56EEDE05D754F42B}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     Color 0.305 0.305 0.305 1
+     Intensity 0.7
+    }
+    HorizontalLayoutWidgetClass "{65CF069127F3DE81}" {
+     Name "Window"
+     Slot OverlayWidgetSlot "{65E2C4E9CC7F5743}" {
+      HorizontalAlign 1
+      VerticalAlign 3
+     }
+     components {
+      RT_FacesBrowserEditorUIComponent "{65D32A0C212B348F}" {
+      }
+     }
+     {
+      OverlayWidgetClass "{65CF069127F3DE80}" {
+       Name "Content"
+       Slot LayoutSlot "{56EEDE05BFED5D35}" {
+        SizeMode Fill
+       }
+       {
+        ImageWidgetClass "{65CF069127F3DE85}" {
+         Name "Stripe"
+         Slot OverlayWidgetSlot "{56EEDE05C871C02C}" {
+          HorizontalAlign 3
+          VerticalAlign 0
+         }
+         "Is Visible" 0
+         Color 0.761 0.392 0.08 1
+         components {
+          SCR_SetModeColorEditorUIComponent "{56FB36E8579C2A5F}" {
+           m_bUpdateOnModeChanged 1
+          }
+         }
+         Size 4 4
+        }
+        HorizontalLayoutWidgetClass "{65CF069127F25CEF}" {
+         Name "SpaceLayout"
+         Slot OverlayWidgetSlot "{5720DE53ABB7CBED}" {
+          VerticalAlign 3
+          Padding 0 72 0 72
+         }
+         {
+          FrameWidgetClass "{65CF069127F25CED}" {
+           Name "SpaceLeft"
+           Slot LayoutSlot "{5720ECBBBD66ED2B}" {
+            SizeMode Fill
+            FillWeight 0.025
+           }
+          }
+          SizeLayoutWidgetClass "{65CF069127F25CEC}" {
+           Name "Alignment"
+           Slot LayoutSlot "{5720DE53A848E0CC}" {
+            SizeMode Fill
+           }
+           AllowWidthOverride 1
+           WidthOverride 500
+           AllowHeightOverride 1
+           HeightOverride 936
+           {
+            VerticalLayoutWidgetClass "{65CF069127F25CE3}" {
+             Name "ContentLayout"
+             Slot AlignableSlot "{56EEDE0403BED8AE}" {
+              HorizontalAlign 3
+              VerticalAlign 3
+             }
+             "Fill Origin" Center
+             {
+              TextWidgetClass "{65CF069127F25CE1}" : "{9D643D214767D616}UI/layouts/WidgetLibrary/TextWidgets/Text_Heading2.layout" {
+               Name "Title"
+               Slot LayoutSlot "{56EEDE046853BD3D}" {
+                Padding 0 0 0 12
+               }
+               Text "Faces Browser"
+              }
+              ImageWidgetClass "{65CF069127F25CE4}" {
+               Name "UpperStripe"
+               Slot LayoutSlot "{56EEDE07C9F827C2}" {
+                Padding 0 0 0 12
+               }
+               "Is Enabled" 0
+               Color 0.761 0.392 0.08 1
+               Image ""
+               Size 128 2
+              }
+              OverlayWidgetClass "{65CF069127F25CFB}" {
+               Name "ContentSegment"
+               Slot LayoutSlot "{56EF0B1E79FE7342}" {
+                Padding 0 12 0 0
+                SizeMode Fill
+               }
+               Clipping True
+               {
+                ScrollLayoutWidgetClass "{65E2C4E2A02FDEC3}" {
+                 Name "ScrollLayout0"
+                 Slot OverlayWidgetSlot "{65E2C4E2A02FDF22}" {
+                  HorizontalAlign 3
+                  VerticalAlign 0
+                 }
+                 {
+                  VerticalLayoutWidgetClass "{65E2C4E53FB950B7}" {
+                   Name "FacesList"
+                   Slot AlignableSlot "{65E2C4E53FB95090}" {
+                    HorizontalAlign 3
+                    VerticalAlign 3
+                   }
+                   Clipping True
+                   {
+                    ButtonWidgetClass "{65E2C4E5399F9A53}" : "{F84B269BBA680B3E}UI/layouts/WidgetLibrary/ComboBox/Elements/WLib_ComboBoxElement.layout" {
+                     Name "Button2"
+                     Slot LayoutSlot "{65F2EAABBB99B06B}" {
+                     }
+                     Clipping True
+                    }
+                    ButtonWidgetClass "{65F712FF4EEE3D0E}" : "{F84B269BBA680B3E}UI/layouts/WidgetLibrary/ComboBox/Elements/WLib_ComboBoxElement.layout" {
+                     Name "Button0"
+                     Slot LayoutSlot "{65F2EAABBB99B06B}" {
+                     }
+                     Clipping True
+                    }
+                    ButtonWidgetClass "{65F712FF4EBB4A7A}" : "{F84B269BBA680B3E}UI/layouts/WidgetLibrary/ComboBox/Elements/WLib_ComboBoxElement.layout" {
+                     Name "Button1"
+                     Slot LayoutSlot "{65F2EAABBB99B06B}" {
+                     }
+                     Clipping True
+                    }
+                    ButtonWidgetClass "{65F712FF4EBD32A4}" : "{F84B269BBA680B3E}UI/layouts/WidgetLibrary/ComboBox/Elements/WLib_ComboBoxElement.layout" {
+                     Name "Button3"
+                     Slot LayoutSlot "{65F2EAABBB99B06B}" {
+                     }
+                     Clipping True
+                    }
+                    ButtonWidgetClass "{65F712FF4EB7954C}" : "{F84B269BBA680B3E}UI/layouts/WidgetLibrary/ComboBox/Elements/WLib_ComboBoxElement.layout" {
+                     Name "Button4"
+                     Slot LayoutSlot "{65F2EAABBB99B06B}" {
+                     }
+                     Clipping True
+                    }
+                    ButtonWidgetClass "{65F712FF4E499436}" : "{F84B269BBA680B3E}UI/layouts/WidgetLibrary/ComboBox/Elements/WLib_ComboBoxElement.layout" {
+                     Name "Button5"
+                     Slot LayoutSlot "{65F2EAABBB99B06B}" {
+                     }
+                     Clipping True
+                    }
+                    ButtonWidgetClass "{65F712FF4E43C241}" : "{F84B269BBA680B3E}UI/layouts/WidgetLibrary/ComboBox/Elements/WLib_ComboBoxElement.layout" {
+                     Name "Button6"
+                     Slot LayoutSlot "{65F2EAABBB99B06B}" {
+                     }
+                     Clipping True
+                    }
+                    ButtonWidgetClass "{65F712FF4E459D5B}" : "{F84B269BBA680B3E}UI/layouts/WidgetLibrary/ComboBox/Elements/WLib_ComboBoxElement.layout" {
+                     Name "Button7"
+                     Slot LayoutSlot "{65F2EAABBB99B06B}" {
+                     }
+                     Clipping True
+                    }
+                    ButtonWidgetClass "{65F712FF4E5F0BB5}" : "{F84B269BBA680B3E}UI/layouts/WidgetLibrary/ComboBox/Elements/WLib_ComboBoxElement.layout" {
+                     Name "Button8"
+                     Slot LayoutSlot "{65F2EAABBB99B06B}" {
+                     }
+                     Clipping True
+                    }
+                    ButtonWidgetClass "{65F712FF4E56810F}" : "{F84B269BBA680B3E}UI/layouts/WidgetLibrary/ComboBox/Elements/WLib_ComboBoxElement.layout" {
+                     Name "Button9"
+                     Slot LayoutSlot "{65F2EAABBB99B06B}" {
+                     }
+                     Clipping True
+                    }
+                    ButtonWidgetClass "{65F712FF4E6BD1A7}" : "{F84B269BBA680B3E}UI/layouts/WidgetLibrary/ComboBox/Elements/WLib_ComboBoxElement.layout" {
+                     Name "Button10"
+                     Slot LayoutSlot "{65F2EAABBB99B06B}" {
+                     }
+                     Clipping True
+                    }
+                    ButtonWidgetClass "{65F712FF4E621D2A}" : "{F84B269BBA680B3E}UI/layouts/WidgetLibrary/ComboBox/Elements/WLib_ComboBoxElement.layout" {
+                     Name "Button11"
+                     Slot LayoutSlot "{65F2EAABBB99B06B}" {
+                     }
+                     Clipping True
+                    }
+                    ButtonWidgetClass "{65F712FF4E675EF6}" : "{F84B269BBA680B3E}UI/layouts/WidgetLibrary/ComboBox/Elements/WLib_ComboBoxElement.layout" {
+                     Name "Button12"
+                     Slot LayoutSlot "{65F2EAABBB99B06B}" {
+                     }
+                     Clipping True
+                    }
+                    ButtonWidgetClass "{65F712FF4E7E8117}" : "{F84B269BBA680B3E}UI/layouts/WidgetLibrary/ComboBox/Elements/WLib_ComboBoxElement.layout" {
+                     Name "Button13"
+                     Slot LayoutSlot "{65F2EAABBB99B06B}" {
+                     }
+                     Clipping True
+                    }
+                    ButtonWidgetClass "{65F712FF4E73920F}" : "{F84B269BBA680B3E}UI/layouts/WidgetLibrary/ComboBox/Elements/WLib_ComboBoxElement.layout" {
+                     Name "Button14"
+                     Slot LayoutSlot "{65F2EAABBB99B06B}" {
+                     }
+                     Clipping True
+                    }
+                    ButtonWidgetClass "{65F712FF4E0ABF59}" : "{F84B269BBA680B3E}UI/layouts/WidgetLibrary/ComboBox/Elements/WLib_ComboBoxElement.layout" {
+                     Name "Button15"
+                     Slot LayoutSlot "{65F2EAABBB99B06B}" {
+                     }
+                     Clipping True
+                    }
+                    ButtonWidgetClass "{65F712FF4E0FA6F9}" : "{F84B269BBA680B3E}UI/layouts/WidgetLibrary/ComboBox/Elements/WLib_ComboBoxElement.layout" {
+                     Name "Button16"
+                     Slot LayoutSlot "{65F2EAABBB99B06B}" {
+                     }
+                     Clipping True
+                    }
+                    ButtonWidgetClass "{65F712FF4E008CCB}" : "{F84B269BBA680B3E}UI/layouts/WidgetLibrary/ComboBox/Elements/WLib_ComboBoxElement.layout" {
+                     Name "Button17"
+                     Slot LayoutSlot "{65F2EAABBB99B06B}" {
+                     }
+                     Clipping True
+                    }
+                    ButtonWidgetClass "{65F712FF4E1B0F25}" : "{F84B269BBA680B3E}UI/layouts/WidgetLibrary/ComboBox/Elements/WLib_ComboBoxElement.layout" {
+                     Name "Button18"
+                     Slot LayoutSlot "{65F2EAABBB99B06B}" {
+                     }
+                     Clipping True
+                    }
+                    ButtonWidgetClass "{65F712FF4E1D9A1B}" : "{F84B269BBA680B3E}UI/layouts/WidgetLibrary/ComboBox/Elements/WLib_ComboBoxElement.layout" {
+                     Name "Button19"
+                     Slot LayoutSlot "{65F2EAABBB99B06B}" {
+                     }
+                     Clipping True
+                    }
+                    ButtonWidgetClass "{65F712FF4E161A8B}" : "{F84B269BBA680B3E}UI/layouts/WidgetLibrary/ComboBox/Elements/WLib_ComboBoxElement.layout" {
+                     Name "Button20"
+                     Slot LayoutSlot "{65F2EAABBB99B06B}" {
+                     }
+                     Clipping True
+                    }
+                    ButtonWidgetClass "{65F712FF4E2FF64A}" : "{F84B269BBA680B3E}UI/layouts/WidgetLibrary/ComboBox/Elements/WLib_ComboBoxElement.layout" {
+                     Name "Button21"
+                     Slot LayoutSlot "{65F2EAABBB99B06B}" {
+                     }
+                     Clipping True
+                    }
+                    ButtonWidgetClass "{65F712FF4E2045F9}" : "{F84B269BBA680B3E}UI/layouts/WidgetLibrary/ComboBox/Elements/WLib_ComboBoxElement.layout" {
+                     Name "Button22"
+                     Slot LayoutSlot "{65F2EAABBB99B06B}" {
+                     }
+                     Clipping True
+                    }
+                    ButtonWidgetClass "{65F712FF4CD9F88F}" : "{F84B269BBA680B3E}UI/layouts/WidgetLibrary/ComboBox/Elements/WLib_ComboBoxElement.layout" {
+                     Name "Button23"
+                     Slot LayoutSlot "{65F2EAABBB99B06B}" {
+                     }
+                     Clipping True
+                    }
+                    ButtonWidgetClass "{65F712FF4CF3774C}" : "{F84B269BBA680B3E}UI/layouts/WidgetLibrary/ComboBox/Elements/WLib_ComboBoxElement.layout" {
+                     Name "Button24"
+                     Slot LayoutSlot "{65F2EAABBB99B06B}" {
+                     }
+                     Clipping Ancestor
+                     {
+                      SizeLayoutWidgetClass "{5548F97BFB85CE38}" {
+                       Prefab "{5548F97BFB85CE38}"
+                       Clipping False
+                       {
+                        OverlayWidgetClass "{5548F97BFB85CE26}" {
+                         Prefab "{5548F97BFB85CE26}"
+                         Clipping False
+                        }
+                       }
+                      }
+                     }
+                    }
+                    ButtonWidgetClass "{65F712FF4C659364}" : "{F84B269BBA680B3E}UI/layouts/WidgetLibrary/ComboBox/Elements/WLib_ComboBoxElement.layout" {
+                     Name "Button25"
+                     Slot LayoutSlot "{65F2EAABBB99B06B}" {
+                     }
+                     Clipping True
+                    }
+                   }
+                  }
+                 }
+                }
+                OverlayWidgetClass "{65CF069127F25CA1}" : "{E52A6FEBC53030D1}UI/layouts/Menus/Common/SimpleMessage.layout" {
+                 Name "NoResults"
+                 Slot OverlayWidgetSlot "{58AED89A64693CA0}" {
+                 }
+                 "Is Visible" 0
+                 components {
+                  SCR_SimpleMessageComponent "{58AED89F217F84AE}" {
+                   m_sDefaultPreset "NoResult"
+                   m_aContentPresets SCR_SimpleMessagePresets "{58B2BB8FE26EAE3C}" {
+                    m_aPresets {
+                     SCR_SimpleMessagePreset "{58B2BB8FE15AD769}" {
+                      m_sTag "NoResult"
+                      m_UIInfo SCR_SimpleMessageUIInfo "{58B2BB8C3D8EA49C}" {
+                       Name "#AR-Editor_ContentBrowser_NoFilterResults_Name"
+                       Description "#AR-Editor_ContentBrowser_NoFilterResults_Description"
+                       Icon "{A2738F1A7C0902C1}UI/Textures/Workshop/SearchIcon.edds"
+                      }
+                     }
+                    }
+                   }
+                  }
+                 }
+                }
+                ImageWidgetClass "{65CF069127F25CA7}" : "{C467AAC51FF78B5D}UI/layouts/Menus/Common/LoadingDots/LoadingDotsSmall.layout" {
+                 Name "LoadingVisuals"
+                 Slot OverlayWidgetSlot "{58EC9BA5724D568C}" {
+                 }
+                 "Is Visible" 0
+                }
+               }
+              }
+              ImageWidgetClass "{65CF069127F25CA6}" {
+               Name "LowerStripe"
+               Slot LayoutSlot "{56EEDE06187FACF9}" {
+                Padding 0 12 0 24
+               }
+               Opacity 0.1
+               Size 2 2
+              }
+              OverlayWidgetClass "{65CF069127F28317}" {
+               Name "Footer"
+               Slot LayoutSlot "{56EEDE03DE14A911}" {
+               }
+               {
+                HorizontalLayoutWidgetClass "{65CF069127F28314}" {
+                 Name "Buttons"
+                 Slot OverlayWidgetSlot "{56EEDE03DED9A743}" {
+                  HorizontalAlign 3
+                 }
+                 {
+                  ButtonWidgetClass "{65CF069127F28315}" : "{08CF3B69CB1ACBC4}UI/layouts/WidgetLibrary/Buttons/WLib_NavigationButton.layout" {
+                   Name "CloseButton"
+                   Slot LayoutSlot "{56EEDE01982D053A}" {
+                    Padding 0 0 10 0
+                   }
+                   components {
+                    SCR_InputButtonComponent "{5D346C3DD81D95CD}" {
+                     m_sSoundClicked "SOUND_FE_BUTTON_CANCEL"
+                     m_sActionName "MenuBack"
+                     m_sLabel "#AR-Editor_ContentBrowser_ButtonClose"
+                    }
+                    ButtonActionComponent "{56EEDE01BE93EE7D}" {
+                     m_bActionName "MenuBack"
+                    }
+                   }
+                  }
+                  ButtonWidgetClass "{65CF069127F2830B}" : "{08CF3B69CB1ACBC4}UI/layouts/WidgetLibrary/Buttons/WLib_NavigationButton.layout" {
+                   Name "SelectButton"
+                   Slot LayoutSlot "{56EEDE01982D053A}" {
+                    Padding 0 0 10 0
+                   }
+                   components {
+                    SCR_InputButtonComponent "{5D346C3DD81D95CD}" {
+                     m_sSoundClicked ""
+                     m_sActionName "MenuSelect"
+                     m_sLabel "#AR-Editor_ContentBrowser_ButtonSelect"
+                    }
+                    SCR_DeviceSpecificComponent "{56EEDE01335EDAD4}" {
+                     m_bControllerOnly 1
+                    }
+                   }
+                  }
+                  ButtonWidgetClass "{65CF069127F28309}" : "{08CF3B69CB1ACBC4}UI/layouts/WidgetLibrary/Buttons/WLib_NavigationButton.layout" {
+                   Name "ToggleButton"
+                   Slot LayoutSlot "{56EEDE01982D053A}" {
+                    Padding 0 0 10 0
+                   }
+                   "Is Visible" 0
+                   components {
+                    SCR_InputButtonComponent "{5D346C3DD81D95CD}" {
+                     m_sActionName "MenuSelect"
+                     m_sLabel "#AR-Editor_ContentBrowser_Filter_ButtonToggle"
+                    }
+                    SCR_DeviceSpecificComponent "{56EEDE01335EDAD4}" {
+                     m_bControllerOnly 1
+                    }
+                   }
+                  }
+                  FrameWidgetClass "{65CF069127F2830F}" {
+                   Name "Spacer"
+                   Slot LayoutSlot "{56EEDE032971134A}" {
+                    SizeMode Fill
+                   }
+                  }
+                  ButtonWidgetClass "{65CF069127F29A67}" : "{08CF3B69CB1ACBC4}UI/layouts/WidgetLibrary/Buttons/WLib_NavigationButton.layout" {
+                   Name "FocusSwitchButton"
+                   Slot LayoutSlot "{56EEDE01982D053A}" {
+                    Padding 0 0 10 0
+                   }
+                   "Is Visible" 0
+                   components {
+                    SCR_InputButtonComponent "{5D346C3DD81D95CD}" {
+                     m_sActionName "EditorContentBrowserFilterToggle"
+                     m_sLabel "#AR-Editor_ContentBrowser_SwitchToFilters"
+                    }
+                    SCR_DeviceSpecificComponent "{56EEDE01335EDAD4}" {
+                     m_bControllerOnly 1
+                    }
+                    ButtonActionComponent "{56EEDE0026B19E2C}" {
+                     m_bActionName "EditorContentBrowserFilterToggle"
+                    }
+                   }
+                  }
+                  ButtonWidgetClass "{65CF069127F29A65}" : "{08CF3B69CB1ACBC4}UI/layouts/WidgetLibrary/Buttons/WLib_NavigationButton.layout" {
+                   Name "SearchButton"
+                   Slot LayoutSlot "{56EEDE01982D053A}" {
+                    Padding 0 0 10 0
+                   }
+                   "Is Visible" 0
+                   components {
+                    SCR_InputButtonComponent "{5D346C3DD81D95CD}" {
+                     m_sActionName "EditorBrowserSearchToggle"
+                     m_sLabel "#AR-Editor_ContentBrowser_SearchButton"
+                    }
+                    SCR_DeviceSpecificComponent "{56EEDE01335EDAD4}" {
+                     m_bControllerOnly 1
+                    }
+                    ButtonActionComponent "{56EEDE0026B19E2C}" {
+                     m_bActionName "EditorBrowserSearchToggle"
+                    }
+                   }
+                  }
+                  ButtonWidgetClass "{65CF069127F29A6A}" : "{08CF3B69CB1ACBC4}UI/layouts/WidgetLibrary/Buttons/WLib_NavigationButton.layout" {
+                   Name "ResetButton"
+                   Slot LayoutSlot "{56EEDE01982D053A}" {
+                    Padding 0 0 0 0
+                   }
+                   "Is Visible" 0
+                   components {
+                    SCR_InputButtonComponent "{5D346C3DD81D95CD}" {
+                     m_sSoundClicked "SOUND_FE_BUTTON_FILTER_OFF"
+                     m_sActionName "EditorContentBrowserFilterReset"
+                     m_sLabel "#AR-Editor_ContentBrowser_ButtonResetFilters"
+                    }
+                    ButtonActionComponent "{56EEDE0026B19E2C}" {
+                     m_bActionName "EditorContentBrowserFilterReset"
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+          FrameWidgetClass "{65CF069127F29B92}" {
+           Name "SpaceRight"
+           Slot LayoutSlot "{5720ECBBBD66ED2B}" {
+            SizeMode Fill
+            FillWeight 0.025
+           }
+          }
+         }
+        }
+       }
+      }
+      OverlayWidgetClass "{65CF069127F29B93}" {
+       Name "Filter"
+       Slot LayoutSlot "{56EEDE05C3B3A932}" {
+       }
+       {
+        ImageWidgetClass "{65CF069127F506B0}" {
+         Name "Background"
+         Slot OverlayWidgetSlot "{56EEDE05C99AA714}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+         }
+         "Is Visible" 0
+         Color 0.005 0.005 0.005 1
+        }
+        SizeLayoutWidgetClass "{65CF069127F506B3}" {
+         Name "Alignment"
+         Slot OverlayWidgetSlot "{56EEDE0485B98294}" {
+          HorizontalAlign 3
+          VerticalAlign 0
+          Padding 48 72 48 72
+         }
+         AllowWidthOverride 1
+         WidthOverride 384
+         AllowHeightOverride 1
+         HeightOverride 518.5
+         {
+          VerticalLayoutWidgetClass "{65CF069127F506B2}" {
+           Name "FilterLayout"
+           Slot AlignableSlot "{56EEDE0403BED8AE}" {
+            HorizontalAlign 3
+            VerticalAlign 3
+           }
+           {
+            TextWidgetClass "{65CF069127F57767}" : "{9D643D214767D616}UI/layouts/WidgetLibrary/TextWidgets/Text_Heading2.layout" {
+             Name "Title"
+             Slot LayoutSlot "{56EEDE02A86C93D0}" {
+              Padding 0 0 0 12
+             }
+             "Is Enabled" 0
+             "Is Visible" 0
+             Text "#AR-Editor_ContentBrowser_Filter_Title_Text"
+            }
+            ImageWidgetClass "{65CF069127F57760}" {
+             Name "UpperStripe"
+             Slot LayoutSlot "{56EF0B11990EBE46}" {
+              Padding 0 0 0 0
+             }
+             "Is Visible" 0
+             Color 0.761 0.392 0.08 1
+             Image ""
+             Size 128 2
+            }
+            ButtonWidgetClass "{65CF069127F45D10}" : "{67B4F07635959DC7}UI/layouts/WidgetLibrary/EditBox/WLib_EditBoxSearch.layout" {
+             Name "EditBoxSearch"
+             Slot LayoutSlot "{56EF0B10FC212849}" {
+             }
+             components {
+              SCR_EditBoxSearchComponent "{553AB38AB35B762C}" {
+               m_fSizeWithLabel 42
+               m_fSizeWithoutLabel 42
+              }
+             }
+             {
+              SizeLayoutWidgetClass "{5538C205B27B0F5D}" {
+               Prefab "{5538C205B27B0F5D}"
+               Slot ButtonWidgetSlot "{5538C205B27B0F74}" {
+               }
+               HeightOverride 32
+               {
+                OverlayWidgetClass "{55367D8E531FD623}" {
+                 Prefab "{55367D8E531FD623}"
+                 {
+                  HorizontalLayoutWidgetClass "{55367D8E4592BC6E}" {
+                   Prefab "{55367D8E4592BC6E}"
+                   {
+                    SizeLayoutWidgetClass "{5568B465EFB53D82}" {
+                     Prefab "{5568B465EFB53D82}"
+                     {
+                      OverlayWidgetClass "{5538C2059A570E94}" {
+                       Prefab "{5538C2059A570E94}"
+                       {
+                        ImageWidgetClass "{5538C207E37BAF83}" {
+                         Prefab "{5538C207E37BAF83}"
+                         "Is Visible" 0
+                        }
+                       }
+                      }
+                     }
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+            ImageWidgetClass "{65CF069127F4E376}" {
+             Name "LowerStripe"
+             Slot LayoutSlot "{56EF0B110F387FD3}" {
+              Padding 0 12 0 12
+             }
+             Opacity 0.1
+             Size 2 2
+            }
+            SizeLayoutWidgetClass "{65CF069127F4F207}" : "{FD6103172A4BED91}UI/layouts/Editor/Budget/Budget.layout" {
+             Name "Budget"
+             Slot LayoutSlot "{5630FE26824CB870}" {
+             }
+             "Is Enabled" 0
+             "Is Visible" 0
+             HeightOverride 48
+            }
+            TextWidgetClass "{65D6987A3468AD43}" : "{6FD63D0CFCF2F4DF}UI/layouts/WidgetLibrary/TextWidgets/Text_Heading5.layout" {
+             Name "CurrentFaceText"
+             Slot LayoutSlot "{65D6987A3468AD58}" {
+              Padding 0 4 0 4
+             }
+             Text ""
+            }
+            FrameWidgetClass "{65D4A8062042AF55}" : "{707A1FB31DE04AC8}UI/layouts/Menus/DeployMenu/LoadoutSelectorMap.layout" {
+             Name "LoadoutSelector"
+             Slot LayoutSlot "{65D4A80D1F00D972}" {
+             }
+             components {
+              SCR_LoadoutRequestUIComponent "{65D4A805DDACB5E8}" {
+              }
+             }
+             {
+              OverlayWidgetClass "{5D52652E25BAAA35}" {
+               Prefab "{5D52652E25BAAA35}"
+               Slot FrameWidgetSlot "{5CCEDC16C7E2C29C}" {
+                PositionX 0
+                OffsetLeft 0
+                PositionY 0
+                OffsetTop 0
+                SizeX -384
+                SizeY -432
+                OffsetBottom 376.5
+               }
+               {
+                VerticalLayoutWidgetClass "{5D52652E25BAAA32}" {
+                 Prefab "{5D52652E25BAAA32}"
+                 {
+                  SizeLayoutWidgetClass "{5D5475BCDEB474D8}" {
+                   Prefab "{5D5475BCDEB474D8}"
+                   HeightOverride 453.1
+                   {
+                    OverlayWidgetClass "{5D56A7CE5C74F66A}" {
+                     Prefab "{5D56A7CE5C74F66A}"
+                     {
+                      ImageWidgetClass "{5E5A948EF964F45C}" {
+                       Prefab "{5E5A948EF964F45C}"
+                       Slot OverlayWidgetSlot "{5D606B81C4DEBB20}" {
+                        Padding 0 0 0 0
+                       }
+                      }
+                      ImageWidgetClass "{6056BBCFA03E84F3}" {
+                       Prefab "{6056BBCFA03E84F3}"
+                       Slot OverlayWidgetSlot "{6056BBCF705C1421}" {
+                        Padding 0 0 0 0
+                       }
+                      }
+                      VerticalLayoutWidgetClass "{5D52652E25BAAA30}" {
+                       Prefab "{5D52652E25BAAA30}"
+                       {
+                        SizeLayoutWidgetClass "{5D52652E25BAAA3F}" {
+                         Prefab "{5D52652E25BAAA3F}"
+                         {
+                          FrameWidgetClass "{5D52652E25BAAA3C}" {
+                           Prefab "{5D52652E25BAAA3C}"
+                           Slot AlignableSlot "{5CF873A87007BA5F}" {
+                            Padding 0 0 0 0
+                           }
+                           {
+                            OverlayWidgetClass "{552068607D1612DA}" {
+                             Prefab "{552068607D1612DA}"
+                             {
+                              ItemPreviewWidgetClass "{552068601B16C353}" {
+                               Prefab "{552068601B16C353}"
+                               Slot OverlayWidgetSlot "{5520686078A2A7F7}" {
+                                Padding 0 -80 -140 -1000
+                               }
+                              }
+                             }
+                            }
+                           }
+                          }
+                         }
+                        }
+                        VerticalLayoutWidgetClass "{5D52652E25BAAA25}" {
+                         Prefab "{5D52652E25BAAA25}"
+                         "Is Visible" 0
+                        }
+                       }
+                      }
+                     }
+                    }
+                   }
+                  }
+                  OverlayWidgetClass "{5D5475B67E8D7C2A}" {
+                   Prefab "{5D5475B67E8D7C2A}"
+                   "Is Visible" 0
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+  FrameWidgetClass "{65CF069127F4F20A}" : "{854650EAF734E1EF}UI/layouts/Editor/Tooltips/Tooltip_Manager.layout" {
+   Name "TooltipManager0"
+   Slot FrameWidgetSlot "{571C69ED560E830D}" {
+    SizeX 0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+   }
+  }
+  FrameWidgetClass "{65CF069127F4F209}" : "{E8F8E880DCD73424}UI/layouts/Editor/Tooltips/Tooltip_Area.layout" {
+   Name "TooltipArea0"
+   Slot FrameWidgetSlot "{571C69ED319416BF}" {
+    Anchor 0 0 1 1
+    PositionX 7.594
+    OffsetLeft 7.594
+    PositionY 1.734
+    OffsetTop 1.734
+    SizeX -5.47
+    OffsetRight -2.124
+    SizeY -5.47
+    OffsetBottom 3.736
+   }
+   {
+    FrameWidgetClass "{0000000050A7DB0E}" {
+     Prefab "{0000000050A7DB0E}"
+     Slot FrameWidgetSlot "{545EFCD3EC5EE810}" {
+      OffsetLeft 0
+      OffsetTop 80
+      SizeX 0
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom -80
+      SizeToContent 0
+     }
+    }
+   }
+  }
+ }
+}
