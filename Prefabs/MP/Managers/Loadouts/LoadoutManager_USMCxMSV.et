@@ -1,0 +1,11 @@
+SCR_LoadoutManager : "{AA4E7419A1FF65B0}Prefabs/MP/Managers/Loadouts/LoadoutManager_Base.et" {
+ ID "56B2B47708C4F23A"
+ m_aPlayerLoadouts {
+  SCR_FactionPlayerLoadout "{64B35C0CC9A1DBD9}" : "{6D928F86DB09B4C9}Configs/Loadouts/ION/Loadout_ION_Rifleman.conf" {
+   m_sLoadoutName "ION Rifleman"
+   m_sLoadoutResource "{AC4213B6EA90F029}Prefabs/Characters/Factions/INDFOR/RHS_ION/Character_RHS_ION_Rifleman.et"
+   m_sLoadoutImage "{CA2D71E8A8F8898A}UI/Textures/EditorPreviews/Characters/Factions/INDFOR/ION/Character_RHS_ION_Rifleman.edds"
+   m_sAffiliatedFaction "RHS_ION"
+  }
+ }
+}

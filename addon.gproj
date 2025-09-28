@@ -1,0 +1,8 @@
+GameProject {
+ ID "RHSIONDefaultLoadout"
+ GUID "64B35A2A3074B086"
+ TITLE "RHS ION Default Loadout"
+ Dependencies {
+  "595F2BF2F44836FB" "58D0FB3206B6F859"
+ }
+}

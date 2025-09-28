@@ -1,0 +1,15 @@
+SCR_LoadoutManager : "{AA4E7419A1FF65B0}Prefabs/MP/Managers/Loadouts/LoadoutManager_Base.et" {
+ ID "56B2B47708C4F23A"
+ m_aPlayerLoadouts {
+  SCR_FactionPlayerLoadout "{64B35C0E6D12AD13}" {
+   m_sLoadoutName "#AR-Loadout_Editor_NewArsenalLoadout_Name"
+   m_sLoadoutResource "{AC4213B6EA90F029}Prefabs/Characters/Factions/INDFOR/RHS_ION/Character_RHS_ION_Rifleman.et"
+   m_sAffiliatedFaction "RHS_ION"
+  }
+  SCR_PlayerArsenalLoadout "{64B35C0E6964E6BC}" {
+   m_sLoadoutName "#AR-Loadout_Editor_SavedArsenalLoadout_Name"
+   m_sLoadoutResource "{53F6F7CF18A303D4}Prefabs/Characters/Factions/INDFOR/RHS_ION/Character_RHS_ION_base.et"
+   m_sAffiliatedFaction "RHS_ION"
+  }
+ }
+}
