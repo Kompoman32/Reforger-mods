@@ -1,0 +1,8 @@
+GameProject {
+ ID "ChangePlayersFaction"
+ GUID "6487690835A62CE0"
+ TITLE "Change Players Faction"
+ Dependencies {
+  "58D0FB3206B6F859"
+ }
+}
