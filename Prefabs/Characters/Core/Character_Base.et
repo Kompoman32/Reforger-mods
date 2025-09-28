@@ -1,0 +1,15 @@
+SCR_ChimeraCharacter {
+ ID "520EC961A090B1EE"
+ components {
+  SCR_BaseHUDComponent "{520EA1D2DB118134}" {
+   InfoDisplays {
+    SCR_StanceInfo "{64AEC3F4293E7EAC}" {
+     m_LayoutPath "{D4629479D234F80C}UI/layouts/HUD/StanceInfo/StanceInfo.layout"
+     m_sContentWidget "m_StanceInfoPanel"
+     m_eShow 7
+     m_sInterfaceSettingName "m_bShowStanceInfo"
+    }
+   }
+  }
+ }
+}

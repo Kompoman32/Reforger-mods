@@ -1,0 +1,240 @@
+FrameWidgetClass {
+ Name "root"
+ components {
+  SCR_WidgetExportRuleRoot "{64AEBA4D1FCE54CC}" {
+   DestinationPath "{C49FA9120D36B8CA}scripts/Game/UI/HUD/StanceInfo"
+   ScriptAddon "$PlayerStanceDisplay:"
+   GenerateFullWidgetPath 0
+  }
+ }
+ {
+  VerticalLayoutWidgetClass "{64AEBA48AD579099}" {
+   Name "m_StanceInfoPanel"
+   Slot FrameWidgetSlot "{64AEBA48AD5790BF}" {
+    Anchor 1 0 1 0
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+    Alignment 1 0
+    SizeToContent 1
+   }
+   {
+    HorizontalLayoutWidgetClass "{64AEBA488CB338CD}" {
+     Name "m_StancePosition"
+     Slot LayoutSlot "{64AEBA488CB338F3}" {
+      HorizontalAlign 2
+     }
+     {
+      ImageWidgetClass "{65DCF76160C9149E}" {
+       Name "m_Stance"
+       Slot LayoutSlot "{65DCF76160C9152B}" {
+       }
+       Texture "{507BDA0A5D363B53}UI/Textures/StanceIndicator/icons_stanceIndicator.imageset"
+       Image "18"
+       Size 64 64
+       "Flip Horizontally" 1
+      }
+      ImageWidgetClass "{64AEBA4B28DB329F}" {
+       Name "m_StanceStand"
+       Slot LayoutSlot "{64AEBA4B28DB3285}" {
+        HorizontalAlign 2
+       }
+       Texture "{0619C89658454713}UI/Textures/HUD/StanceInfo/Attribute_Group_Stand.edds"
+       Size 64 64
+      }
+      ImageWidgetClass "{64AEBA4BEE62B5EA}" {
+       Name "m_StanceCrounch"
+       Slot LayoutSlot "{64AEBA4B28DB3285}" {
+        HorizontalAlign 2
+       }
+       Texture "{BFB2E119ABF30AB9}UI/Textures/HUD/StanceInfo/Attribute_Group_Crouch.edds"
+       Size 64 64
+      }
+      ImageWidgetClass "{64AEBA4BECD6B26C}" {
+       Name "m_StanceProne"
+       Slot LayoutSlot "{64AEBA4B28DB3285}" {
+        HorizontalAlign 2
+       }
+       Texture "{3CFB9273DFF5CCC2}UI/Textures/HUD/StanceInfo/Attribute_Group_Prone.edds"
+       Size 64 64
+      }
+     }
+    }
+    FrameWidgetClass "{64AEBA4B85C2D745}" {
+     Name "m_SpeedStance"
+     Slot LayoutSlot "{64AEBA4B85C2D769}" {
+      Padding 0 0 8 0
+     }
+     Clipping True
+     {
+      ImageWidgetClass "{64B3226FC22EA6DB}" {
+       Name "m_StanceSpeed0"
+       Slot FrameWidgetSlot "{64B3226150AC12D9}" {
+        Anchor 1 0 1 0
+        PositionX -8
+        OffsetLeft -8
+        OffsetTop 0
+        SizeX 8
+        OffsetRight 0
+        SizeY 8
+        OffsetBottom -8
+       }
+       Texture "{7AC9CEEB2AE064E7}UI/Textures/HUD/StanceInfo/StanceSpeed.edds"
+       Size 64 64
+       "Flip Horizontally" 1
+      }
+      ImageWidgetClass "{64B32263385EA0F1}" {
+       Name "m_StanceSpeed1"
+       Slot FrameWidgetSlot "{64B3226150AC12D9}" {
+        Anchor 1 0 1 0
+        PositionX -12
+        OffsetLeft -12
+        OffsetTop 0
+        SizeX 8
+        OffsetRight 4
+        SizeY 8
+        OffsetBottom -8
+       }
+       Texture "{7AC9CEEB2AE064E7}UI/Textures/HUD/StanceInfo/StanceSpeed.edds"
+       Size 64 64
+       "Flip Horizontally" 1
+      }
+      ImageWidgetClass "{64B3226339D40354}" {
+       Name "m_StanceSpeed2"
+       Slot FrameWidgetSlot "{64B3226150AC12D9}" {
+        Anchor 1 0 1 0
+        PositionX -16
+        OffsetLeft -16
+        OffsetTop 0
+        SizeX 8
+        OffsetRight 8
+        SizeY 8
+        OffsetBottom -8
+       }
+       Texture "{7AC9CEEB2AE064E7}UI/Textures/HUD/StanceInfo/StanceSpeed.edds"
+       Size 64 64
+       "Flip Horizontally" 1
+      }
+      ImageWidgetClass "{64B322633986AE96}" {
+       Name "m_StanceSpeed3"
+       Slot FrameWidgetSlot "{64B3226150AC12D9}" {
+        Anchor 1 0 1 0
+        PositionX -20
+        OffsetLeft -20
+        OffsetTop 0
+        SizeX 8
+        OffsetRight 12
+        SizeY 8
+        OffsetBottom -8
+       }
+       Texture "{7AC9CEEB2AE064E7}UI/Textures/HUD/StanceInfo/StanceSpeed.edds"
+       Size 64 64
+       "Flip Horizontally" 1
+      }
+      ImageWidgetClass "{64B3226339A0CD49}" {
+       Name "m_StanceSpeed4"
+       Slot FrameWidgetSlot "{64B3226150AC12D9}" {
+        Anchor 1 0 1 0
+        PositionX -24
+        OffsetLeft -24
+        OffsetTop 0
+        SizeX 8
+        OffsetRight 16
+        SizeY 8
+        OffsetBottom -8
+       }
+       Texture "{7AC9CEEB2AE064E7}UI/Textures/HUD/StanceInfo/StanceSpeed.edds"
+       Size 64 64
+       "Flip Horizontally" 1
+      }
+      ImageWidgetClass "{64B32263394D527B}" {
+       Name "m_StanceSpeed5"
+       Slot FrameWidgetSlot "{64B3226150AC12D9}" {
+        Anchor 1 0 1 0
+        PositionX -28
+        OffsetLeft -28
+        OffsetTop 0
+        SizeX 8
+        OffsetRight 20
+        SizeY 8
+        OffsetBottom -8
+       }
+       Texture "{7AC9CEEB2AE064E7}UI/Textures/HUD/StanceInfo/StanceSpeed.edds"
+       Size 64 64
+       "Flip Horizontally" 1
+      }
+      ImageWidgetClass "{64B32263396BED26}" {
+       Name "m_StanceSpeed6"
+       Slot FrameWidgetSlot "{64B3226150AC12D9}" {
+        Anchor 1 0 1 0
+        PositionX -32
+        OffsetLeft -32
+        OffsetTop 0
+        SizeX 8
+        OffsetRight 24
+        SizeY 8
+        OffsetBottom -8
+       }
+       Texture "{7AC9CEEB2AE064E7}UI/Textures/HUD/StanceInfo/StanceSpeed.edds"
+       Size 64 64
+       "Flip Horizontally" 1
+      }
+      ImageWidgetClass "{64B3226336D5C8F1}" {
+       Name "m_StanceSpeed7"
+       Slot FrameWidgetSlot "{64B3226150AC12D9}" {
+        Anchor 1 0 1 0
+        PositionX -36
+        OffsetLeft -36
+        OffsetTop 0
+        SizeX 8
+        OffsetRight 28
+        SizeY 8
+        OffsetBottom -8
+       }
+       Texture "{7AC9CEEB2AE064E7}UI/Textures/HUD/StanceInfo/StanceSpeed.edds"
+       Size 64 64
+       "Flip Horizontally" 1
+      }
+      ImageWidgetClass "{64B322651267D795}" {
+       Name "m_StanceSpeed8"
+       Slot FrameWidgetSlot "{64B3226150AC12D9}" {
+        Anchor 1 0 1 0
+        PositionX -40
+        OffsetLeft -40
+        OffsetTop 0
+        SizeX 8
+        OffsetRight 32
+        SizeY 8
+        OffsetBottom -8
+       }
+       Texture "{7AC9CEEB2AE064E7}UI/Textures/HUD/StanceInfo/StanceSpeed.edds"
+       Size 64 64
+       "Flip Horizontally" 1
+      }
+      ImageWidgetClass "{64B3227866DBF031}" {
+       Name "m_StanceSpeed9"
+       Slot FrameWidgetSlot "{64B3226150AC12D9}" {
+        Anchor 1 0 1 0
+        PositionX -44
+        OffsetLeft -44
+        OffsetTop 0
+        SizeX 8
+        OffsetRight 36
+        SizeY 8
+        OffsetBottom -8
+       }
+       Texture "{7AC9CEEB2AE064E7}UI/Textures/HUD/StanceInfo/StanceSpeed.edds"
+       Size 64 64
+       "Flip Horizontally" 1
+      }
+     }
+    }
+   }
+  }
+ }
+}

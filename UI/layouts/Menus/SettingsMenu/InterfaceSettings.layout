@@ -1,0 +1,64 @@
+HorizontalLayoutWidgetClass {
+ {
+  ScrollLayoutWidgetClass "{60F6BC145FCF08EE}" {
+   Prefab "{60F6BC145FCF08EE}"
+   {
+    VerticalLayoutWidgetClass "{60F6BC145FCF08ED}" {
+     Prefab "{60F6BC145FCF08ED}"
+     {
+      ButtonWidgetClass "{65DD01E7870D917A}" : "{C9DF0E6590F6C388}UI/layouts/WidgetLibrary/SpinBox/WLib_SpinBox.layout" {
+       Name "StanceInfo"
+       Slot LayoutSlot "{65DD01E7870D9159}" {
+        HorizontalAlign 3
+        Padding 4 4 4 4
+       }
+       components {
+        SCR_SpinBoxComponent "{5472C6CBC0640458}" {
+         m_sLabel "Stance HUD"
+         m_sLabelLayout "{F003823FF141983C}UI/layouts/Menus/SettingsMenu/CustomWidgets/SettingsLabel.layout"
+         m_aElementNames {
+          "#AR-Settings_Hide" "#AR-Settings_Show"
+         }
+         m_bCycleMode 1
+        }
+        SCR_ModularButtonComponent "{5E4C99C9EEA65996}" {
+         m_aEffects {
+          SCR_ButtonEffectColor "{5DB885898296DF89}" {
+          }
+          SCR_ButtonEffectColor "{5D9EFC157A1E1706}" {
+          }
+         }
+        }
+       }
+      }
+      ButtonWidgetClass "{65DD01E086977986}" : "{C9DF0E6590F6C388}UI/layouts/WidgetLibrary/SpinBox/WLib_SpinBox.layout" {
+       Name "StanceInfoNew"
+       Slot LayoutSlot "{65DD01E7870D9159}" {
+        HorizontalAlign 3
+        Padding 4 4 4 4
+       }
+       components {
+        SCR_SpinBoxComponent "{5472C6CBC0640458}" {
+         m_sLabel "Stance HUD New Icon"
+         m_sLabelLayout "{F003823FF141983C}UI/layouts/Menus/SettingsMenu/CustomWidgets/SettingsLabel.layout"
+         m_aElementNames {
+          "#AR-Settings_Hide" "#AR-Settings_Show"
+         }
+         m_bCycleMode 1
+        }
+        SCR_ModularButtonComponent "{5E4C99C9EEA65996}" {
+         m_aEffects {
+          SCR_ButtonEffectColor "{5DB885898296DF89}" {
+          }
+          SCR_ButtonEffectColor "{5D9EFC157A1E1706}" {
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
