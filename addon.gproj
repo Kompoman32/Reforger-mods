@@ -1,0 +1,22 @@
+GameProject {
+ ID "EditEntityInventory"
+ GUID "65CCB10717C80EBC"
+ TITLE "Edit Entity Inventory"
+ Dependencies {
+  "606B100247F5C709" "58D0FB3206B6F859"
+ }
+ Configurations {
+  GameProjectConfig PC {
+  }
+  GameProjectConfig XBOX_ONE {
+  }
+  GameProjectConfig XBOX_SERIES {
+  }
+  GameProjectConfig PS4 {
+  }
+  GameProjectConfig PS5 {
+  }
+  GameProjectConfig HEADLESS {
+  }
+ }
+}

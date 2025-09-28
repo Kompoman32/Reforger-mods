@@ -1,0 +1,12 @@
+GenericEntity : "{F542F974956C255F}Prefabs/Props/Military/Compositions/CIV/ArsenalBox_CIV.et" {
+ ID "607AB07289A1D82A"
+ components {
+  SCR_EditableSystemComponent "{607AB072CA07AAA0}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    m_aAutoLabels + {
+     108
+    }
+   }
+  }
+ }
+}
