@@ -1,0 +1,27 @@
+RT_WavesSpawner_MovePointEntity {
+ ID "67390365B76F0B69"
+ components {
+  SCR_CustomAreaMeshComponent "{673903648D1A7BB6}" {
+   m_vResolution 32
+   m_bStretchMaterial 1
+   m_Material "{E65E61D1541003E2}Assets/Editor/VirtualArea/VirtualArea.emat"
+   m_fRadius 2
+  }
+  SCR_EditableEntityComponent "{6739036439AB4648}" {
+   m_UIInfo SCR_UIInfo "{6739036446791D3F}" {
+    Name "Assembly Point"
+    Description "Soldiers will go here after spawning"
+    Icon "{BFEFCFCAE49617F3}UI/Textures/Editor/Toolbar/Commanding/Toolbar_Commanding_Objective_Attack.edds"
+   }
+   m_Flags 34887
+  }
+  SCR_EditableEntityVisibilityChildComponent "{6739037C2C47E898}" {
+   m_State ACTIVE
+  }
+  RplComponent "{673903642C25C2C2}" {
+  }
+  Hierarchy "{673903642691BF78}" {
+  }
+ }
+ coords 60.19 13.75 -42.814
+}

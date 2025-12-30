@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{97B78D6EBB7D1CD7}UI/layouts/Editor/Attributes/AttributePrefabs/ToolboxUnitRow.layout"
+ Configurations {
+  LayoutResourceClass PC {
+  }
+  LayoutResourceClass XBOX_ONE : PC {
+  }
+  LayoutResourceClass XBOX_SERIES : PC {
+  }
+  LayoutResourceClass PS4 : PC {
+  }
+  LayoutResourceClass PS5 : PC {
+  }
+  LayoutResourceClass HEADLESS : PC {
+  }
+ }
+}

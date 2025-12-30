@@ -1,0 +1,28 @@
+RT_WavesSpawnerEntity : "{01BCDFF34020614D}Prefabs/Systems/WavesSpawner/RT_WS-WavesSpawner_Base.et" {
+ ID "66C4FC0EFDAD2E18"
+ components {
+  SCR_CustomAreaMeshComponent "{66C4FC0EB0AF7F8D}" {
+   m_Material "{0F5FFCADA046EDF6}Assets/Editor/VirtualArea/VirtualAreaUS.emat"
+  }
+  SCR_EditableSystemComponent "{66C4FC0F24314611}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{66C4FC0F4C80F2C4}" {
+    Name "#RT_WS-WavesSpawner_US_Name"
+    Description "#RT_WS-WavesSpawner_US_Description"
+    m_sFaction "US"
+    m_aAuthoredLabels {
+     ENTITYTYPE_SYSTEM FACTION_US CONTENT_MODDED TRAIT_SPAWNPOINT TRAIT_SUPPRESSIVE
+    }
+   }
+  }
+  SCR_FactionAffiliationComponent "{66C522ED63080FC6}" {
+   "faction affiliation" "US"
+  }
+ }
+ m_sUnitsGroupPrefab "{4F6811B5E789FA88}Prefabs/Groups/BLUFOR/AmbientPatrols/Group_US_RifleSquad_NotSpawned.et"
+ m_aAvailableResourceNames {
+  "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et" "{0F6689B491641155}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Sniper.et" "{84029128FA6F6BB9}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_GL.et" "{1623EA3AEFACA0E4}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_MG.et" "{27BF1FF235DD6036}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_LAT.et"
+ }
+ m_aAvailableDisplayNames {
+  "#RT_WS-WavesSpawner_US_Rifleman" "#RT_WS-WavesSpawner_US_Sniper" "#RT_WS-WavesSpawner_US_GL" "#RT_WS-WavesSpawner_US_MG" "#RT_WS-WavesSpawner_US_AT"
+ }
+}

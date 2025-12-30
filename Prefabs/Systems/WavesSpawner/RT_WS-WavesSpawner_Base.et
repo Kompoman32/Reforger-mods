@@ -1,0 +1,40 @@
+RT_WavesSpawnerEntity {
+ ID "66C4FC0EFDAD2E18"
+ components {
+  SCR_CustomAreaMeshComponent "{66C4FC0EB0AF7F8D}" {
+   m_vResolution 32
+   m_bStretchMaterial 1
+   m_Material "{E65E61D1541003E2}Assets/Editor/VirtualArea/VirtualArea.emat"
+   m_fRadius 10
+  }
+  SCR_EditableEntityVisibilityChildComponent "{6739037BF0178304}" {
+   m_State 6392
+  }
+  SCR_EditableSystemComponent "{66C4FC0F24314611}" {
+   m_EntityType SYSTEM
+   m_UIInfo SCR_EditableEntityUIInfo "{66C4FC0F4C80F2C4}" {
+    Name "#RT_WS-WavesSpawner_Base_Name"
+    Description "#RT_WS-WavesSpawner_Base_Description"
+    Icon "{C074811796ED8EAC}UI/Textures/Editor/Toolbar/ToolbarAction_PlaceOccupants.edds"
+    m_Image "{C074811796ED8EAC}UI/Textures/Editor/Toolbar/ToolbarAction_PlaceOccupants.edds"
+    m_sFaction "FACTION_NONE"
+    m_aAuthoredLabels {
+     ENTITYTYPE_SYSTEM FACTION_NONE CONTENT_MODDED TRAIT_SPAWNPOINT TRAIT_SUPPRESSIVE
+    }
+    m_bFullBackgroundAssetCard 0
+   }
+   m_bStatic 1
+   m_fMaxDrawDistance 1000
+   m_Flags 32839
+  }
+  SCR_FactionAffiliationComponent "{66C522ED63080FC6}" {
+  }
+  RplComponent "{66C4FC0CDD0249D9}" {
+  }
+  Hierarchy "{66C4FC0CD9E95B59}" {
+   AutoTransform 0
+  }
+ }
+ coords 2.668 3.783 -0.1
+ m_sUnitsGroupPrefab "{7698929167D112BD}Prefabs/Groups/FactionLess/AmbientPatrols/Group_FactionLess_FireTeam_NotSpawned.et"
+}

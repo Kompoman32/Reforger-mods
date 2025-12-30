@@ -1,0 +1,194 @@
+FrameWidgetClass : "{BC83FFDB7BC37F26}UI/layouts/Editor/Attributes/Base/AttributePrefab_ButtonBox.layout" {
+ Name "AttributePrefab_ButtonBox"
+ components {
+  SCR_ButtonBoxAttributeUIComponent "{54A4BB53CCEF2FD5}" {
+   Enabled 0
+  }
+  SCR_ButtonBoxMultiSelectAttributeUIComponent "{55FCAE34D75F2B6E}" {
+   Enabled 0
+   m_sUiComponentName "ToolBoxMultiline0"
+   m_ToolboxType MULTI_SELECTABLE_BUTTON
+   m_sButtonWithIcon "{0C6A9655C33FB75D}UI/layouts/Editor/Attributes/Base/ButtonImageUnderlined.layout"
+   m_sEmptyButton "{B98EA1D6487A6F45}UI/layouts/Editor/Attributes/Base/AttributeEmptyButton.layout"
+  }
+  RT_WS_UnitsAttributeUIComponent "{66BB2035AB17F72E}" {
+   m_sUiComponentName "ToolBoxMultiline0"
+  }
+ }
+ {
+  FrameWidgetClass "{54A4BB5120C83E4E}" {
+   Prefab "{54A4BB5120C83E4E}"
+   {
+    SizeLayoutWidgetClass "{55A2D6D3563F2862}" {
+     Prefab "{55A2D6D3563F2862}"
+     {
+      HorizontalLayoutWidgetClass "{55A272E10C6C6415}" {
+       Prefab "{55A272E10C6C6415}"
+       {
+        FrameWidgetClass "{55ACAB41AC4B7EFA}" {
+         Prefab "{55ACAB41AC4B7EFA}"
+         Slot LayoutSlot "{55ACAB41AC4B7E3B}" {
+         }
+         {
+          SizeLayoutWidgetClass "{55A272E1277CE21D}" {
+           Prefab "{55A272E1277CE21D}"
+           {
+            ButtonWidgetClass "{55ACADB1661AF6FA}" {
+             Prefab "{55ACADB1661AF6FA}"
+             Slot AlignableSlot "{5536C935787A6814}" {
+              VerticalAlign 0
+             }
+             components {
+              SCR_ToolboxMultilineComponent "{55487E49768AEAF9}" {
+               Enabled 0
+               m_aElementNames {
+                "123" "23" ""
+               }
+               m_iMaxItemsInRow 1
+              }
+              SCR_ModularButtonComponent "{5E6C82D97BD2E697}" {
+               Enabled 0
+               m_aEffects {
+                SCR_ButtonEffectColor "{5E6C82D8AAFBA12D}" {
+                 m_cFocusGained 0 0 0 0
+                }
+               }
+              }
+              RT_WS_ToolboxComponent "{66B93890808D2E7F}" {
+               m_sSoundClicked ""
+               m_sLabel "Toolbox Multiline"
+               m_bForceSize 0
+               m_fSizeWithLabel 56
+               m_fSizeWithoutLabel 40
+               m_sLabelLayout "{829BC1189A899017}UI/layouts/WidgetLibrary/BaseElements/WLib_Label.layout"
+               m_sSizeLayout "SizeLayout0"
+               m_ElementLayout "{97B78D6EBB7D1CD7}UI/layouts/Editor/Attributes/AttributePrefabs/RT_ToolboxUnitRow.layout"
+               m_iMaxItemsInRow 1
+               m_sButtonRow "SizeLayoutButtons"
+              }
+             }
+             {
+              SizeLayoutWidgetClass "{5536C9344BC92E4C}" {
+               Prefab "{5536C9344BC92E4C}"
+               Slot ButtonWidgetSlot "{5536C9344BC92E61}" {
+                VerticalAlign 0
+               }
+               {
+                OverlayWidgetClass "{55367D8E531FD623}" {
+                 Prefab "{55367D8E531FD623}"
+                 Slot AlignableSlot "{55367D8E531FD640}" {
+                  VerticalAlign 0
+                  Padding 0 0 0 0
+                 }
+                 {
+                  VerticalLayoutWidgetClass "{66B93895D8EB0696}" {
+                   Name "VerticalLayout0"
+                   Slot OverlayWidgetSlot "{66B93895D8EB06F9}" {
+                    HorizontalAlign 3
+                    VerticalAlign 0
+                    Padding 0 50 0 0
+                   }
+                   {
+                    UniformGridLayoutWidgetClass "{66BB203AF781F717}" {
+                     Name "SizeLayoutButtons"
+                     Slot LayoutSlot "{66BB203AF781F76A}" {
+                      SizeMode Fill
+                     }
+                    }
+                   }
+                  }
+                  ImageWidgetClass "{5E6C82D9611B25E1}" {
+                   Prefab "{5E6C82D9611B25E1}"
+                   "Is Enabled" 0
+                   "Is Visible" 0
+                  }
+                  HorizontalLayoutWidgetClass "{55367D8E4592BC6E}" {
+                   Prefab "{55367D8E4592BC6E}"
+                   Slot AlignableSlot "{66BB203AF599443F}" {
+                    HorizontalAlign 3
+                    VerticalAlign 0
+                   }
+                   {
+                    SizeLayoutWidgetClass "{66C4AAB0313FCE9B}" {
+                     Name "SizeLayout0"
+                     Slot LayoutSlot "{66C4AAB0313FCEF2}" {
+                     }
+                     AllowWidthOverride 1
+                     WidthOverride 200
+                     AllowHeightOverride 1
+                     HeightOverride 40
+                     {
+                      ButtonWidgetClass "{66C4AAB1CF3B98D8}" : "{4B5AE6E64037FFB4}UI/layouts/WidgetLibrary/ComboBox/WLib_ComboBox.layout" {
+                       Name "AddNewCombobox"
+                       Slot AlignableSlot "{553AE28F9DFAE746}" {
+                        Padding 4 4 4 4
+                       }
+                       components {
+                        SCR_ComboBoxComponent "{546B1D464BC32853}" {
+                         m_bUseLabel 0
+                         m_fSizeWithoutLabel 30
+                        }
+                       }
+                      }
+                     }
+                    }
+                    ButtonWidgetClass "{66BB2038F6F13B07}" : "{75C912A1C89BE6C2}UI/layouts/WidgetLibrary/Buttons/WLib_ButtonText.layout" {
+                     Name "AddNewButton"
+                     Slot LayoutSlot "{66BB2038F6F13B11}" {
+                      VerticalAlign 1
+                     }
+                     components {
+                      SCR_ButtonTextComponent "{5548F0143AE99095}" {
+                       m_sText "Add New"
+                      }
+                     }
+                     {
+                      SizeLayoutWidgetClass "{5548EB41A8E48247}" {
+                       Prefab "{5548EB41A8E48247}"
+                       {
+                        OverlayWidgetClass "{5548EB41A8E48245}" {
+                         Prefab "{5548EB41A8E48245}"
+                         {
+                          TextWidgetClass "{5548F014E72FB9DA}" {
+                           Prefab "{5548F014E72FB9DA}"
+                           Slot OverlayWidgetSlot "{55708DE55528756B}" {
+                            Padding 4 4 4 4
+                           }
+                          }
+                         }
+                        }
+                       }
+                      }
+                     }
+                    }
+                    UniformGridLayoutWidgetClass "{5536C935BF3C2573}" {
+                     Prefab "{5536C935BF3C2573}"
+                     Slot LayoutSlot "{5536C935BF3C2491}" {
+                      Padding 4 -4 -4 -4
+                     }
+                     "Is Visible" 0
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+        FrameWidgetClass "{55A272E10C6C646A}" {
+         Prefab "{55A272E10C6C646A}"
+         "Is Enabled" 0
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,28 @@
+RT_WavesSpawnerEntity : "{01BCDFF34020614D}Prefabs/Systems/WavesSpawner/RT_WS-WavesSpawner_Base.et" {
+ ID "66C4FC0EFDAD2E18"
+ components {
+  SCR_CustomAreaMeshComponent "{66C4FC0EB0AF7F8D}" {
+   m_Material "{80473DD6110BFB8E}Assets/Editor/VirtualArea/VirtualAreaUSSR.emat"
+  }
+  SCR_EditableSystemComponent "{66C4FC0F24314611}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{66C4FC0F4C80F2C4}" {
+    Name "#RT_WS-WavesSpawner_USSR_Name"
+    Description "#RT_WS-WavesSpawner_USSR_Description"
+    m_sFaction "USSR"
+    m_aAuthoredLabels {
+     ENTITYTYPE_SYSTEM FACTION_USSR CONTENT_MODDED TRAIT_SPAWNPOINT TRAIT_SUPPRESSIVE
+    }
+   }
+  }
+  SCR_FactionAffiliationComponent "{66C522ED63080FC6}" {
+   "faction affiliation" "USSR"
+  }
+ }
+ m_sUnitsGroupPrefab "{EC8BAC199BAF3740}Prefabs/Groups/OPFOR/AmbientPatrols/Group_USSR_FireGroup_NotSpawned.et"
+ m_aAvailableResourceNames {
+  "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et" "{976AC400219898FA}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sharpshooter.et" "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et" "{96C784C502AC37DA}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MG.et" "{E9AEEF2D9E41321B}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AMG.et" "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+ }
+ m_aAvailableDisplayNames {
+  "#RT_WS-WavesSpawner_USSR_Rifleman" "#RT_WS-WavesSpawner_USSR_Sniper" "#RT_WS-WavesSpawner_USSR_GL" "#RT_WS-WavesSpawner_USSR_MG" "#RT_WS-WavesSpawner_USSR_AMG" "#RT_WS-WavesSpawner_USSR_AT"
+ }
+}

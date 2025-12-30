@@ -1,0 +1,176 @@
+HorizontalLayoutWidgetClass {
+ Name "HorzontalLayoutWidget"
+ Slot OverlayWidgetSlot "{66C308724882E848}" {
+  HorizontalAlign 3
+  VerticalAlign 0
+ }
+ components {
+  RT_SpawnerUnitRowComponent "{66C30861375BA644}" {
+  }
+ }
+ {
+  TextWidgetClass "{66C30872A0E1AC0E}" : "{3132F64DB8B4CB44}UI/layouts/WidgetLibrary/TextWidgets/Text_Body.layout" {
+   Name "Name"
+   Slot LayoutSlot "{66C30872A0E1AC1F}" {
+    VerticalAlign 1
+   }
+   "Is Enabled" 0
+   "Is Visible" 0
+  }
+  ButtonWidgetClass "{66C30872C6CEB3F7}" : "{0022F0B45ADBC5AC}UI/layouts/WidgetLibrary/EditBox/WLib_EditBox.layout" {
+   Name "ResourceName"
+   Slot LayoutSlot "{66C30872C6CEB3C4}" {
+    HorizontalAlign 3
+    VerticalAlign 0
+    Padding 4 4 0 4
+    SizeMode Fill
+   }
+   components {
+    SCR_EditBoxComponent "{547290FFBD5B33E9}" {
+     m_bMouseOverToFocus 0
+     m_bUseLabel 0
+     m_sWarningText "Invalid ResourceName"
+    }
+    SCR_ModularButtonComponent "{5E56750EE338B92E}" {
+     m_aEffects {
+      SCR_ButtonEffectColor "{5DB885898296DF89}" {
+       m_eEvents 6144
+       m_cHovered 1 0.597 0.198 0.3
+      }
+     }
+     m_bCanBeToggled 0
+    }
+   }
+   {
+    VerticalLayoutWidgetClass "{5AA4D27F39EB2514}" {
+     Prefab "{5AA4D27F39EB2514}"
+     {
+      SizeLayoutWidgetClass "{5538C205B27B0F5D}" {
+       Prefab "{5538C205B27B0F5D}"
+       {
+        OverlayWidgetClass "{55367D8E531FD623}" {
+         Prefab "{55367D8E531FD623}"
+         {
+          HorizontalLayoutWidgetClass "{55367D8E4592BC6E}" {
+           Prefab "{55367D8E4592BC6E}"
+           {
+            OverlayWidgetClass "{5538C2059A570E94}" {
+             Prefab "{5538C2059A570E94}"
+             {
+              HorizontalLayoutWidgetClass "{58D095EE846E2B93}" {
+               Prefab "{58D095EE846E2B93}"
+               {
+                ScaleWidgetClass "{553AB38C60AA560D}" {
+                 Prefab "{553AB38C60AA560D}"
+                 {
+                  ButtonWidgetClass "{5E08E3A68C685A4A}" {
+                   Prefab "{5E08E3A68C685A4A}"
+                   components {
+                    SCR_ModularButtonComponent "{5E08E3A68278B841}" {
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+      FrameWidgetClass "{5AA4D278F79F9344}" {
+       Prefab "{5AA4D278F79F9344}"
+       Slot LayoutSlot "{5AA4D278F79F9350}" {
+       }
+       components {
+        SCR_WidgetHintComponent "{5AA4EB6DE80A9BAF}" {
+         m_sDefaultMessage "asdas"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+  ButtonWidgetClass "{66C3087786760261}" : "{4A41296C0E9A889F}UI/layouts/WidgetLibrary/WLib_Slider.layout" {
+   Name "Weight"
+   Slot LayoutSlot "{66C3087786760276}" {
+    HorizontalAlign 3
+    VerticalAlign 0
+    Padding 4 10 4 4
+   }
+   components {
+    SCR_SliderComponent "{548294960C7399D9}" {
+     m_bUseLabel 0
+     m_fValue 3
+     m_fMaxValue 100
+     m_fStep 1
+     m_sFormatText "%1"
+    }
+   }
+   {
+    SizeLayoutWidgetClass "{55387AC2CCC7E284}" {
+     Prefab "{55387AC2CCC7E284}"
+     {
+      OverlayWidgetClass "{55367D8E531FD623}" {
+       Prefab "{55367D8E531FD623}"
+       Slot AlignableSlot "{55367D8E531FD640}" {
+       }
+       {
+        SizeLayoutWidgetClass "{55387AC20CC69AE3}" {
+         Prefab "{55387AC20CC69AE3}"
+         Slot OverlayWidgetSlot "{5E56CB1DAC07478E}" {
+          Padding 20 0 0 0
+         }
+         WidthOverride 150
+        }
+        HorizontalLayoutWidgetClass "{55367D8E4592BC6E}" {
+         Prefab "{55367D8E4592BC6E}"
+         Slot OverlayWidgetSlot "{55367D8E4592B383}" {
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+  SizeLayoutWidgetClass "{66C30861409641B1}" {
+   Name "SizeLayout0"
+   Slot LayoutSlot "{66C308614096418E}" {
+    VerticalAlign 0
+    Padding 0 16 0 0
+   }
+   AllowMinDesiredWidth 1
+   MinDesiredWidth 50
+   {
+    TextWidgetClass "{66C308748AC50376}" : "{3132F64DB8B4CB44}UI/layouts/WidgetLibrary/TextWidgets/Text_Body.layout" {
+     Name "PercentText"
+     Slot AlignableSlot "{66C308615EA2B55C}" {
+      VerticalAlign 1
+     }
+     Text "%"
+    }
+   }
+  }
+  ButtonWidgetClass "{66C30875476C54DF}" : "{E5BE39197290A7B6}UI/layouts/WidgetLibrary/Buttons/WLib_ModularButton_Icon.layout" {
+   Name "DeleteButton"
+   Slot LayoutSlot "{66C30875476C5528}" {
+    VerticalAlign 0
+    Padding 0 13 0 0
+   }
+   components {
+    SCR_ModularButtonComponent "{5B1AB855E6419336}" {
+     m_bCanBeToggled 0
+    }
+    SCR_DynamicIconComponent "{5E1CD2B3E448CDF3}" {
+     m_sImageName "trash"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,28 @@
+RT_WavesSpawnerEntity : "{01BCDFF34020614D}Prefabs/Systems/WavesSpawner/RT_WS-WavesSpawner_Base.et" {
+ ID "66C4FC0EFDAD2E18"
+ components {
+  SCR_CustomAreaMeshComponent "{66C4FC0EB0AF7F8D}" {
+   m_Material "{A46ECBCEE69A3853}Assets/Editor/VirtualArea/VirtualAreaFIA.emat"
+  }
+  SCR_EditableSystemComponent "{66C4FC0F24314611}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{66C4FC0F4C80F2C4}" {
+    Name "#RT_WS-WavesSpawner_FIA_Name"
+    Description "#RT_WS-WavesSpawner_FIA_Description"
+    m_sFaction "FIA"
+    m_aAuthoredLabels {
+     ENTITYTYPE_SYSTEM FACTION_FIA CONTENT_MODDED TRAIT_SPAWNPOINT TRAIT_SUPPRESSIVE
+    }
+   }
+  }
+  SCR_FactionAffiliationComponent "{66C522ED63080FC6}" {
+   "faction affiliation" "FIA"
+  }
+ }
+ m_sUnitsGroupPrefab "{265B11E8E53F9FBA}Prefabs/Groups/INDFOR/AmbientPatrols/Group_FIA_RifleSquad_NotSpawned.et"
+ m_aAvailableResourceNames {
+  "{84B40583F4D1B7A3}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman.et" "{CE33AB22F61F3365}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Sharpshooter.et" "{67B0A8609C73A786}Prefabs/Characters/CaptureAndHold/Factions/INDFOR/FIA/Character_FIA_GL.et" "{58E47E5A4D599432}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_MG.et" "{D25BC9815A9F9E8D}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AT.et"
+ }
+ m_aAvailableDisplayNames {
+  "#RT_WS-WavesSpawner_FIA_Rifleman" "#RT_WS-WavesSpawner_FIA_Sniper" "#RT_WS-WavesSpawner_FIA_GL" "#RT_WS-WavesSpawner_FIA_MG" "#RT_WS-WavesSpawner_USSR_AT"
+ }
+}
