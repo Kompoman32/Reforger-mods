@@ -1,0 +1,15 @@
+GenericEntity : "{1F415A3F7ECBE13A}Prefabs/Props/Furniture/Piano_01_brown.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  SCR_EditableEntityComponent "{58AAE805B7347F96}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    m_aAuthoredLabels {
+     CONTENT_MODDED
+    }
+   }
+  }
+  SCR_EditableEntityComponent "{68605E04F90185F1}" {
+   Enabled 0
+  }
+ }
+}

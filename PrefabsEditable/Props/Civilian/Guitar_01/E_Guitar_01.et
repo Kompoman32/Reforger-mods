@@ -1,0 +1,11 @@
+GenericEntity : "{1BE2B6FF4806EB3E}Prefabs/Props/Civilian/Guitar_01/Guitar_01.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  SCR_EditableEntityComponent "{68605E07F04589DE}" {
+   m_bAutoRegister WHEN_SPAWNED
+   m_vIconPos 0 0 0
+   m_fMaxDrawDistance 0
+   m_Flags PLACEABLE
+  }
+ }
+}

@@ -1,0 +1,11 @@
+GenericEntity : "{660BD816AA043589}Prefabs/Props/Furniture/Piano_01_Base.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  SCR_EditableEntityComponent "{68605E04F90185F1}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{68605E050427403D}" {
+    Name "#AR-EditableEntity_Piano_01_brown_Name"
+    m_Image "{EA5FD82A929C3509}UI/Textures/EditorPreviews/Auto/Props/Furniture/E_Piano_01_brown.edds"
+   }
+  }
+ }
+}

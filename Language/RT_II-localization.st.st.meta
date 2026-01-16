@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{914133D2F0B8267C}Language/RT_II-localization.st.st"
+ Configurations {
+  StringTableResourceClass PC {
+  }
+  StringTableResourceClass XBOX_ONE : PC {
+  }
+  StringTableResourceClass XBOX_SERIES : PC {
+  }
+  StringTableResourceClass PS4 : PC {
+  }
+  StringTableResourceClass PS5 : PC {
+  }
+  StringTableResourceClass HEADLESS : PC {
+  }
+ }
+}

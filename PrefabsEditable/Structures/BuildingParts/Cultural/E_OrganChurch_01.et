@@ -1,0 +1,12 @@
+GenericEntity : "{F7BB38C6DC5BF74B}Prefabs/Structures/BuildingParts/Cultural/OrganChurch_01.et" {
+ ID "5111E74D4E7A8DB6"
+ components {
+  SCR_EditableEntityComponent "{68605E05FEDD7D8D}" {
+   m_bAutoRegister WHEN_SPAWNED
+   m_vIconPos 0 0 0
+   m_bStatic 0
+   m_fMaxDrawDistance 0
+   m_Flags PLACEABLE
+  }
+ }
+}

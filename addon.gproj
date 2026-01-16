@@ -1,0 +1,83 @@
+GameProject {
+ ID "GMInteractableInstruments"
+ GUID "68605DA119132D78"
+ TITLE "GM Interactable Instruments"
+ Dependencies {
+  "58D0FB3206B6F859"
+ }
+ Configurations {
+  GameProjectConfig PC {
+   WidgetManagerSettings WidgetManagerSettings "{AC4BE58770485E02}" {
+    StringTables {
+     StringTableDefinition "{68607738E431CA41}" {
+      StringTableSource "{914133D2F0B8267C}Language/RT_II-localization.st.st"
+      Languages {
+       LanguageDefinition "{68607738E2BD7C1E}" {
+        Code "cs_cz"
+        StringTableRuntime "{35E0536B9B2F62AA}Language/RT_II-localization.st.cs_cz.conf"
+       }
+       LanguageDefinition "{68607738E2BD7C48}" {
+        Code "de_de"
+        StringTableRuntime "{E09E4958888C738A}Language/RT_II-localization.st.de_de.conf"
+       }
+       LanguageDefinition "{68607738E2BD7C5B}" {
+        Code "en_us"
+        StringTableRuntime "{BE6EC313E27F768B}Language/RT_II-localization.st.en_us.conf"
+       }
+       LanguageDefinition "{68607738E2BD7CA6}" {
+        Code "es_es"
+        StringTableRuntime "{7B228E9A0C7D1D94}Language/RT_II-localization.st.es_es.conf"
+       }
+       LanguageDefinition "{68607738E2BD7CB5}" {
+        Code "fr_fr"
+        StringTableRuntime "{C08A7BADEAFEFE96}Language/RT_II-localization.st.fr_fr.conf"
+       }
+       LanguageDefinition "{68607738E2BD7C82}" {
+        Code "it_it"
+        StringTableRuntime "{4096F49947DC7D6F}Language/RT_II-localization.st.it_it.conf"
+       }
+       LanguageDefinition "{68607738E2BD7C90}" {
+        Code "ja_jp"
+        StringTableRuntime "{508D490B79AD4DC4}Language/RT_II-localization.st.ja_jp.conf"
+       }
+       LanguageDefinition "{68607738E2BD7C9F}" {
+        Code "ko_kr"
+        StringTableRuntime "{F03361A7EA804EFB}Language/RT_II-localization.st.ko_kr.conf"
+       }
+       LanguageDefinition "{68607738E2BD7CEC}" {
+        Code "pl_pl"
+        StringTableRuntime "{AC42C75D546FD287}Language/RT_II-localization.st.pl_pl.conf"
+       }
+       LanguageDefinition "{68607738E2BD7CF8}" {
+        Code "pt_br"
+        StringTableRuntime "{79355D916F91183D}Language/RT_II-localization.st.pt_br.conf"
+       }
+       LanguageDefinition "{68607738E2BD7CC6}" {
+        Code "ru_ru"
+        StringTableRuntime "{2C744939F2E87D4B}Language/RT_II-localization.st.ru_ru.conf"
+       }
+       LanguageDefinition "{68607738E2BD7D35}" {
+        Code "uk_ua"
+        StringTableRuntime "{A62C1CCF9EC6C31E}Language/RT_II-localization.st.uk_ua.conf"
+       }
+       LanguageDefinition "{68607738E2BD7D02}" {
+        Code "zh_cn"
+        StringTableRuntime "{7C9C72F2A7661303}Language/RT_II-localization.st.zh_cn.conf"
+       }
+      }
+     }
+    }
+   }
+  }
+  GameProjectConfig XBOX_ONE {
+  }
+  GameProjectConfig XBOX_SERIES {
+  }
+  GameProjectConfig PS4 {
+  }
+  GameProjectConfig PS5 {
+  }
+  GameProjectConfig HEADLESS {
+  }
+ }
+}

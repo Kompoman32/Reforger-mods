@@ -1,0 +1,20 @@
+GenericEntity : "{4CC2C69DE1AEF103}Prefabs/Props/Core/DestructibleMultiPhase_Props_Base.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  SCR_EditableEntityComponent "{68605E07F04589DE}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{68605E0417D4D0D6}" {
+    Name "#RT_II-Prop_Guitar_Name"
+    m_Image "{D1127501BDB2E287}Assets/Props/Civilian/Guitar_01/Data/Astolfo.edds"
+    m_aAuthoredLabels {
+     ENTITYTYPE_OBJECT SIZE_S CONTENT_MODDED
+    }
+   }
+   m_bAutoRegister ALWAYS
+   m_vIconPos 0 0.075 -0.071
+   m_bStatic 1
+   m_fMaxDrawDistance 200
+   m_Flags 28689
+  }
+ }
+ coords 0.011 1.226 3.067
+}
