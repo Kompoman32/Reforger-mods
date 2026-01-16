@@ -14,6 +14,7 @@
 - [Edit Entity Inventory 65CCB10717C80EBC](https://reforger.armaplatform.com/workshop/65CCB10717C80EBC-EditEntityInventory)
 - [Edit Entity Inventory RHS fix 65CE8E0E6C14A7AB](https://reforger.armaplatform.com/workshop/65CE8E0E6C14A7AB-EditEntityInventoryRHSfix)
 - [Edit Entity Inventory EveryFix 65CE919D269B0E6E](https://reforger.armaplatform.com/workshop/65CE919D269B0E6E-EditEntityInventoryEveryFix)
+- [GM Interactable Instruments](https://reforger.armaplatform.com/workshop/68605DA119132D78-GMInteractableInstruments)
 - [Player Stance Display 64AEB7EA07BA9D5E](https://reforger.armaplatform.com/workshop/64AEB7EA07BA9D5E-PlayerStanceDisplay)
 - [RHS ION Default Loadout 64B35A2A3074B086](https://reforger.armaplatform.com/workshop/64B35A2A3074B086-RHSIONDefaultLoadout)
 - [Turn Signals 633741F83BD0586D](https://reforger.armaplatform.com/workshop/633741F83BD0586D-TurnSignals)
