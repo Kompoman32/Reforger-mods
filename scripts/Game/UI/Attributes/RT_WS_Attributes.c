@@ -133,21 +133,6 @@ class RT_WS_WavesSpawner_Attribute_Units: SCR_BaseEditorAttribute
 		
 		return SCR_BaseEditorAttributeVar.CreateVector(Vector(0,0,0));
 	}
-	
-	override bool GetIsMultiSelect()
-	{
-		return true;
-	}
-	
-	override bool GetHasConflictingValues()
-	{
-		return true;
-	}
-	
-	override bool GetIsOverridingValues()
-	{
-		return true;
-	}
 }
 
 // Radius In Spawner
@@ -193,7 +178,7 @@ class RT_WS_MovePoint_Attribute_Radius: SCR_BaseValueListEditorAttribute
 	}
 }
 
-
+// Faction
 [BaseContainerProps(), SCR_BaseEditorAttributeCustomTitle()]
 class RT_WS_WavesSpawner_Attribute_Faction: SCR_BaseFactionEditableAttribute
 {		
@@ -214,5 +199,45 @@ class RT_WS_WavesSpawner_Attribute_Faction: SCR_BaseFactionEditableAttribute
 		RT_WavesSpawnerEntity spawner = RT_WavesSpawnerEntity.Cast(entity);
 		
 		spawner.SetFaction(faction);
+	}
+};
+
+
+/**
+Dynamic Description for Min In Group
+*/
+[BaseContainerProps(), BaseContainerCustomStringTitleField("Min In Group warning (CUSTOM)")]
+class RT_WS_WavesSpawner_Attribute_MinInGroupDynamicDescription : SCR_BaseAttributeDynamicDescription
+{	
+	protected SCR_AttributesManagerEditorComponent m_AttributeManager;
+	
+	protected bool m_bEntityUnconsciousnessPermitted = false;
+	
+	//------------------------------------------------------------------------------------------------
+	override void InitDynamicDescription(notnull SCR_BaseEditorAttribute attribute, notnull SCR_BaseEditorAttributeUIComponent attributeUi)
+	{		
+		super.InitDynamicDescription(attribute);
+		
+		if (!m_AttributeManager)
+			m_AttributeManager = SCR_AttributesManagerEditorComponent.Cast(SCR_AttributesManagerEditorComponent.GetInstance(SCR_AttributesManagerEditorComponent));		
+	}
+	
+	
+	//------------------------------------------------------------------------------------------------
+	override bool IsValid(notnull SCR_BaseEditorAttribute attribute, notnull SCR_BaseEditorAttributeUIComponent attributeUi)
+	{		
+		if (!super.IsValid(attribute, attributeUi) || !m_AttributeManager)
+			return false;
+		
+		SCR_BaseEditorAttributeVar minInGroupVariable = attribute.GetVariable();
+		SCR_BaseEditorAttribute maxInGroupAttribute;
+		m_AttributeManager.GetActiveAttribute(RT_WS_WavesSpawner_Attribute_MaxInGroup, maxInGroupAttribute);
+		
+		SCR_BaseEditorAttributeVar maxInGroupVariable = maxInGroupAttribute.GetVariable();
+		
+		if (!minInGroupVariable || !maxInGroupVariable)
+			return false;
+		
+		return minInGroupVariable.GetInt() > maxInGroupVariable.GetInt();
 	}
 };

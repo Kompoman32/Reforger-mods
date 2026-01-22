@@ -12,10 +12,15 @@ class RT_WavesSpawnerEntity: GenericEntity {
 
 	protected SCR_CustomAreaMeshComponent m_AreaMesh;
 	protected SCR_FactionAffiliationComponent m_FactionAffiliationComponent;
+	protected SCR_EditableSystemComponent m_EditableSystemComponent;
 	
 	protected ResourceName m_sMovePointTemplate = "{70C1179FB1CA6C05}Prefabs/Systems/WavesSpawner/RT_WS-WavesSpawner_MovePoint.et";
 	protected RT_WavesSpawner_MovePointEntity m_MovePoint;
+	[RplProp(onRplName: "CreateMovePoint_Proxy")]
+	protected RplId m_MovePointRplId;
 	protected vector m_vLastMovePointPosition[4];
+	
+	protected vector m_vLastSpawnerPosition[4];
 	
 	protected ref array<SCR_AIGroup> m_aGroups;
 	protected ref array<AIWaypointCycle> m_aWaypoints;
@@ -40,8 +45,13 @@ class RT_WavesSpawnerEntity: GenericEntity {
 	protected ref SCR_WeightedArray<ResourceName> m_WeightedUnits = new SCR_WeightedArray<ResourceName>();
 	
 	
+	ref Shape m_ConnectLine;
+	bool m_bShowConnectLine;
+	ShapeFlags m_ConnectLineFlagsOnHover = ShapeFlags.NOZBUFFER | ShapeFlags.TRANSP;
+	
 	void RT_WavesSpawnerEntity(IEntitySource src, IEntity parent) {
-		SetEventMask(EntityEvent.INIT);
+		if (!SCR_Global.IsEditMode())
+			SetEventMask(EntityEvent.FRAME | EntityEvent.INIT);		
 	}
 	
 	void ~RT_WavesSpawnerEntity() {
@@ -49,18 +59,11 @@ class RT_WavesSpawnerEntity: GenericEntity {
 			SCR_EntityHelper.DeleteEntityAndChildren(m_MovePoint);
 	}
 	
-	protected void DelayedInit() {						
-		RefreshSpawnParameters();
-	}
-	
 	override void EOnInit(IEntity owner)
 	{
-		m_AreaMesh = SCR_CustomAreaMeshComponent.Cast(FindComponent(SCR_CustomAreaMeshComponent));
-		
-		if (!Replication.IsServer() || SCR_Global.IsEditMode())
-			return;
-		
+		m_AreaMesh = SCR_CustomAreaMeshComponent.Cast(FindComponent(SCR_CustomAreaMeshComponent));		
 		m_FactionAffiliationComponent = SCR_FactionAffiliationComponent.Cast(FindComponent(SCR_FactionAffiliationComponent));
+		m_EditableSystemComponent = SCR_EditableSystemComponent.Cast(FindComponent(SCR_EditableSystemComponent));
 		
 		m_bFactionLess = !GetFaction();
 		
@@ -68,8 +71,7 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		
 		m_aGroups = {};
 		m_aWaypoints = {};
-		m_aUnitsSettings = {};
-		
+		m_aUnitsSettings = {};		
 		
 		if (m_AreaMesh)
 		{
@@ -105,13 +107,29 @@ class RT_WavesSpawnerEntity: GenericEntity {
 //		TODO: some day...
 //		InitDefaultUnitSettings();
 		
-		CreateMovePoint();
-		
-		GetGame().GetCallqueue().CallLater(DelayedInit, 200, false);
+		if (Replication.IsServer())
+		{
+			CreateMovePoint();
+			GetGame().GetCallqueue().CallLater(DelayedInit, 200, false);
+		}
+		else
+		{
+			GetGame().GetCallqueue().CallLater(CreateMovePoint_Proxy, 200, false);
+		}
 	}
 	
 	override void EOnFrame(IEntity owner, float timeSlice)
-	{
+	{		
+		UpdateConnectedLine();
+
+		if (vector.Distance(GetOrigin(), m_vLastSpawnerPosition[3]) > 1) 
+		{
+			m_vLastSpawnerPosition = GetOrigin();
+		}
+		
+		if (!Replication.IsServer())
+			return;
+		
 		m_fWaypointUpdateTimer -= timeSlice;	
 		if (m_fWaypointUpdateTimer < 0) 
 		{
@@ -134,6 +152,10 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		}	
 	}
 	
+	protected void DelayedInit() {						
+		RefreshSpawnParameters();
+	}
+	
 //	protected void InitDefaultUnitSettings()
 //	{
 //		foreach(int i, ResourceName resourceName : m_aAvailableResourceNames)
@@ -149,7 +171,6 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		params.Transform[3] = RandomPointInRadius(GetOrigin(), m_fSpawnRadius / 3, m_fSpawnRadius / 2);
 			
 		m_MovePoint = RT_WavesSpawner_MovePointEntity.Cast(GetGame().SpawnEntityPrefabEx(m_sMovePointTemplate, false, GetGame().GetWorld(), params));
-		
 		if (!m_MovePoint) return;
 		
 		m_MovePoint.m_Spawner = this;
@@ -174,13 +195,16 @@ class RT_WavesSpawnerEntity: GenericEntity {
 	
 	protected void CreateMovePoint_Delayed()
 	{	
-		Rpc(CreateMovePoint_Proxy, Replication.FindItemId(m_MovePoint));
+		UpdateConnectedLine();
+		
+		m_MovePointRplId = Replication.FindItemId(m_MovePoint);
+		
+		Replication.BumpMe();
 	}
 	
-	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	protected void CreateMovePoint_Proxy(RplId movePointRplId)
+	protected void CreateMovePoint_Proxy()
 	{
-		m_MovePoint = RT_WavesSpawner_MovePointEntity.Cast(Replication.FindItem(movePointRplId));
+		m_MovePoint = RT_WavesSpawner_MovePointEntity.Cast(Replication.FindItem(m_MovePointRplId));
 		
 		if (!m_MovePoint) return;
 		
@@ -192,6 +216,65 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		
 		areaMesh.SetMaterial(m_AreaMesh.GetMaterialPublic());
 		areaMesh.GenerateAreaMesh();
+	}
+	
+	protected void CreateConnectLine()
+	{		
+		if (!m_MovePoint) return;
+		
+		vector movePointTransform[4];
+			
+		m_MovePoint.GetWorldTransform(movePointTransform);
+		
+		vector lineVerts[2];
+		lineVerts[0] = GetOrigin();
+		lineVerts[1] = movePointTransform[3];
+	
+		Color color = Color.White;
+		
+		if (m_FactionAffiliationComponent)
+		{
+			Faction faction = m_FactionAffiliationComponent.GetAffiliatedFaction();
+			
+			if (faction)
+			{
+				color = faction.GetFactionColor();
+			}
+		}
+		
+		m_ConnectLine = Shape.CreateLines(color.PackToInt(), m_ConnectLineFlagsOnHover, lineVerts, 2);
+	}
+	
+	protected void UpdateConnectedLine()
+	{
+		m_bShowConnectLine = false;
+		
+		if (!m_EditableSystemComponent || !m_MovePoint || !m_MovePoint.m_EditableEntityComponent) return;
+		
+		EEditableEntityState entityStateToCheck = EEditableEntityState.HOVER | EEditableEntityState.SELECTED;
+		EEditableEntityState spawnerState = m_EditableSystemComponent.GetEntityStates();
+		EEditableEntityState movePointState = m_MovePoint.m_EditableEntityComponent.GetEntityStates();
+		
+		if ((spawnerState & entityStateToCheck || movePointState & entityStateToCheck) 
+			&& m_EditableSystemComponent.GetVisibleSelf()
+			&& m_MovePoint.m_EditableEntityComponent.GetVisibleSelf())
+		{
+			m_bShowConnectLine = true;
+		}	
+				
+		if (!m_bShowConnectLine)
+		{
+			m_ConnectLine = null;
+			return;
+		}
+		
+		vector movePointTransform[4];
+		m_MovePoint.GetWorldTransform(movePointTransform);
+		
+		if (m_ConnectLine && vector.Distance(movePointTransform[3], m_vLastMovePointPosition[3]) < 1 && vector.Distance(GetOrigin(), m_vLastSpawnerPosition[3]) < 1)
+			return;
+		
+		CreateConnectLine();
 	}
 	
 	protected void Spawn() 
@@ -231,6 +314,11 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		}
 		
 		int unitsInGroup = s_AIRandomGenerator.RandInt(m_iMinInGroup, m_iMaxInGroup + 1);
+		while (unitsInGroup > m_iMaxInGroup)
+		{
+			unitsInGroup = s_AIRandomGenerator.RandInt(m_iMinInGroup, m_iMaxInGroup + 1);
+		}
+		
 		group.SetMaxUnitsToSpawn(unitsInGroup);
 		
 		group.m_aUnitPrefabSlots.Clear();
@@ -283,7 +371,9 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		}
 	}
 	
-	protected void UpdateWaypoints() {				
+	protected void UpdateWaypoints() {		
+		if (!m_MovePoint) return;		
+				
 		vector movePointTransform[4];
 		m_MovePoint.GetWorldTransform(movePointTransform);
 		
@@ -425,14 +515,7 @@ class RT_WavesSpawnerEntity: GenericEntity {
 	
 	protected void SetSpawnParametersEnabled()
 	{
-		if (m_bEnabled)
-		{
-			SetEventMask(EntityEvent.FRAME);
-		}
-		else
-		{
-			ClearEventMask(EntityEvent.FRAME);
-		}
+		
 	}
 	
 	protected void ClearCycleWaypoint(AIWaypointCycle cycleWp)

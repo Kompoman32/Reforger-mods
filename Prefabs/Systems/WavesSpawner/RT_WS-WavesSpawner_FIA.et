@@ -20,9 +20,9 @@ RT_WavesSpawnerEntity : "{01BCDFF34020614D}Prefabs/Systems/WavesSpawner/RT_WS-Wa
  }
  m_sUnitsGroupPrefab "{265B11E8E53F9FBA}Prefabs/Groups/INDFOR/AmbientPatrols/Group_FIA_RifleSquad_NotSpawned.et"
  m_aAvailableResourceNames {
-  "{84B40583F4D1B7A3}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman.et" "{CE33AB22F61F3365}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Sharpshooter.et" "{67B0A8609C73A786}Prefabs/Characters/CaptureAndHold/Factions/INDFOR/FIA/Character_FIA_GL.et" "{58E47E5A4D599432}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_MG.et" "{D25BC9815A9F9E8D}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AT.et"
+  "{84B40583F4D1B7A3}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman.et" "{CE33AB22F61F3365}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Sharpshooter.et" "{67B0A8609C73A786}Prefabs/Characters/CaptureAndHold/Factions/INDFOR/FIA/Character_FIA_GL.et" "{58E47E5A4D599432}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_MG.et" "{C77DFB8546B3F2A2}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_LAT.et" "{D25BC9815A9F9E8D}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AT.et" "{00CF602C54FE2045}Prefabs/Characters/Factions/INDFOR/FIA/Special Units/Character_FIA_AC_Partisan_Randomized.et"
  }
  m_aAvailableDisplayNames {
-  "#RT_WS-WavesSpawner_FIA_Rifleman" "#RT_WS-WavesSpawner_FIA_Sniper" "#RT_WS-WavesSpawner_FIA_GL" "#RT_WS-WavesSpawner_FIA_MG" "#RT_WS-WavesSpawner_USSR_AT"
+  "#AR-Role_Rifleman" "#AR-Role_Sniper" "#AR-Role_Grenadier" "#AR-Role_MachineGunner" "#AR-Role_LightAT" "#AR-Role_AntiTank" "#AR-Role_AC"
  }
 }

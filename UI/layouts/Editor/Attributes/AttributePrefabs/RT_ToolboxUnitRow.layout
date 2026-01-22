@@ -7,6 +7,8 @@ HorizontalLayoutWidgetClass {
  components {
   RT_SpawnerUnitRowComponent "{66C30861375BA644}" {
   }
+  SCR_EventHandlerComponent "{673CDE52E5A66F84}" {
+  }
  }
  {
   TextWidgetClass "{66C30872A0E1AC0E}" : "{3132F64DB8B4CB44}UI/layouts/WidgetLibrary/TextWidgets/Text_Body.layout" {
@@ -105,11 +107,25 @@ HorizontalLayoutWidgetClass {
    }
    components {
     SCR_SliderComponent "{548294960C7399D9}" {
+     Enabled 0
      m_bUseLabel 0
-     m_fValue 3
+     m_fValue 0
      m_fMaxValue 100
      m_fStep 1
      m_sFormatText "%1"
+    }
+    SCR_ModularButtonComponent "{5E4C99F9DEB52367}" {
+    }
+    SCR_AutomaticScrollComponent "{6662682A639B2F89}" {
+     Enabled 0
+    }
+    RT_WS_WeightSliderComponent "{673CDE512B42EEB6}" {
+     m_sSoundClicked ""
+     m_bUseLabel 0
+     m_fSizeWithLabel 56
+     m_fSizeWithoutLabel 40
+     m_fMaxValue 100
+     m_fStep 1
     }
    }
    {

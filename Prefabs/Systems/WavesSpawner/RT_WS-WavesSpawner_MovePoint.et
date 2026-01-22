@@ -9,8 +9,8 @@ RT_WavesSpawner_MovePointEntity {
   }
   SCR_EditableEntityComponent "{6739036439AB4648}" {
    m_UIInfo SCR_UIInfo "{6739036446791D3F}" {
-    Name "Assembly Point"
-    Description "Soldiers will go here after spawning"
+    Name "#RT_WS-MovePoint_Name"
+    Description "#RT_WS-MovePoint_Description"
     Icon "{BFEFCFCAE49617F3}UI/Textures/Editor/Toolbar/Commanding/Toolbar_Commanding_Objective_Attack.edds"
    }
    m_Flags 34887

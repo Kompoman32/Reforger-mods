@@ -1,5 +1,7 @@
 class RT_WS_UnitsAttributeUIComponent: SCR_BaseEditorAttributeUIComponent
 {
+	protected Widget m_wRoot;
+	
 	protected Widget m_wToolBoxComponent;
 	
 	protected RT_WS_WavesSpawner_Attribute_Units m_RTAttribute;
@@ -11,6 +13,8 @@ class RT_WS_UnitsAttributeUIComponent: SCR_BaseEditorAttributeUIComponent
 	
 	override void Init(Widget w, SCR_BaseEditorAttribute attribute)
 	{
+		m_wRoot = w;
+		
 		m_AttributeManager = SCR_AttributesManagerEditorComponent.Cast(SCR_AttributesManagerEditorComponent.GetInstance(SCR_AttributesManagerEditorComponent));
 		
 		if (m_AttributeManager && !m_AttributeManager.m_RT_WS_DelayedUnitsAttribute)
@@ -75,11 +79,13 @@ class RT_WS_UnitsAttributeUIComponent: SCR_BaseEditorAttributeUIComponent
 	
 	override void HandlerDeattached(Widget w)
 	{
-		m_AttributeManager.m_RT_WS_DelayedUnitsAttributeInit.Remove(DelayedUnitsAttributeInit);
+		if (m_AttributeManager)
+			m_AttributeManager.m_RT_WS_DelayedUnitsAttributeInit.Remove(DelayedUnitsAttributeInit);
 		super.HandlerDeattached(w);
 	}
 	
 	override void SetVariableToDefaultValue(SCR_BaseEditorAttributeVar var)	{}
 	override void SetFromVar(SCR_BaseEditorAttributeVar var) {}
 	override void ToggleButtonSelected(bool selected, int index, bool animated = true) {}
+
 }

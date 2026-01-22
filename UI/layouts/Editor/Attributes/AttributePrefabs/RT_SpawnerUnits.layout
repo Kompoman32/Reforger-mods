@@ -129,6 +129,42 @@ FrameWidgetClass : "{BC83FFDB7BC37F26}UI/layouts/Editor/Attributes/Base/Attribut
                          m_fSizeWithoutLabel 30
                         }
                        }
+                       {
+                        SizeLayoutWidgetClass "{553AE28F8D0EA0E1}" {
+                         Prefab "{553AE28F8D0EA0E1}"
+                         {
+                          OverlayWidgetClass "{55367D8E531FD623}" {
+                           Prefab "{55367D8E531FD623}"
+                           {
+                            HorizontalLayoutWidgetClass "{55367D8E4592BC6E}" {
+                             Prefab "{55367D8E4592BC6E}"
+                             {
+                              ButtonWidgetClass "{553AE2894447E187}" {
+                               Prefab "{553AE2894447E187}"
+                               {
+                                HorizontalLayoutWidgetClass "{553AE28D25A86029}" {
+                                 Prefab "{553AE28D25A86029}"
+                                 {
+                                  OverlayWidgetClass "{553AE28CA1605996}" {
+                                   Prefab "{553AE28CA1605996}"
+                                   {
+                                    RichTextWidgetClass "{553AE28C8B8FC577}" {
+                                     Prefab "{553AE28C8B8FC577}"
+                                     Clipping True
+                                    }
+                                   }
+                                  }
+                                 }
+                                }
+                               }
+                              }
+                             }
+                            }
+                           }
+                          }
+                         }
+                        }
+                       }
                       }
                      }
                     }

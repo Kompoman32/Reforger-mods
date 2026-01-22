@@ -20,9 +20,9 @@ RT_WavesSpawnerEntity : "{01BCDFF34020614D}Prefabs/Systems/WavesSpawner/RT_WS-Wa
  }
  m_sUnitsGroupPrefab "{EC8BAC199BAF3740}Prefabs/Groups/OPFOR/AmbientPatrols/Group_USSR_FireGroup_NotSpawned.et"
  m_aAvailableResourceNames {
-  "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et" "{976AC400219898FA}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sharpshooter.et" "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et" "{96C784C502AC37DA}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MG.et" "{E9AEEF2D9E41321B}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AMG.et" "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+  "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et" "{976AC400219898FA}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sharpshooter.et" "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et" "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et" "{96C784C502AC37DA}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MG.et" "{BF643BE4ADBDFDD3}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_LAT.et" "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
  }
  m_aAvailableDisplayNames {
-  "#RT_WS-WavesSpawner_USSR_Rifleman" "#RT_WS-WavesSpawner_USSR_Sniper" "#RT_WS-WavesSpawner_USSR_GL" "#RT_WS-WavesSpawner_USSR_MG" "#RT_WS-WavesSpawner_USSR_AMG" "#RT_WS-WavesSpawner_USSR_AT"
+  "#AR-Role_Rifleman" "#AR-Role_Sniper" "#AR-Role_Grenadier" "#AR-Role_AutomaticRifleman" "#AR-Role_MachineGunner" "#AR-Role_LightAT" "#AR-Role_AntiTank"
  }
 }

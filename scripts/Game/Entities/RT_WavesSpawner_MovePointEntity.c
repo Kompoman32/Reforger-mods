@@ -2,6 +2,7 @@
 class RT_WavesSpawner_MovePointEntityClass: GenericEntityClass {}
 class RT_WavesSpawner_MovePointEntity: GenericEntity {
 	SCR_CustomAreaMeshComponent m_AreaMesh;
+	SCR_EditableEntityComponent m_EditableEntityComponent;
 	
 	RT_WavesSpawnerEntity m_Spawner;
 	
@@ -15,6 +16,7 @@ class RT_WavesSpawner_MovePointEntity: GenericEntity {
 	override void EOnInit(IEntity owner)
 	{
 		m_AreaMesh = SCR_CustomAreaMeshComponent.Cast(FindComponent(SCR_CustomAreaMeshComponent));
+		m_EditableEntityComponent = SCR_EditableEntityComponent.Cast(FindComponent(SCR_EditableEntityComponent));
 		
 		if (m_AreaMesh)
 		{

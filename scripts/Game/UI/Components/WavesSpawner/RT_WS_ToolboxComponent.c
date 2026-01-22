@@ -12,7 +12,7 @@ class RT_WS_ToolboxComponent: SCR_ToolboxMultilineComponent
 	protected string m_sAddNewButton;
 	
 	protected Widget m_wAddNewButton;
-	protected Widget m_wAddNewCombobox;
+	Widget m_wAddNewCombobox;
 	
 	protected SCR_ButtonTextComponent m_AddNewButton;
 	protected SCR_ComboBoxComponent m_AddNewCombobox;
@@ -94,20 +94,6 @@ class RT_WS_ToolboxComponent: SCR_ToolboxMultilineComponent
 		
 		RefreshPercents();
 	}
-	
-//	override protected void CreateWidgets()
-//	{
-//		ClearWidgets();	
-//		
-//		float padding = m_fElementSpacing * 0.5;
-//		LayoutSlot.SetPadding(m_wButtonRow, -padding, -padding, -padding, -padding);
-//		foreach (int i, string name : m_aElementNames)
-//		{
-//			AddNewRow(name, i);
-//		}
-//		
-//		RefreshPercents();
-//	}
 	
 	protected void ChangeAttribute()
 	{
@@ -194,24 +180,7 @@ class RT_WS_ToolboxComponent: SCR_ToolboxMultilineComponent
 		m_AddNewCombobox.ClearAll();
 		
 		foreach (int i, ResourceName resourceName: pResourceNames)
-		{
-//			string name = string.Empty;
-//			
-//			if (i < pDisplayNames.Count()) {
-//				name = pDisplayNames[i];
-//			}
-//			
-//			if (!name)
-//			{
-//				name = SCR_StringHelper.FormatResourceNameToUserFriendly(resourceName);
-//			}
-//			
-//			if (!name)
-//			{
-//				name = string.Format("NO_USE");
-//			}
-			
-			
+		{			
 			m_AddNewCombobox.AddItem(pDisplayNames[i], true, new Tuple1<string>(resourceName));
 		}
 		
@@ -302,9 +271,25 @@ class RT_WS_ToolboxComponent: SCR_ToolboxMultilineComponent
 	
 	override void OnElementClicked(SCR_ButtonBaseComponent comp) {}
 		
-	override bool OnFocus(Widget w, int x, int y) { return false; }
+	override bool OnFocus(Widget w, int x, int y) {		
+		if (m_wRoot != w)
+		{
+			if (IsChildWidget(m_wRoot, w)) return false;		
+		}
+		
+		WorkspaceWidget workspace = GetGame().GetWorkspace();
+		if (!workspace)
+			return false;
+		
+		GetGame().GetCallqueue().CallLater(workspace.SetFocusedWidget, 10, false, m_wAddNewCombobox, true);
+		
+		return false;
+	}
 	
-	override bool OnFocusLost(Widget w, int x, int y) { return false; }
+	override bool OnFocusLost(Widget w, int x, int y) {
+		
+		 return false; 
+	}
 }
 
 class RT_SpawnerUnitRowComponent: SCR_ScriptedWidgetComponent
@@ -331,7 +316,7 @@ class RT_SpawnerUnitRowComponent: SCR_ScriptedWidgetComponent
 	
 	protected SCR_EditBoxComponent m_ResourceName;
 	protected EditBoxFilterComponent m_ResourceNameFilter;
-	protected SCR_SliderComponent m_WeightSlider;
+	protected RT_WS_WeightSliderComponent m_WeightSlider;
 	protected TextWidget m_PercentText;
 	protected SCR_ModularButtonComponent m_DeleteButton;
 	
@@ -357,7 +342,7 @@ class RT_SpawnerUnitRowComponent: SCR_ScriptedWidgetComponent
 			m_ResourceNameFilter = EditBoxFilterComponent.Cast(m_ResourceName.m_wEditBox.FindHandler(EditBoxFilterComponent));
 		}
 		
-		m_WeightSlider = SCR_SliderComponent.Cast(m_wWeight.FindHandler(SCR_SliderComponent));
+		m_WeightSlider = RT_WS_WeightSliderComponent.Cast(m_wWeight.FindHandler(RT_WS_WeightSliderComponent));
 		m_PercentText = TextWidget.Cast(m_wPercentText);
 		m_DeleteButton = SCR_ModularButtonComponent.Cast(m_wDeleteButton.FindHandler(SCR_ModularButtonComponent));
 		
@@ -369,7 +354,6 @@ class RT_SpawnerUnitRowComponent: SCR_ScriptedWidgetComponent
 		AttachHandlers();
 	}
 		
-	
 	protected void AttachHandlers()
 	{
 		if (m_ResourceName)
@@ -413,6 +397,11 @@ class RT_SpawnerUnitRowComponent: SCR_ScriptedWidgetComponent
 		}
 	}
 	
+	protected override bool OnFocus(Widget w, int x, int y)
+	{
+		return true;
+	}
+	
 	protected void OnResourceNameChange(string pValue)
 	{
 		GetGame().GetCallqueue().Remove(SetResourceNameValid);
@@ -439,7 +428,7 @@ class RT_SpawnerUnitRowComponent: SCR_ScriptedWidgetComponent
 		}
 	}
 	
-	protected void OnWeightSliderChange(SCR_SliderComponent sliderComponent, float value) 
+	protected void OnWeightSliderChange(RT_WS_WeightSliderComponent sliderComponent, float value) 
 	{
 		if (!m_WeightSlider) return;
 		
