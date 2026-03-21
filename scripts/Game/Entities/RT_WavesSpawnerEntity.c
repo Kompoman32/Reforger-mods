@@ -358,7 +358,7 @@ class RT_WavesSpawnerEntity: GenericEntity {
 					
 					if (m_aWaypoints[i])
 					{
-						ClearCycleWaypoint(m_aWaypoints[i]);
+						ClearCycleWaypoint(group, m_aWaypoints[i]);
 					}
 					
 					m_aWaypoints.Remove(i);
@@ -389,7 +389,7 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		{
 			SCR_AIGroup group = m_aGroups[i];
 			
-			ClearCycleWaypoint(cycleWp);
+			ClearCycleWaypoint(group, cycleWp);
 			AddCycleMoveWaypoints(cycleWp, params);
 			cycleWp.SetTransform(movePointTransform);		
 		}
@@ -417,13 +417,14 @@ class RT_WavesSpawnerEntity: GenericEntity {
 	
 	void AddCycleMoveWaypoints(AIWaypointCycle cycleWP, EntitySpawnParams params)
 	{		
-		Resource waypointResource = Resource.Load("{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et");
+		Resource firstWaypointResource = Resource.Load("{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et");
+		Resource secondWaypointResource = Resource.Load("{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Defend.et");
 
-		if (!waypointResource || !waypointResource.IsValid())
+		if (!firstWaypointResource || !firstWaypointResource.IsValid())
 			return;
 
 		// First Move Waypoint
-		AIWaypoint moveWP = AIWaypoint.Cast(GetGame().SpawnEntityPrefab(waypointResource, null, params));
+		AIWaypoint moveWP = AIWaypoint.Cast(GetGame().SpawnEntityPrefab(firstWaypointResource, null, params));
 		if (!moveWP) return;
 		
 		float completeRadius = 5;
@@ -439,7 +440,7 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		waypoints.Insert(moveWP);
 		
 		// Second Move Waypoint on same cords
-		moveWP = AIWaypoint.Cast(GetGame().SpawnEntityPrefab(waypointResource, null, params));
+		moveWP = AIWaypoint.Cast(GetGame().SpawnEntityPrefab(secondWaypointResource, null, params));
 		if (!moveWP) return;
 		
 		moveWP.SetCompletionRadius(completeRadius);
@@ -518,14 +519,22 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		
 	}
 	
-	protected void ClearCycleWaypoint(AIWaypointCycle cycleWp)
+	protected void ClearCycleWaypoint(SCR_AIGroup group, AIWaypointCycle cycleWp)
 	{
 		array<AIWaypoint> waypoints = {};
 		cycleWp.GetWaypoints(waypoints);
 		
 		foreach (AIWaypoint wp: waypoints)
 		{
-			wp.SetCompletionRadius(9999999999);
+			if (wp)
+			{
+				wp.SetCompletionRadius(9999999999);
+			}
+			
+			if (group) 
+			{
+				group.CompleteWaypoint(wp);
+			}
 		}
 		
 		cycleWp.SetWaypoints({});
