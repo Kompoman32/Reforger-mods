@@ -1,4 +1,4 @@
-class RT_EditableEntityUIInfo : SCR_EditableEntityUIInfo 
+class RT_CF_EditableEntityUIInfo : SCR_EditableEntityUIInfo 
 {
 	string m_sDisplayName = string.Empty;
 	string m_sHeadName = string.Empty;
@@ -8,7 +8,7 @@ class RT_EditableEntityUIInfo : SCR_EditableEntityUIInfo
 	VisualIdentity m_Visual;
 	ResourceName m_rtImage;
 	
-	void RT_EditableEntityUIInfo (SCR_UIName source, SCR_Faction faction, VisualIdentity visual)
+	void RT_CF_EditableEntityUIInfo (SCR_UIName source, SCR_Faction faction, VisualIdentity visual)
 	{
 		CopyFrom(source);
 		
@@ -50,7 +50,7 @@ class RT_EditableEntityUIInfo : SCR_EditableEntityUIInfo
 		m_sHeadName = nameAsString;		
 		
 		nameLocalized = "#RT_" + nameAsString;
-		nameTranslated = SCR_StringHelper.Translate(nameLocalized);
+		nameTranslated = WidgetManager.Translate(nameLocalized);
 		
 		if (nameLocalized != nameTranslated)
 		{

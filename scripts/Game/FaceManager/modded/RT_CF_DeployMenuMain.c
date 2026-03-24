@@ -19,29 +19,37 @@ modded class SCR_DeployMenuMain : SCR_DeployMenuBase {
 		LoadSavedFace();
 	}
 	
+	override void OnMenuHide()
+	{
+		super.OnMenuHide();
+
+		if (m_ChooseFaceButton)
+		{	
+			m_ChooseFaceButton.m_OnClicked.Remove(OnOpenChooseFaceMenu);
+		}
+	}
+	
 	protected void OnOpenChooseFaceMenu()
 	{
 		if (GetManager().FindMenuByPreset(ChimeraMenuPreset.FaceEditorBrowserDialog)) return; // already opened			
 			
 		MenuBase a = GetGame().GetMenuManager().OpenDialog(ChimeraMenuPreset.FaceEditorBrowserDialog);
-		RT_FaceEditorBrowserDialogUI menu = RT_FaceEditorBrowserDialogUI.Cast(a);
+		RT_CF_FaceEditorBrowserDialogUI menu = RT_CF_FaceEditorBrowserDialogUI.Cast(a);
 		
 		if (!menu) return;
 		
-		ScriptInvokerMenu onMenuClose = SCR_MenuHelper.GetOnMenuClose();
-
-		if (onMenuClose) onMenuClose.Insert(onChooseFaceMenuClose);
+		if (SCR_MenuHelper.GetOnMenuClose()) SCR_MenuHelper.GetOnMenuClose().Insert(onChooseFaceMenuClose);
 	}
 
 	
 	protected void onChooseFaceMenuClose(ChimeraMenuBase pMenu)
 	{		
-		RT_FaceEditorBrowserDialogUI menu = RT_FaceEditorBrowserDialogUI.Cast(pMenu);		
+		RT_CF_FaceEditorBrowserDialogUI menu = RT_CF_FaceEditorBrowserDialogUI.Cast(pMenu);		
+		if (!menu) return;
 		
-		if (!menu || !m_LoadoutRequestUIHandler) return;
+		if (SCR_MenuHelper.GetOnMenuClose()) SCR_MenuHelper.GetOnMenuClose().Remove(onChooseFaceMenuClose);
 		
-		if (!menu.m_Editor) return;
-		
+		if (!menu.m_Editor || !m_LoadoutRequestUIHandler) return;
 		
 		VisualIdentity currentFace = menu.m_Editor.m_CurrentFace;		
 		
@@ -51,7 +59,7 @@ modded class SCR_DeployMenuMain : SCR_DeployMenuBase {
 		
 		if (!previewEntity) return;
 		
-		RT_CF_Utils.SetIdentity(previewEntity, currentFace);		
+		RT_CF_Utils.SavePlayerIdentity(previewEntity, currentFace);		
 		m_LoadoutRequestUIHandler.ResetLoadoutPreview();
 		
 		SCR_PlayerData.SaveCurrentUserVisual(currentFace);
@@ -70,9 +78,9 @@ modded class SCR_DeployMenuMain : SCR_DeployMenuBase {
 				
 		if (!previewEntity) return;
 		
-		VisualIdentity currentFace = SCR_PlayerData.GetCurrentUserVisual();
+		VisualIdentity currentFace = SCR_PlayerData.GetCurrentUserVisual(previewEntity);
 		
-		RT_CF_Utils.SetIdentity(previewEntity, currentFace);		
+		RT_CF_Utils.SavePlayerIdentity(previewEntity, currentFace);		
 		m_LoadoutRequestUIHandler.ResetLoadoutPreview();
 	}
 }

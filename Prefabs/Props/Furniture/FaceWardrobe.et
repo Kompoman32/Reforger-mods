@@ -1,23 +1,11 @@
-GenericEntity : "{4CC2C69DE1AEF103}Prefabs/Props/Core/Destructible_Props_Base.et" {
+GenericEntity : "{10C26F96EF7A8CF5}Prefabs/Props/Core/Props_Base.et" {
  ID "F0DBA538AC2A0552"
  components {
   MeshObject "{5872F0EB7FA40561}" {
    Object "{F6D90BF6B8A347B7}Assets/Props/Furniture/Wardrobe_01/Wardrobe_01.xob"
   }
   RigidBody "{5872F0EB7DFB5A9D}" {
-   ResponseIndex "MediumDestructible"
    ModelGeometry 1
-   Static 1
-  }
-  SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" : "{76DA308CC9E2AB84}Prefabs/Props/Core/DestructionMultiPhase_Base.ct" {
-   m_fBaseHealth 2000
-   m_aDamagePhases {
-    SCR_DamagePhaseData "{6610C4230D17AD5D}" {
-     m_fPhaseHealth 3000
-     m_PhaseModel "{E3960AC7ED8D4A31}Assets/Props/Furniture/Wardrobe_01/dst/Wardrobe_01_dst_01.xob"
-    }
-   }
-   m_eMaterialSoundType BREAK_WOOD_SOLID
   }
   SCR_EditableEntityComponent "{6610C42389F88F7A}" {
    m_UIInfo SCR_EditableEntityUIInfo "{6610C42397A354C4}" {
@@ -25,42 +13,95 @@ GenericEntity : "{4CC2C69DE1AEF103}Prefabs/Props/Core/Destructible_Props_Base.et
     Icon "{46B08E1E4A34F452}UI/Textures/Nametags/NameTagsSource/death.edds"
     m_Image "{BEC3E4677D2E650C}UI/Textures/EditorPreviews/Auto/Props/Furniture/E_Wardrobe_01.edds"
     m_aAuthoredLabels {
-     1 121
+     ENTITYTYPE_OBJECT SIZE_S
     }
    }
    m_bAutoRegister ALWAYS
+   m_vIconPos -0.746 0 0.402
    m_bStatic 1
    m_Flags 16385
   }
-  ActionsManagerComponent "{6610C4209F65B6FC}" {
+  ActionsManagerComponent "{68ECB5FFDB1249B8}" {
    ActionContexts {
-    UserActionContext "{6610C4209BCBD6D6}" {
-     ContextName "faceChanger"
-     Position PointInfo "{6610C420B379A485}" {
-      Offset -0.7479 1.1012 0.7839
+    UserActionContext "{68ECB5FFD9248ADA}" {
+     ContextName "faceChanged"
+     Position PointInfo "{68ECB5FFD33E4E18}" {
+      Offset -1.1557 1.4924 0.7609
      }
-     Radius 0.75
-     Height 0
+     Radius 1.53
      Omnidirectional 0
     }
    }
    additionalActions {
-    RT_ChangeFaceActionComponent "{6610C420E7341C6D}" {
+    RT_CF_ChangeFaceActionComponent "{68ECB5FC2D6DA3CF}" {
      ParentContextList {
-      "faceChanger"
+      "faceChanged"
      }
-     UIInfo SCR_ActionContextUIInfo "{6610C4216865CFEA}" {
+     UIInfo SCR_ActionUIInfo "{68ECB5FC23AB1F69}" {
       Name "#RT-Face_Wardrobe_Action"
-      m_sIconName "death"
+      m_sIconName "player"
      }
-     CanAggregate 1
     }
    }
   }
   RplComponent "{5624A88DC2D9928D}" {
    Enabled 1
-   "Rpl State Override" Runtime
   }
  }
  coords 0 0 0
+ {
+  GenericEntity : "{2AEAA31471171A50}Prefabs/Props/Military/Photos/Photo_Square_01/Photo_Square_01_V1.et" {
+   ID "68ECC345F7789A5D"
+   components {
+    MeshObject "{5872F0EB7FA40561}" {
+     Materials {
+      MaterialAssignClass "{68EE327839A59BDE}" {
+       SourceMaterial "Photo_Square_01_V1"
+       AssignedMaterial "{266CB08C6E534C9D}Assets/Props/Civilian/Photos/Data/Photo_01_officer_church.emat"
+      }
+     }
+    }
+    Hierarchy "{68EE49439C9BE795}" {
+    }
+   }
+   coords -1.264 1.696 0.754
+   scale 0.68
+  }
+  GenericEntity : "{2ED930A7BA4156F5}Prefabs/Props/Furniture/MirrorBathroom_01.et" {
+   ID "68ECB5FA73F8BFE4"
+   components {
+    Hierarchy "{68ECB5F91DDD2CD8}" {
+    }
+   }
+   coords -1.367 1.517 0.765
+   angles 0 -180 -90
+  }
+  GenericEntity : "{79C6D8C31947742A}Prefabs/Props/Garbage/Generic/LitterInterior_01/Single/LitterInterior_01_vodka_V1.et" {
+   ID "68EE4943023D77EE"
+   coords -1.404 1.208 0.774
+  }
+  GenericEntity : "{A84A73E9D9D4B20E}Prefabs/Props/Furniture/Shelf_01.et" {
+   ID "68ECC341E42B57D5"
+   components {
+    Hierarchy "{68ECC341FE428CBD}" {
+    }
+   }
+   coords -1.121 1.197 0.788
+   scale 0.7
+  }
+  GenericEntity : "{CE17FD1A54E65002}Prefabs/Props/Garbage/Generic/LitterInterior_01/Single/LitterInterior_USSR_01_matches_V1.et" {
+   ID "68EE4943023D77D3"
+   coords -1.038 1.234 0.783
+   angles 53.264 -179.282 1.769
+  }
+  GenericEntity : "{E56F1B739B9792C4}Prefabs/Props/Civilian/Ashtray_01_Full_green.et" {
+   ID "68ECC3471473C08B"
+   components {
+    Hierarchy "{68ECC3471013F200}" {
+    }
+   }
+   coords -0.942 1.209 0.851
+   angles 0 0 0
+  }
+ }
 }

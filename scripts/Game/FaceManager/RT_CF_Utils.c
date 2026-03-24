@@ -1,10 +1,12 @@
 class RT_CF_Utils
 {	
-	static void SetIdentity(IEntity pUserEntity, VisualIdentity pVisual)
+	static const string SAVE_FILE = "$profile:CF_SavedIdentity.json";
+	
+	static void SavePlayerIdentity(IEntity pUserEntity, VisualIdentity pVisual)
 	{		
 		if (!pVisual)
 		{
-			pVisual = SCR_PlayerData.GetCurrentUserVisual();
+			pVisual = SCR_PlayerData.GetCurrentUserVisual(pUserEntity);
 			
 			if (!pVisual)
 			{
@@ -20,6 +22,13 @@ class RT_CF_Utils
 
 		iden.GetIdentity().SetVisualIdentity(pVisual);
 		iden.CommitChanges();	
+	}
+	
+	static void SetIdentity(IEntity pUserEntity, VisualIdentity pVisual)
+	{
+		if (!pVisual || !pVisual.GetHead() || !pVisual.GetBody()) return;
+		
+		SetIdentity(pUserEntity, pVisual.GetHead(), pVisual.GetBody());
 	}
 	
 	static void SetIdentity(IEntity pUserEntity, ResourceName pHead, ResourceName pBody)

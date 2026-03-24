@@ -16,7 +16,7 @@ modded class SCR_SpawnRequestComponent : ScriptComponent
 		
 		if (!entity) return;
 		
-		VisualIdentity v = SCR_PlayerData.GetCurrentUserVisual();
+		VisualIdentity v = SCR_PlayerData.GetCurrentUserVisual(entity);
 		
 		if (!v)
 		{

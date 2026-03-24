@@ -1,4 +1,4 @@
-class RT_FacesBrowserEditorUIComponent : MenuRootSubComponent
+class RT_CF_FacesBrowserEditorUIComponent : MenuRootSubComponent
 {
 	protected string m_sFacesList = "FacesList";
 	protected string m_sLoadoutSelector = "LoadoutSelector";
@@ -29,9 +29,9 @@ class RT_FacesBrowserEditorUIComponent : MenuRootSubComponent
 	protected SCR_LoadoutPreviewComponent m_PreviewComp;
 	
 	
-	protected ref array<ref RT_EditableEntityUIInfo> m_aAllFaces = {};
+	protected ref array<ref RT_CF_EditableEntityUIInfo> m_aAllFaces = {};
 	
-
+	protected IEntity m_SelectedEntity;
 	VisualIdentity m_CurrentFace;
 	
 	override protected void HandlerAttachedScripted(Widget w)
@@ -43,8 +43,13 @@ class RT_FacesBrowserEditorUIComponent : MenuRootSubComponent
 		m_wCurrentFaceText = TextWidget.Cast(w.FindAnyWidget(m_sCurrentFaceText));
 		
 		PlayerController pc = GetGame().GetPlayerController();
-		m_PlyLoadoutComp = SCR_PlayerLoadoutComponent.Cast(pc.FindComponent(SCR_PlayerLoadoutComponent));
-		m_PlyFactionAffilComp = SCR_PlayerFactionAffiliationComponent.Cast(pc.FindComponent(SCR_PlayerFactionAffiliationComponent));
+		
+		if (pc)
+		{
+			m_PlyLoadoutComp = SCR_PlayerLoadoutComponent.Cast(pc.FindComponent(SCR_PlayerLoadoutComponent));
+			m_PlyFactionAffilComp = SCR_PlayerFactionAffiliationComponent.Cast(pc.FindComponent(SCR_PlayerFactionAffiliationComponent));
+		}
+		
 		m_LoadoutManager = GetGame().GetLoadoutManager();
 		
 		m_SearchEditBox = SCR_EditBoxComponent.GetEditBoxComponent(m_sSearchEditBoxName, w, true);
@@ -54,15 +59,13 @@ class RT_FacesBrowserEditorUIComponent : MenuRootSubComponent
 			m_SearchEditBox.m_OnFocusChangedEditBox.Insert(OnSearchFocusChanged);
 		}
 		
-		
-		SetupPreview(w);
+		m_wLoadoutSelector = w.FindAnyWidget(m_sLoadoutSelector);
+		SetupPreview();
 		SetupList();
 	}
 	
-	protected void SetupPreview(Widget w)
+	protected void SetupPreview()
 	{
-		m_wLoadoutSelector = w.FindAnyWidget(m_sLoadoutSelector);
-		
 		if (m_wLoadoutSelector)
 		{
 			m_LoadoutSelector = SCR_LoadoutRequestUIComponent.Cast(m_wLoadoutSelector.FindHandler(SCR_LoadoutRequestUIComponent));
@@ -90,7 +93,7 @@ class RT_FacesBrowserEditorUIComponent : MenuRootSubComponent
 				string head = m_CurrentFace.GetHead();	
 				if (head)
 				{
-					RT_EditableEntityUIInfo info = new RT_EditableEntityUIInfo(SCR_UIInfo.CreateInfo(head), null, null);
+					RT_CF_EditableEntityUIInfo info = new RT_CF_EditableEntityUIInfo(SCR_UIInfo.CreateInfo(head), null, null);
 				
 					m_wCurrentFaceText.SetText(info.GetName());
 				}
@@ -98,14 +101,16 @@ class RT_FacesBrowserEditorUIComponent : MenuRootSubComponent
 		}
 	}
 	
-	protected void SetPreviewhead(VisualIdentity face)
+	void SetPreviewHead(RT_CF_EditableEntityUIInfo info)
 	{
+		m_wCurrentFaceText.SetText(info.GetName());		
+		
 		IEntity previewEntity = m_LoadoutSelector.GetPreviewedEntity();
 		
 		if (!previewEntity) return;
 		
-		m_CurrentFace = face;
-		RT_CF_Utils.SetIdentity(previewEntity, face);
+		m_CurrentFace = info.m_Visual;
+		RT_CF_Utils.SetIdentity(previewEntity, info.m_Visual);
 		m_LoadoutSelector.ResetLoadoutPreview();	
 	}
 	
@@ -119,7 +124,7 @@ class RT_FacesBrowserEditorUIComponent : MenuRootSubComponent
 		FilterEntries(true);
 	}
 	
-	protected void CreateListItem(RT_EditableEntityUIInfo info)
+	protected void CreateListItem(RT_CF_EditableEntityUIInfo info)
 	{
 		Widget cw = GetGame().GetWorkspace().CreateWidgets(m_sFaceButtonLayout, m_wFacesList);
 		
@@ -152,9 +157,25 @@ class RT_FacesBrowserEditorUIComponent : MenuRootSubComponent
 		{
 			t.SetFlags(WidgetFlags.INHERIT_CLIPPING);
 			t.SetZOrder(0);
+		}		
+	}
+	
+	void FocusItemByName(string faceName)
+	{
+		Widget w = m_wFacesList.GetChildren();
+		
+		while (w)
+		{
+			SCR_ContextMenuButtonEditorUIComponent cmHandler = SCR_ContextMenuButtonEditorUIComponent.Cast(w.FindHandler(SCR_ContextMenuButtonEditorUIComponent));
+			
+			if (cmHandler && cmHandler.m_FaceInfo && cmHandler.m_FaceInfo.m_Head.Compare(faceName, false) == 0)
+			{
+				GetGame().GetCallqueue().Remove(FocusItemLater);
+				GetGame().GetCallqueue().CallLater(FocusItemLater, 100, false, w);	
+			}
+			
+			w = w.GetSibling();
 		}
-		
-		
 	}
 	
 	protected void FocusItemLater(Widget w)
@@ -168,12 +189,12 @@ class RT_FacesBrowserEditorUIComponent : MenuRootSubComponent
 		
 		if (!cmHandler) return;
 		
-		RT_EditableEntityUIInfo info = cmHandler.m_FaceInfo;
+		RT_CF_EditableEntityUIInfo info = cmHandler.m_FaceInfo;
 		
 		if (!info) return;
 		
-		m_wCurrentFaceText.SetText(info.GetName());		
-		SetPreviewhead(info.m_Visual);
+		
+		SetPreviewHead(info);
 	}
 	
 	protected void ClearList()
@@ -189,9 +210,9 @@ class RT_FacesBrowserEditorUIComponent : MenuRootSubComponent
 		}
 	}
 	
-	void GetAllFacesPrefabs(out notnull array<ref RT_EditableEntityUIInfo> heads)
+	void GetAllFacesPrefabs(out notnull array<ref RT_CF_EditableEntityUIInfo> heads)
 	{
-		array<ref RT_EditableEntityUIInfo> initialHeads = {};
+		array<ref RT_CF_EditableEntityUIInfo> initialHeads = {};
 		ref set<ResourceName> visuals = new set<ResourceName>();		
 		
 		FactionManager factionManager = GetGame().GetFactionManager();
@@ -219,7 +240,7 @@ class RT_FacesBrowserEditorUIComponent : MenuRootSubComponent
 						visuals.Insert(head);
 						
 						initialHeads.Insert(
-							new RT_EditableEntityUIInfo(SCR_UIInfo.CreateInfo(head), scrF, fv)
+							new RT_CF_EditableEntityUIInfo(SCR_UIInfo.CreateInfo(head), scrF, fv)
 						);						
 					}
 				}
@@ -229,13 +250,13 @@ class RT_FacesBrowserEditorUIComponent : MenuRootSubComponent
 		SortInfos(initialHeads, heads);		
 	}
 	
-	protected void SortInfos(array<ref RT_EditableEntityUIInfo> from, out notnull array<ref RT_EditableEntityUIInfo> to)
+	protected void SortInfos(array<ref RT_CF_EditableEntityUIInfo> from, out notnull array<ref RT_CF_EditableEntityUIInfo> to)
 	{
-		map<string, ref array<ref RT_EditableEntityUIInfo>> infoMap = new map<string, ref array<ref RT_EditableEntityUIInfo>>();
+		map<string, ref array<ref RT_CF_EditableEntityUIInfo>> infoMap = new map<string, ref array<ref RT_CF_EditableEntityUIInfo>>();
 		array<string> names = {};
 		
 		
-		foreach(RT_EditableEntityUIInfo info : from)
+		foreach(RT_CF_EditableEntityUIInfo info : from)
 		{
 			string name = info.GetName();
 			if (!infoMap.Get(name))
@@ -252,13 +273,28 @@ class RT_FacesBrowserEditorUIComponent : MenuRootSubComponent
 		
 		foreach(string name : names)
 		{
-			array<ref RT_EditableEntityUIInfo> infos = infoMap.Get(name);
+			array<ref RT_CF_EditableEntityUIInfo> infos = infoMap.Get(name);
 			
-			foreach(RT_EditableEntityUIInfo info : infos)
+			foreach(RT_CF_EditableEntityUIInfo info : infos)
 			{
 				to.Insert(info);
 			}
 		}		
+	}
+	
+	void SetSelectedEntity(IEntity entity)
+	{
+		m_SelectedEntity = entity;
+		
+		if (m_LoadoutSelector)
+		{
+			m_LoadoutSelector.m_SelectedEntity = entity;
+		}
+	}
+	
+	IEntity GetSelectedEntity()
+	{
+		return m_SelectedEntity;
 	}
 	
 	protected void OnSearchFocusChanged(SCR_EditBoxComponent editBoxComponent, EditBoxWidget editBoxWidget, bool focus)
@@ -315,7 +351,7 @@ class RT_FacesBrowserEditorUIComponent : MenuRootSubComponent
 		string searchText = m_sCurrentSearchText;
 		searchText.ToLower();
 		
-		foreach(RT_EditableEntityUIInfo info: m_aAllFaces)
+		foreach(RT_CF_EditableEntityUIInfo info: m_aAllFaces)
 		{			
 			if (resetSearch )
 			{		

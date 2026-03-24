@@ -48,9 +48,9 @@ FrameWidgetClass {
                           ButtonWidgetClass "{65D678D21C642B24}" : "{4A119D28E23A3999}UI/layouts/WidgetLibrary/Buttons/WLib_ButtonImage.layout" {
                            Name "ChooseFaceButton"
                            Slot OverlayWidgetSlot "{65D678D21C642B31}" {
-                            HorizontalAlign 2
+                            HorizontalAlign 0
                             VerticalAlign 0
-                            Padding 4 4 4 4
+                            Padding 0 44 4 4
                            }
                            "Z Order" 1
                            components {
@@ -79,30 +79,6 @@ FrameWidgetClass {
            }
           }
          }
-        }
-       }
-      }
-     }
-    }
-   }
-  }
-  FrameWidgetClass "{5F0B00B0D652524B}" {
-   Prefab "{5F0B00B0D652524B}"
-   {
-    FrameWidgetClass "{5F0B00B0D652524A}" {
-     Prefab "{5F0B00B0D652524A}"
-     {
-      VerticalLayoutWidgetClass "{5F0B00B0D6525244}" {
-       Prefab "{5F0B00B0D6525244}"
-       {
-        FrameWidgetClass "{5F0B00B0D6525247}" {
-         Prefab "{5F0B00B0D6525247}"
-         Slot LayoutSlot "{5D44B19A05C7B70A}" {
-         }
-        }
-        FrameWidgetClass "{5F0B00B0D6524FBB}" {
-         Prefab "{5F0B00B0D6524FBB}"
-         "Is Visible" 0
         }
        }
       }

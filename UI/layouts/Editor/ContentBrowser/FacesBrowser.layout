@@ -40,7 +40,7 @@ FrameWidgetClass {
       VerticalAlign 3
      }
      components {
-      RT_FacesBrowserEditorUIComponent "{65D32A0C212B348F}" {
+      RT_CF_FacesBrowserEditorUIComponent "{65D32A0C212B348F}" {
       }
      }
      {

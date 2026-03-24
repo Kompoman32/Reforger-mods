@@ -158,9 +158,6 @@ SCR_GameModeEditor GameMode_GameMaster_Full : "{DA3986AF1B5032B7}Prefabs/MP/Mode
    m_SpawnLogic SCR_MenuSpawnLogic "{5D28B7ADCD4F95B9}" {
    }
   }
-  SCR_SaveLoadComponent "{58FA739CBE3E9FC5}" {
-   m_DebugHeaderResourceName "{2BBBE828037C6F4B}Missions/22_GM_Arland.conf"
-  }
   SCR_VotingManagerComponent "{5650BB6B6089393A}" {
    m_aVotingTemplates {
     SCR_VotingEditorIn "{58D06C7270F3CE2C}" : "{9DE543906BEAB993}Configs/Voting/EditorIn.conf" {
@@ -214,44 +211,41 @@ $grp GenericEntity {
     components {
      SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
       m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-       m_aAuthoredLabels + {
-        29
+       m_aAuthoredLabels +{
+        TRAIT_SERVICE
        }
       }
      }
     }
     coords 62.58 -1.073 18.327
-    angleY -20.2
+    angles 0 -20.2 0
     {
      StaticModelEntity {
       ID "52E8C3643526D54D"
       coords 0 0.374 0
-      angleX -2.38
-      angleZ 1.338
+      angles -2.38 0 1.338
      }
     }
    }
    SCR_SiteSlotEntity : "{66265A506DF1FE2B}PrefabsEditable/Slots/Road/E_SlotRoadSmall.et" {
     coords -57.323 1.783 -8.382
-    angleY -95.737
+    angles 0 -95.737 0
     {
      StaticModelEntity {
       ID "52E8C3643526D54D"
       coords 0 0.007 0
-      angleX 2.815
-      angleZ -0.175
+      angles 2.815 0 -0.175
      }
     }
    }
    SCR_SiteSlotEntity : "{881CE7B0098504C2}PrefabsEditable/Slots/Road/E_SlotRoadLarge.et" {
     coords 24.993 -0.287 13.363
-    angleY 65.185
+    angles 0 65.185 0
     {
      StaticModelEntity {
       ID "52E8C3643526D54D"
       coords 0 -0.007 0
-      angleX -0.997
-      angleZ -1.654
+      angles -0.997 0 -1.654
      }
     }
    }
@@ -262,25 +256,23 @@ $grp GenericEntity {
   {
    SCR_SiteSlotEntity : "{055DDE93F47A6A1D}PrefabsEditable/Slots/Flat/E_SlotFlatLarge.et" {
     coords -71.938 -2.56 126.336
-    angleY -95.576
+    angles 0 -95.576 0
     {
      StaticModelEntity {
       ID "52E8C3643526D54D"
       coords 0 0.028 0
-      angleX 0.341
-      angleZ 0.754
+      angles 0.341 0 0.754
      }
     }
    }
    SCR_SiteSlotEntity : "{4B1C4BDDF6683101}PrefabsEditable/Slots/Flat/E_SlotFlatMedium.et" {
     coords -37.279 -2.488 101.247
-    angleY -156.202
+    angles 0 -156.202 0
     {
      StaticModelEntity {
       ID "52E8C3643526D54D"
       coords 0 0.048 0
-      angleX 0.496
-      angleZ -0.537
+      angles 0.496 0 -0.537
      }
     }
    }
@@ -289,20 +281,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -101.913 -2.31 127.898
-     angleY 155.288
+     angles 0 155.288 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.028 0
-       angleX 0.433
-       angleZ -1.116
+       angles 0.433 0 -1.116
       }
      }
     }
@@ -310,20 +301,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -115.344 -2.213 122.343
-     angleY 158.398
+     angles 0 158.398 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.033 0
-       angleX 0.601
-       angleZ 0.203
+       angles 0.601 0 0.203
       }
      }
     }
@@ -331,20 +321,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords -42.454 -2.722 128.702
-     angleY -159.847
+     angles 0 -159.847 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.152 0
-       angleX -0.222
-       angleZ 0.174
+       angles -0.222 0 0.174
       }
      }
     }
@@ -352,20 +341,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords 75.53 -0.946 -131.748
-     angleY -171.282
+     angles 0 -171.282 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.111 0
-       angleX -2.03
-       angleZ 0.976
+       angles -2.03 0 0.976
       }
      }
     }
@@ -373,20 +361,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords -148.802 -2.777 86.242
-     angleY -136.468
+     angles 0 -136.468 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.386 0
-       angleX -1.531
-       angleZ -2.797
+       angles -1.531 0 -2.797
       }
      }
     }
@@ -394,20 +381,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords -42.891 -0.39 35.471
-     angleY 70.063
+     angles 0 70.063 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.043 0
-       angleX 1.616
-       angleZ 0.281
+       angles 1.616 0 0.281
       }
      }
     }
@@ -415,20 +401,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 117.202 -0.005 -31.482
-     angleY -155.302
+     angles 0 -155.302 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.053 0
-       angleX -1.307
-       angleZ -0.535
+       angles -1.307 0 -0.535
       }
      }
     }
@@ -436,20 +421,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 140.274 -0.31 -72.022
-     angleY -51.064
+     angles 0 -51.064 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.06 0
-       angleX -0.602
-       angleZ -1.324
+       angles -0.602 0 -1.324
       }
      }
     }
@@ -457,20 +441,20 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29 28
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords 97.898 -1.382 -70.473
-     angleY 176.578
+     angles 0 176.578 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.268 0
-       angleX 0.47
-       angleZ 1.635
+       angles 0.47 0 1.635
       }
      }
     }
@@ -478,62 +462,57 @@ $grp GenericEntity {
    $grp SCR_SiteSlotEntity : "{66265A506DF1FE2B}PrefabsEditable/Slots/Road/E_SlotRoadSmall.et" {
     {
      coords -220.177 -2.105 102.274
-     angleY -71.199
+     angles 0 -71.199 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.005 0
-       angleX 2.582
-       angleZ -0.17
+       angles 2.582 0 -0.17
       }
      }
     }
     {
      coords 12.653 -0.726 -37.172
-     angleY 125.857
+     angles 0 125.857 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.003 0
-       angleX 0.298
-       angleZ 0.075
+       angles 0.298 0 0.075
       }
      }
     }
     {
      coords 175.901 2.442 -117.674
-     angleY 66.451
+     angles 0 66.451 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.054 0
-       angleX 4.83
-       angleZ -0.17
+       angles 4.83 0 -0.17
       }
      }
     }
     {
      coords -8.239 -1.194 -89.369
-     angleY -155.964
+     angles 0 -155.964 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.069 0
-       angleX -1.01
-       angleZ 0.896
+       angles -1.01 0 0.896
       }
      }
     }
    }
    SCR_SiteSlotEntity : "{F4066B8425BEC47C}PrefabsEditable/Slots/Road/E_SlotRoadMedium.et" {
     coords 33.062 -0.688 -52.233
-    angleY -56.806
+    angles 0 -56.806 0
     {
      StaticModelEntity {
       ID "52E8C3643526D54D"
       coords 0 -0.004 0
-      angleX -0.179
-      angleZ 1.06
+      angles -0.179 0 1.06
      }
     }
    }
@@ -547,20 +526,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -45.463 21.362 -78.048
-     angleY -86.196
+     angles 0 -86.196 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.036 0
-       angleX 2.159
-       angleZ -0.984
+       angles 2.159 0 -0.984
       }
      }
     }
@@ -568,20 +546,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords -77.056 25.311 -66.688
-     angleY 51.324
+     angles 0 51.324 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.055 0
-       angleX 1.65
-       angleZ -0.897
+       angles 1.65 0 -0.897
       }
      }
     }
@@ -589,20 +566,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords -74.257 25.486 -86.771
-     angleY 56.849
+     angles 0 56.849 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.046 0
-       angleX 0.064
-       angleZ 0.896
+       angles 0.064 0 0.896
       }
      }
     }
@@ -610,20 +586,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 25.917 -11.403 157.979
-     angleY -104.192
+     angles 0 -104.192 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.052 0
-       angleX 1.034
-       angleZ 0.529
+       angles 1.034 0 0.529
       }
      }
     }
@@ -631,20 +606,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 28.499 -11.258 143.331
-     angleY -103.312
+     angles 0 -103.312 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.016 0
-       angleX 1.599
-       angleZ 0.512
+       angles 1.599 0 0.512
       }
      }
     }
@@ -652,20 +626,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 16.297 -11.359 168.821
-     angleY -148.546
+     angles 0 -148.546 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.021 0
-       angleX 1.73
-       angleZ -0.822
+       angles 1.73 0 -0.822
       }
      }
     }
@@ -673,85 +646,78 @@ $grp GenericEntity {
    $grp SCR_SiteSlotEntity : "{66265A506DF1FE2B}PrefabsEditable/Slots/Road/E_SlotRoadSmall.et" {
     {
      coords -26.078 12.023 -120.669
-     angleY 127.362
+     angles 0 127.362 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.002 0
-       angleX -13.544
-       angleZ 1.105
+       angles -13.544 0 1.105
       }
      }
     }
     {
      coords -3.211 9.694 -112.688
-     angleY 174.376
+     angles 0 174.376 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.008 0
-       angleX -4.427
-       angleZ -0.012
+       angles -4.427 0 -0.012
       }
      }
     }
     {
      coords -5.041 -11.224 207.691
-     angleY -20.592
+     angles 0 -20.592 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.019 0
-       angleX -1.458
-       angleZ 0.083
+       angles -1.458 0 0.083
       }
      }
     }
     {
      coords 30.419 -26.382 336.107
-     angleY 155.801
+     angles 0 155.801 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.012 0
-       angleX 5.411
-       angleZ 0.032
+       angles 5.411 0 0.032
       }
      }
     }
     {
      coords 104.94 -44.695 550.218
-     angleY 104.801
+     angles 0 104.801 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.004 0
-       angleX 7.454
-       angleZ 0.596
+       angles 7.454 0 0.596
       }
      }
     }
     {
      coords -107.58 -28.995 -426.823
-     angleY 101.801
+     angles 0 101.801 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.032 0
-       angleX 3.611
-       angleZ -0.088
+       angles 3.611 0 -0.088
       }
      }
     }
     {
      coords -328.519 -58.903 -516.278
-     angleY 176.801
+     angles 0 176.801 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.027 0
-       angleX -1.71
-       angleZ 0.518
+       angles -1.71 0 0.518
       }
      }
     }
@@ -766,20 +732,20 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29 28
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords 24.248 -15.175 8.524
-     angleY -179.822
+     angles 0 -179.822 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.083 0
-       angleX -2.456
-       angleZ 0.077
+       angles -2.456 0 0.077
       }
      }
     }
@@ -787,20 +753,20 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28 29
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -3.923 -16.064 -19.644
-     angleY 68.666
+     angles 0 68.666 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.091 0
-       angleX 0.117
-       angleZ 3.332
+       angles 0.117 0 3.332
       }
      }
     }
@@ -808,50 +774,46 @@ $grp GenericEntity {
    $grp SCR_SiteSlotEntity : "{66265A506DF1FE2B}PrefabsEditable/Slots/Road/E_SlotRoadSmall.et" {
     {
      coords 36.536 -11.452 52.788
-     angleY 50.374
+     angles 0 50.374 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.003 0
-       angleX 3.739
-       angleZ 0.514
+       angles 3.739 0 0.514
       }
      }
     }
     {
      coords -36.688 -15.846 10.614
-     angleY -111.434
+     angles 0 -111.434 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.003 0
-       angleX -2.327
-       angleZ 0.085
+       angles -2.327 0 0.085
       }
      }
     }
     {
      coords -13.456 -13.655 39.249
-     angleY -0.495
+     angles 0 -0.495 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.024 0
-       angleX 5.98
-       angleZ 0.508
+       angles 5.98 0 0.508
       }
      }
     }
    }
    SCR_SiteSlotEntity : "{F4066B8425BEC47C}PrefabsEditable/Slots/Road/E_SlotRoadMedium.et" {
     coords -5.391 -15.24 6.436
-    angleY -21.446
+    angles 0 -21.446 0
     {
      StaticModelEntity {
       ID "52E8C3643526D54D"
       coords 0 -0.011 0
-      angleX 0.81
-      angleZ -0.621
+      angles 0.81 0 -0.621
      }
     }
    }
@@ -862,25 +824,23 @@ $grp GenericEntity {
   {
    SCR_SiteSlotEntity : "{055DDE93F47A6A1D}PrefabsEditable/Slots/Flat/E_SlotFlatLarge.et" {
     coords -77.174 5.97 -33.653
-    angleY 105.248
+    angles 0 105.248 0
     {
      StaticModelEntity {
       ID "52E8C3643526D54D"
       coords 0 0.355 0
-      angleX -4.958
-      angleZ 0.576
+      angles -4.958 0 0.576
      }
     }
    }
    SCR_SiteSlotEntity : "{4B1C4BDDF6683101}PrefabsEditable/Slots/Flat/E_SlotFlatMedium.et" {
     coords -28.496 2.665 -20.07
-    angleY -169.987
+    angles 0 -169.987 0
     {
      StaticModelEntity {
       ID "52E8C3643526D54D"
       coords 0 0.304 0
-      angleX -0.002
-      angleZ -2.69
+      angles -0.002 0 -2.69
      }
     }
    }
@@ -889,20 +849,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 67.046 -1.761 11.345
-     angleY 100.931
+     angles 0 100.931 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.01 0
-       angleX -0.969
-       angleZ 0.164
+       angles -0.969 0 0.164
       }
      }
     }
@@ -910,20 +869,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 72.047 -1.76 26.321
-     angleY 120.755
+     angles 0 120.755 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.025 0
-       angleX -1.412
-       angleZ -0.175
+       angles -1.412 0 -0.175
       }
      }
     }
@@ -931,19 +889,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 65.678 -1.786 -19.574
-     angleY 87.862
+     angles 0 87.862 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.013 0
-       angleX -1.044
+       angles -1.044 0 0
       }
      }
     }
@@ -951,20 +909,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords 75.473 -1.74 -45.088
-     angleY -168.407
+     angles 0 -168.407 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.04 0
-       angleX 0.515
-       angleZ -3.323
+       angles 0.515 0 -3.323
       }
      }
     }
@@ -972,20 +929,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -61.901 5.927 -3.496
-     angleY 170.176
+     angles 0 170.176 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.004 0
-       angleX -1.418
-       angleZ -4.156
+       angles -1.418 0 -4.156
       }
      }
     }
@@ -993,20 +949,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -46.075 4.579 -1.663
-     angleY 170.124
+     angles 0 170.124 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.126 0
-       angleX -2.873
-       angleZ -6.357
+       angles -2.873 0 -6.357
       }
      }
     }
@@ -1014,37 +969,34 @@ $grp GenericEntity {
    $grp SCR_SiteSlotEntity : "{66265A506DF1FE2B}PrefabsEditable/Slots/Road/E_SlotRoadSmall.et" {
     {
      coords 0.208 -0.741 26.218
-     angleY 7.797
+     angles 0 7.797 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.021 0
-       angleX -0.119
-       angleZ 0.402
+       angles -0.119 0 0.402
       }
      }
     }
     {
      coords -61.565 0.015 -179.463
-     angleY -115.915
+     angles 0 -115.915 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.003 0
-       angleX -7.755
-       angleZ -1.299
+       angles -7.755 0 -1.299
       }
      }
     }
     {
      coords 33.942 -0.713 -1.408
-     angleY -91.107
+     angles 0 -91.107 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.063 0
-       angleX 1.791
-       angleZ 0.286
+       angles 1.791 0 0.286
       }
      }
     }
@@ -1059,20 +1011,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords 153.257 -1.828 216.433
-     angleY -5.743
+     angles 0 -5.743 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.11 0
-       angleX 0.082
-       angleZ 0.755
+       angles 0.082 0 0.755
       }
      }
     }
@@ -1080,20 +1031,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 184.743 -1.417 212.332
-     angleY 177.021
+     angles 0 177.021 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.022 0
-       angleX -0.297
-       angleZ -0.745
+       angles -0.297 0 -0.745
       }
      }
     }
@@ -1101,20 +1051,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 20.48 1.284 -6.702
-     angleY -57.04
+     angles 0 -57.04 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.037 0
-       angleX -0.64
-       angleZ -2.937
+       angles -0.64 0 -2.937
       }
      }
     }
@@ -1122,20 +1071,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 12.836 0.608 -19.645
-     angleY -56.896
+     angles 0 -56.896 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.066 0
-       angleX 0.948
-       angleZ -1.373
+       angles 0.948 0 -1.373
       }
      }
     }
@@ -1143,20 +1091,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords 159.333 -0.071 159.783
-     angleY -129.328
+     angles 0 -129.328 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.033 0
-       angleX -2.163
-       angleZ -0.669
+       angles -2.163 0 -0.669
       }
      }
     }
@@ -1164,20 +1111,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords -189.525 -28.152 -239.947
-     angleY -89.752
+     angles 0 -89.752 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.111 0
-       angleX -2.028
-       angleZ -4.819
+       angles -2.028 0 -4.819
       }
      }
     }
@@ -1185,20 +1131,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -147.71 -27.228 -234.086
-     angleY 12.738
+     angles 0 12.738 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.111 0
-       angleX 1.575
-       angleZ -5.44
+       angles 1.575 0 -5.44
       }
      }
     }
@@ -1206,73 +1151,67 @@ $grp GenericEntity {
    $grp SCR_SiteSlotEntity : "{66265A506DF1FE2B}PrefabsEditable/Slots/Road/E_SlotRoadSmall.et" {
     {
      coords 215.976 -10.276 303.763
-     angleY 36.833
+     angles 0 36.833 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.011 0
-       angleX -0.955
-       angleZ 0.478
+       angles -0.955 0 0.478
       }
      }
     }
     {
      coords 85.687 -4.035 125.334
-     angleY -149.658
+     angles 0 -149.658 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.013 0
-       angleX 2.465
-       angleZ -0.116
+       angles 2.465 0 -0.116
       }
      }
     }
     {
      coords 17.008 0.021 32.584
-     angleY 34.3
+     angles 0 34.3 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.026 0
-       angleX -0.859
-       angleZ 0.117
+       angles -0.859 0 0.117
       }
      }
     }
     {
      coords -23.729 -0.736 -47.707
-     angleY -146.728
+     angles 0 -146.728 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.006 0
-       angleX -0.941
-       angleZ 0.072
+       angles -0.941 0 0.072
       }
      }
     }
     {
      coords -206.264 -26.185 -207.043
-     angleY -73.995
+     angles 0 -73.995 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.009 0
-       angleX -4.148
-       angleZ 0.223
+       angles -4.148 0 0.223
       }
      }
     }
     {
      coords -99.202 -23.712 -217.139
-     angleY 86.453
+     angles 0 86.453 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.004 0
-       angleX 1.707
-       angleZ 0.022
+       angles 1.707 0 0.022
       }
      }
     }
@@ -1284,13 +1223,12 @@ $grp GenericEntity {
   {
    SCR_SiteSlotEntity : "{4B1C4BDDF6683101}PrefabsEditable/Slots/Flat/E_SlotFlatMedium.et" {
     coords 38.488 4.913 -82.662
-    angleY 85.693
+    angles 0 85.693 0
     {
      StaticModelEntity {
       ID "52E8C3643526D54D"
       coords 0 0.263 0
-      angleX 1.771
-      angleZ -2.467
+      angles 1.771 0 -2.467
      }
     }
    }
@@ -1299,20 +1237,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 71.097 -9.529 153.817
-     angleY 53.424
+     angles 0 53.424 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.055 0
-       angleX 0.2
-       angleZ -0.239
+       angles 0.2 0 -0.239
       }
      }
     }
@@ -1320,20 +1257,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords 56.574 -4.357 91.951
-     angleY 82.005
+     angles 0 82.005 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.207 0
-       angleX 0.824
-       angleZ -0.448
+       angles 0.824 0 -0.448
       }
      }
     }
@@ -1341,20 +1277,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -3.881 -3.396 108.408
-     angleY 36.71
+     angles 0 36.71 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.133 0
-       angleX -3.437
-       angleZ 2.67
+       angles -3.437 0 2.67
       }
      }
     }
@@ -1362,19 +1297,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -59.919 -7.417 246.811
-     angleY 128.131
+     angles 0 128.131 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0 0
-       angleZ -0.119
+       angles 0 0 -0.119
       }
      }
     }
@@ -1382,20 +1317,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -148.126 5.591 26.185
-     angleY 116.931
+     angles 0 116.931 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.017 0
-       angleX -2.756
-       angleZ -3.22
+       angles -2.756 0 -3.22
       }
      }
     }
@@ -1403,21 +1337,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -114.867 5.093 -12.532
-     angleY -146.627
+     angles 0 -146.627 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.045 0
-       angleX 1.607
-       angleY 89.982
-       angleZ -0.645
+       angles 1.607 89.982 -0.645
       }
      }
     }
@@ -1425,20 +1357,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -169.75 8.971 -26.975
-     angleY 109.319
+     angles 0 109.319 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.057 0
-       angleX -5.537
-       angleZ -4.091
+       angles -5.537 0 -4.091
       }
      }
     }
@@ -1446,20 +1377,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -164.81 7.981 -12.272
-     angleY 109.95
+     angles 0 109.95 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.263 0
-       angleX -4.389
-       angleZ -1.714
+       angles -4.389 0 -1.714
       }
      }
     }
@@ -1467,20 +1397,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -130.398 3.928 52.605
-     angleY 127.846
+     angles 0 127.846 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.164 0
-       angleX -1.358
-       angleZ -1.116
+       angles -1.358 0 -1.116
       }
      }
     }
@@ -1488,20 +1417,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords -63.103 -7.438 268.201
-     angleY 0.869
+     angles 0 0.869 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.063 0
-       angleX -1.066
-       angleZ 0.635
+       angles -1.066 0 0.635
       }
      }
     }
@@ -1509,20 +1437,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords 197.458 -9.792 72.111
-     angleY 117.993
+     angles 0 117.993 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.043 0
-       angleX 0.298
-       angleZ -0.465
+       angles 0.298 0 -0.465
       }
      }
     }
@@ -1530,20 +1457,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords -61.308 6.977 -136.63
-     angleY -143.322
+     angles 0 -143.322 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.156 0
-       angleX 4.141
-       angleZ 3.602
+       angles 4.141 0 3.602
       }
      }
     }
@@ -1551,37 +1477,34 @@ $grp GenericEntity {
    $grp SCR_SiteSlotEntity : "{66265A506DF1FE2B}PrefabsEditable/Slots/Road/E_SlotRoadSmall.et" {
     {
      coords -188.092 13.024 -39.727
-     angleY -79.33
+     angles 0 -79.33 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.01 0
-       angleX 10.801
-       angleZ -0.229
+       angles 10.801 0 -0.229
       }
      }
     }
     {
      coords 59.769 5.208 -66.673
-     angleY 122.115
+     angles 0 122.115 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.02 0
-       angleX 6.267
-       angleZ -0.168
+       angles 6.267 0 -0.168
       }
      }
     }
     {
      coords 80.464 -1.076 11.221
-     angleY 177.992
+     angles 0 177.992 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.023 0
-       angleX 7.676
-       angleZ 0.047
+       angles 7.676 0 0.047
       }
      }
     }
@@ -1589,25 +1512,23 @@ $grp GenericEntity {
    $grp SCR_SiteSlotEntity : "{F4066B8425BEC47C}PrefabsEditable/Slots/Road/E_SlotRoadMedium.et" {
     {
      coords -171.621 10.553 185.799
-     angleY -29.177
+     angles 0 -29.177 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.002 0
-       angleX 5.934
-       angleZ 0.442
+       angles 5.934 0 0.442
       }
      }
     }
     {
      coords -69.086 6.496 -117.893
-     angleY -145.273
+     angles 0 -145.273 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.016 0
-       angleX 4.833
-       angleZ 0.012
+       angles 4.833 0 0.012
       }
      }
     }
@@ -1619,25 +1540,23 @@ $grp GenericEntity {
   {
    SCR_SiteSlotEntity : "{055DDE93F47A6A1D}PrefabsEditable/Slots/Flat/E_SlotFlatLarge.et" {
     coords 116.789 -6.84 -76.147
-    angleY -72.303
+    angles 0 -72.303 0
     {
      StaticModelEntity {
       ID "52E8C3643526D54D"
       coords 0 -0.255 0
-      angleX 1.591
-      angleZ -2.174
+      angles 1.591 0 -2.174
      }
     }
    }
    SCR_SiteSlotEntity : "{4B1C4BDDF6683101}PrefabsEditable/Slots/Flat/E_SlotFlatMedium.et" {
     coords 49.023 -5.85 98.653
-    angleY 160.591
+    angles 0 160.591 0
     {
      StaticModelEntity {
       ID "52E8C3643526D54D"
       coords 0 0.199 0
-      angleX 2.4
-      angleZ -1.117
+      angles 2.4 0 -1.117
      }
     }
    }
@@ -1646,20 +1565,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -4.541 0.115 12.631
-     angleY 136.405
+     angles 0 136.405 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.163 0
-       angleX -0.771
-       angleZ -0.358
+       angles -0.771 0 -0.358
       }
      }
     }
@@ -1667,20 +1585,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -12.63 0.276 29.46
-     angleY -131.439
+     angles 0 -131.439 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.007 0
-       angleX 0.48
-       angleZ -0.804
+       angles 0.48 0 -0.804
       }
      }
     }
@@ -1688,20 +1605,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -47.452 0.169 -17.521
-     angleY 44.136
+     angles 0 44.136 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.099 0
-       angleX 1.286
-       angleZ -0.223
+       angles 1.286 0 -0.223
       }
      }
     }
@@ -1709,20 +1625,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 1.369 -1.519 -53.675
-     angleY 74.843
+     angles 0 74.843 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.047 0
-       angleX -0.906
-       angleZ 1.982
+       angles -0.906 0 1.982
       }
      }
     }
@@ -1730,20 +1645,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords -70.262 0.381 9.226
-     angleY -84.656
+     angles 0 -84.656 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.123 0
-       angleX -1.293
-       angleZ -1.379
+       angles -1.293 0 -1.379
       }
      }
     }
@@ -1751,20 +1665,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords -67.177 1.887 139.99
-     angleY 23.17
+     angles 0 23.17 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.123 0
-       angleX -0.419
-       angleZ 3.035
+       angles -0.419 0 3.035
       }
      }
     }
@@ -1772,20 +1685,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords 177.778 -9.782 -23.991
-     angleY 46.625
+     angles 0 46.625 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.126 0
-       angleX -1.444
-       angleZ 2.963
+       angles -1.444 0 2.963
       }
      }
     }
@@ -1793,20 +1705,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords 57.742 -10.875 -117.866
-     angleY -171.239
+     angles 0 -171.239 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.032 0
-       angleX -4.271
-       angleZ 1.339
+       angles -4.271 0 1.339
       }
      }
     }
@@ -1814,20 +1725,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords 154.898 -10.95 182.89
-     angleY 25.103
+     angles 0 25.103 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.014 0
-       angleX -3.383
-       angleZ 1.967
+       angles -3.383 0 1.967
       }
      }
     }
@@ -1835,20 +1745,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 103.34 -5.11 0.066
-     angleY -71.353
+     angles 0 -71.353 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.022 0
-       angleX 1.336
-       angleZ 0.74
+       angles 1.336 0 0.74
       }
      }
     }
@@ -1856,20 +1765,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords -18.224 -0.313 -53.662
-     angleY -148.258
+     angles 0 -148.258 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.079 0
-       angleX -3.655
-       angleZ -4.266
+       angles -3.655 0 -4.266
       }
      }
     }
@@ -1877,20 +1785,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords -0.147 -6.645 115.694
-     angleY 0.703
+     angles 0 0.703 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.164 0
-       angleX -3.368
-       angleZ 1.273
+       angles -3.368 0 1.273
       }
      }
     }
@@ -1898,20 +1805,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 70.719 -5.638 114.823
-     angleY 171.888
+     angles 0 171.888 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.123 0
-       angleX 0.999
-       angleZ 1.166
+       angles 0.999 0 1.166
       }
      }
     }
@@ -1919,20 +1825,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 85.632 -5.689 117.299
-     angleY 173.479
+     angles 0 173.479 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.055 0
-       angleX 1.302
-       angleZ -0.197
+       angles 1.302 0 -0.197
       }
      }
     }
@@ -1940,20 +1845,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 99.81 -5.802 122.897
-     angleY 160.69
+     angles 0 160.69 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.124 0
-       angleX 3.488
-       angleZ -1.627
+       angles 3.488 0 -1.627
       }
      }
     }
@@ -1961,20 +1865,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 75.734 -5.945 97.072
-     angleY -17.307
+     angles 0 -17.307 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.129 0
-       angleX 0.11
-       angleZ -0.022
+       angles 0.11 0 -0.022
       }
      }
     }
@@ -1982,20 +1885,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords 330.83 -4.379 -36.167
-     angleY 13.125
+     angles 0 13.125 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.069 0
-       angleX -1.662
-       angleZ -2.992
+       angles -1.662 0 -2.992
       }
      }
     }
@@ -2003,20 +1905,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords 291.661 -4.422 -70.599
-     angleY 171.555
+     angles 0 171.555 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.172 0
-       angleX -3.385
-       angleZ 0.46
+       angles -3.385 0 0.46
       }
      }
     }
@@ -2024,20 +1925,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords 18.612 -19.1 -168.115
-     angleY -162.865
+     angles 0 -162.865 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.076 0
-       angleX -9.398
-       angleZ -4.129
+       angles -9.398 0 -4.129
       }
      }
     }
@@ -2045,20 +1945,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords -116.593 1.591 136.849
-     angleY -99.063
+     angles 0 -99.063 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.005 0
-       angleX -0.768
-       angleZ -2.934
+       angles -0.768 0 -2.934
       }
      }
     }
@@ -2066,73 +1965,67 @@ $grp GenericEntity {
    $grp SCR_SiteSlotEntity : "{66265A506DF1FE2B}PrefabsEditable/Slots/Road/E_SlotRoadSmall.et" {
     {
      coords -2.443 -11.234 156.394
-     angleY 17.159
+     angles 0 17.159 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.017 0
-       angleX -7.671
-       angleZ 0.641
+       angles -7.671 0 0.641
       }
      }
     }
     {
      coords -149.118 -4.253 50.358
-     angleY -88.459
+     angles 0 -88.459 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.012 0
-       angleX -2.102
-       angleZ 0.614
+       angles -2.102 0 0.614
       }
      }
     }
     {
      coords 254.822 -17.574 176.251
-     angleY 59.913
+     angles 0 59.913 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.054 0
-       angleX 1.805
-       angleZ 3.655
+       angles 1.805 0 3.655
       }
      }
     }
     {
      coords 233.451 -17.135 190.547
-     angleY -15.483
+     angles 0 -15.483 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0 0
-       angleX 2.53
-       angleZ -0.12
+       angles 2.53 0 -0.12
       }
      }
     }
     {
      coords 251.998 -19.8 125.091
-     angleY 159.004
+     angles 0 159.004 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.016 0
-       angleX 0.298
-       angleZ 0.312
+       angles 0.298 0 0.312
       }
      }
     }
     {
      coords 3.282 -17.46 -163.216
-     angleY -129.174
+     angles 0 -129.174 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.005 0
-       angleX -5.181
-       angleZ 0.175
+       angles -5.181 0 0.175
       }
      }
     }
@@ -2140,25 +2033,23 @@ $grp GenericEntity {
    $grp SCR_SiteSlotEntity : "{F4066B8425BEC47C}PrefabsEditable/Slots/Road/E_SlotRoadMedium.et" {
     {
      coords -89.4 3.071 227.517
-     angleY 12.785
+     angles 0 12.785 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.009 0
-       angleX -1.438
-       angleZ -0.097
+       angles -1.438 0 -0.097
       }
      }
     }
     {
      coords 170.248 -9.473 -55.805
-     angleY 104.843
+     angles 0 104.843 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.122 0
-       angleX -1.596
-       angleZ -2.911
+       angles -1.596 0 -2.911
       }
      }
     }
@@ -2170,13 +2061,12 @@ $grp GenericEntity {
   {
    SCR_SiteSlotEntity : "{055DDE93F47A6A1D}PrefabsEditable/Slots/Flat/E_SlotFlatLarge.et" {
     coords -104.104 -5.089 -54.787
-    angleY -14.5
+    angles 0 -14.5 0
     {
      StaticModelEntity {
       ID "52E8C3643526D54D"
       coords 0 0.199 0
-      angleX 2.822
-      angleZ 1.056
+      angles 2.822 0 1.056
      }
     }
    }
@@ -2185,20 +2075,20 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28 29
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -13.657 -0.315 -2.559
-     angleY -125.94
+     angles 0 -125.94 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.156 0
-       angleX 0.014
-       angleZ 3.386
+       angles 0.014 0 3.386
       }
      }
     }
@@ -2206,20 +2096,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -65.696 -4.3 -31.117
-     angleY -99.334
+     angles 0 -99.334 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.088 0
-       angleX -0.785
-       angleZ -3.268
+       angles -0.785 0 -3.268
       }
      }
     }
@@ -2227,20 +2116,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -61.668 -5.331 -45.414
-     angleY -102.2
+     angles 0 -102.2 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.019 0
-       angleX -0.618
-       angleZ -5.251
+       angles -0.618 0 -5.251
       }
      }
     }
@@ -2248,20 +2136,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords -133.691 -3.146 -46.874
-     angleY -104.443
+     angles 0 -104.443 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.12 0
-       angleX 1.488
-       angleZ -3.215
+       angles 1.488 0 -3.215
       }
      }
     }
@@ -2269,20 +2156,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -121.139 -7.565 -94.342
-     angleY 71.39
+     angles 0 71.39 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.027 0
-       angleX -0.988
-       angleZ 6.872
+       angles -0.988 0 6.872
       }
      }
     }
@@ -2290,33 +2176,31 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -124.998 -6.001 -79.998
-     angleY 78.569
+     angles 0 78.569 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.018 0
-       angleX -1.598
-       angleZ 5.38
+       angles -1.598 0 5.38
       }
      }
     }
    }
    SCR_SiteSlotEntity : "{66265A506DF1FE2B}PrefabsEditable/Slots/Road/E_SlotRoadSmall.et" {
     coords -157.417 -4.065 -31.248
-    angleY -94.309
+    angles 0 -94.309 0
     {
      StaticModelEntity {
       ID "52E8C3643526D54D"
       coords 0 0.011 0
-      angleX -0.597
-      angleZ 0.226
+      angles -0.597 0 0.226
      }
     }
    }
@@ -2330,20 +2214,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 77.395 0.769 -17.55
-     angleY 16.777
+     angles 0 16.777 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.24 0
-       angleX -0.056
-       angleZ -6.356
+       angles -0.056 0 -6.356
       }
      }
     }
@@ -2351,20 +2234,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 30.343 0.052 12.653
-     angleY -36.642
+     angles 0 -36.642 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.115 0
-       angleX 0.788
-       angleZ 1.298
+       angles 0.788 0 1.298
       }
      }
     }
@@ -2372,20 +2254,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 44.712 -8.378 -52.74
-     angleY -46.672
+     angles 0 -46.672 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.047 0
-       angleX -0.624
-       angleZ -7.764
+       angles -0.624 0 -7.764
       }
      }
     }
@@ -2393,20 +2274,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -27.537 -13.295 -49.795
-     angleY -128.894
+     angles 0 -128.894 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.077 0
-       angleX -9.599
-       angleZ 1.059
+       angles -9.599 0 1.059
       }
      }
     }
@@ -2414,20 +2294,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -16.892 -13.574 -60.751
-     angleY -139.351
+     angles 0 -139.351 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.03 0
-       angleX -6.727
-       angleZ -4.236
+       angles -6.727 0 -4.236
       }
      }
     }
@@ -2435,20 +2314,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords 109.322 -28.944 -256.422
-     angleY 101.717
+     angles 0 101.717 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.38 0
-       angleX 1.214
-       angleZ 4.52
+       angles 1.214 0 4.52
       }
      }
     }
@@ -2456,20 +2334,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords 156.543 14.583 -51.193
-     angleY 90.987
+     angles 0 90.987 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.06 0
-       angleX 0.142
-       angleZ 0.113
+       angles 0.142 0 0.113
       }
      }
     }
@@ -2477,20 +2354,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords -19.685 -6.136 56.815
-     angleY 150.687
+     angles 0 150.687 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.076 0
-       angleX -0.204
-       angleZ 0.678
+       angles -0.204 0 0.678
       }
      }
     }
@@ -2498,25 +2374,23 @@ $grp GenericEntity {
    $grp SCR_SiteSlotEntity : "{66265A506DF1FE2B}PrefabsEditable/Slots/Road/E_SlotRoadSmall.et" {
     {
      coords 163.08 12.324 -31.965
-     angleY 127.664
+     angles 0 127.664 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.004 0
-       angleX 2.281
-       angleZ -0.186
+       angles 2.281 0 -0.186
       }
      }
     }
     {
      coords 117.137 -24.825 -179.915
-     angleY 119.004
+     angles 0 119.004 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.004 0
-       angleX -1.217
-       angleZ -0.085
+       angles -1.217 0 -0.085
       }
      }
     }
@@ -2528,13 +2402,12 @@ $grp GenericEntity {
   {
    SCR_SiteSlotEntity : "{4B1C4BDDF6683101}PrefabsEditable/Slots/Flat/E_SlotFlatMedium.et" {
     coords 63.261 5.875 9.08
-    angleY 7.135
+    angles 0 7.135 0
     {
      StaticModelEntity {
       ID "52E8C3643526D54D"
       coords 0 -0.187 0
-      angleX 2.209
-      angleZ -2.447
+      angles 2.209 0 -2.447
      }
     }
    }
@@ -2543,20 +2416,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -61.808 -0.232 78.931
-     angleY 136.123
+     angles 0 136.123 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.137 0
-       angleX 2.073
-       angleZ -1.247
+       angles 2.073 0 -1.247
       }
      }
     }
@@ -2564,8 +2436,8 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
@@ -2575,8 +2447,7 @@ $grp GenericEntity {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.041 0
-       angleX 1.184
-       angleZ 0.315
+       angles 1.184 0 0.315
       }
      }
     }
@@ -2584,19 +2455,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 12.999 -0.001 -16.591
-     angleY -89.292
+     angles 0 -89.292 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.006 0
-       angleX 0.046
+       angles 0.046 0 0
       }
      }
     }
@@ -2604,20 +2475,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords 88.028 7.466 5.557
-     angleY 153.282
+     angles 0 153.282 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.092 0
-       angleX 2.159
-       angleZ 5.85
+       angles 2.159 0 5.85
       }
      }
     }
@@ -2625,14 +2495,14 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -12.214 0.023 -24.453
-     angleY 89.479
+     angles 0 89.479 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
@@ -2644,14 +2514,14 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -12.744 0.03 -9.33
-     angleY 86.533
+     angles 0 86.533 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
@@ -2662,13 +2532,12 @@ $grp GenericEntity {
    }
    SCR_SiteSlotEntity : "{F4066B8425BEC47C}PrefabsEditable/Slots/Road/E_SlotRoadMedium.et" {
     coords 108.026 9.672 20.849
-    angleY 109.888
+    angles 0 109.888 0
     {
      StaticModelEntity {
       ID "52E8C3643526D54D"
       coords 0 0.021 0
-      angleX 2.908
-      angleZ 1.726
+      angles 2.908 0 1.726
      }
     }
    }
@@ -2679,13 +2548,12 @@ $grp GenericEntity {
   {
    SCR_SiteSlotEntity : "{4B1C4BDDF6683101}PrefabsEditable/Slots/Flat/E_SlotFlatMedium.et" {
     coords -174.576 -0.183 50.508
-    angleY -145.643
+    angles 0 -145.643 0
     {
      StaticModelEntity {
       ID "52E8C3643526D54D"
       coords 0 -0.11 0
-      angleX -3.603
-      angleZ -0.092
+      angles -3.603 0 -0.092
      }
     }
    }
@@ -2694,20 +2562,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 170.09 -3.271 -50.766
-     angleY -68.657
+     angles 0 -68.657 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.035 0
-       angleX -0.025
-       angleZ -0.056
+       angles -0.025 0 -0.056
       }
      }
     }
@@ -2715,20 +2582,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 175.859 -3.271 -37.267
-     angleY -70.629
+     angles 0 -70.629 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.293 0
-       angleX -1.939
-       angleZ 0.125
+       angles -1.939 0 0.125
       }
      }
     }
@@ -2736,19 +2602,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords 196.964 1.041 12.77
-     angleY -117.704
+     angles 0 -117.704 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0 0
-       angleZ -0.555
+       angles 0 0 -0.555
       }
      }
     }
@@ -2756,20 +2622,20 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29 28
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords 266.293 -11.771 -56.37
-     angleY 149.248
+     angles 0 149.248 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.067 0
-       angleX -0.713
-       angleZ -0.015
+       angles -0.713 0 -0.015
       }
      }
     }
@@ -2777,20 +2643,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 87.861 -1.732 -32.297
-     angleY 20.435
+     angles 0 20.435 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.068 0
-       angleX 1.187
-       angleZ 1.339
+       angles 1.187 0 1.339
       }
      }
     }
@@ -2798,20 +2663,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -200.606 -0.76 58.844
-     angleY -146.336
+     angles 0 -146.336 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.166 0
-       angleX -2.308
-       angleZ -1.727
+       angles -2.308 0 -1.727
       }
      }
     }
@@ -2819,20 +2683,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords -241.659 0.252 101.57
-     angleY -84.25
+     angles 0 -84.25 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.035 0
-       angleX -5.737
-       angleZ 0.538
+       angles -5.737 0 0.538
       }
      }
     }
@@ -2840,20 +2703,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -95.177 3.867 24.489
-     angleY -160.033
+     angles 0 -160.033 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.102 0
-       angleX -2.37
-       angleZ -0.135
+       angles -2.37 0 -0.135
       }
      }
     }
@@ -2861,20 +2723,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -80.377 3.359 19.354
-     angleY -160.218
+     angles 0 -160.218 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.028 0
-       angleX 0.73
-       angleZ -3.962
+       angles 0.73 0 -3.962
       }
      }
     }
@@ -2882,20 +2743,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -50.368 1.335 11.187
-     angleY -157.25
+     angles 0 -157.25 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.126 0
-       angleX 1.92
-       angleZ -1.178
+       angles 1.92 0 -1.178
       }
      }
     }
@@ -2903,20 +2763,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -36.768 1.089 5.187
-     angleY -156.818
+     angles 0 -156.818 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.06 0
-       angleX 2.234
-       angleZ -1.331
+       angles 2.234 0 -1.331
       }
      }
     }
@@ -2924,50 +2783,46 @@ $grp GenericEntity {
    $grp SCR_SiteSlotEntity : "{66265A506DF1FE2B}PrefabsEditable/Slots/Road/E_SlotRoadSmall.et" {
     {
      coords 264.784 -9.548 -29.138
-     angleY -29.95
+     angles 0 -29.95 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.031 0
-       angleX 9.173
-       angleZ 0.153
+       angles 9.173 0 0.153
       }
      }
     }
     {
      coords 69.929 -0.708 -48.425
-     angleY -91.16
+     angles 0 -91.16 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0 0
-       angleX 2.388
-       angleZ 0.086
+       angles 2.388 0 0.086
       }
      }
     }
     {
      coords -229.687 -0.677 67.379
-     angleY -57.368
+     angles 0 -57.368 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.003 0
-       angleX -0.089
-       angleZ -0.059
+       angles -0.089 0 -0.059
       }
      }
     }
    }
    SCR_SiteSlotEntity : "{F4066B8425BEC47C}PrefabsEditable/Slots/Road/E_SlotRoadMedium.et" {
     coords 257.11 -2.115 30.693
-    angleY 9.234
+    angles 0 9.234 0
     {
      StaticModelEntity {
       ID "52E8C3643526D54D"
       coords 0 0.051 0
-      angleX 0.44
-      angleZ 0.503
+      angles 0.44 0 0.503
      }
     }
    }
@@ -2978,25 +2833,23 @@ $grp GenericEntity {
   {
    SCR_SiteSlotEntity : "{055DDE93F47A6A1D}PrefabsEditable/Slots/Flat/E_SlotFlatLarge.et" {
     coords 63.797 1.702 20.183
-    angleY -87.033
+    angles 0 -87.033 0
     {
      StaticModelEntity {
       ID "52E8C3643526D54D"
       coords 0 0.028 0
-      angleX -1.78
-      angleZ -0.279
+      angles -1.78 0 -0.279
      }
     }
    }
    SCR_SiteSlotEntity : "{4B1C4BDDF6683101}PrefabsEditable/Slots/Flat/E_SlotFlatMedium.et" {
     coords 50.221 1.354 -40.115
-    angleY -86.537
+    angles 0 -86.537 0
     {
      StaticModelEntity {
       ID "52E8C3643526D54D"
       coords 0 0.146 0
-      angleX -1.89
-      angleZ -0.023
+      angles -1.89 0 -0.023
      }
     }
    }
@@ -3005,20 +2858,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -90.135 -0.045 36.628
-     angleY -122.885
+     angles 0 -122.885 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.028 0
-       angleX -0.824
-       angleZ -1.292
+       angles -0.824 0 -1.292
       }
      }
     }
@@ -3026,20 +2878,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -80.656 -0.417 25.086
-     angleY -127.857
+     angles 0 -127.857 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.046 0
-       angleX -0.273
-       angleZ -1.849
+       angles -0.273 0 -1.849
       }
      }
     }
@@ -3047,20 +2898,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -42.842 -1.46 18.448
-     angleY -91.004
+     angles 0 -91.004 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.032 0
-       angleX 0.477
-       angleZ 0.283
+       angles 0.477 0 0.283
       }
      }
     }
@@ -3068,20 +2918,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 56.811 1.699 49.331
-     angleY -143.404
+     angles 0 -143.404 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.032 0
-       angleX -2.046
-       angleZ 0.942
+       angles -2.046 0 0.942
       }
      }
     }
@@ -3089,20 +2938,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 44.589 1.169 57.709
-     angleY -147.795
+     angles 0 -147.795 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.068 0
-       angleX -1.757
-       angleZ 1.94
+       angles -1.757 0 1.94
       }
      }
     }
@@ -3110,20 +2958,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords 123.041 1.69 -77.211
-     angleY 144.282
+     angles 0 144.282 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.033 0
-       angleX -0.915
-       angleZ 1.979
+       angles -0.915 0 1.979
       }
      }
     }
@@ -3131,20 +2978,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords 150.425 3.009 17.108
-     angleY 36.667
+     angles 0 36.667 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.017 0
-       angleX 1.062
-       angleZ 0.371
+       angles 1.062 0 0.371
       }
      }
     }
@@ -3152,20 +2998,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         28
+        m_aAuthoredLabels +{
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords 50.035 0.301 129.71
-     angleY 108.033
+     angles 0 108.033 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.105 0
-       angleX 1.917
-       angleZ -1.382
+       angles 1.917 0 -1.382
       }
      }
     }
@@ -3173,14 +3018,14 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -45.548 1.603 -156.604
-     angleY -127.354
+     angles 0 -127.354 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
@@ -3192,14 +3037,14 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -84.026 1.602 -76.059
-     angleY -124.183
+     angles 0 -124.183 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
@@ -3210,50 +3055,46 @@ $grp GenericEntity {
    }
    SCR_SiteSlotEntity : "{66265A506DF1FE2B}PrefabsEditable/Slots/Road/E_SlotRoadSmall.et" {
     coords 108.187 0.329 -111.917
-    angleY 112.143
+    angles 0 112.143 0
     {
      StaticModelEntity {
       ID "52E8C3643526D54D"
       coords 0 0.016 0
-      angleX -0.739
-      angleZ -0.039
+      angles -0.739 0 -0.039
      }
     }
    }
    SCR_SiteSlotEntity : "{881CE7B0098504C2}PrefabsEditable/Slots/Road/E_SlotRoadLarge.et" {
     coords 11.185 -1.397 -110.799
-    angleY 1.483
+    angles 0 1.483 0
     {
      StaticModelEntity {
       ID "52E8C3643526D54D"
       coords 0 0.165 0
-      angleX 0.128
-      angleZ 0.183
+      angles 0.128 0 0.183
      }
     }
    }
    $grp SCR_SiteSlotEntity : "{F4066B8425BEC47C}PrefabsEditable/Slots/Road/E_SlotRoadMedium.et" {
     {
      coords 15.036 -0.428 47.924
-     angleY 1.224
+     angles 0 1.224 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.074 0
-       angleX 0.398
-       angleZ 0.607
+       angles 0.398 0 0.607
       }
      }
     }
     {
      coords 106.168 0.117 255.082
-     angleY 22.455
+     angles 0 22.455 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.015 0
-       angleX 1.41
-       angleZ -1.859
+       angles 1.41 0 -1.859
       }
      }
     }
@@ -3265,25 +3106,23 @@ $grp GenericEntity {
   {
    SCR_SiteSlotEntity : "{055DDE93F47A6A1D}PrefabsEditable/Slots/Flat/E_SlotFlatLarge.et" {
     coords 260.727 -2.147 236.592
-    angleY -12.429
+    angles 0 -12.429 0
     {
      StaticModelEntity {
       ID "52E8C3643526D54D"
       coords 0 0.518 0
-      angleX -1.601
-      angleZ 0.46
+      angles -1.601 0 0.46
      }
     }
    }
    SCR_SiteSlotEntity : "{4B1C4BDDF6683101}PrefabsEditable/Slots/Flat/E_SlotFlatMedium.et" {
     coords 244.057 -3.289 285.498
-    angleY 168.27
+    angles 0 168.27 0
     {
      StaticModelEntity {
       ID "52E8C3643526D54D"
       coords 0 0.302 0
-      angleX 0.537
-      angleZ -0.81
+      angles 0.537 0 -0.81
      }
     }
    }
@@ -3292,20 +3131,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 233.673 -0.995 219.337
-     angleY -62.348
+     angles 0 -62.348 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.008 0
-       angleX 0.366
-       angleZ 1.86
+       angles 0.366 0 1.86
       }
      }
     }
@@ -3313,20 +3151,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 339.248 8.327 331.93
-     angleY -42.348
+     angles 0 -42.348 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.028 0
-       angleX 2.823
-       angleZ -6.508
+       angles 2.823 0 -6.508
       }
      }
     }
@@ -3334,20 +3171,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 328.958 6.477 320.499
-     angleY -41.016
+     angles 0 -41.016 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.027 0
-       angleX 0.907
-       angleZ -6.801
+       angles 0.907 0 -6.801
       }
      }
     }
@@ -3355,20 +3191,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 280.968 -1.039 143.193
-     angleY 7.975
+     angles 0 7.975 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.038 0
-       angleX -0.289
-       angleZ 0.467
+       angles -0.289 0 0.467
       }
      }
     }
@@ -3376,20 +3211,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 442.866 -0.332 213.76
-     angleY -104.421
+     angles 0 -104.421 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.072 0
-       angleX -0.496
-       angleZ -0.145
+       angles -0.496 0 -0.145
       }
      }
     }
@@ -3397,20 +3231,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 422.266 -0.236 201.997
-     angleY 164.283
+     angles 0 164.283 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.106 0
-       angleX -0.976
-       angleZ -0.239
+       angles -0.976 0 -0.239
       }
      }
     }
@@ -3418,20 +3251,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 204.551 -0.309 170.125
-     angleY 165.32
+     angles 0 165.32 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.028 0
-       angleX 0.145
-       angleZ 0.12
+       angles 0.145 0 0.12
       }
      }
     }
@@ -3439,20 +3271,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 121.708 -0.48 180.714
-     angleY -105.497
+     angles 0 -105.497 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.006 0
-       angleX -0.191
-       angleZ 1.187
+       angles -0.191 0 1.187
       }
      }
     }
@@ -3460,19 +3291,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 121.266 -0.258 150.082
-     angleY -106.857
+     angles 0 -106.857 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0 0
-       angleZ 0.119
+       angles 0 0 0.119
       }
      }
     }
@@ -3480,14 +3311,14 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 126.678 -0.258 128.645
-     angleY -103.307
+     angles 0 -103.307 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
@@ -3499,20 +3330,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -55.332 -1.852 166.778
-     angleY 129.11
+     angles 0 129.11 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.016 0
-       angleX 0.358
-       angleZ -0.246
+       angles 0.358 0 -0.246
       }
      }
     }
@@ -3520,14 +3350,14 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 38.231 -0.258 116.502
-     angleY 77.467
+     angles 0 77.467 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
@@ -3539,19 +3369,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -238.557 -0.82 42.452
-     angleY 56.574
+     angles 0 56.574 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.058 0
-       angleX -0.679
+       angles -0.679 0 0
       }
      }
     }
@@ -3559,20 +3389,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -236.811 -0.103 140.547
-     angleY 76.386
+     angles 0 76.386 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.045 0
-       angleX -0.577
-       angleZ 0.58
+       angles -0.577 0 0.58
       }
      }
     }
@@ -3580,20 +3409,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -209.414 -0.045 150.255
-     angleY 161.551
+     angles 0 161.551 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.034 0
-       angleX -0.736
-       angleZ 0.148
+       angles -0.736 0 0.148
       }
      }
     }
@@ -3601,20 +3429,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 228.492 -0.102 -128.895
-     angleY -12.946
+     angles 0 -12.946 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.006 0
-       angleX 0.048
-       angleZ -0.119
+       angles 0.048 0 -0.119
       }
      }
     }
@@ -3622,20 +3449,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 174.738 -1.164 -96.843
-     angleY 165.426
+     angles 0 165.426 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.051 0
-       angleX -0.054
-       angleZ 0.116
+       angles -0.054 0 0.116
       }
      }
     }
@@ -3643,19 +3469,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords 128.753 -1.445 -108.962
-     angleY 167.234
+     angles 0 167.234 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.031 0
-       angleX -0.239
+       angles -0.239 0 0
       }
      }
     }
@@ -3663,20 +3489,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -263.57 0.742 37.209
-     angleY -125.025
+     angles 0 -125.025 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.016 0
-       angleX 0.399
-       angleZ 0.119
+       angles 0.399 0 0.119
       }
      }
     }
@@ -3684,20 +3509,19 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -280.321 0.742 61.465
-     angleY -125.537
+     angles 0 -125.537 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 -0.029 0
-       angleX 2.181
-       angleZ 0.227
+       angles 2.181 0 0.227
       }
      }
     }
@@ -3705,14 +3529,15 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29 28
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords -494.454 0.742 -19.56
-     angleY 144.745
+     angles 0 144.745 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
@@ -3724,14 +3549,15 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29 28
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords -548.481 0.742 -57.815
-     angleY 144.626
+     angles 0 144.626 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
@@ -3743,19 +3569,20 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29 28
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
+         TRAIT_FORTIFICATION
         }
        }
       }
      }
      coords -601.719 0.742 -94.757
-     angleY 148.992
+     angles 0 148.992 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0 0
-       angleX 0.594
+       angles 0.594 0 0
       }
      }
     }
@@ -3763,45 +3590,42 @@ $grp GenericEntity {
      components {
       SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
        m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
-        m_aAuthoredLabels + {
-         29
+        m_aAuthoredLabels +{
+         TRAIT_SERVICE
         }
        }
       }
      }
      coords -64.556 -1.733 154.618
-     angleY 129.11
+     angles 0 129.11 0
      {
       StaticModelEntity {
        ID "52E8C3643526D54D"
        coords 0 0.028 0
-       angleX 0.966
-       angleZ -0.846
+       angles 0.966 0 -0.846
       }
      }
     }
    }
    SCR_SiteSlotEntity : "{881CE7B0098504C2}PrefabsEditable/Slots/Road/E_SlotRoadLarge.et" {
     coords 255.055 -0.278 146.393
-    angleY 74.827
+    angles 0 74.827 0
     {
      StaticModelEntity {
       ID "52E8C3643526D54D"
       coords 0 0.019 0
-      angleX -0.384
-      angleZ 0.006
+      angles -0.384 0 0.006
      }
     }
    }
    SCR_SiteSlotEntity : "{F4066B8425BEC47C}PrefabsEditable/Slots/Road/E_SlotRoadMedium.et" {
     coords 389.673 5.906 305.258
-    angleY 47.128
+    angles 0 47.128 0
     {
      StaticModelEntity {
       ID "52E8C3643526D54D"
       coords 0 0 0
-      angleX 2.22
-      angleZ 0.047
+      angles 2.22 0 0.047
      }
     }
    }
@@ -3833,7 +3657,7 @@ GenericEntity : "{108B2B2A04700231}Prefabs/Props/Furniture/ClockFloor_01.et" {
     }
    }
    additionalActions {
-    RT_ChangeFaceActionComponent "{65CEF9C846856E93}" {
+    RT_CF_ChangeFaceActionComponent "{65CEF9C846856E93}" {
      ParentContextList {
       "point"
      }
@@ -3851,14 +3675,7 @@ GenericEntity : "{108B2B2A04700231}Prefabs/Props/Furniture/ClockFloor_01.et" {
 MusicManager : "{359452CCDBDD03F5}Prefabs/Sounds/Music/MusicManager_Campaign.et" {
 }
 GenericEntity : "{4509D3092875EA17}Prefabs/Props/Furniture/FaceWardrobe.et" {
- components {
-  SCR_EditableEntityComponent "{6610C42389F88F7A}" {
-   m_UIInfo SCR_EditableEntityUIInfo "{6610C42397A354C4}" {
-    Name "Faces Wardrobe"
-   }
-  }
- }
- coords 1384.604 36.294 2361.109
+ coords 1384.978 36.257 2358.115
 }
 GameEntity : "{5793DF10BF10B857}Prefabs/Characters/Heads/Head_White_03_Old.et" {
  coords 1388.065 36.285 2359.261

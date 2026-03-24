@@ -1,6 +1,20 @@
 StringTable {
  ItemClassName "CustomStringTableItem"
  Items {
+  CustomStringTableItem "{68EE33C60D9603F2}" {
+   Id "RT-Face_Context_Action_Description"
+   Target_en_us "Change face of this unit"
+   Modified 1760443129
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{68EE33C1F939FA7F}" {
+   Id "RT-Face_Context_Action_Name"
+   Target_en_us "Change face"
+   Modified 1760443108
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
   CustomStringTableItem "{6610C43CC58AAC5D}" {
    Id "RT-Face_Wardrobe"
    Target_en_us "Faces Wardrobe"
@@ -12,6 +26,27 @@ StringTable {
    Id "RT-Face_Wardrobe_Action"
    Target_en_us "Change Face"
    Modified 1712384944
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{68ECC34BA721F377}" {
+   Id "RT-Face_Wardrobe_Action_Dialog_Already_Opened"
+   Target_en_us "Dialog window already opened"
+   Modified 1760351181
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{68ECC34B0777EA91}" {
+   Id "RT-Face_Wardrobe_Action_No_Faction"
+   Target_en_us "No affiliated faction (try respawn as real player)"
+   Modified 1760351022
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{68ECC34B08AB5369}" {
+   Id "RT-Face_Wardrobe_Action_No_PlayerController"
+   Target_en_us "Non player unit"
+   Modified 1760350920
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }

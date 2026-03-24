@@ -1,8 +1,8 @@
-class RT_FaceEditorBrowserDialogUI : MenuRootBase {
+class RT_CF_FaceEditorBrowserDialogUI : MenuRootBase {
 	const string WIDGET_BUTTON_CLOSE = "CloseButton";
 	
 	const string WIDGET_EDITOR_WINDOW = "Window";
-	RT_FacesBrowserEditorUIComponent m_Editor;
+	RT_CF_FacesBrowserEditorUIComponent m_Editor;
 	
 	void CloseSelf()
 	{
@@ -31,7 +31,7 @@ class RT_FaceEditorBrowserDialogUI : MenuRootBase {
 		
 		if (w)
 		{
-			m_Editor = RT_FacesBrowserEditorUIComponent.Cast(w.FindHandler(RT_FacesBrowserEditorUIComponent));
+			m_Editor = RT_CF_FacesBrowserEditorUIComponent.Cast(w.FindHandler(RT_CF_FacesBrowserEditorUIComponent));
 		}
 		
 		ScriptInvoker onClose = ButtonActionComponent.GetOnAction(rootWidget, WIDGET_BUTTON_CLOSE);
