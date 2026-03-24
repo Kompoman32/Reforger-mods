@@ -103,11 +103,13 @@ FrameWidgetClass {
                 Padding 0 0 0 12
                }
                Text "Faces Browser"
+               "Font Size" 34
+               "Min Font Size" 33
               }
               ImageWidgetClass "{65CF069127F25CE4}" {
                Name "UpperStripe"
                Slot LayoutSlot "{56EEDE07C9F827C2}" {
-                Padding 0 0 0 12
+                Padding 0 -1 12 12
                }
                "Is Enabled" 0
                Color 0.761 0.392 0.08 1
@@ -589,8 +591,9 @@ FrameWidgetClass {
              Slot LayoutSlot "{56EF0B110F387FD3}" {
               Padding 0 12 0 12
              }
-             Opacity 0.1
-             Size 2 2
+             "Is Enabled" 0
+             Color 0.761 0.392 0.08 1
+             Size 128 2
             }
             SizeLayoutWidgetClass "{65CF069127F4F207}" : "{FD6103172A4BED91}UI/layouts/Editor/Budget/Budget.layout" {
              Name "Budget"
@@ -605,7 +608,7 @@ FrameWidgetClass {
              Slot LayoutSlot "{65D6987A3468AD58}" {
               Padding 0 4 0 4
              }
-             Text ""
+             Text " "
             }
             FrameWidgetClass "{65D4A8062042AF55}" : "{707A1FB31DE04AC8}UI/layouts/Menus/DeployMenu/LoadoutSelectorMap.layout" {
              Name "LoadoutSelector"
@@ -628,7 +631,7 @@ FrameWidgetClass {
                 OffsetBottom 376.5
                }
                {
-                VerticalLayoutWidgetClass "{5D52652E25BAAA32}" {
+                OverlayWidgetClass "{5D52652E25BAAA32}" {
                  Prefab "{5D52652E25BAAA32}"
                  {
                   SizeLayoutWidgetClass "{5D5475BCDEB474D8}" {
@@ -650,7 +653,7 @@ FrameWidgetClass {
                         Padding 0 0 0 0
                        }
                       }
-                      VerticalLayoutWidgetClass "{5D52652E25BAAA30}" {
+                      OverlayWidgetClass "{5D52652E25BAAA30}" {
                        Prefab "{5D52652E25BAAA30}"
                        {
                         SizeLayoutWidgetClass "{5D52652E25BAAA3F}" {
@@ -722,12 +725,12 @@ FrameWidgetClass {
     Anchor 0 0 1 1
     PositionX 7.594
     OffsetLeft 7.594
-    PositionY 1.734
-    OffsetTop 1.734
+    PositionY 2.757
+    OffsetTop 2.757
     SizeX -5.47
     OffsetRight -2.124
     SizeY -5.47
-    OffsetBottom 3.736
+    OffsetBottom 2.713
    }
    {
     FrameWidgetClass "{0000000050A7DB0E}" {

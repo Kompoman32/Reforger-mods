@@ -27,7 +27,7 @@ class RT_CF_ChangeFaceContextAction : SCR_BaseContextAction
 		
 		menu.m_Editor.SetSelectedEntity(hoveredEntity.GetOwner());
 		
-		GetGame().GetCallqueue().CallLater(SetupPreviewEntityLater, 100, false, menu.m_Editor, hoveredEntity.GetOwner());
+		GetGame().GetCallqueue().CallLater(SetupPreviewEntityLater, 300, false, menu.m_Editor, hoveredEntity.GetOwner());
 		
 		if (SCR_MenuHelper.GetOnMenuClose()) SCR_MenuHelper.GetOnMenuClose().Insert(onChooseFaceMenuClose);
 	}

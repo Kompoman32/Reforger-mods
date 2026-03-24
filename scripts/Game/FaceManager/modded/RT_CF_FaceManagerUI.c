@@ -69,35 +69,57 @@ modded class SCR_LoadoutRequestUIComponent : SCR_DeployRequestUIBaseComponent
 	{
 		super.HandlerAttached(w);
 		
-		FixLoadoutPreview(w);
+		GetGame().GetCallqueue().Remove(FixLoadoutPreview);
+		GetGame().GetCallqueue().CallLater(FixLoadoutPreview, 100, false);
 		
 		m_ChooseFaceButton = SCR_ButtonImageComponent.GetButtonImage("ChooseFaceButton", w);
 	}
 	
-	protected void FixLoadoutPreview(Widget w)
+	protected void FixLoadoutPreview()
 	{
-//		// Some hack to not do it on RoleSelection window
-//		// Too bad hack, but... whatever...
-//		for (int i = 0; i < 4; i++)
-//		{
-//			if (!w) break;
-//			w = w.GetParent();
-//		}
-//		
-//		// Just not do anything in RoleSelection
-//		if (w && w.GetName() == "RoleSelection") return;
+		if (!m_SelectedEntity || !GetGame().GetLoadoutManager()) return;
 		
-		
-		if (GetGame().GetLoadoutManager())
+		Faction faction ;
+		FactionAffiliationComponent fac = FactionAffiliationComponent.Cast(m_SelectedEntity.FindComponent(FactionAffiliationComponent));
+		if (fac)
 		{
-			SCR_BasePlayerLoadout loadout = GetGame().GetLoadoutManager().GetLoadoutByIndex(0);
+			faction = fac.GetAffiliatedFaction();
+		}
+
+		SCR_BasePlayerLoadout loadout;
+		
+		SCR_LoadoutManager lm = GetGame().GetLoadoutManager();
+		if (faction)
+		{			
+			int counter = 0;
 			
-			if (loadout)
+			while (counter < 10 && !loadout)
 			{
-				SetLoadoutPreview(loadout);
+				loadout = lm.GetRandomFactionLoadout(faction);
+				
+				// skip all base loadouts
+				if (loadout && loadout.GetLoadoutResource().Contains("Base"))
+				{
+					loadout = null;
+				}
+				
+				counter++;
+			}
+			
+			if (!loadout)
+			{
+				loadout = lm.GetRandomFactionLoadout(faction);
 			}
 		}
-			
+		
+		if (!loadout)
+		{
+			loadout = lm.GetLoadoutByIndex(0);
+		}
+	
+		
+		if (loadout)
+			SetLoadoutPreview(loadout);
 	}
 	
 	protected override void OnListExpand(SCR_DeployRequestUIBaseComponent component, bool expanded)
