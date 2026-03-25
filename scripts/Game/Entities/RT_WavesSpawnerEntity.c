@@ -61,6 +61,8 @@ class RT_WavesSpawnerEntity: GenericEntity {
 	
 	override void EOnInit(IEntity owner)
 	{
+		if (SCR_Global.IsEditMode()) return;
+		
 		m_AreaMesh = SCR_CustomAreaMeshComponent.Cast(FindComponent(SCR_CustomAreaMeshComponent));		
 		m_FactionAffiliationComponent = SCR_FactionAffiliationComponent.Cast(FindComponent(SCR_FactionAffiliationComponent));
 		m_EditableSystemComponent = SCR_EditableSystemComponent.Cast(FindComponent(SCR_EditableSystemComponent));
