@@ -306,15 +306,30 @@ class RT_SpawnerUnitRowComponent: SCR_ScriptedWidgetComponent
 	[Attribute("DeleteButton", UIWidgets.EditBox, "")]
 	protected string m_sDeleteButton;
 	
+	[Attribute("Hint", UIWidgets.EditBox, "")]
+	protected string m_sHint;
+	
+	[Attribute("Message", UIWidgets.EditBox, "")]
+	protected string m_sHintMessage;
+	[Attribute("Icon", UIWidgets.EditBox, "")]
+	protected string m_sHintIcon;
+	
+	
+	
 	protected string m_sResourceName = string.Empty;
 	protected string m_sResourceNameDisplayedValue = string.Empty;
+	protected string m_sResourceNameHintValue = string.Empty;
 	
 	protected Widget m_wResourceName;
+	protected Widget m_wHint;
+	protected TextWidget m_wHintMessage;
+	protected ImageWidget m_wHintIcon;
 	protected Widget m_wWeight;
 	protected Widget m_wPercentText;
 	protected Widget m_wDeleteButton;
 	
 	protected SCR_EditBoxComponent m_ResourceName;
+	protected SCR_WidgetHintComponent m_Hint;
 	protected EditBoxFilterComponent m_ResourceNameFilter;
 	protected RT_WS_WeightSliderComponent m_WeightSlider;
 	protected TextWidget m_PercentText;
@@ -327,6 +342,9 @@ class RT_SpawnerUnitRowComponent: SCR_ScriptedWidgetComponent
 	ref ScriptInvoker m_OnWeightChange = new ScriptInvoker(); 			// (RT_SpawnerUnitRowComponent comp, int pWeight) 
 	ref ScriptInvoker m_OnDeleteClick = new ScriptInvoker(); 			// (RT_SpawnerUnitRowComponent comp, SCR_ModularButtonComponent pButton)
 	
+	protected Color m_warningColor = Color.DarkRed;
+	protected Color m_infoColor = Color.DodgerBlue;
+	
 	protected override void HandlerAttached(Widget w)
 	{
 		super.HandlerAttached(w);
@@ -335,6 +353,16 @@ class RT_SpawnerUnitRowComponent: SCR_ScriptedWidgetComponent
 		m_wWeight = w.FindAnyWidget(m_sWeight);
 		m_wPercentText = w.FindAnyWidget(m_sPercentText);
 		m_wDeleteButton = w.FindAnyWidget(m_sDeleteButton);
+		m_wHint = w.FindAnyWidget(m_sHint);
+		
+		if (m_wHint) 
+		{
+			m_wHintMessage = TextWidget.Cast(m_wHint.FindAnyWidget(m_sHintMessage));
+			m_wHintIcon = ImageWidget.Cast(m_wHint.FindAnyWidget(m_sHintIcon));
+			
+			m_wHintIcon.LoadImageFromSet(0, "{3262679C50EF4F01}UI/Textures/Icons/icons_wrapperUI.imageset", "warning");
+			m_wHintIcon.LoadImageFromSet(1, "{3262679C50EF4F01}UI/Textures/Icons/icons_wrapperUI.imageset", "exclamationCircle");
+		}
 		
 		m_ResourceName = SCR_EditBoxComponent.Cast(m_wResourceName.FindHandler(SCR_EditBoxComponent));
 		if (m_ResourceName) 
@@ -345,6 +373,8 @@ class RT_SpawnerUnitRowComponent: SCR_ScriptedWidgetComponent
 		m_WeightSlider = RT_WS_WeightSliderComponent.Cast(m_wWeight.FindHandler(RT_WS_WeightSliderComponent));
 		m_PercentText = TextWidget.Cast(m_wPercentText);
 		m_DeleteButton = SCR_ModularButtonComponent.Cast(m_wDeleteButton.FindHandler(SCR_ModularButtonComponent));
+		m_Hint = SCR_WidgetHintComponent.Cast(m_wHint.FindHandler(SCR_WidgetHintComponent));
+		
 		
 		if (m_ResourceName) 
 		{
@@ -359,6 +389,11 @@ class RT_SpawnerUnitRowComponent: SCR_ScriptedWidgetComponent
 		if (m_ResourceName)
 		{
 			m_ResourceName.m_OnWriteModeLeave.Insert(OnResourceNameChange);	
+		}
+		
+		if (m_ResourceNameFilter)
+		{
+			m_ResourceNameFilter.m_OnValidInput.Insert(FixHintTextOnValidInput)
 		}
 		
 		if (m_WeightSlider)
@@ -386,6 +421,11 @@ class RT_SpawnerUnitRowComponent: SCR_ScriptedWidgetComponent
 			m_ResourceName.m_OnWriteModeLeave.Remove(OnResourceNameChange);			
 		}
 		
+		if (m_ResourceNameFilter)
+		{
+			m_ResourceNameFilter.m_OnValidInput.Remove(FixHintText)
+		}
+		
 		if (m_WeightSlider)
 		{
 			m_WeightSlider.m_OnChanged.Remove(OnWeightSliderChange);			
@@ -406,26 +446,52 @@ class RT_SpawnerUnitRowComponent: SCR_ScriptedWidgetComponent
 	{
 		GetGame().GetCallqueue().Remove(SetResourceNameValid);
 		
-		m_bIsValid = false;
+		FixHintText(true);
 		
 		if (SCR_StringHelper.IsEmptyOrWhiteSpace(pValue)) {
+			m_bIsValid = false;
+			
 			if (m_ResourceNameFilter) 
 			{
 				m_ResourceNameFilter.m_OnInvalidInput.Invoke();
 			}
 			
+			
 			GetGame().GetCallqueue().CallLater(SetResourceNameValid, 300, false, false);
 		}
 		
-		if (m_sResourceNameDisplayedValue == pValue) return;
+		if (m_sResourceNameDisplayedValue == pValue) 
+		{
+			FixHintText();
+			return;
+		}
+		
+		m_bIsValid = false;
 		
 		m_sResourceNameDisplayedValue = pValue;
 
 		if (m_ResourceNameFilter) 
 		{
-			Resource r = Resource.Load(pValue);
-			GetGame().GetCallqueue().CallLater(SetResourceNameValid, 300, false, r.IsValid());
+			bool resourceValid = LoadCheckResource(pValue);
+			
+			GetGame().GetCallqueue().CallLater(SetResourceNameValid, 300, false, resourceValid);
 		}
+	}
+	
+	protected bool LoadCheckResource(ResourceName pResourceName)
+	{
+		Resource r = Resource.Load(pResourceName);
+			
+		if (r.IsValid())
+		{
+			m_sResourceNameHintValue = SCR_StringHelper.FormatResourceNameToUserFriendly(r.GetResource().GetResourceName());
+		}
+		else 
+		{
+			m_sResourceNameHintValue = string.Empty;
+		}
+		
+		return r.IsValid();
 	}
 	
 	protected void OnWeightSliderChange(RT_WS_WeightSliderComponent sliderComponent, float value) 
@@ -456,6 +522,40 @@ class RT_SpawnerUnitRowComponent: SCR_ScriptedWidgetComponent
 		}
 		
 		m_bIsValid = isValid;
+		
+		FixHintText();
+	}
+	
+	protected void FixHintText(bool hide = false)
+	{
+		if (!m_ResourceName || !m_ResourceName.GetHint()) return;	
+		
+		if (!m_ResourceName.IsEnabled()) {
+			m_ResourceName.GetHint().SetVisible(false);
+			return;
+		}
+		
+		if (!m_bIsValid || hide)
+		{
+			m_wHintIcon.SetImage(0);
+			m_wHintIcon.SetColor(m_warningColor);
+			m_wHintMessage.SetText("Invalid ResourceName");
+			m_wHintMessage.SetColor(m_warningColor);
+		}
+		else
+		{			
+			m_wHintIcon.SetImage(1);
+			m_wHintIcon.SetColor(m_infoColor);
+			m_wHintMessage.SetText(m_sResourceNameHintValue);
+			m_wHintMessage.SetColor(Color.White);
+		}
+		
+		m_ResourceName.GetHint().SetVisible(true);
+	}
+	
+	protected void FixHintTextOnValidInput()
+	{
+		FixHintText();
 	}
 	
 	void SetResourceNameEnabled(bool pEnabled)
@@ -465,6 +565,7 @@ class RT_SpawnerUnitRowComponent: SCR_ScriptedWidgetComponent
 		if (!m_ResourceName) return;
 		
 		m_ResourceName.SetEnabled(m_bResourceNameEnabled);
+		FixHintText();
 	}
 	
 	void SetDisplayedName(string pValue)
@@ -485,6 +586,8 @@ class RT_SpawnerUnitRowComponent: SCR_ScriptedWidgetComponent
 	void SetResourceName(string pValue)
 	{		
 		m_sResourceName = pValue;
+		
+		LoadCheckResource(pValue);
 	}
 	
 	string GetResourceName()

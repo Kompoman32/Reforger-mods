@@ -665,4 +665,48 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		
 		RefreshSpawnParameters();
 	}
+	
+	void AddNearbyUnits()
+	{		
+		GetGame().GetWorld().QueryEntitiesBySphere(GetOrigin(), m_fSpawnRadius, AddNearbyUnits_AddEntity, AddNearbyUnitsFilterCallback);
+		
+		RefreshSpawnParameters();
+	}
+	
+	protected bool AddNearbyUnits_AddEntity(IEntity pEntity)
+	{
+		SCR_ChimeraCharacter charEntity = SCR_ChimeraCharacter.Cast(pEntity);
+		
+		if (!charEntity) return true;
+		
+		EntityPrefabData prefabData = charEntity.GetPrefabData();
+		if (!prefabData)
+			return true;
+
+		ResourceName prefabName = prefabData.GetPrefabName();
+		if (!prefabName)
+			return true;
+				
+		bool hasAlready = false;
+		
+		foreach (int i, Tuple2<string, int> setting: m_aUnitsSettings)
+		{
+			if (setting.param1 == prefabName) {
+				hasAlready = true;
+				break;
+			}
+		}
+		
+		if (!hasAlready)
+		{
+			m_aUnitsSettings.Insert(new Tuple2<string, int>(prefabName, 0));
+		}
+		
+		return true;
+	}
+	
+	protected bool AddNearbyUnitsFilterCallback(IEntity pEntity)
+	{
+		return !!SCR_ChimeraCharacter.Cast(pEntity);
+	}
 }

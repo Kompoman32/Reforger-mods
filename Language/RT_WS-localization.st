@@ -217,5 +217,21 @@ StringTable {
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
+  CustomStringTableItem "{68EAABD8A5F9EFD8}" {
+   Id "RT_WS_ContextAction_AddNearbyUnits_Description"
+   Target_en_us "Add nearby units as custom entries"
+   Target_ru_ru "Добавить ближайших юнитов как Custom значение"
+   Modified 1760244262
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{68EAABD8635BADF4}" {
+   Id "RT_WS_ContextAction_AddNearbyUnits_Name"
+   Target_en_us "Add Nearby Units to Spawner"
+   Target_ru_ru "Добавить ближайших юнитов в спавнер"
+   Modified 1760242472
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
  }
 }

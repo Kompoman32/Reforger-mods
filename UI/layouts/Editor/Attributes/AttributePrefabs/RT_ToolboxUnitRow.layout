@@ -90,7 +90,6 @@ HorizontalLayoutWidgetClass {
        }
        components {
         SCR_WidgetHintComponent "{5AA4EB6DE80A9BAF}" {
-         m_sDefaultMessage "asdas"
         }
        }
       }
