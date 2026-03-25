@@ -31,6 +31,7 @@ class RT_WavesSpawnerEntity: GenericEntity {
 	protected int m_iSpawnDelay = 2;
 	protected float m_fSpawnTimer;
 	protected float m_fSpawnRadius = 10;
+	protected int m_iSpawnFindPositionAttempts = 20;
 	
 	protected float m_fWaypointUpdateTimer = 1;
 	protected float m_iWaypointUpdateDelay = 1;
@@ -289,18 +290,9 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		params.TransformMode = ETransformMode.WORLD;
 		GetWorldTransform(params.Transform);
 		
-		vector offsetPos;
-	
-		bool positionFound = false;
+		vector offsetPos = Spawn_GetPointToSpawn();
 		
-		for (int i = 0; i < 5; i++ )
-		{
-			positionFound = SCR_WorldTools.FindEmptyTerrainPosition(offsetPos, RandomPointInRadius(GetOrigin(), 1, m_fSpawnRadius * 3/4), m_fSpawnRadius / 2);
-			
-			if (positionFound) break;
-		}
-		
-		if (!positionFound) return;
+		if (offsetPos == vector.Zero) return;
 		
 		params.Transform[3] = offsetPos;
 		
@@ -342,6 +334,22 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		
 		m_aGroups.Insert(group);
 		m_aWaypoints.Insert(wp);
+	}
+	
+	protected vector Spawn_GetPointToSpawn()
+	{
+		array<vector> offsetPos = {};
+		
+		int count = SCR_WorldTools.FindAllEmptyTerrainPositions(
+			offsetPos,
+			RandomPointInRadius(GetOrigin(), 1, m_fSpawnRadius * 3/4),
+			m_fSpawnRadius / 2,
+			maxResults: m_iSpawnFindPositionAttempts
+		);
+		
+		if (count == 0) return vector.Zero;
+		
+		return offsetPos.GetRandomElement();
 	}
 	
 	protected void CleanFirstNullUnit()
