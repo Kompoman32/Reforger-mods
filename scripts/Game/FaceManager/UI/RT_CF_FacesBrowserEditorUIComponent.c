@@ -7,6 +7,8 @@ class RT_CF_FacesBrowserEditorUIComponent : MenuRootSubComponent
 	protected string m_sLoadoutSelectorGallery = "Selector";
 	protected string m_sLoadoutPreview = "LoadoutPreview";
 	protected string m_sFaceButtonLayout = "{A865184601CD77A8}UI/layouts/Editor/ContextMenu/ActionMenu/ActionMenu_Button.layout";
+	protected string m_sCamoComboboxLayout = "VerticalLayoutCamo";
+	protected string m_sCamoCombobox = "CamoComboBox";
 	
 	protected VerticalLayoutWidget m_wFacesList;
 	
@@ -28,11 +30,15 @@ class RT_CF_FacesBrowserEditorUIComponent : MenuRootSubComponent
 	protected Widget m_wLoadoutPreview;
 	protected SCR_LoadoutPreviewComponent m_PreviewComp;
 	
+	protected VerticalLayoutWidget m_wCamoComboboxLayout;
+	protected ButtonWidget m_wCamoCombobox;
+	protected SCR_ComboBoxComponent m_CamoCombobox;		
 	
 	protected ref array<ref RT_CF_EditableEntityUIInfo> m_aAllFaces = {};
 	
 	protected IEntity m_SelectedEntity;
 	VisualIdentity m_CurrentFace;
+	ResourceName m_CurrentCamo;
 	
 	override protected void HandlerAttachedScripted(Widget w)
 	{
@@ -60,6 +66,16 @@ class RT_CF_FacesBrowserEditorUIComponent : MenuRootSubComponent
 		}
 		
 		m_wLoadoutSelector = w.FindAnyWidget(m_sLoadoutSelector);
+		
+		m_wCamoComboboxLayout = VerticalLayoutWidget.Cast(w.FindAnyWidget(m_sCamoComboboxLayout));
+		m_wCamoCombobox = ButtonWidget.Cast(w.FindAnyWidget(m_sCamoCombobox));
+		
+		if (m_wCamoCombobox)
+		{
+			m_CamoCombobox = SCR_ComboBoxComponent.Cast(m_wCamoCombobox.FindHandler(SCR_ComboBoxComponent));
+			m_CamoCombobox.m_OnChanged.Insert(OnCamoComboBoxChanged);
+		}
+		
 		SetupPreview();
 		SetupList();
 	}
@@ -93,7 +109,7 @@ class RT_CF_FacesBrowserEditorUIComponent : MenuRootSubComponent
 				string head = m_CurrentFace.GetHead();	
 				if (head)
 				{
-					RT_CF_EditableEntityUIInfo info = new RT_CF_EditableEntityUIInfo(SCR_UIInfo.CreateInfo(head), null, null);
+					RT_CF_EditableEntityUIInfo info = new RT_CF_EditableEntityUIInfo(SCR_UIInfo.CreateInfo(head));
 				
 					m_wCurrentFaceText.SetText(info.GetName());
 				}
@@ -103,7 +119,7 @@ class RT_CF_FacesBrowserEditorUIComponent : MenuRootSubComponent
 	
 	void SetPreviewHead(RT_CF_EditableEntityUIInfo info)
 	{
-		m_wCurrentFaceText.SetText(info.GetName());		
+		if (!m_wCurrentFaceText) return;	
 		
 		IEntity previewEntity = m_LoadoutSelector.GetPreviewedEntity();
 		
@@ -140,12 +156,14 @@ class RT_CF_FacesBrowserEditorUIComponent : MenuRootSubComponent
 		cmHandler.SetIconVisible(false);
 		cmHandler.SetShortcutVisible(false);
 	
-		if (m_CurrentFace && info.m_Visual && (m_CurrentFace.GetHead().Compare(info.m_Visual.GetHead(), false) == 0))
+		if (m_CurrentFace && info.m_Visual)
 		{
-			GetGame().GetCallqueue().Remove(FocusItemLater);
-			GetGame().GetCallqueue().CallLater(FocusItemLater, 100, false, cw);
+			if (info.m_Head == m_CurrentFace.GetHead() || (info.m_aCamos.Contains(m_CurrentFace.GetHead()))) 
+			{
+				GetGame().GetCallqueue().Remove(FocusItemLater);
+				GetGame().GetCallqueue().CallLater(FocusItemLater, 100, false, cw);	
+			}
 		}
-	
 	
 		ButtonActionComponent buttonHandler = ButtonActionComponent.Cast(cw.FindHandler(ButtonActionComponent));
 	
@@ -168,10 +186,19 @@ class RT_CF_FacesBrowserEditorUIComponent : MenuRootSubComponent
 		{
 			SCR_ContextMenuButtonEditorUIComponent cmHandler = SCR_ContextMenuButtonEditorUIComponent.Cast(w.FindHandler(SCR_ContextMenuButtonEditorUIComponent));
 			
-			if (cmHandler && cmHandler.m_FaceInfo && cmHandler.m_FaceInfo.m_Head.Compare(faceName, false) == 0)
-			{
-				GetGame().GetCallqueue().Remove(FocusItemLater);
-				GetGame().GetCallqueue().CallLater(FocusItemLater, 100, false, w);	
+			if (cmHandler && cmHandler.m_FaceInfo)
+			{	
+				if (cmHandler.m_FaceInfo.m_Head == faceName || (cmHandler.m_FaceInfo.m_aCamos.Contains(faceName)))
+				{
+					// its camo
+					if (cmHandler.m_FaceInfo.m_Head != faceName)
+					{
+						m_CurrentCamo = faceName;
+					}
+					
+					GetGame().GetCallqueue().Remove(FocusItemLater);
+					GetGame().GetCallqueue().CallLater(FocusItemLater, 100, false, w);	
+				}
 			}
 			
 			w = w.GetSibling();
@@ -180,6 +207,16 @@ class RT_CF_FacesBrowserEditorUIComponent : MenuRootSubComponent
 	
 	protected void FocusItemLater(Widget w)
 	{
+		SCR_ContextMenuButtonEditorUIComponent cmHandler = SCR_ContextMenuButtonEditorUIComponent.Cast(w.FindHandler(SCR_ContextMenuButtonEditorUIComponent));
+
+		if (cmHandler && cmHandler.m_FaceInfo)
+		{
+			SetupCamoComboBox(cmHandler.m_FaceInfo);
+			
+			m_CurrentFace = cmHandler.m_FaceInfo.m_Visual;
+			m_wCurrentFaceText.SetText(cmHandler.m_FaceInfo.GetName());	
+		}
+		
 		GetGame().GetWorkspace().SetFocusedWidget(w);
 	}
 	
@@ -193,8 +230,68 @@ class RT_CF_FacesBrowserEditorUIComponent : MenuRootSubComponent
 		
 		if (!info) return;
 		
-		
+		m_CurrentCamo = string.Empty;
+		m_wCurrentFaceText.SetText(info.GetName());	
 		SetPreviewHead(info);
+		SetupCamoComboBox(info);
+	}
+	
+	protected void SetupCamoComboBox(RT_CF_EditableEntityUIInfo info)
+	{
+		if (m_wCamoComboboxLayout)
+		{
+			m_wCamoComboboxLayout.SetVisible(info.m_aCamos && info.m_aCamos.Count() != 0);
+		}
+		
+		if (m_CamoCombobox)
+		{
+			m_CamoCombobox.ClearAll();
+			
+			if (info.m_aCamos)
+			{
+				m_CamoCombobox.AddItem("No Camo", true, info);
+				
+				m_CamoCombobox.SetCurrentItem(0);
+				
+				foreach (int i, ResourceName camo: info.m_aCamos)
+				{
+					m_CamoCombobox.AddItem(info.GetHeadCamoName(i), true, info);
+					
+					if (camo == m_CurrentCamo)
+					{
+						m_CamoCombobox.SetCurrentItem(i + 1);
+					}
+				}
+			}
+		}
+	}
+	
+	protected void OnCamoComboBoxChanged(SCR_ComboBoxComponent comp, int value)
+	{
+		RT_CF_EditableEntityUIInfo info = RT_CF_EditableEntityUIInfo.Cast(comp.GetItemData(value));
+				
+		IEntity previewEntity = m_LoadoutSelector.GetPreviewedEntity();
+		
+		if (!previewEntity) return;
+		
+		VisualIdentity vi = VisualIdentity.Cast(info.m_Visual.Clone());
+		
+		if (value > 0)
+		{
+			m_CurrentCamo = info.m_aCamos.Get(value - 1);
+			vi.SetHead(m_CurrentCamo);
+		}
+		else 
+		{
+			m_CurrentCamo = string.Empty;
+			vi.SetHead(info.m_Visual.GetHead());
+		}
+		
+		vi.SetBody(info.m_Visual.GetBody());
+		
+		
+		RT_CF_Utils.SetIdentity(previewEntity, vi);
+		m_LoadoutSelector.ResetLoadoutPreview();
 	}
 	
 	protected void ClearList()
@@ -213,7 +310,7 @@ class RT_CF_FacesBrowserEditorUIComponent : MenuRootSubComponent
 	void GetAllFacesPrefabs(out notnull array<ref RT_CF_EditableEntityUIInfo> heads)
 	{
 		array<ref RT_CF_EditableEntityUIInfo> initialHeads = {};
-		ref set<ResourceName> visuals = new set<ResourceName>();		
+		ref map<ResourceName, ref RT_CF_EditableEntityUIInfo> visuals = new map<ResourceName, ref RT_CF_EditableEntityUIInfo>();		
 		
 		FactionManager factionManager = GetGame().GetFactionManager();
 		if (!factionManager) return;
@@ -235,17 +332,33 @@ class RT_CF_FacesBrowserEditorUIComponent : MenuRootSubComponent
 					{
 						string head = fv.GetHead();
 						
-						if (visuals.Contains(head)) continue;
-		
-						visuals.Insert(head);
+						RT_CF_EditableEntityUIInfo info = visuals.Get(head);
 						
-						initialHeads.Insert(
-							new RT_CF_EditableEntityUIInfo(SCR_UIInfo.CreateInfo(head), scrF, fv)
-						);						
+						array<ref ResourceName> headCamos = {};
+						
+						RT_CF_Utils.GetHeadCamos(fv, headCamos, true);						
+						
+						if (info) 
+						{
+							foreach(ResourceName camo: headCamos)
+							{
+								if (camo != head && !info.m_aCamos.Contains(camo))
+								{
+									info.m_aCamos.Insert(camo);
+								}
+							}
+
+							continue;
+						}
+						
+						info = new RT_CF_EditableEntityUIInfo(SCR_UIInfo.CreateInfo(head), scrF, fv, headCamos);
+		
+						visuals.Insert(head, info);
+						initialHeads.Insert(info);						
 					}
 				}
 			}
-		}
+		}		
 		
 		SortInfos(initialHeads, heads);		
 	}

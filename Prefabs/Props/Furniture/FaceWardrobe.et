@@ -7,11 +7,33 @@ GenericEntity : "{10C26F96EF7A8CF5}Prefabs/Props/Core/Props_Base.et" {
   RigidBody "{5872F0EB7DFB5A9D}" {
    ModelGeometry 1
   }
+  SCR_DestructionMultiPhaseComponent "{69130AAE28646505}" {
+   Enabled 0
+   "Additional hit zones" {
+    SCR_HitZone Default {
+     HZDefault 1
+     "Explosive multiplier" 90
+    }
+   }
+   m_fBaseHealth 5000
+   m_fForceToDamageScale 150
+   m_fDamageThresholdMaximum 8000
+   m_bPassDamageToChildren 1
+   m_bDestroyChildrenWhenDestroyed 1
+   m_bDeleteAfterFinalPhase 0
+   m_aDamagePhases {
+    SCR_DamagePhaseData "{691323DF3877B935}" {
+     m_fPhaseHealth 300
+     m_PhaseModel "{E3960AC7ED8D4A31}Assets/Props/Furniture/Wardrobe_01/dst/Wardrobe_01_dst_01.xob"
+    }
+   }
+   m_eMaterialSoundType BREAK_WOOD_SOLID
+  }
   SCR_EditableEntityComponent "{6610C42389F88F7A}" {
    m_UIInfo SCR_EditableEntityUIInfo "{6610C42397A354C4}" {
     Name "#RT-Face_Wardrobe"
     Icon "{46B08E1E4A34F452}UI/Textures/Nametags/NameTagsSource/death.edds"
-    m_Image "{BEC3E4677D2E650C}UI/Textures/EditorPreviews/Auto/Props/Furniture/E_Wardrobe_01.edds"
+    m_Image "{A7A0E0F35274C8D1}UI/Textures/EditorPreviews/Auto/Props/Furniture/FaceWardrobe.edds"
     m_aAuthoredLabels {
      ENTITYTYPE_OBJECT SIZE_S
     }
@@ -61,6 +83,19 @@ GenericEntity : "{10C26F96EF7A8CF5}Prefabs/Props/Core/Props_Base.et" {
       }
      }
     }
+    SCR_DestructionMultiPhaseComponent "{69130AAE8771D31E}" {
+     Enabled 0
+     "Additional hit zones" {
+      SCR_HitZone Default {
+       HZDefault 1
+       "Explosive multiplier" 90
+      }
+     }
+     EnableDamage 0
+     m_fBaseHealth 700
+     m_fForceToDamageScale 350
+     m_eMaterialSoundType BREAK_SANDBAG
+    }
     Hierarchy "{68EE49439C9BE795}" {
     }
    }
@@ -70,25 +105,73 @@ GenericEntity : "{10C26F96EF7A8CF5}Prefabs/Props/Core/Props_Base.et" {
   GenericEntity : "{2ED930A7BA4156F5}Prefabs/Props/Furniture/MirrorBathroom_01.et" {
    ID "68ECB5FA73F8BFE4"
    components {
+    SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+     EnableDamage 0
+     m_bDeleteAfterFinalPhase 0
+    }
+    RplComponent "{5624A88DC2D9928D}" {
+     Enabled 1
+    }
     Hierarchy "{68ECB5F91DDD2CD8}" {
     }
    }
    coords -1.367 1.517 0.765
    angles 0 -180 -90
   }
+  GenericEntity : "{6CD0F0A7E8010BCD}Prefabs/Props/Garbage/Generic/LitterInterior_01/Single/LitterInterior_USSR_01_newspaper_V1.et" {
+   ID "69130AAEC1CB2ED6"
+   components {
+    RigidBody "{5872F0EB7DFB5A9D}" {
+     Enabled 1
+    }
+    SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+     EnableDamage 0
+    }
+    RplComponent "{5624A88DC2D9928D}" {
+     Enabled 1
+    }
+   }
+   coords -1.131 2.003 0.492
+   angles 0 -102.784 0
+  }
   GenericEntity : "{79C6D8C31947742A}Prefabs/Props/Garbage/Generic/LitterInterior_01/Single/LitterInterior_01_vodka_V1.et" {
    ID "68EE4943023D77EE"
+   components {
+    RigidBody "{5872F0EB7DFB5A9D}" {
+     Enabled 1
+    }
+    SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+     EnableDamage 0
+    }
+    RplComponent "{5624A88DC2D9928D}" {
+     Enabled 1
+    }
+   }
    coords -0.884 1.208 0.779
   }
   GameEntity : "{862432FB57C1C1B3}Prefabs/Props/Civilian/LampKerosene_01/LampKerosene_01_green.et" {
    ID "690C9D026072BDC7"
    components {
+    SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+     Enabled 0
+     EnableDamage 0
+     m_aDamagePhases {
+      SCR_DamagePhaseData "{691323DF67D541A2}" {
+       m_PhaseModel "{07D6FEA15B9C47E2}Assets/Props/Civilian/LampKerosene_01/Dst/LampKerosene_01_DST_01.xob"
+      }
+     }
+    }
+    SCR_LampComponent "{5D2AB5C8865F22C4}" {
+     m_eInitialLightState LIT
+    }
     ActionsManagerComponent "{58C4C3C54D820F06}" {
      ActionContexts {
       UserActionContext "{58C4C3C5BBEEC0A3}" {
        Radius 0.1
       }
      }
+    }
+    Hierarchy "{6912F7A417C5027D}" {
     }
    }
    coords -1.37 1.209 0.829
@@ -97,6 +180,12 @@ GenericEntity : "{10C26F96EF7A8CF5}Prefabs/Props/Core/Props_Base.et" {
   GenericEntity : "{A84A73E9D9D4B20E}Prefabs/Props/Furniture/Shelf_01.et" {
    ID "68ECC341E42B57D5"
    components {
+    SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+     EnableDamage 0
+    }
+    RplComponent "{5624A88DC2D9928D}" {
+     Enabled 1
+    }
     Hierarchy "{68ECC341FE428CBD}" {
     }
    }
@@ -105,12 +194,27 @@ GenericEntity : "{10C26F96EF7A8CF5}Prefabs/Props/Core/Props_Base.et" {
   }
   GenericEntity : "{CE17FD1A54E65002}Prefabs/Props/Garbage/Generic/LitterInterior_01/Single/LitterInterior_USSR_01_matches_V1.et" {
    ID "68EE4943023D77D3"
+   components {
+    RigidBody "{5872F0EB7DFB5A9D}" {
+     Enabled 1
+    }
+    SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+     EnableDamage 0
+    }
+    RplComponent "{5624A88DC2D9928D}" {
+     Enabled 1
+    }
+   }
    coords -1.038 1.234 0.783
    angles 53.264 -179.282 1.769
   }
   GenericEntity : "{E56F1B739B9792C4}Prefabs/Props/Civilian/Ashtray_01_Full_green.et" {
    ID "68ECC3471473C08B"
    components {
+    SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+     Enabled 0
+     EnableDamage 0
+    }
     Hierarchy "{68ECC3471013F200}" {
     }
    }

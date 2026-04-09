@@ -36,7 +36,7 @@ class RT_CF_ChangeFaceContextAction : SCR_BaseContextAction
 	{				
 		VisualIdentity currentFace = RT_CF_Utils.GetVisualIdentity(ent);
 		
-		editor.SetPreviewHead(new RT_CF_EditableEntityUIInfo(SCR_UIInfo.CreateInfo((string)currentFace.GetHead()), null, currentFace));
+		editor.SetPreviewHead(new RT_CF_EditableEntityUIInfo(SCR_UIInfo.CreateInfo((string)currentFace.GetHead()), visual: currentFace));
 		editor.FocusItemByName(currentFace.GetHead());
 	}
 	
@@ -60,6 +60,17 @@ class RT_CF_ChangeFaceContextAction : SCR_BaseContextAction
 		
 		SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerController());
 		if (!pc) return;
+		
+		ResourceName currentCamo = menu.m_Editor.m_CurrentCamo;
+		
+		if (currentCamo)
+		{
+			VisualIdentity newCurrentFace = VisualIdentity.Cast(currentFace.Clone());
+			newCurrentFace.SetHead(currentCamo);
+			newCurrentFace.SetBody(currentFace.GetBody());
+			
+			currentFace = newCurrentFace;
+		}
 		
 		pc.SaveEntityVisualToServer_O(entity, currentFace.GetHead(), currentFace.GetBody());
 	}

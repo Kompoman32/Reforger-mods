@@ -704,6 +704,55 @@ FrameWidgetClass {
           }
          }
         }
+        VerticalLayoutWidgetClass "{6902789E3815BCD5}" {
+         Name "VerticalLayoutCamo"
+         Slot OverlayWidgetSlot "{6902789E3815BD2F}" {
+          HorizontalAlign 3
+          VerticalAlign 0
+          Padding 48 600 48 0
+         }
+         "Is Visible" 0
+         {
+          TextWidgetClass "{6902789E573042C9}" : "{6FD63D0CFCF2F4DF}UI/layouts/WidgetLibrary/TextWidgets/Text_Heading5.layout" {
+           Name "TextWidget0"
+           Slot LayoutSlot "{690278935D65F8B7}" {
+           }
+           Text "Camo"
+          }
+          ButtonWidgetClass "{69027898CB68967F}" : "{4B5AE6E64037FFB4}UI/layouts/WidgetLibrary/ComboBox/WLib_ComboBox.layout" {
+           Name "CamoComboBox"
+           Slot LayoutSlot "{690278935D65F891}" {
+           }
+           "Z Order" 1
+           components {
+            SCR_ComboBoxComponent "{546B1D464BC32853}" {
+             m_bUseLabel 0
+            }
+           }
+           {
+            SizeLayoutWidgetClass "{553AE28F8D0EA0E1}" {
+             Prefab "{553AE28F8D0EA0E1}"
+             {
+              OverlayWidgetClass "{55367D8E531FD623}" {
+               Prefab "{55367D8E531FD623}"
+               {
+                HorizontalLayoutWidgetClass "{55367D8E4592BC6E}" {
+                 Prefab "{55367D8E4592BC6E}"
+                 {
+                  OverlayWidgetClass "{666268348A6ACF6E}" {
+                   Prefab "{666268348A6ACF6E}"
+                   "Is Visible" 0
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
        }
       }
      }
@@ -723,14 +772,14 @@ FrameWidgetClass {
    Name "TooltipArea0"
    Slot FrameWidgetSlot "{571C69ED319416BF}" {
     Anchor 0 0 1 1
-    PositionX 7.594
-    OffsetLeft 7.594
-    PositionY 2.757
-    OffsetTop 2.757
+    PositionX 10.594
+    OffsetLeft 10.594
+    PositionY 5.757
+    OffsetTop 5.757
     SizeX -5.47
-    OffsetRight -2.124
+    OffsetRight -5.124
     SizeY -5.47
-    OffsetBottom 2.713
+    OffsetBottom -0.287
    }
    {
     FrameWidgetClass "{0000000050A7DB0E}" {

@@ -170,10 +170,45 @@ StringTable {
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
+  CustomStringTableItem "{6912D3FD58E79B84}" {
+   Id "RT_Head_Asian_02_camo_US_01"
+   Target_en_us "Reforger Asian (Camo US 01)"
+   Modified 1762844780
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6912D3FD6584541A}" {
+   Id "RT_Head_Asian_02_camo_US_02"
+   Target_en_us "Reforger Asian (Camo US 02)"
+   Modified 1762844803
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6912D3FD7B27DC5C}" {
+   Id "RT_Head_Asian_02_camo_USSR_01"
+   Target_en_us "Reforger Asian (Camo USSR 01)"
+   Modified 1762844825
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6912D3FD79FACF42}" {
+   Id "RT_Head_Asian_02_camo_USSR_02"
+   Target_en_us "Reforger Asian (Camo USSR 02)"
+   Modified 1762844832
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
   CustomStringTableItem "{690C6A3A9A0B0A83}" {
    Id "RT_Head_Asian_02_VN"
    Target_en_us "Asian (VN)"
    Modified 1762422042
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6912D3FDFAA7EE5E}" {
+   Id "RT_Head_Asian_02_VN_camo"
+   Target_en_us "Asian (VN Camo)"
+   Modified 1762845049
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
@@ -215,6 +250,13 @@ StringTable {
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
+  CustomStringTableItem "{6912D3FC0A9310B9}" {
+   Id "RT_Head_AsianHead_A3_01_VN_camo"
+   Target_en_us "Ximi (VN Camo)"
+   Modified 1762845079
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
   CustomStringTableItem "{65D4ED3C37097491}" {
    Id "RT_Head_AsianHead_A3_02"
    Target_en_us "Jeong"
@@ -246,6 +288,13 @@ StringTable {
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
+  CustomStringTableItem "{6912D3FC051DA29A}" {
+   Id "RT_Head_AsianHead_A3_02_VN_camo"
+   Target_en_us "Jeong (VN Camo)"
+   Modified 1762845087
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
   CustomStringTableItem "{65D4ED3C370974F9}" {
    Id "RT_Head_AsianHead_A3_03"
    Target_en_us "Tung"
@@ -274,6 +323,13 @@ StringTable {
    Id "RT_Head_AsianHead_A3_03_VN"
    Target_en_us "Tung (VN)"
    Modified 1762422150
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6912D3FC1D202A6F}" {
+   Id "RT_Head_AsianHead_A3_03_VN_camo"
+   Target_en_us "Tung (VN Camo)"
+   Modified 1762845114
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
@@ -315,6 +371,13 @@ StringTable {
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
+  CustomStringTableItem "{6912D3FC2C06976E}" {
+   Id "RT_Head_AsianHead_A3_04_VN_camo"
+   Target_en_us "Lee (VN Camo)"
+   Modified 1762845131
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
   CustomStringTableItem "{65D4ED3C37097513}" {
    Id "RT_Head_AsianHead_A3_05"
    Target_en_us "Chan"
@@ -343,6 +406,13 @@ StringTable {
    Id "RT_Head_AsianHead_A3_05_VN"
    Target_en_us "Chan (VN)"
    Modified 1762422177
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6912D3FC26276BB4}" {
+   Id "RT_Head_AsianHead_A3_05_VN_camo"
+   Target_en_us "Chan (VN Camo)"
+   Modified 1762845141
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
@@ -384,6 +454,13 @@ StringTable {
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
+  CustomStringTableItem "{6912D3FC20BCFF30}" {
+   Id "RT_Head_AsianHead_A3_06_VN_camo"
+   Target_en_us "Yeung (VN Camo)"
+   Modified 1762845149
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
   CustomStringTableItem "{65D4ED3C370975A4}" {
    Id "RT_Head_AsianHead_A3_07"
    Target_en_us "Wong"
@@ -412,6 +489,13 @@ StringTable {
    Id "RT_Head_AsianHead_A3_07_VN"
    Target_en_us "Wong (VN)"
    Modified 1762422209
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6912D3FC393082A6}" {
+   Id "RT_Head_AsianHead_A3_07_VN_camo"
+   Target_en_us "Wong (VN Camo)"
+   Modified 1762845165
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
@@ -477,6 +561,34 @@ StringTable {
    Id "RT_Head_Black_02_camo"
    Target_en_us "Reforger Black (Camo)"
    Modified 1762428695
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6912D3FD87E1D367}" {
+   Id "RT_Head_Black_02_camo_US_01"
+   Target_en_us "Reforger Black (Camo US 01)"
+   Modified 1762844855
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6912D3FD9E363A0B}" {
+   Id "RT_Head_Black_02_camo_US_02"
+   Target_en_us "Reforger Black (Camo US 02)"
+   Modified 1762844866
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6913276C4089ED64}" {
+   Id "RT_Head_Black_02_camo_USSR_01"
+   Target_en_us "Reforger Black (Camo USSR 01)"
+   Modified 1762865655
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6913276C565D1A26}" {
+   Id "RT_Head_Black_02_camo_USSR_02"
+   Target_en_us "Reforger Black (Camo USSR 02)"
+   Modified 1762865665
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
@@ -1989,8 +2101,15 @@ StringTable {
   }
   CustomStringTableItem "{690C84F662BF9976}" {
    Id "RT_Head_White_02_camo_USSR_01"
-   Target_en_us "Reforger White 02 USSR (Camo)"
-   Modified 1762428816
+   Target_en_us "Reforger White 02 USSR (Camo USSR 01)"
+   Modified 1762865751
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6913276C833F4607}" {
+   Id "RT_Head_White_02_camo_USSR_02"
+   Target_en_us "Reforger White 02 USSR (Camo USSR 02)"
+   Modified 1762865757
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
@@ -2018,6 +2137,34 @@ StringTable {
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
+  CustomStringTableItem "{6912D3FD9740B847}" {
+   Id "RT_Head_White_03_camo_US_01"
+   Target_en_us "Reforger White 03 (Camo US 01)"
+   Modified 1762844888
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6912D3FD912293A5}" {
+   Id "RT_Head_White_03_camo_US_02"
+   Target_en_us "Reforger White 03 (Camo US 02)"
+   Modified 1762844890
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6913276D9BB802A2}" {
+   Id "RT_Head_White_03_camo_USSR_01"
+   Target_en_us "Reforger White 03 (Camo USSR 01)"
+   Modified 1762865318
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6913276D9800CA44}" {
+   Id "RT_Head_White_03_camo_USSR_02"
+   Target_en_us "Reforger White 03 (Camo USSR 02)"
+   Modified 1762865323
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
   CustomStringTableItem "{65D4A800FD02464A}" {
    Id "RT_Head_White_04"
    Target_en_us "Reforger White 04"
@@ -2039,6 +2186,34 @@ StringTable {
    Id "RT_Head_White_04_camo"
    Target_en_us "Reforger White 04 (Camo)"
    Modified 1762428891
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6912D3FDA4DC1A5C}" {
+   Id "RT_Head_White_04_camo_US_01"
+   Target_en_us "Reforger White 04 (Camo US 01)"
+   Modified 1762844910
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6912D3FDA80F54AA}" {
+   Id "RT_Head_White_04_camo_US_02"
+   Target_en_us "Reforger White 04 (Camo US 02)"
+   Modified 1762844903
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6913276D8BAD2F5B}" {
+   Id "RT_Head_White_04_camo_USSR_01"
+   Target_en_us "Reforger White 04 (Camo USSR 01)"
+   Modified 1762865292
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6913276D88ACE6FD}" {
+   Id "RT_Head_White_04_camo_USSR_02"
+   Target_en_us "Reforger White 04 (Camo USSR 02)"
+   Modified 1762865298
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
@@ -2066,6 +2241,34 @@ StringTable {
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
+  CustomStringTableItem "{6912D3FDA1AD6F38}" {
+   Id "RT_Head_White_05_camo_US_01"
+   Target_en_us "Reforger White 05 (Camo US 01)"
+   Modified 1762844919
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6912D3FDBDD3484B}" {
+   Id "RT_Head_White_05_camo_US_02"
+   Target_en_us "Reforger White 05 (Camo US 02)"
+   Modified 1762844929
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6913276D5DE94755}" {
+   Id "RT_Head_White_05_camo_USSR_01"
+   Target_en_us "Reforger White 05 (Camo USSR 01)"
+   Modified 1762865200
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6913276D5AE467CF}" {
+   Id "RT_Head_White_05_camo_USSR_02"
+   Target_en_us "Reforger White 05 (Camo USSR 02)"
+   Modified 1762865205
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
   CustomStringTableItem "{65D4A800F8361D8D}" {
    Id "RT_Head_White_06"
    Target_en_us "Reforger White 06"
@@ -2087,6 +2290,34 @@ StringTable {
    Id "RT_Head_White_06_camo"
    Target_en_us "Reforger White 06 (Camo)"
    Modified 1762428913
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6912D3FDB2F5316A}" {
+   Id "RT_Head_White_06_camo_US_01"
+   Target_en_us "Reforger White 06 (Camo US 01)"
+   Modified 1762844947
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6912D3FDB6C3562A}" {
+   Id "RT_Head_White_06_camo_US_02"
+   Target_en_us "Reforger White 06 (Camo US 02)"
+   Modified 1762844939
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6913276D203551D8}" {
+   Id "RT_Head_White_06_camo_USSR_01"
+   Target_en_us "Reforger White 06 (Camo USSR 01)"
+   Modified 1762864880
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6913276D2128D51A}" {
+   Id "RT_Head_White_06_camo_USSR_02"
+   Target_en_us "Reforger White 06 (Camo USSR 02)"
+   Modified 1762864882
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
@@ -2121,6 +2352,34 @@ StringTable {
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
+  CustomStringTableItem "{6912D3FDDD3192AD}" {
+   Id "RT_Head_White_08_camo_US_01"
+   Target_en_us "Reforger White 08 (Camo US 01)"
+   Modified 1762844992
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6912D3FDD7EF4923}" {
+   Id "RT_Head_White_08_camo_US_02"
+   Target_en_us "Reforger White 08 (Camo US 02)"
+   Modified 1762844994
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6913276D19974AFA}" {
+   Id "RT_Head_White_08_camo_USSR_01"
+   Target_en_us "Reforger White 08 (Camo USSR 01)"
+   Modified 1762865392
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6913276D16C2E652}" {
+   Id "RT_Head_White_08_camo_USSR_02"
+   Target_en_us "Reforger White 08 (Camo USSR 02)"
+   Modified 1762864857
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
   CustomStringTableItem "{65D4A800F424188E}" {
    Id "RT_Head_White_09"
    Target_en_us "Reforger White 09"
@@ -2145,6 +2404,34 @@ StringTable {
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
+  CustomStringTableItem "{6912D3FDEF32EB84}" {
+   Id "RT_Head_White_09_camo_US_01"
+   Target_en_us "Reforger White 09 (Camo US 01)"
+   Modified 1762845011
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6912D3FDD0B181B1}" {
+   Id "RT_Head_White_09_camo_US_02"
+   Target_en_us "Reforger White 09 (Camo US 02)"
+   Modified 1762845005
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6913276D08BAC6AF}" {
+   Id "RT_Head_White_09_camo_USSR_01"
+   Target_en_us "Reforger White 09 (Camo USSR 01)"
+   Modified 1762864809
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6913276D0964F3A6}" {
+   Id "RT_Head_White_09_camo_USSR_02"
+   Target_en_us "Reforger White 09 (Camo USSR 02)"
+   Modified 1762864812
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
   CustomStringTableItem "{65D4A800F273D7F8}" {
    Id "RT_Head_White_10"
    Target_en_us "Reforger White 10"
@@ -2166,6 +2453,34 @@ StringTable {
    Id "RT_Head_White_10_camo"
    Target_en_us "Reforger White 10 (Camo)"
    Modified 1762428980
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6912D3FDE6748934}" {
+   Id "RT_Head_White_10_camo_US_01"
+   Target_en_us "Reforger White 10 (Camo US 01)"
+   Modified 1762845023
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6912D3FDE245E0B0}" {
+   Id "RT_Head_White_10_camo_US_02"
+   Target_en_us "Reforger White 10 (Camo US 02)"
+   Modified 1762845030
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6913276AFC08CA34}" {
+   Id "RT_Head_White_10_camo_USSR_01"
+   Target_en_us "Reforger White 10 (Camo USSR 01)"
+   Modified 1762864784
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6913276AF11D62C0}" {
+   Id "RT_Head_White_10_camo_USSR_02"
+   Target_en_us "Reforger White 10 (Camo USSR 02)"
+   Modified 1762864789
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
@@ -2200,6 +2515,13 @@ StringTable {
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
+  CustomStringTableItem "{6912D3FC31E17327}" {
+   Id "RT_Head_WhiteHead_01_VN_camo"
+   Target_en_us "Bayh (VN Camo)"
+   Modified 1762845187
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
   CustomStringTableItem "{65D4ED3C370970F4}" {
    Id "RT_Head_WhiteHead_02"
    Target_en_us "Burr"
@@ -2228,6 +2550,13 @@ StringTable {
    Id "RT_Head_WhiteHead_02_VN"
    Target_en_us "Burr (VN)"
    Modified 1762423333
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6912D3FC46885668}" {
+   Id "RT_Head_WhiteHead_02_VN_camo"
+   Target_en_us "Burr (VN Camo)"
+   Modified 1762845197
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
@@ -2317,6 +2646,13 @@ StringTable {
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
+  CustomStringTableItem "{6912D3FC40B06B0F}" {
+   Id "RT_Head_WhiteHead_05_VN_camo"
+   Target_en_us "Campbell (VN Camo)"
+   Modified 1762845208
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
   CustomStringTableItem "{65D4ED3C37097155}" {
    Id "RT_Head_WhiteHead_06"
    Target_en_us "Dayton"
@@ -2403,6 +2739,13 @@ StringTable {
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
+  CustomStringTableItem "{6912D3FC5A62AC51}" {
+   Id "RT_Head_WhiteHead_08_VN_camo"
+   Target_en_us "Halliwell (VN Camo)"
+   Modified 1762845218
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
   CustomStringTableItem "{65D4ED3C370971DF}" {
    Id "RT_Head_WhiteHead_09"
    Target_en_us "Johnson"
@@ -2458,6 +2801,13 @@ StringTable {
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
+  CustomStringTableItem "{6912D3FC5558A9BA}" {
+   Id "RT_Head_WhiteHead_10_VN_camo"
+   Target_en_us "Martinez (VN Camo)"
+   Modified 1762845228
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
   CustomStringTableItem "{65D4ED3C37097E69}" {
    Id "RT_Head_WhiteHead_11"
    Target_en_us "Kirby"
@@ -2493,6 +2843,13 @@ StringTable {
    Id "RT_Head_WhiteHead_11_VN"
    Target_en_us "Kirby (VN)"
    Modified 1762423265
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6912D3FC6ECF4C05}" {
+   Id "RT_Head_WhiteHead_11_VN_camo"
+   Target_en_us "Kirby (VN Camo)"
+   Modified 1762845237
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
@@ -2606,6 +2963,13 @@ StringTable {
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
+  CustomStringTableItem "{6912D3FC66C646F2}" {
+   Id "RT_Head_WhiteHead_15_VN_camo"
+   Target_en_us "Snowe (VN Camo)"
+   Modified 1762845254
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
   CustomStringTableItem "{65D4ED3C37097EDB}" {
    Id "RT_Head_WhiteHead_16"
    Target_en_us "Kelly"
@@ -2634,6 +2998,13 @@ StringTable {
    Id "RT_Head_WhiteHead_16_VN"
    Target_en_us "Kelly (VN)"
    Modified 1762423224
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6912D3FC63A681B7}" {
+   Id "RT_Head_WhiteHead_16_VN_camo"
+   Target_en_us "Kelly (VN Camo)"
+   Modified 1762845262
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }

@@ -12,7 +12,14 @@ modded class SCR_LoadoutRequestUIComponent : SCR_DeployRequestUIBaseComponent
 	void ResetLoadoutPreview()
 	{
 		ResetLoadoutPreviewBackground();
-		m_PreviewComp.GetPreviewManagerEntity().SetPreviewItem(m_PreviewComp.GetItemPreviewWidget(), GetPreviewedEntity(), null, true);
+		
+		if (!m_PreviewComp) return;		
+		
+		ItemPreviewManagerEntity pme = m_PreviewComp.GetPreviewManagerEntity();
+		
+		if (!pme) return;		
+		
+		pme.SetPreviewItem(m_PreviewComp.GetItemPreviewWidget(), GetPreviewedEntity(), null, true);
 	}
 	
 	void ResetLoadoutPreviewBackground()

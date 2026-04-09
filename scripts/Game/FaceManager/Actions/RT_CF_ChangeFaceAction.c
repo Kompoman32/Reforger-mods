@@ -54,7 +54,16 @@ class RT_CF_ChangeFaceActionComponent: ScriptedUserAction
 	{				
 		VisualIdentity currentFace = RT_CF_Utils.GetVisualIdentity(ent);
 		
-		editor.SetPreviewHead(new RT_CF_EditableEntityUIInfo(SCR_UIInfo.CreateInfo((string)currentFace.GetHead()), null, currentFace));
+		if (currentFace)
+		{
+			VisualIdentity newCurrentFace = VisualIdentity.Cast(currentFace.Clone());
+			newCurrentFace.SetHead(currentFace.GetHead());
+			newCurrentFace.SetBody(currentFace.GetBody());
+			
+			currentFace = newCurrentFace;
+		}
+		
+		editor.SetPreviewHead(new RT_CF_EditableEntityUIInfo(SCR_UIInfo.CreateInfo((string)currentFace.GetHead()), visual: currentFace));
 		editor.FocusItemByName(currentFace.GetHead());
 	}
 	
@@ -71,12 +80,22 @@ class RT_CF_ChangeFaceActionComponent: ScriptedUserAction
 		VisualIdentity currentFace = menu.m_Editor.m_CurrentFace;		
 		if (!currentFace) return;
 		
-		SCR_PlayerData.SaveCurrentUserVisual(currentFace);
-		
-		
 		SCR_ChimeraCharacter playerEntity = SCR_ChimeraCharacter.Cast(GetGame().GetPlayerController().GetControlledEntity());
 		
 		if (!playerEntity) return;
+
+		ResourceName currentCamo = menu.m_Editor.m_CurrentCamo;
+		
+		if (currentCamo)
+		{
+			VisualIdentity newCurrentFace = VisualIdentity.Cast(currentFace.Clone());
+			newCurrentFace.SetHead(currentCamo);
+			newCurrentFace.SetBody(currentFace.GetBody());
+			
+			currentFace = newCurrentFace;
+		}
+		
+		SCR_PlayerData.SaveCurrentUserVisual(currentFace);
 		
 		playerEntity.SaveVisualToServer_O(currentFace.GetHead(), currentFace.GetBody());		
 	}

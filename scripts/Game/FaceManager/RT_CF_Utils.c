@@ -25,7 +25,7 @@ class RT_CF_Utils
 	}
 	
 	static void SetIdentity(IEntity pUserEntity, VisualIdentity pVisual)
-	{
+	{		
 		if (!pVisual || !pVisual.GetHead() || !pVisual.GetBody()) return;
 		
 		SetIdentity(pUserEntity, pVisual.GetHead(), pVisual.GetBody());
@@ -60,5 +60,33 @@ class RT_CF_Utils
 		if (!rpl) return null;
 		
 		return rpl.GetEntity();
+	}
+	
+	static int GetHeadCamos(VisualIdentity indentity, out notnull array<ref ResourceName> headCamos, bool filterCurrentHead = false)
+	{
+		int count = 0;
+		int index = 0;
+		while (index < 1000)
+		{
+			ResourceName headCamo = indentity.GetHeadCamo(index);
+
+			if (!headCamo)
+				break;
+			
+			if (headCamo == indentity.GetHead())
+			{
+				index++;
+				continue;
+			}
+		
+			if (headCamos.Contains(headCamo))
+				break;
+
+			headCamos.Insert(headCamo);
+			index++;
+			count++;
+		}
+		
+		return count;
 	}
 }

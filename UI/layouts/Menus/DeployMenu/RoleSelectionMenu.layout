@@ -1,0 +1,74 @@
+FrameWidgetClass {
+ {
+  SizeLayoutWidgetClass "{5D66B544E2E20FB0}" {
+   Prefab "{5D66B544E2E20FB0}"
+   {
+    OverlayWidgetClass "{5D66B544E2E20FB3}" {
+     Prefab "{5D66B544E2E20FB3}"
+     {
+      VerticalLayoutWidgetClass "{5D66B544E2E20FB5}" {
+       Prefab "{5D66B544E2E20FB5}"
+       {
+        FrameWidgetClass "{5D66B544E2E586DB}" {
+         Prefab "{5D66B544E2E586DB}"
+         {
+          VerticalLayoutWidgetClass "{5D66B544E2E586DA}" {
+           Prefab "{5D66B544E2E586DA}"
+           {
+            HorizontalLayoutWidgetClass "{5D66B544E2E56FEB}" {
+             Prefab "{5D66B544E2E56FEB}"
+             {
+              SizeLayoutWidgetClass "{5D66B544E2E43439}" {
+               Prefab "{5D66B544E2E43439}"
+               {
+                FrameWidgetClass "{5D66B544E2E7CAF3}" {
+                 Prefab "{5D66B544E2E7CAF3}"
+                 {
+                  FrameWidgetClass "{5D66B544E2E7CA0B}" {
+                   Prefab "{5D66B544E2E7CA0B}"
+                   {
+                    OverlayWidgetClass "{5D6CA755503DAC04}" {
+                     Prefab "{5D6CA755503DAC04}"
+                     {
+                      ButtonWidgetClass "{69130AA04A32B632}" : "{4A119D28E23A3999}UI/layouts/WidgetLibrary/Buttons/WLib_ButtonImage.layout" {
+                       Name "ChooseFaceButton"
+                       Slot OverlayWidgetSlot "{69130AABAD9503B4}" {
+                        HorizontalAlign 0
+                        VerticalAlign 0
+                        Padding 0 44 4 4
+                       }
+                       "Z Order" 1
+                       components {
+                        SCR_ButtonImageComponent "{55589476821916D2}" {
+                         m_BackgroundDefault 1 1 1 0
+                         m_bShowBorderOnFocus 0
+                         m_bShowBorderOnHover 1
+                         m_sImageName "player"
+                        }
+                        RT_CF_ChooseFaceButtonComponent "{69130AABE3FE1E7B}" {
+                         m_sLoadoutUIHandler "Content"
+                        }
+                       }
+                      }
+                     }
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

@@ -60,6 +60,8 @@ FrameWidgetClass {
                              m_bShowBorderOnHover 1
                              m_sImageName "player"
                             }
+                            RT_CF_ChooseFaceButtonComponent "{69130AABFBF41938}" {
+                            }
                            }
                           }
                          }

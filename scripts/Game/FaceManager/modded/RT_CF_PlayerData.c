@@ -67,8 +67,9 @@ modded class SCR_PlayerData : JsonApiStruct
 			
 			if (v && savedStruct.head && savedStruct.body)
 			{
+				ResourceName head = savedStruct.head;				
 				v = VisualIdentity.Cast(v.Clone());
-				v.SetHead(savedStruct.head);
+				v.SetHead(head);
 				v.SetBody(savedStruct.body);
 			}
 		}
