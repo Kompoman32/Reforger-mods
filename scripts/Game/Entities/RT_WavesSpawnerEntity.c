@@ -19,7 +19,6 @@ class RT_WavesSpawnerEntity: GenericEntity {
 	[RplProp(onRplName: "CreateMovePoint_Proxy")]
 	protected RplId m_MovePointRplId;
 	protected vector m_vLastMovePointPosition[4];
-	
 	protected vector m_vLastSpawnerPosition[4];
 	
 	protected ref array<SCR_AIGroup> m_aGroups;
@@ -32,6 +31,7 @@ class RT_WavesSpawnerEntity: GenericEntity {
 	protected float m_fSpawnTimer;
 	protected float m_fSpawnRadius = 10;
 	protected int m_iSpawnFindPositionAttempts = 20;
+	protected bool m_bUseVehicles = false;
 	
 	protected float m_fWaypointUpdateTimer = 1;
 	protected float m_iWaypointUpdateDelay = 1;
@@ -50,16 +50,21 @@ class RT_WavesSpawnerEntity: GenericEntity {
 	bool m_bShowConnectLine;
 	ShapeFlags m_ConnectLineFlagsOnHover = ShapeFlags.NOZBUFFER | ShapeFlags.TRANSP;
 	
+	protected ref array<ref RT_WS_VehicleObjectForSort> m_aValidVehiclesForGroupSearch = {};
+	
+	//------------------------------------------------------------------------------------------------
 	void RT_WavesSpawnerEntity(IEntitySource src, IEntity parent) {
 		if (!SCR_Global.IsEditMode())
 			SetEventMask(EntityEvent.FRAME | EntityEvent.INIT);		
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void ~RT_WavesSpawnerEntity() {
 		if (m_MovePoint) 
 			SCR_EntityHelper.DeleteEntityAndChildren(m_MovePoint);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	override void EOnInit(IEntity owner)
 	{
 		if (SCR_Global.IsEditMode()) return;
@@ -107,9 +112,6 @@ class RT_WavesSpawnerEntity: GenericEntity {
 			SetFaction(GetGame().GetFactionManager().GetFactionByKey("US"));
 		}
 		
-//		TODO: some day...
-//		InitDefaultUnitSettings();
-		
 		if (Replication.IsServer())
 		{
 			CreateMovePoint();
@@ -121,6 +123,7 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{		
 		UpdateConnectedLine();
@@ -155,18 +158,13 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		}	
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	protected void DelayedInit() {						
 		RefreshSpawnParameters();
 	}
 	
-//	protected void InitDefaultUnitSettings()
-//	{
-//		foreach(int i, ResourceName resourceName : m_aAvailableResourceNames)
-//		{
-//			m_aUnitsSettings.Insert(new Tuple2<string, int>(resourceName, 0));
-//		};		
-//	}
-	
+	//============================ MOVE POINT ============================\\
+	//------------------------------------------------------------------------------------------------
 	protected void CreateMovePoint()
 	{					
 		EntitySpawnParams params = new EntitySpawnParams();
@@ -196,6 +194,7 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		GetGame().GetCallqueue().CallLater(CreateMovePoint_Delayed, 500, false);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	protected void CreateMovePoint_Delayed()
 	{	
 		UpdateConnectedLine();
@@ -205,6 +204,7 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		Replication.BumpMe();
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	protected void CreateMovePoint_Proxy()
 	{
 		m_MovePoint = RT_WavesSpawner_MovePointEntity.Cast(Replication.FindItem(m_MovePointRplId));
@@ -221,6 +221,8 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		areaMesh.GenerateAreaMesh();
 	}
 	
+	//============================ CONNECT LINES ============================\\
+	//------------------------------------------------------------------------------------------------
 	protected void CreateConnectLine()
 	{		
 		if (!m_MovePoint) return;
@@ -248,6 +250,7 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		m_ConnectLine = Shape.CreateLines(color.PackToInt(), m_ConnectLineFlagsOnHover, lineVerts, 2);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	protected void UpdateConnectedLine()
 	{
 		m_bShowConnectLine = false;
@@ -280,9 +283,11 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		CreateConnectLine();
 	}
 	
+	//============================ SPAWN ============================\\
+	//------------------------------------------------------------------------------------------------
 	protected void Spawn() 
 	{	
-		CleanFirstNullUnit();
+		Spawn_CleanNullUnits();
 		
 		if (m_aGroups.Count() >= m_iMaxUnits) return;
 		
@@ -329,6 +334,12 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		AIWaypointCycle wp = CreateUnitWaypoint();
 		if (!wp) return;
 		
+		
+		if (m_bUseVehicles)
+		{			
+			SpawnGroupInVehicle(group, unitsInGroup);
+		}
+		
 		group.AddWaypoint(wp);
 		group.SpawnUnits();
 		
@@ -336,6 +347,7 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		m_aWaypoints.Insert(wp);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	protected vector Spawn_GetPointToSpawn()
 	{
 		array<vector> offsetPos = {};
@@ -352,7 +364,8 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		return offsetPos.GetRandomElement();
 	}
 	
-	protected void CleanFirstNullUnit()
+	//------------------------------------------------------------------------------------------------
+	protected void Spawn_CleanNullUnits()
 	{		
 		bool allCleared = false;
 		
@@ -381,84 +394,134 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		}
 	}
 	
-	protected void UpdateWaypoints() {		
-		if (!m_MovePoint) return;		
-				
-		vector movePointTransform[4];
-		m_MovePoint.GetWorldTransform(movePointTransform);
+	//------------------------------------------------------------------------------------------------
+	protected void SpawnGroupInVehicle(SCR_AIGroup group, int pUnitsCount)
+	{
+		SCR_AIVehicleUsageComponent selectedVehicle = GetValidVehicleForGroup(group, pUnitsCount, GetOrigin(), m_fSpawnRadius);
 		
-		if (vector.Distance(movePointTransform[3], m_vLastMovePointPosition[3]) < 1) return;
+		if (!selectedVehicle) return;
 		
-		m_vLastMovePointPosition = movePointTransform;
+		group.GetGroupUtilityComponent().m_VehicleMgr.TryAddVehicle(selectedVehicle);	
 		
-		EntitySpawnParams params = new EntitySpawnParams();
-		params.TransformMode = ETransformMode.WORLD;
-		params.Transform[3] = m_MovePoint.GetOrigin();
-
-		foreach (int i, AIWaypointCycle cycleWp: m_aWaypoints)
+		group.GetOnAllDelayedEntitySpawned().Insert(SpawnGroupInVehicle_OnAllDelayedEntitySpawned);		
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected bool SpawnGroupInVehicle_AddEntity(IEntity pEntity)
+	{
+		if (!pEntity) return true;
+		
+		SCR_AIVehicleUsageComponent vehicleUsgComp = SCR_AIVehicleUsageComponent.Cast(pEntity.FindComponent(SCR_AIVehicleUsageComponent));
+		
+		if (!vehicleUsgComp) return true;
+		
+		m_aValidVehiclesForGroupSearch.Insert(new RT_WS_VehicleObjectForSort(vehicleUsgComp));
+		
+		return true;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected bool SpawnGroupInVehicle_FilterCallback(IEntity pEntity)
+	{
+		if (!pEntity) return false;
+		
+		return !!SCR_AIVehicleUsageComponent.Cast(pEntity.FindComponent(SCR_AIVehicleUsageComponent));
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected void SpawnGroupInVehicle_OnAllDelayedEntitySpawned(SCR_AIGroup group)
+	{
+		group.GetOnAllDelayedEntitySpawned().Remove(SpawnGroupInVehicle_OnAllDelayedEntitySpawned);
+		
+		array<IEntity> allVehicles = {};
+		group.GetGroupUtilityComponent().m_VehicleMgr.GetAllVehicleEntities(allVehicles);
+		
+		if (allVehicles.Count() == 0) return;
+		
+		IEntity vehicle = allVehicles[0];
+		if (!vehicle) return;
+		
+		SCR_BaseCompartmentManagerComponent compartmentMananager = SCR_BaseCompartmentManagerComponent.Cast(vehicle.FindComponent(SCR_BaseCompartmentManagerComponent));
+		if (!compartmentMananager) return;
+		
+		array<AIAgent> groupAgents = {};
+		group.GetAgents(groupAgents);
+		
+		array<BaseCompartmentSlot> occupiedSlots = {};
+		array<BaseCompartmentSlot> outCompartments = {};
+		
+		// first occupy pilot and turret, then all other
+		outCompartments.Insert(compartmentMananager.GetFirstFreeCompartmentOfType(ECompartmentType.PILOT));
+		outCompartments.Insert(compartmentMananager.GetFirstFreeCompartmentOfType(ECompartmentType.TURRET));
+		
+		compartmentMananager.GetFreeCompartmentsOfType(outCompartments, ECompartmentType.PILOT);
+		compartmentMananager.GetFreeCompartmentsOfType(outCompartments, ECompartmentType.TURRET);
+		compartmentMananager.GetFreeCompartmentsOfType(outCompartments, ECompartmentType.CARGO);
+		
+		foreach(int i, AIAgent agent: groupAgents)
 		{
-			SCR_AIGroup group = m_aGroups[i];
+			CompartmentAccessComponent compartmentAccess = CompartmentAccessComponent.Cast(agent.GetControlledEntity().FindComponent(CompartmentAccessComponent));
 			
-			ClearCycleWaypoint(group, cycleWp);
-			AddCycleMoveWaypoints(cycleWp, params);
-			cycleWp.SetTransform(movePointTransform);		
+			if (!compartmentAccess) continue;
+			
+			BaseCompartmentSlot slot = null;
+			
+			foreach(BaseCompartmentSlot slotToCheck: outCompartments)
+			{
+				if (slotToCheck && !occupiedSlots.Contains(slotToCheck))
+				{
+					slot = slotToCheck; 
+					break;
+				}
+			}
+			
+			if (slot)
+			{
+				compartmentAccess.GetInVehicle(vehicle, slot, true, -1, ECloseDoorAfterActions.INVALID, ((ChimeraWorld)(GetGame().GetWorld())).IsGameTimePaused());
+				occupiedSlots.Insert(slot);
+			}
 		}
 	}
-	
-	AIWaypointCycle CreateUnitWaypoint()
-	{		
-		EntitySpawnParams params = new EntitySpawnParams();
-		params.TransformMode = ETransformMode.WORLD;
-		params.Transform[3] = m_MovePoint.GetOrigin();
-		
-		// Cycle Waypoint
-		Resource waypointResource = Resource.Load("{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et");
 
-		if (!waypointResource || !waypointResource.IsValid()) return null;
-
-		AIWaypointCycle cycleWP = AIWaypointCycle.Cast(GetGame().SpawnEntityPrefab(waypointResource, null, params));
-
-		if (!cycleWP) return null;
+	//------------------------------------------------------------------------------------------------
+	protected SCR_AIVehicleUsageComponent GetValidVehicleForGroup(SCR_AIGroup group, int unitsCount, vector posCenter, float pRadius)
+	{
+		m_aValidVehiclesForGroupSearch.Clear();
+		GetGame().GetWorld().QueryEntitiesBySphere(posCenter, pRadius, SpawnGroupInVehicle_AddEntity, SpawnGroupInVehicle_FilterCallback);
 		
-		AddCycleMoveWaypoints(cycleWP, params);
-		
-		return cycleWP;
-	}
-	
-	void AddCycleMoveWaypoints(AIWaypointCycle cycleWP, EntitySpawnParams params)
-	{		
-		Resource firstWaypointResource = Resource.Load("{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et");
-		Resource secondWaypointResource = Resource.Load("{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Defend.et");
+		m_aValidVehiclesForGroupSearch.Sort();
 
-		if (!firstWaypointResource || !firstWaypointResource.IsValid())
-			return;
-
-		// First Move Waypoint
-		AIWaypoint moveWP = AIWaypoint.Cast(GetGame().SpawnEntityPrefab(firstWaypointResource, null, params));
-		if (!moveWP) return;
+		RT_WS_VehicleObjectForSort selectedVehicle = null;
 		
-		float completeRadius = 5;
-		
-		if (m_MovePoint)
+		foreach (RT_WS_VehicleObjectForSort vehicle : m_aValidVehiclesForGroupSearch)
 		{
-			completeRadius = m_MovePoint.GetAreaRadius();
+			if (vehicle.m_iSlotsCount >= unitsCount) 
+			{
+				selectedVehicle = vehicle;
+				
+				foreach (SCR_AIGroup aiGroup : m_aGroups)
+				{
+					if (!aiGroup) continue;
+					
+					// skip this vehicle if assigned to another group
+					if (aiGroup.GetGroupUtilityComponent().m_VehicleMgr.FindVehicle(vehicle.m_vehicle)) 
+					{
+						selectedVehicle = null;
+						break;
+					}
+				}
+				
+				if (selectedVehicle) break;
+			}
 		}
 		
-		moveWP.SetCompletionRadius(completeRadius);
+		if (selectedVehicle) return selectedVehicle.m_vehicle;
 		
-		array<AIWaypoint> waypoints = {};
-		waypoints.Insert(moveWP);
-		
-		// Second Move Waypoint on same cords
-		moveWP = AIWaypoint.Cast(GetGame().SpawnEntityPrefab(secondWaypointResource, null, params));
-		if (!moveWP) return;
-		
-		moveWP.SetCompletionRadius(completeRadius);
-		waypoints.Insert(moveWP);
-		
-		cycleWP.SetWaypoints(waypoints);
+		return null;		
 	}
-	
+
+	//============================ SPAWN PARAMETERS ============================\\
+	//------------------------------------------------------------------------------------------------
 	void RefreshSpawnParameters()
 	{
 		if (!Replication.IsServer() || SCR_Global.IsEditMode()) return;		
@@ -467,6 +530,7 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		GetGame().GetCallqueue().CallLater(SetSpawnParameters, 300, false);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	protected void SetSpawnParameters()
 	{		
 		// Fix min max in group
@@ -479,7 +543,6 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		if (!m_bIsEnabledAttribute)
 		{
 			m_bEnabled = false;
-			SetSpawnParametersEnabled();
 			m_WeightedUnits.Clear();
 			return;
 		}
@@ -497,8 +560,6 @@ class RT_WavesSpawnerEntity: GenericEntity {
 				break;
 			}
 		}
-		
-		SetSpawnParametersEnabled();
 		
 		m_WeightedUnits.Clear();
 		
@@ -523,12 +584,178 @@ class RT_WavesSpawnerEntity: GenericEntity {
 			}
 		}
 	}
-	
-	protected void SetSpawnParametersEnabled()
-	{
+
+	//============================ WAYPOINTS ============================\\
+	//------------------------------------------------------------------------------------------------
+	protected void UpdateWaypoints() {		
+		if (!m_MovePoint) return;		
+				
+		vector movePointTransform[4];
+		m_MovePoint.GetWorldTransform(movePointTransform);
 		
+		CheckGroupsNoWaypoints();
+		if (vector.Distance(movePointTransform[3], m_vLastMovePointPosition[3]) < 1) return;
+		
+		m_vLastMovePointPosition = movePointTransform;
+		
+		EntitySpawnParams params = new EntitySpawnParams();
+		params.TransformMode = ETransformMode.WORLD;
+		params.Transform[3] = m_MovePoint.GetOrigin();
+
+		foreach (int i, AIWaypointCycle cycleWp: m_aWaypoints)
+		{
+			SCR_AIGroup group = m_aGroups[i];
+			
+			ClearCycleWaypoint(group, cycleWp);
+			AddMoveWaypointsToCycle(cycleWp, params);
+			cycleWp.SetTransform(movePointTransform);		
+			AssignNearbyVehicle(group);
+		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	protected void CheckGroupsNoWaypoints()
+	{		
+		bool hasNull = false;
+		
+		foreach (int i, SCR_AIGroup group: m_aGroups)
+		{		
+			if (!group) continue;
+				
+			if (!group.GetCurrentWaypoint())
+			{
+				hasNull = true;
+				break;
+			}
+		}
+		
+		if (!hasNull) return;
+		
+		EntitySpawnParams params = new EntitySpawnParams();
+		params.TransformMode = ETransformMode.WORLD;
+		params.Transform[3] = m_MovePoint.GetOrigin();
+		
+		vector movePointTransform[4];
+		m_MovePoint.GetWorldTransform(movePointTransform);
+		
+		foreach (int i, SCR_AIGroup group: m_aGroups)
+		{		
+			if (!group) continue;
+				
+			if (!group.GetCurrentWaypoint())
+			{
+				AIWaypointCycle cycleWp = m_aWaypoints[i];
+				ClearCycleWaypoint(group, cycleWp);
+				AddMoveWaypointsToCycle(cycleWp, params);
+				cycleWp.SetTransform(movePointTransform);	
+				AssignNearbyVehicle(group);
+				group.AddWaypoint(cycleWp);
+			}
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected AIWaypointCycle CreateUnitWaypoint()
+	{		
+		EntitySpawnParams params = new EntitySpawnParams();
+		params.TransformMode = ETransformMode.WORLD;
+		params.Transform[3] = m_MovePoint.GetOrigin();
+		
+		// Cycle Waypoint
+		Resource waypointResource = Resource.Load("{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et");
+
+		if (!waypointResource || !waypointResource.IsValid()) return null;
+
+		AIWaypointCycle cycleWP = AIWaypointCycle.Cast(GetGame().SpawnEntityPrefab(waypointResource, null, params));
+
+		if (!cycleWP) return null;
+		
+		AddMoveWaypointsToCycle(cycleWP, params);
+		
+		return cycleWP;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected void AddMoveWaypointsToCycle(AIWaypointCycle cycleWP, EntitySpawnParams params)
+	{		
+		Resource firstWaypointResource = Resource.Load("{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et");
+		Resource secondWaypointResource = Resource.Load("{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Defend.et");
+
+		if (!firstWaypointResource || !firstWaypointResource.IsValid())
+			return;
+
+		// First Move Waypoint
+		AIWaypoint moveWP = AIWaypoint.Cast(GetGame().SpawnEntityPrefab(firstWaypointResource, null, params));
+		if (!moveWP) return;
+		
+		float completeRadius = 5;
+		
+		if (m_MovePoint)
+		{
+			completeRadius = m_MovePoint.GetAreaRadius();
+		}
+		
+		if (completeRadius > 5)
+		{
+			//completeRadius = Math.Max(completeRadius * 0.75, 5);
+		}
+		
+		moveWP.SetCompletionRadius(completeRadius);
+		
+		array<AIWaypoint> waypoints = {};
+		waypoints.Insert(moveWP);
+		
+		// Second Move Waypoint on same cords
+		moveWP = AIWaypoint.Cast(GetGame().SpawnEntityPrefab(secondWaypointResource, null, params));
+		if (!moveWP) return;
+		
+		moveWP.SetCompletionRadius(completeRadius);
+		waypoints.Insert(moveWP);
+		
+		cycleWP.SetWaypoints(waypoints);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void AssignNearbyVehicle(SCR_AIGroup group)
+	{
+		if (!m_bUseVehicles) return;
+		
+		array<ref SCR_AIGroupVehicle> outAllVehicles = {};
+		group.GetGroupUtilityComponent().m_VehicleMgr.GetAllVehicles(outAllVehicles);
+		
+		if (outAllVehicles.Count() > 0) return;
+		
+		array<AIAgent> groupAgents = {};
+		group.GetAgents(groupAgents);
+		
+		SCR_AIVehicleUsageComponent selectedVehicle = GetValidVehicleForGroup(group, groupAgents.Count(), group.GetOrigin(), 50);
+		
+		if (!selectedVehicle) return;
+		
+		group.GetGroupUtilityComponent().m_VehicleMgr.TryAddVehicle(selectedVehicle);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void UnassignVehicles()
+	{	
+		foreach (SCR_AIGroup group: m_aGroups)
+		{
+			if (!group) continue;
+			
+			array<ref SCR_AIGroupVehicle> outAllVehicles = {};
+			group.GetGroupUtilityComponent().m_VehicleMgr.GetAllVehicles(outAllVehicles);
+			
+			if (outAllVehicles.Count() == 0) continue;
+			
+			foreach (SCR_AIGroupVehicle vehicle: outAllVehicles)
+			{
+				if (!vehicle) continue;
+				group.GetGroupUtilityComponent().m_VehicleMgr.RemoveVehicle(vehicle.GetVehicleUsageComponent());
+			}
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
 	protected void ClearCycleWaypoint(SCR_AIGroup group, AIWaypointCycle cycleWp)
 	{
 		array<AIWaypoint> waypoints = {};
@@ -537,145 +764,17 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		foreach (AIWaypoint wp: waypoints)
 		{
 			if (wp)
-			{
 				wp.SetCompletionRadius(9999999999);
-			}
 			
 			if (group) 
-			{
 				group.CompleteWaypoint(wp);
-			}
 		}
 		
 		cycleWp.SetWaypoints({});
 	}
-	
-	
-	vector RandomPointInRadius(vector origin, float minRadius, float maxRadius) {
-		vector direction = vector.FromYaw(s_AIRandomGenerator.RandFloatXY(0, 360));
-		float rand = minRadius + (s_AIRandomGenerator.RandFloat01() * maxRadius);
 
-		return origin + rand * direction;
-	}
-	
-	Faction GetFaction()
-	{
-		if (!m_FactionAffiliationComponent) return null;
-		
-		return m_FactionAffiliationComponent.GetAffiliatedFaction();
-	}
-	
-	void SetFaction(Faction faction)
-	{
-		if (!m_FactionAffiliationComponent) return;
-		
-		m_FactionAffiliationComponent.SetAffiliatedFaction(faction);
-		
-		if (m_bFactionLess)
-		{
-			foreach (SCR_AIGroup group: m_aGroups)
-			{
-				if (!group) continue;
-				
-				group.SetFaction(faction);				
-			}
-		}
-	}
-	
-	bool GetEnabled()
-	{
-		return m_bIsEnabledAttribute;
-	}	
-	
-	void SetEnabled(int pIsEnabled)
-	{
-		m_bIsEnabledAttribute = pIsEnabled;
-		
-		RefreshSpawnParameters();
-	}		
-	
-	int GetMaxUnits()
-	{
-		return m_iMaxUnits;
-	}	
-	
-	void SetMaxUnits(int pMaxUnits)
-	{
-		m_iMaxUnits = pMaxUnits;
-		
-		RefreshSpawnParameters();
-	}
-	
-	int GetSpawnDelay()
-	{
-		return m_iSpawnDelay;
-	}
-	
-	void SetSpawnDelay(int pSpawnDelay)
-	{
-		m_iSpawnDelay = pSpawnDelay;
-		
-		RefreshSpawnParameters();
-	}
-	
-	int GetMinInGroup()
-	{
-		return m_iMinInGroup;
-	}
-	
-	void SetMinInGroup(int pMinInGroup)
-	{
-		m_iMinInGroup = pMinInGroup;
-		
-		RefreshSpawnParameters();
-	}
-	
-	int GetMaxInGroup()
-	{
-		return m_iMaxInGroup;
-	}
-	
-	void SetMaxInGroup(int pMaxInGroup)
-	{
-		m_iMaxInGroup = pMaxInGroup;
-		
-		RefreshSpawnParameters();
-	}
-	
-	int GetRadius()
-	{
-		return m_fSpawnRadius;
-	}
-	
-	void SetRadius(int pSpawnRadius)
-	{
-		m_fSpawnRadius = pSpawnRadius;
-		
-		if (m_AreaMesh)
-		{
-			m_AreaMesh.SetRadius(pSpawnRadius);
-		}
-		
-		RefreshSpawnParameters();
-	}
-	
-	array<ref Tuple2<string, int>> GetSelectedUnits()
-	{
-		return m_aUnitsSettings;
-	}
-	
-	void SetSelectedUnits(notnull array<string> pSelectedResourceNames, notnull array<int> pSelectedWeights)
-	{
-		m_aUnitsSettings.Clear();
-		
-		foreach (int i, string name: pSelectedResourceNames)
-		{
-			m_aUnitsSettings.Insert(new Tuple2<string, int>(name, pSelectedWeights[i]));
-		}
-		
-		RefreshSpawnParameters();
-	}
-	
+	//============================ ADD NEARBY UNITS ============================\\
+	//------------------------------------------------------------------------------------------------
 	void AddNearbyUnits()
 	{		
 		GetGame().GetWorld().QueryEntitiesBySphere(GetOrigin(), m_fSpawnRadius, AddNearbyUnits_AddEntity, AddNearbyUnitsFilterCallback);
@@ -683,6 +782,7 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		RefreshSpawnParameters();
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	protected bool AddNearbyUnits_AddEntity(IEntity pEntity)
 	{
 		SCR_ChimeraCharacter charEntity = SCR_ChimeraCharacter.Cast(pEntity);
@@ -715,8 +815,195 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		return true;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	protected bool AddNearbyUnitsFilterCallback(IEntity pEntity)
 	{
 		return !!SCR_ChimeraCharacter.Cast(pEntity);
+	}
+
+		
+	//============================ UTILS ============================\\
+	//------------------------------------------------------------------------------------------------
+	vector RandomPointInRadius(vector origin, float minRadius, float maxRadius) {
+		vector direction = vector.FromYaw(s_AIRandomGenerator.RandFloatXY(0, 360));
+		float rand = minRadius + (s_AIRandomGenerator.RandFloat01() * maxRadius);
+
+		return origin + rand * direction;
+	}
+	
+	//============================ GETTERS - SETTERS ============================\\
+	//------------------------------------------------------------------------------------------------
+	Faction GetFaction()
+	{
+		if (!m_FactionAffiliationComponent) return null;
+		
+		return m_FactionAffiliationComponent.GetAffiliatedFaction();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetFaction(Faction faction)
+	{
+		if (!m_FactionAffiliationComponent) return;
+		
+		m_FactionAffiliationComponent.SetAffiliatedFaction(faction);
+		
+		if (m_bFactionLess)
+		{
+			foreach (SCR_AIGroup group: m_aGroups)
+			{
+				if (!group) continue;
+				
+				group.SetFaction(faction);				
+			}
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	bool GetEnabled()
+	{
+		return m_bIsEnabledAttribute;
+	}	
+	
+	//------------------------------------------------------------------------------------------------
+	void SetEnabled(int pIsEnabled)
+	{
+		m_bIsEnabledAttribute = pIsEnabled;
+		
+		RefreshSpawnParameters();
+	}		
+	
+	//------------------------------------------------------------------------------------------------
+	int GetMaxUnits()
+	{
+		return m_iMaxUnits;
+	}	
+	
+	//------------------------------------------------------------------------------------------------
+	void SetMaxUnits(int pMaxUnits)
+	{
+		m_iMaxUnits = pMaxUnits;
+		
+		RefreshSpawnParameters();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	int GetSpawnDelay()
+	{
+		return m_iSpawnDelay;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetSpawnDelay(int pSpawnDelay)
+	{
+		m_iSpawnDelay = pSpawnDelay;
+		
+		RefreshSpawnParameters();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	int GetMinInGroup()
+	{
+		return m_iMinInGroup;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetMinInGroup(int pMinInGroup)
+	{
+		m_iMinInGroup = pMinInGroup;
+		
+		RefreshSpawnParameters();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	int GetMaxInGroup()
+	{
+		return m_iMaxInGroup;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetMaxInGroup(int pMaxInGroup)
+	{
+		m_iMaxInGroup = pMaxInGroup;
+		
+		RefreshSpawnParameters();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	int GetRadius()
+	{
+		return m_fSpawnRadius;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetRadius(int pSpawnRadius)
+	{
+		m_fSpawnRadius = pSpawnRadius;
+		
+		if (m_AreaMesh)
+		{
+			m_AreaMesh.SetRadius(pSpawnRadius);
+		}
+		
+		RefreshSpawnParameters();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	int GetUseVehicles()
+	{
+		return m_bUseVehicles;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetUseVehicles(bool pUseVehicles)
+	{
+		m_bUseVehicles = pUseVehicles;
+		
+		if (!pUseVehicles)
+			UnassignVehicles();
+		
+		RefreshSpawnParameters();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	array<ref Tuple2<string, int>> GetSelectedUnits()
+	{
+		return m_aUnitsSettings;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetSelectedUnits(notnull array<string> pSelectedResourceNames, notnull array<int> pSelectedWeights)
+	{
+		m_aUnitsSettings.Clear();
+		
+		foreach (int i, string name: pSelectedResourceNames)
+		{
+			m_aUnitsSettings.Insert(new Tuple2<string, int>(name, pSelectedWeights[i]));
+		}
+		
+		RefreshSpawnParameters();
+	}
+}
+
+class RT_WS_VehicleObjectForSort: Managed {
+	[SortAttribute()]
+	int m_iSlotsCount = 0;
+	SCR_AIVehicleUsageComponent m_vehicle;
+	
+	//------------------------------------------------------------------------------------------------
+	void RT_WS_VehicleObjectForSort(SCR_AIVehicleUsageComponent pVehicle)
+	{
+		m_vehicle = pVehicle;
+		
+		SCR_BaseCompartmentManagerComponent compartmentMananager = SCR_BaseCompartmentManagerComponent.Cast(pVehicle.GetOwner().FindComponent(SCR_BaseCompartmentManagerComponent));
+		if (!compartmentMananager)
+			return;
+
+		
+		if (compartmentMananager.GetOccupantCount() != 0) return;
+		
+		array<BaseCompartmentSlot> compartmentSlots = {};
+		compartmentMananager.GetCompartments(compartmentSlots);
+		
+		m_iSlotsCount = compartmentSlots.Count();
 	}
 }

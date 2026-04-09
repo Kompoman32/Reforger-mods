@@ -178,6 +178,27 @@ class RT_WS_MovePoint_Attribute_Radius: SCR_BaseValueListEditorAttribute
 	}
 }
 
+// Enabled
+[BaseContainerProps(), SCR_BaseEditorAttributeCustomTitle()]
+class RT_WS_WavesSpawner_Attribute_UseVehicles: SCR_BaseEditorAttribute
+{	
+	override SCR_BaseEditorAttributeVar ReadVariable(Managed item, SCR_AttributesManagerEditorComponent manager)
+	{		
+		RT_WavesSpawnerEntity entity = RT_WS_AttributeUtils.GetEntityFromAttribute(item);
+		if (!entity) return null;
+		
+		return SCR_BaseEditorAttributeVar.CreateBool(entity.GetUseVehicles());
+	}
+	
+	override void WriteVariable(Managed item, SCR_BaseEditorAttributeVar var, SCR_AttributesManagerEditorComponent manager, int playerID)
+	{
+		RT_WavesSpawnerEntity entity = RT_WS_AttributeUtils.GetEntityFromAttribute(item);
+		if (!entity) return;
+		
+		entity.SetUseVehicles(var.GetBool());
+	}
+}
+
 // Faction
 [BaseContainerProps(), SCR_BaseEditorAttributeCustomTitle()]
 class RT_WS_WavesSpawner_Attribute_Faction: SCR_BaseFactionEditableAttribute

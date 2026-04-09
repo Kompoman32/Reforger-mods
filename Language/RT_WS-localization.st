@@ -217,6 +217,26 @@ StringTable {
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
+  CustomStringTableItem "{6910C27CC9CDF7FB}" {
+   Id "RT_WS-WavesSpawnerAttribute_UseVehicles_Description"
+   Target_en_us "Allow groups to use vehicles in spawn area. They will spawn on them. They will choose <color rgba=\"226,168,79,255\">only one not occupied vehicle with appropriate number of slots</color>.  "\
+   "If you move <color rgba=\"226,168,79,255\">Assembly point</color>, and group doesn't have assigned vehicle, they will try to find them around leader in <color rgba=\"226,168,79,255\">50m</color>."\
+   "If you disable this, groups will unassign their vehicles when they leave it."
+   Target_ru_ru "Разрешить группам использовать транспортные средства в зоне спавнера. Они будут возрождаться в них. Они выберут <color rgba=\"226,168,79,255\">только одно свободное транспортное средство с соответствующим количеством слотов</color>."\
+   "Если вы переместите <color rgba=\"226,168,79,255\">Точку сбора</color>, и у группы нет назначенного транспортного средства, они попытаются найти его вокруг лидера в радиусе <color rgba=\"226,168,79,255\">50м</color>."\
+   "Если вы отключите эту функцию, группа освободит назначенные транспортные средства, когда покинет его."
+   Modified 1762830193
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6910C27CCAE6D4C1}" {
+   Id "RT_WS-WavesSpawnerAttribute_UseVehicles_Name"
+   Target_en_us "Use vehicles"
+   Target_ru_ru "Использовать транспорт"
+   Modified 1762826986
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
   CustomStringTableItem "{68EAABD8A5F9EFD8}" {
    Id "RT_WS_ContextAction_AddNearbyUnits_Description"
    Target_en_us "Add nearby units as custom entries"
