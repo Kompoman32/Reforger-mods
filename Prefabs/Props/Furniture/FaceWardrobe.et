@@ -78,7 +78,21 @@ GenericEntity : "{10C26F96EF7A8CF5}Prefabs/Props/Core/Props_Base.et" {
   }
   GenericEntity : "{79C6D8C31947742A}Prefabs/Props/Garbage/Generic/LitterInterior_01/Single/LitterInterior_01_vodka_V1.et" {
    ID "68EE4943023D77EE"
-   coords -1.404 1.208 0.774
+   coords -0.884 1.208 0.779
+  }
+  GameEntity : "{862432FB57C1C1B3}Prefabs/Props/Civilian/LampKerosene_01/LampKerosene_01_green.et" {
+   ID "690C9D026072BDC7"
+   components {
+    ActionsManagerComponent "{58C4C3C54D820F06}" {
+     ActionContexts {
+      UserActionContext "{58C4C3C5BBEEC0A3}" {
+       Radius 0.1
+      }
+     }
+    }
+   }
+   coords -1.37 1.209 0.829
+   angles 0 30.091 0
   }
   GenericEntity : "{A84A73E9D9D4B20E}Prefabs/Props/Furniture/Shelf_01.et" {
    ID "68ECC341E42B57D5"
@@ -100,7 +114,7 @@ GenericEntity : "{10C26F96EF7A8CF5}Prefabs/Props/Core/Props_Base.et" {
     Hierarchy "{68ECC3471013F200}" {
     }
    }
-   coords -0.942 1.209 0.851
+   coords -0.956 1.209 0.875
    angles 0 0 0
   }
  }

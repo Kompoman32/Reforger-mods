@@ -58,11 +58,24 @@ modded class SCR_LoadoutRequestUIComponent : SCR_DeployRequestUIBaseComponent
 	protected override void SetLoadoutPreview(SCR_BasePlayerLoadout loadout)
 	{
 		super.SetLoadoutPreview(loadout);
+		if (m_wSupplies) 
+		{
+			m_wSupplies.SetVisible(false);
+		}
 		
 		VisualIdentity currentFace = SCR_PlayerData.GetCurrentUserVisual(m_PreviewedEntity);
 		
 		RT_CF_Utils.SetIdentity(m_PreviewedEntity, currentFace);
 		ResetLoadoutPreview();
+	}
+	
+	override void RefreshLoadoutPreview()
+	{
+		super.RefreshLoadoutPreview();
+		if (m_wSupplies) 
+		{
+			m_wSupplies.SetVisible(false);
+		}
 	}
 	
 	override void HandlerAttached(Widget w)
