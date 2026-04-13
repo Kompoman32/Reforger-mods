@@ -15,6 +15,13 @@ StringTable {
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
+  CustomStringTableItem "{691A8DEA46F00CC9}" {
+   Id "RT-Face_Editor_SwitchToCamo"
+   Target_en_us "To Camo"
+   Modified 1763354544
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
   CustomStringTableItem "{6610C43CC58AAC5D}" {
    Id "RT-Face_Wardrobe"
    Target_en_us "Faces Wardrobe"

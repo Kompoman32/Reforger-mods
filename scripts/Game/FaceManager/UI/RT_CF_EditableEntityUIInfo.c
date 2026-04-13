@@ -7,7 +7,6 @@ class RT_CF_EditableEntityUIInfo : SCR_EditableEntityUIInfo
 	ref array<ref ResourceName> m_aCamos;
 	SCR_Faction m_Faction;
 	VisualIdentity m_Visual;
-	ResourceName m_rtImage;
 	
 	void RT_CF_EditableEntityUIInfo(SCR_UIName source, SCR_Faction faction = null, VisualIdentity visual = null, array<ref ResourceName> headCamos = null)
 	{

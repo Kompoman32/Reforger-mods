@@ -19,6 +19,7 @@ class RT_CF_FacesBrowserEditorUIComponent : MenuRootSubComponent
 	protected Widget m_wLoadoutSelector;
 	protected SCR_LoadoutRequestUIComponent m_LoadoutSelector;
 	
+	protected Widget m_wSearchEditBox;
 	protected SCR_EditBoxComponent m_SearchEditBox;
 	protected string m_sCurrentSearchText;
 	
@@ -45,7 +46,6 @@ class RT_CF_FacesBrowserEditorUIComponent : MenuRootSubComponent
 		super.HandlerAttachedScripted(w);
 		
 		m_wFacesList = VerticalLayoutWidget.Cast(w.FindAnyWidget(m_sFacesList));
-
 		m_wCurrentFaceText = TextWidget.Cast(w.FindAnyWidget(m_sCurrentFaceText));
 		
 		PlayerController pc = GetGame().GetPlayerController();
@@ -58,11 +58,11 @@ class RT_CF_FacesBrowserEditorUIComponent : MenuRootSubComponent
 		
 		m_LoadoutManager = GetGame().GetLoadoutManager();
 		
+		m_wSearchEditBox = w.FindAnyWidget(m_sSearchEditBoxName);
 		m_SearchEditBox = SCR_EditBoxComponent.GetEditBoxComponent(m_sSearchEditBoxName, w, true);
 		if (m_SearchEditBox)
 		{
 			m_SearchEditBox.m_OnConfirm.Insert(OnSearchConfirmed);
-			m_SearchEditBox.m_OnFocusChangedEditBox.Insert(OnSearchFocusChanged);
 		}
 		
 		m_wLoadoutSelector = w.FindAnyWidget(m_sLoadoutSelector);
@@ -74,6 +74,13 @@ class RT_CF_FacesBrowserEditorUIComponent : MenuRootSubComponent
 		{
 			m_CamoCombobox = SCR_ComboBoxComponent.Cast(m_wCamoCombobox.FindHandler(SCR_ComboBoxComponent));
 			m_CamoCombobox.m_OnChanged.Insert(OnCamoComboBoxChanged);
+		}
+		
+		SCR_EventHandlerComponent evtHandler = SCR_EventHandlerComponent.Cast(m_wFacesList.FindHandler(SCR_EventHandlerComponent));
+		
+		if (evtHandler)
+		{
+			evtHandler.GetOnMouseEnter().Insert(OnFacesListMouseEnter);
 		}
 		
 		SetupPreview();
@@ -145,6 +152,8 @@ class RT_CF_FacesBrowserEditorUIComponent : MenuRootSubComponent
 		Widget cw = GetGame().GetWorkspace().CreateWidgets(m_sFaceButtonLayout, m_wFacesList);
 		
 		if (!cw) return;
+		
+		cw.SetName("ActionButton " + info.GetName());
 		
 		cw.SetFlags(WidgetFlags.CLIPCHILDREN);
 		
@@ -218,6 +227,54 @@ class RT_CF_FacesBrowserEditorUIComponent : MenuRootSubComponent
 		}
 		
 		GetGame().GetWorkspace().SetFocusedWidget(w);
+		
+		FixNavigation();
+	}
+	
+	void SetFocusToCurrent()
+	{
+		Widget w = FindFocusedButton();
+		
+		if (!w) return;
+		
+		GetGame().GetWorkspace().SetFocusedWidget(w);
+		
+		FixNavigation();
+	}
+	
+	Widget FindFocusedButton()
+	{
+		Widget w = m_wFacesList.GetChildren();
+		
+		while (w)
+		{
+			SCR_ContextMenuButtonEditorUIComponent cmHandler = SCR_ContextMenuButtonEditorUIComponent.Cast(w.FindHandler(SCR_ContextMenuButtonEditorUIComponent));
+			
+			if (cmHandler && cmHandler.m_FaceInfo)
+			{	
+				if (cmHandler.m_FaceInfo.m_Head == m_CurrentFace.GetHead() || (cmHandler.m_FaceInfo.m_aCamos.Contains(m_CurrentFace.GetHead())))
+				{
+					return w;
+				}
+			}
+			
+			w = w.GetSibling();
+		}
+		
+		return null;
+	}
+	
+	protected void FixNavigation()
+	{
+		Widget w = FindFocusedButton();
+		
+		if (!w) return;
+		
+		if (m_wCamoCombobox)
+			m_wCamoCombobox.SetNavigation(WidgetNavigationDirection.LEFT, WidgetNavigationRuleType.EXPLICIT, w.GetName());
+		
+		if (m_wSearchEditBox)
+			m_wSearchEditBox.SetNavigation(WidgetNavigationDirection.LEFT, WidgetNavigationRuleType.EXPLICIT, w.GetName());
 	}
 	
 	protected void onAction(Widget widget, float value, EActionTrigger reason)
@@ -292,6 +349,13 @@ class RT_CF_FacesBrowserEditorUIComponent : MenuRootSubComponent
 		
 		RT_CF_Utils.SetIdentity(previewEntity, vi);
 		m_LoadoutSelector.ResetLoadoutPreview();
+		
+		GetGame().GetCallqueue().CallLater(OnCamoComboBoxChangedLater, 100 , false);
+	}
+	
+	protected void OnCamoComboBoxChangedLater()
+	{
+		GetGame().GetWorkspace().SetFocusedWidget(m_wCamoCombobox);
 	}
 	
 	protected void ClearList()
@@ -410,13 +474,6 @@ class RT_CF_FacesBrowserEditorUIComponent : MenuRootSubComponent
 		return m_SelectedEntity;
 	}
 	
-	protected void OnSearchFocusChanged(SCR_EditBoxComponent editBoxComponent, EditBoxWidget editBoxWidget, bool focus)
-	{
-//		TODO		
-//		if (focus != m_bSearchIsToggled)
-//			m_bSearchIsToggled = focus	
-	}
-	
 	protected void OnSearchConfirmed(SCR_EditBoxComponent editBox, string text)
 	{
 		string search = text.Trim();
@@ -424,10 +481,6 @@ class RT_CF_FacesBrowserEditorUIComponent : MenuRootSubComponent
 		
 		
 		FilterEntries();
-		
-		//If using gamepad make sure search box is no longer selected
-//		if (m_bUsingGamePad && m_wFocusedCard)
-//			GamePadToggleSearch(false);
 	}
 	
 	protected void ResetSearch()
@@ -480,5 +533,35 @@ class RT_CF_FacesBrowserEditorUIComponent : MenuRootSubComponent
 				CreateListItem(info);
 			}
 		}	
+	}
+	
+	void OnFacesListMouseEnter(Widget w)
+	{
+		Widget focusedWidget = GetGame().GetWorkspace().GetFocusedWidget();
+		
+		if (!focusedWidget)
+		{
+			SetFocusToCurrent();
+			return;
+		}
+		
+		bool listfocused = false;
+		
+		Widget parent = focusedWidget.GetParent();
+		while (parent)
+		{
+			if (parent == m_wFacesList)
+			{
+				listfocused = true;
+				break;
+			}
+			
+			parent = parent.GetParent();
+		}
+		
+		if (!listfocused)
+		{
+			SetFocusToCurrent();
+		}
 	}
 }

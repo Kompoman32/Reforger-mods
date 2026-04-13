@@ -39,6 +39,7 @@ class RT_CF_ChangeFaceActionComponent: ScriptedUserAction
 		if (GetGame().GetMenuManager().FindMenuByPreset(ChimeraMenuPreset.FaceEditorBrowserDialog)) return; // already opened	
 				
 		MenuBase a = GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.FaceEditorBrowserDialog);
+		a.SetActionContext("EditorBrowserContext");
 		RT_CF_FaceEditorBrowserDialogUI menu = RT_CF_FaceEditorBrowserDialogUI.Cast(a);
 		
 		if (!menu) return;

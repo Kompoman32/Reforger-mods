@@ -138,6 +138,13 @@ FrameWidgetClass {
                     VerticalAlign 3
                    }
                    Clipping True
+                   components {
+                    SCR_EventHandlerComponent "{691A8DF3C973BC39}" {
+                    }
+                   }
+                   "Left target" "EditBoxSearch"
+                   "Right rule" Explicit
+                   "Right target" "EditBoxSearch"
                    {
                     ButtonWidgetClass "{65E2C4E5399F9A53}" : "{F84B269BBA680B3E}UI/layouts/WidgetLibrary/ComboBox/Elements/WLib_ComboBoxElement.layout" {
                      Name "Button2"
@@ -405,6 +412,7 @@ FrameWidgetClass {
                      m_sLabel "#AR-Editor_ContentBrowser_Filter_ButtonToggle"
                     }
                     SCR_DeviceSpecificComponent "{56EEDE01335EDAD4}" {
+                     Enabled 0
                      m_bControllerOnly 1
                     }
                    }
@@ -424,7 +432,7 @@ FrameWidgetClass {
                    components {
                     SCR_InputButtonComponent "{5D346C3DD81D95CD}" {
                      m_sActionName "EditorContentBrowserFilterToggle"
-                     m_sLabel "#AR-Editor_ContentBrowser_SwitchToFilters"
+                     m_sLabel "#RT-Face_Editor_SwitchToCamo"
                     }
                     SCR_DeviceSpecificComponent "{56EEDE01335EDAD4}" {
                      m_bControllerOnly 1
@@ -466,6 +474,7 @@ FrameWidgetClass {
                      m_sLabel "#AR-Editor_ContentBrowser_ButtonResetFilters"
                     }
                     ButtonActionComponent "{56EEDE0026B19E2C}" {
+                     Enabled 0
                      m_bActionName "EditorContentBrowserFilterReset"
                     }
                    }
@@ -551,6 +560,9 @@ FrameWidgetClass {
                m_fSizeWithoutLabel 42
               }
              }
+             "Left rule" Explicit
+             "Left target" "FacesList"
+             "Right target" "FacesList"
              {
               SizeLayoutWidgetClass "{5538C205B27B0F5D}" {
                Prefab "{5538C205B27B0F5D}"
@@ -729,6 +741,8 @@ FrameWidgetClass {
              m_bUseLabel 0
             }
            }
+           "Left rule" Explicit
+           "Left target" "FacesList"
            {
             SizeLayoutWidgetClass "{553AE28F8D0EA0E1}" {
              Prefab "{553AE28F8D0EA0E1}"
@@ -742,6 +756,11 @@ FrameWidgetClass {
                   OverlayWidgetClass "{666268348A6ACF6E}" {
                    Prefab "{666268348A6ACF6E}"
                    "Is Visible" 0
+                  }
+                  ButtonWidgetClass "{553AE2894447E187}" {
+                   Prefab "{553AE2894447E187}"
+                   "Left target" "FacesList"
+                   "Right target" "FacesList"
                   }
                  }
                 }
@@ -772,14 +791,14 @@ FrameWidgetClass {
    Name "TooltipArea0"
    Slot FrameWidgetSlot "{571C69ED319416BF}" {
     Anchor 0 0 1 1
-    PositionX 10.594
-    OffsetLeft 10.594
-    PositionY 5.757
-    OffsetTop 5.757
+    PositionX 12.501
+    OffsetLeft 12.501
+    PositionY 4.032
+    OffsetTop 4.032
     SizeX -5.47
-    OffsetRight -5.124
+    OffsetRight -7.031
     SizeY -5.47
-    OffsetBottom -0.287
+    OffsetBottom 1.438
    }
    {
     FrameWidgetClass "{0000000050A7DB0E}" {
