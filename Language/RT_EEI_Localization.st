@@ -24,8 +24,8 @@ StringTable {
   }
   CustomStringTableItem "{691AC429947A7B82}" {
    Id "RT_EEI_Notification_ACTION_NEED_CONTROLLED_ENTITY"
-   Target_en_us "You need to \"Create player\" somewhere to edit someone inventory"
-   Modified 1763364088
+   Target_en_us "You need to create your player character before you can edit someone's inventory"
+   Modified 1763371034
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
