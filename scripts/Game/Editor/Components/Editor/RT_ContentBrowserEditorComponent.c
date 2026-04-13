@@ -29,7 +29,7 @@ modded class SCR_ContentBrowserEditorComponent : SCR_BaseEditorComponent
 
 modded class SCR_PlacingEditorComponent : SCR_BaseEditorComponent
 {
-	IEntity m_EditInvEntity;
+	IEntity m_EditInvEntity = null;
 	
 	override bool SetSelectedPrefab(ResourceName prefab = "", bool onConfirm = false, bool showBudgetMaxNotification = true, set<SCR_EditableEntityComponent> recipients = null)
 	{
@@ -40,7 +40,14 @@ modded class SCR_PlacingEditorComponent : SCR_BaseEditorComponent
 			RplIdentity identity = Replication.FindOwner(RplComponent.Cast(mode.FindComponent(RplComponent)).Id());
 			
 			mode.CreateEntityForEditInventoryOnServer(m_EditInvEntity, prefab, identity);
-						
+			
+			m_EditInvEntity = null;
+			
+			
+			SetInstantPlacing(null);
+			m_StatesManager.SetSafeDialog(true);
+			m_SelectedPrefab = prefab;
+			m_Recipients = recipients;
 			return true;
 		}
 		
@@ -63,40 +70,28 @@ modded class SCR_EditorModeEntity : SCR_EditorBaseEntity
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void Rpc_AskCreateEntityOnServer(EntityID pSelectedEntityId , ResourceName pPrefab, RplIdentity pIdentity)
-	{
-		RplId entityId = m_ArsenalEntititesForEditInventory.Get(pIdentity);
-		IEntity entity;
-		if (entityId) {
-			RplComponent entityRplComp = RplComponent.Cast(Replication.FindItem(entityId));
+	protected void Rpc_AskCreateEntityOnServer(EntityID pSelectedEntityId , ResourceName pPrefab, RplIdentity pIdentity)
+	{		
+		IEntity entity = GetGame().SpawnEntityPrefabEx(pPrefab, false, GetGame().GetWorld(), null);
 		
-			if (entityRplComp) {
-				entity = entityRplComp.GetEntity();
-				
-				SCR_EditableEntityComponent editableComp = SCR_EditableEntityComponent.Cast(entity.FindComponent(SCR_EditableEntityComponent));
-				if (editableComp)
-					editableComp.Delete();
-			}
-		}
+		SCR_EditableEntityComponent eec = SCR_EditableEntityComponent.Cast(entity.FindComponent(SCR_EditableEntityComponent));
 		
-		entity = GetGame().SpawnEntityPrefabEx(pPrefab, false, GetGame().GetWorld(), null);
+		if (eec)
+			eec.SetEntityFlag(EEditableEntityFlag.NON_INTERACTIVE, true);					
 		
 		if (!entity) return;
-
 		
 		RplComponent rplComp = RplComponent.Cast(entity.FindComponent(RplComponent));
 		rplComp.Give(pIdentity);
 		
-		entityId = rplComp.Id();
+		RplId entityId = rplComp.Id();
 		m_ArsenalEntititesForEditInventory.Set(pIdentity, entityId);		
-		
-		
-		
+
 		Rpc(Rpc_DoCreateEntityOnServerResponce, pSelectedEntityId, entityId);
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
-	void Rpc_DoCreateEntityOnServerResponce(EntityID pEntityId, RplId pArsenalEntityId)
+	protected void Rpc_DoCreateEntityOnServerResponce(EntityID pEntityId, RplId pArsenalEntityId)
 	{
 		m_EditInvSelectedEntityId = pEntityId;
 		m_EditInvWaitingEntityId = pArsenalEntityId;
@@ -105,7 +100,7 @@ modded class SCR_EditorModeEntity : SCR_EditorBaseEntity
 		GetGame().GetCallqueue().CallLater(WaitToOpenBeaconMenu, 300, true);		
 	}
 	
-	void WaitToOpenBeaconMenu() 
+	protected void WaitToOpenBeaconMenu() 
 	{
 		WorldTimestamp timeNow_s = ChimeraWorld.CastFrom(GetGame().GetWorld()).GetLocalTimestamp();
 		
@@ -119,16 +114,13 @@ modded class SCR_EditorModeEntity : SCR_EditorBaseEntity
 			return;
 		}		
 		
-		//IEntity arsenalEntity = GetGame().GetWorld().FindEntityByID(m_EditInvWaitingEntityId);
-		
 		RplComponent arsRplComp = RplComponent.Cast(Replication.FindItem(m_EditInvWaitingEntityId));
 		
 		if (!arsRplComp) return;
 		
 		IEntity arsenalEntity = arsRplComp.GetEntity();
 		
-		if (!arsenalEntity) return;
-		
+		if (!arsenalEntity) return;		
 		
 		IEntity entity = GetGame().GetWorld().FindEntityByID(m_EditInvSelectedEntityId);
 		
@@ -145,9 +137,41 @@ modded class SCR_EditorModeEntity : SCR_EditorBaseEntity
 	
 	void OpenBaconMenu(IEntity selectedEntity, IEntity arsenalEntity)
 	{		
+		if (!selectedEntity || !arsenalEntity) return;
+		
 		MenuManager menuManager = GetGame().GetMenuManager();
 		Bacon_GunBuilderUI menu = Bacon_GunBuilderUI.Cast(menuManager.OpenMenu(ChimeraMenuPreset.Bacon_GunBuilderUI));
 		
 		menu.Init(arsenalEntity, selectedEntity);
+		
+		RplId aresenalIdForReplicationFind = null;
+		RplComponent rplComp = RplComponent.Cast(arsenalEntity.FindComponent(RplComponent));
+		
+		if (rplComp)
+		{
+			aresenalIdForReplicationFind = rplComp.Id();
+			GetGame().GetCallqueue().CallLater(RemoveArsenalEntity, 1000, true, aresenalIdForReplicationFind)
+		}
+	}
+	
+	protected void RemoveArsenalEntity(RplId aresenalIdForReplicationFind)
+	{
+		if (Bacon_GunBuilderUI.m_Instance) return;
+		
+		Rpc(Rpc_AskRemoveArsenalEntity_S, aresenalIdForReplicationFind);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void Rpc_AskRemoveArsenalEntity_S(RplId aresenalIdForReplicationFind)
+	{		
+		RplComponent arsRplComp = RplComponent.Cast(Replication.FindItem(aresenalIdForReplicationFind));
+		
+		if (!arsRplComp) return;
+		
+		IEntity arsenalEntity = arsRplComp.GetEntity();
+		
+		if (!arsenalEntity) return;
+		
+		RplComponent.DeleteRplEntity(arsenalEntity, false);
 	}
 }

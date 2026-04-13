@@ -7,6 +7,67 @@ GameProject {
  }
  Configurations {
   GameProjectConfig PC {
+   WidgetManagerSettings WidgetManagerSettings "{AC4BE58770485E02}" {
+    StringTables {
+     StringTableDefinition "{691AC42FBC7C4D46}" {
+      StringTableSource "{48C4A177C3D9E531}Language/RT_EEI_Localization.st"
+      Languages {
+       LanguageDefinition "{691AC42FBAD9BF12}" {
+        Code "cs_cz"
+        StringTableRuntime "{F6801A77C50FE8B0}Language/RT_EEI_Localization.cs_cz.conf"
+       }
+       LanguageDefinition "{691AC42FBAD9BF7F}" {
+        Code "de_de"
+        StringTableRuntime "{23FE0044D6ACF990}Language/RT_EEI_Localization.de_de.conf"
+       }
+       LanguageDefinition "{691AC42FBAD9BF4C}" {
+        Code "en_us"
+        StringTableRuntime "{7D0E8A0FBC5FFC92}Language/RT_EEI_Localization.en_us.conf"
+       }
+       LanguageDefinition "{691AC42FBAD9BF58}" {
+        Code "es_es"
+        StringTableRuntime "{B842C786525D978E}Language/RT_EEI_Localization.es_es.conf"
+       }
+       LanguageDefinition "{691AC42FBAD9BFA4}" {
+        Code "fr_fr"
+        StringTableRuntime "{03EA32B1B4DE748C}Language/RT_EEI_Localization.fr_fr.conf"
+       }
+       LanguageDefinition "{691AC42FBAD9BFB5}" {
+        Code "it_it"
+        StringTableRuntime "{83F6BD8519FCF775}Language/RT_EEI_Localization.it_it.conf"
+       }
+       LanguageDefinition "{691AC42FBAD9BF80}" {
+        Code "ja_jp"
+        StringTableRuntime "{93ED0017278DC7DE}Language/RT_EEI_Localization.ja_jp.conf"
+       }
+       LanguageDefinition "{691AC42FBAD9BF8E}" {
+        Code "ko_kr"
+        StringTableRuntime "{335328BBB4A0C4E1}Language/RT_EEI_Localization.ko_kr.conf"
+       }
+       LanguageDefinition "{691AC42FBAD9BF9A}" {
+        Code "pl_pl"
+        StringTableRuntime "{6F228E410A4F589D}Language/RT_EEI_Localization.pl_pl.conf"
+       }
+       LanguageDefinition "{691AC42FBAD9BFE9}" {
+        Code "pt_br"
+        StringTableRuntime "{BA55148D31B19227}Language/RT_EEI_Localization.pt_br.conf"
+       }
+       LanguageDefinition "{691AC42FBAD9BFF9}" {
+        Code "ru_ru"
+        StringTableRuntime "{EF140025ACC8F751}Language/RT_EEI_Localization.ru_ru.conf"
+       }
+       LanguageDefinition "{691AC42FBAD9BC25}" {
+        Code "uk_ua"
+        StringTableRuntime "{654C55D3C0E64904}Language/RT_EEI_Localization.uk_ua.conf"
+       }
+       LanguageDefinition "{691AC42FBAD9BC33}" {
+        Code "zh_cn"
+        StringTableRuntime "{BFFC3BEEF9469919}Language/RT_EEI_Localization.zh_cn.conf"
+       }
+      }
+     }
+    }
+   }
   }
   GameProjectConfig XBOX_ONE {
   }
