@@ -39,9 +39,9 @@ class RT_EEI_CopyContextAction : SCR_BaseContextAction
 		
 		// Console local save / PC clipboard save
 		if (GetGame().IsPlatformGameConsole()) {
-			CopiedLoadout = saveContext.ExportToString();
+			CopiedLoadout = saveContext.SaveToString();
 		} else {
-			System.ExportToClipboard(saveContext.ExportToString());
+			System.ExportToClipboard(saveContext.SaveToString());
 		}
 	}
 }
@@ -50,7 +50,7 @@ class RT_EEI_CopyContextAction : SCR_BaseContextAction
 class RT_EEI_PasteContextAction : SCR_SelectedEntitiesContextAction
 {	
 	string m_PasteContextString;
-	ref SCR_JsonLoadContext m_PasteContext;
+	ref JsonLoadContext m_PasteContext;
 	
 	override bool CanBeShown(SCR_EditableEntityComponent hoveredEntity, notnull set<SCR_EditableEntityComponent> selectedEntities, vector cursorWorldPosition, int flags)
 	{				
@@ -94,8 +94,8 @@ class RT_EEI_PasteContextAction : SCR_SelectedEntitiesContextAction
 			loadout = System.ImportFromClipboard();
 		}	
 		
-		SCR_JsonLoadContext ctx = new SCR_JsonLoadContext();		
-		if (!ctx.ImportFromString(loadout)) 
+		JsonLoadContext ctx = new JsonLoadContext();		
+		if (!ctx.LoadFromString(loadout)) 
 		{
 			GetGame().GetCallqueue().Remove(ShowWarningDebounced);
 			GetGame().GetCallqueue().CallLater(ShowWarningDebounced, 100, false);

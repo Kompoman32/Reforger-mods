@@ -31,7 +31,7 @@ modded class SCR_PlacingEditorComponent : SCR_BaseEditorComponent
 {
 	IEntity m_EditInvEntity = null;
 	
-	override bool SetSelectedPrefab(ResourceName prefab = "", bool onConfirm = false, bool showBudgetMaxNotification = true, set<SCR_EditableEntityComponent> recipients = null)
+	override bool SetSelectedPrefab(ResourceName prefab = "", bool onConfirm = false, bool showBudgetMaxNotification = true, set<SCR_EditableEntityComponent> recipients = null, SCR_BaseEditorAction sourceAction = null)
 	{
 		if (m_EditInvEntity)
 		{

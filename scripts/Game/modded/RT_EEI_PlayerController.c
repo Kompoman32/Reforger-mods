@@ -28,7 +28,7 @@ modded class SCR_PlayerController : PlayerController
 		
 		if (selectedEntities.Count() == 0) return;
 		
-		SCR_JsonLoadContext ctx = new SCR_JsonLoadContext();		
+		JsonLoadContext ctx = new JsonLoadContext();		
 		if (!ctx.ImportFromString(pasteContextString)) return;
 		
 		foreach (IEntity entity : selectedEntities)
