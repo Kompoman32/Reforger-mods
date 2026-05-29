@@ -92,7 +92,10 @@ modded class SCR_LoadoutRequestUIComponent : SCR_DeployRequestUIBaseComponent
 		GetGame().GetCallqueue().Remove(FixLoadoutPreview);
 		GetGame().GetCallqueue().CallLater(FixLoadoutPreview, 100, false);
 		
-		m_ChooseFaceButton = SCR_ButtonImageComponent.GetButtonImage("ChooseFaceButton", w);
+		
+		auto imageWidget = w.FindAnyWidget("ChooseFaceButton");
+		if (imageWidget) 
+			m_ChooseFaceButton = SCR_ButtonImageComponent.Cast(imageWidget.FindHandler(SCR_ButtonImageComponent));
 	}
 	
 	protected void FixLoadoutPreview()

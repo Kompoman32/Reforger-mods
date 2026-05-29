@@ -38,8 +38,12 @@ class RT_CF_Utils
 		SCR_CharacterIdentityComponent iden = SCR_CharacterIdentityComponent.Cast(pUserEntity.FindComponent(SCR_CharacterIdentityComponent));
 		if (!iden) return;	
 
-		iden.GetIdentity().GetVisualIdentity().SetHead(pHead);
-		iden.GetIdentity().GetVisualIdentity().SetBody(pBody);
+		VisualIdentity identity = VisualIdentity.Cast(iden.GetIdentity().GetVisualIdentity().Clone());
+		
+		identity.SetHead(pHead);
+		identity.SetBody(pBody);
+		
+		iden.GetIdentity().SetVisualIdentity(identity);
 		iden.CommitChanges();	
 	}
 	
