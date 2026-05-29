@@ -104,8 +104,7 @@ FrameWidgetClass : "{BC83FFDB7BC37F26}UI/layouts/Editor/Attributes/Base/Attribut
                   }
                   HorizontalLayoutWidgetClass "{55367D8E4592BC6E}" {
                    Prefab "{55367D8E4592BC6E}"
-                   Slot AlignableSlot "{66BB203AF599443F}" {
-                    HorizontalAlign 3
+                   Slot OverlayWidgetSlot "{55367D8E4592B383}" {
                     VerticalAlign 0
                    }
                    {
@@ -121,7 +120,7 @@ FrameWidgetClass : "{BC83FFDB7BC37F26}UI/layouts/Editor/Attributes/Base/Attribut
                       ButtonWidgetClass "{66C4AAB1CF3B98D8}" : "{4B5AE6E64037FFB4}UI/layouts/WidgetLibrary/ComboBox/WLib_ComboBox.layout" {
                        Name "AddNewCombobox"
                        Slot AlignableSlot "{553AE28F9DFAE746}" {
-                        Padding 4 4 4 4
+                        Padding 0 0 0 0
                        }
                        components {
                         SCR_ComboBoxComponent "{546B1D464BC32853}" {
@@ -132,9 +131,13 @@ FrameWidgetClass : "{BC83FFDB7BC37F26}UI/layouts/Editor/Attributes/Base/Attribut
                        {
                         SizeLayoutWidgetClass "{553AE28F8D0EA0E1}" {
                          Prefab "{553AE28F8D0EA0E1}"
+                         HeightOverride 56
                          {
                           OverlayWidgetClass "{55367D8E531FD623}" {
                            Prefab "{55367D8E531FD623}"
+                           Slot AlignableSlot "{55367D8E531FD640}" {
+                            Padding 0 0 0 0
+                           }
                            {
                             HorizontalLayoutWidgetClass "{55367D8E4592BC6E}" {
                              Prefab "{55367D8E4592BC6E}"
