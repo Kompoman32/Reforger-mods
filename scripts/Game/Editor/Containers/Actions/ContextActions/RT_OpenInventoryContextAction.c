@@ -14,9 +14,9 @@ class RT_OpenInventoryContextAction : SCR_BaseContextAction
 	{		
 		if (!hoveredEntity) return false;
 		
-		if (hoveredEntity.GetEntityType() == EEditableEntityType.CHARACTER) return true;
+		if (hoveredEntity.GetEntityType() != EEditableEntityType.CHARACTER) return false;
 
-		return false;
+		return true;
 	}
 	
 	override bool CanBePerformed(SCR_EditableEntityComponent hoveredEntity, notnull set<SCR_EditableEntityComponent> selectedEntities, vector cursorWorldPosition, int flags)

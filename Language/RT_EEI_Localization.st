@@ -8,6 +8,20 @@ StringTable {
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
+  CustomStringTableItem "{691CD73BD4855EE9}" {
+   Id "RT_EEI_ContextAction_CopyInventory_Description"
+   Target_en_us "Copy all items from hovered unit."
+   Modified 1763499028
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{691CD73BD876D912}" {
+   Id "RT_EEI_ContextAction_CopyInventory_Name"
+   Target_en_us "Copy loadout"
+   Modified 1763498688
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
   CustomStringTableItem "{691AC42F521D8841}" {
    Id "RT_EEI_ContextAction_EditInventory_Description"
    Target_en_us "Choose arsenal and edit inventory of the entity."
@@ -17,15 +31,36 @@ StringTable {
   }
   CustomStringTableItem "{691AC42F40AA618A}" {
    Id "RT_EEI_ContextAction_EditInventory_Name"
-   Target_en_us "Edit inventory..."
-   Modified 1763363819
+   Target_en_us "Edit loadout..."
+   Modified 1763498677
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{691CD73BD3625DB0}" {
+   Id "RT_EEI_ContextAction_PasteInventory_Description"
+   Target_en_us "Paste items to all selected units."
+   Modified 1763499025
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{691CD73BEE1EFA03}" {
+   Id "RT_EEI_ContextAction_PasteInventory_Name"
+   Target_en_us "Paste loadout"
+   Modified 1763498682
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
   CustomStringTableItem "{691AC429947A7B82}" {
    Id "RT_EEI_Notification_ACTION_NEED_CONTROLLED_ENTITY"
-   Target_en_us "You need to create your player character before you can edit someone's inventory"
-   Modified 1763371034
+   Target_en_us "You need to create your player character before you can edit someone's loadout."
+   Modified 1763498693
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{691B737FE7B47B26}" {
+   Id "RT_EEI_Notification_ACTION_PASTE_INVENTORY_WRONG_FORMAT"
+   Target_en_us "Pasted loadout has wrong format and can't be applied."
+   Modified 1763409440
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
