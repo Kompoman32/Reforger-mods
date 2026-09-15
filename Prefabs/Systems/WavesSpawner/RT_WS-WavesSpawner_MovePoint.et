@@ -16,7 +16,7 @@ RT_WavesSpawner_MovePointEntity {
    m_Flags 34887
   }
   SCR_EditableEntityVisibilityChildComponent "{6739037C2C47E898}" {
-   m_State ACTIVE
+   m_State 160
   }
   RplComponent "{673903642C25C2C2}" {
   }

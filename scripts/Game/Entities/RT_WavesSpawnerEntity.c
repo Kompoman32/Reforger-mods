@@ -14,29 +14,42 @@ class RT_WavesSpawnerEntity: GenericEntity {
 	protected SCR_FactionAffiliationComponent m_FactionAffiliationComponent;
 	protected SCR_EditableSystemComponent m_EditableSystemComponent;
 	
+	bool m_bIsHovered = false;
+	bool m_bIsSelected = false;
+	
 	protected ResourceName m_sMovePointTemplate = "{70C1179FB1CA6C05}Prefabs/Systems/WavesSpawner/RT_WS-WavesSpawner_MovePoint.et";
-	protected RT_WavesSpawner_MovePointEntity m_MovePoint;
+	RT_WavesSpawner_MovePointEntity m_MovePoint;
 	[RplProp(onRplName: "CreateMovePoint_Proxy")]
 	protected RplId m_MovePointRplId;
 	protected vector m_vLastMovePointPosition[4];
 	protected vector m_vLastSpawnerPosition[4];
 	
 	protected ref array<SCR_AIGroup> m_aGroups;
+	[RplProp()]
+	protected int m_iGroupsCount;
 	protected ref array<AIWaypointCycle> m_aWaypoints;
 	
 	bool m_bFactionLess = false;
+	[RplProp()]
 	protected bool m_bEnabled = false;
 	
+	[RplProp()]
 	protected int m_iSpawnDelay = 2;
+	[RplProp()]
 	protected float m_fSpawnTimer;
+	protected float m_fCheckUnitsTimerDelay = 0.5;
+	protected float m_fCheckUnitsTimer;
+	[RplProp(onRplName: "SetAreaRadius")]
 	protected float m_fSpawnRadius = 10;
 	protected int m_iSpawnFindPositionAttempts = 20;
+	[RplProp()]
 	protected bool m_bUseVehicles = false;
 	
 	protected float m_fWaypointUpdateTimer = 1;
 	protected float m_iWaypointUpdateDelay = 1;
 	
 	protected bool m_bIsEnabledAttribute = true;
+	[RplProp()]
 	protected int m_iMaxUnits = 10;
 	
 	protected int m_iMinInGroup = 1;
@@ -46,8 +59,9 @@ class RT_WavesSpawnerEntity: GenericEntity {
 	protected ref SCR_WeightedArray<ResourceName> m_WeightedUnits = new SCR_WeightedArray<ResourceName>();
 	
 	
-	ref Shape m_ConnectLine;
 	bool m_bShowConnectLine;
+	ref Shape m_ConnectLine;
+	ref array<ref Shape> m_ConnectGroupLines = {};
 	ShapeFlags m_ConnectLineFlagsOnHover = ShapeFlags.NOZBUFFER | ShapeFlags.TRANSP;
 	
 	protected ref array<ref RT_WS_VehicleObjectForSort> m_aValidVehiclesForGroupSearch = {};
@@ -62,6 +76,14 @@ class RT_WavesSpawnerEntity: GenericEntity {
 	void ~RT_WavesSpawnerEntity() {
 		if (m_MovePoint) 
 			SCR_EntityHelper.DeleteEntityAndChildren(m_MovePoint);
+		
+		SCR_BaseEditableEntityFilter hoverFilter = SCR_BaseEditableEntityFilter.GetInstance(EEditableEntityState.HOVER);
+		if (hoverFilter)
+			hoverFilter.GetOnChanged().Remove(OnHover);
+		
+		SCR_BaseEditableEntityFilter selectFilter = SCR_BaseEditableEntityFilter.GetInstance(EEditableEntityState.SELECTED);
+		if (selectFilter)
+			selectFilter.GetOnChanged().Remove(OnSelected);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -121,12 +143,22 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		{
 			GetGame().GetCallqueue().CallLater(CreateMovePoint_Proxy, 200, false);
 		}
+		
+		SCR_BaseEditableEntityFilter hoverFilter = SCR_BaseEditableEntityFilter.GetInstance(EEditableEntityState.HOVER);
+		if (hoverFilter)
+			hoverFilter.GetOnChanged().Insert(OnHover);
+		
+		SCR_BaseEditableEntityFilter selectFilter = SCR_BaseEditableEntityFilter.GetInstance(EEditableEntityState.SELECTED);
+		if (selectFilter)
+			selectFilter.GetOnChanged().Insert(OnSelected);
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{		
+		#ifdef ENABLE_DIAG 
 		UpdateConnectedLine();
+		#endif
 
 		if (vector.Distance(GetOrigin(), m_vLastSpawnerPosition[3]) > 1) 
 		{
@@ -134,7 +166,11 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		}
 		
 		if (!Replication.IsServer())
+		{
+			ReduseTimer(timeSlice);
+			UpdateMovePointLastPosition();
 			return;
+		}
 		
 		m_fWaypointUpdateTimer -= timeSlice;	
 		if (m_fWaypointUpdateTimer < 0) 
@@ -144,18 +180,40 @@ class RT_WavesSpawnerEntity: GenericEntity {
 			UpdateWaypoints();	
 		}
 		
-		if (!m_bEnabled) {
+		m_fCheckUnitsTimer -= timeSlice;	
+		if (m_fCheckUnitsTimer < 0) {
+			m_fCheckUnitsTimer = m_fCheckUnitsTimerDelay;
+		
+			if (Spawn_CleanNullUnits()) {
+				// If we had a full stack and one is dead now, we need to reset timer for the sake of fairness.
+				if (GetGroupsCount() == GetMaxUnits() - 1)
+					m_fSpawnTimer = m_iSpawnDelay;
+				Replication.BumpMe();
+			}
+		}
+		
+		if (!GetSpawnEnabledBySettings()) {
 			return;
 		}
 		
+		if (ReduseTimer(timeSlice)) {
+			Spawn();
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// return bool - changed
+	protected bool ReduseTimer(float timeSlice)
+	{
 		m_fSpawnTimer -= timeSlice;
 
 		if (m_fSpawnTimer < 0) 
 		{
 			m_fSpawnTimer = m_iSpawnDelay;
+			return true;
+		}
 		
-			Spawn();
-		}	
+		return false;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -163,7 +221,7 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		RefreshSpawnParameters();
 	}
 	
-	//============================ MOVE POINT ============================\\
+	//============================ MOVE POINT ============================\\	
 	//------------------------------------------------------------------------------------------------
 	protected void CreateMovePoint()
 	{					
@@ -197,7 +255,9 @@ class RT_WavesSpawnerEntity: GenericEntity {
 	//------------------------------------------------------------------------------------------------
 	protected void CreateMovePoint_Delayed()
 	{	
+		#ifdef ENABLE_DIAG 
 		UpdateConnectedLine();
+		#endif
 		
 		m_MovePointRplId = Replication.FindItemId(m_MovePoint);
 		
@@ -221,19 +281,69 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		areaMesh.GenerateAreaMesh();
 	}
 	
+	protected bool UpdateMovePointLastPosition()
+	{			
+		if (vector.Distance(m_MovePoint.GetOrigin(), m_vLastMovePointPosition[3]) < 0.2) return false;
+		
+		vector movePointTransform[4];
+		m_MovePoint.GetTransform(movePointTransform);
+		m_vLastMovePointPosition = movePointTransform;
+		return true;
+	}
+	
 	//============================ CONNECT LINES ============================\\
+	//------------------------------------------------------------------------------------------------
+	protected void OnHover(EEditableEntityState state, set<SCR_EditableEntityComponent> entitiesInsert, set<SCR_EditableEntityComponent> entitiesRemove)
+	{
+		if (entitiesRemove) {
+			foreach (auto comp: entitiesRemove)
+			{
+				if (comp == m_EditableSystemComponent) {
+					m_bIsHovered = false;
+					return;
+				}
+			}
+		}
+		
+		if (entitiesInsert) {
+			foreach (auto comp: entitiesInsert)
+			{
+				if (comp == m_EditableSystemComponent) {
+					m_bIsHovered = true;
+					return;
+				}
+			}
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected void OnSelected(EEditableEntityState state, set<SCR_EditableEntityComponent> entitiesInsert, set<SCR_EditableEntityComponent> entitiesRemove)
+	{
+		if (entitiesRemove) {
+			foreach (auto comp: entitiesRemove)
+			{
+				if (comp == m_EditableSystemComponent) {
+					m_bIsSelected = false;
+					return;
+				}
+			}
+		}
+		
+		if (entitiesInsert) {
+			foreach (auto comp: entitiesInsert)
+			{
+				if (comp == m_EditableSystemComponent) {
+					m_bIsSelected = true;
+					return;
+				}
+			}
+		}
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	protected void CreateConnectLine()
 	{		
 		if (!m_MovePoint) return;
-		
-		vector movePointTransform[4];
-			
-		m_MovePoint.GetWorldTransform(movePointTransform);
-		
-		vector lineVerts[2];
-		lineVerts[0] = GetOrigin();
-		lineVerts[1] = movePointTransform[3];
 	
 		Color color = Color.White;
 		
@@ -247,26 +357,67 @@ class RT_WavesSpawnerEntity: GenericEntity {
 			}
 		}
 		
-		m_ConnectLine = Shape.CreateLines(color.PackToInt(), m_ConnectLineFlagsOnHover, lineVerts, 2);
+		m_ConnectLine = Shape.CreateLine(color.PackToInt(), m_ConnectLineFlagsOnHover, GetOrigin(), m_MovePoint.GetOrigin());
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected void CreateGroupsConnectLine()
+	{		
+		if (!m_MovePoint) return;
+		
+		vector movePointTransform[4];
+			
+		m_MovePoint.GetWorldTransform(movePointTransform);
+	
+		Color color = Color.White;
+		
+		if (m_FactionAffiliationComponent)
+		{
+			Faction faction = m_FactionAffiliationComponent.GetAffiliatedFaction();
+			
+			if (faction)
+			{
+				color = faction.GetFactionColor();
+			}
+		}
+		
+		// color.SetA(color.A() * 2);
+		int colorInt = color.PackToInt();
+			
+		vector groupTransform[4];
+		
+		foreach (int i, SCR_AIGroup group: m_aGroups)
+		{
+			if (!group) continue;
+			
+			group.GetTransform(groupTransform);
+			
+			vector lineVerts[2];
+			lineVerts[0] = groupTransform[3];
+			lineVerts[1] = movePointTransform[3];
+			
+			m_ConnectGroupLines.Insert(Shape.CreateLines(colorInt, m_ConnectLineFlagsOnHover, lineVerts, 2, 0.5));			
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	protected void UpdateConnectedLine()
 	{
 		m_bShowConnectLine = false;
+		m_ConnectGroupLines.Clear();
 		
-		if (!m_EditableSystemComponent || !m_MovePoint || !m_MovePoint.m_EditableEntityComponent) return;
+		if (!m_EditableSystemComponent || !m_MovePoint || !m_MovePoint.m_EditableEntityComponent) 
+		{
+			m_ConnectLine = null;
+			return;
+		}
 		
-		EEditableEntityState entityStateToCheck = EEditableEntityState.HOVER | EEditableEntityState.SELECTED;
-		EEditableEntityState spawnerState = m_EditableSystemComponent.GetEntityStates();
-		EEditableEntityState movePointState = m_MovePoint.m_EditableEntityComponent.GetEntityStates();
-		
-		if ((spawnerState & entityStateToCheck || movePointState & entityStateToCheck) 
+		if ((m_bIsHovered || m_bIsSelected || m_MovePoint.m_bIsHovered || m_MovePoint.m_bIsSelected) 
 			&& m_EditableSystemComponent.GetVisibleSelf()
 			&& m_MovePoint.m_EditableEntityComponent.GetVisibleSelf())
 		{
 			m_bShowConnectLine = true;
-		}	
+		}
 				
 		if (!m_bShowConnectLine)
 		{
@@ -274,10 +425,11 @@ class RT_WavesSpawnerEntity: GenericEntity {
 			return;
 		}
 		
-		vector movePointTransform[4];
-		m_MovePoint.GetWorldTransform(movePointTransform);
+		if (m_MovePoint.m_bIsHovered) {
+			CreateGroupsConnectLine();
+		}
 		
-		if (m_ConnectLine && vector.Distance(movePointTransform[3], m_vLastMovePointPosition[3]) < 1 && vector.Distance(GetOrigin(), m_vLastSpawnerPosition[3]) < 1)
+		if (m_ConnectLine && vector.Distance(m_MovePoint.GetOrigin(), m_vLastMovePointPosition[3]) < 1 && vector.Distance(GetOrigin(), m_vLastSpawnerPosition[3]) < 1)
 			return;
 		
 		CreateConnectLine();
@@ -286,10 +438,9 @@ class RT_WavesSpawnerEntity: GenericEntity {
 	//============================ SPAWN ============================\\
 	//------------------------------------------------------------------------------------------------
 	protected void Spawn() 
-	{	
-		Spawn_CleanNullUnits();
-		
-		if (m_aGroups.Count() >= m_iMaxUnits) return;
+	{
+		if (m_aGroups.Count() >= m_iMaxUnits) 
+			return;
 		
 		EntitySpawnParams params = new EntitySpawnParams();
 		params.TransformMode = ETransformMode.WORLD;
@@ -297,7 +448,8 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		
 		vector offsetPos = Spawn_GetPointToSpawn();
 		
-		if (offsetPos == vector.Zero) return;
+		if (offsetPos == vector.Zero) 
+			return;
 		
 		params.Transform[3] = offsetPos;
 		
@@ -305,18 +457,15 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		
 		SCR_AIGroup group = SCR_AIGroup.Cast(GetGame().SpawnEntityPrefab(groupPrefab, null, params));
 		
-		if (!group) return;
+		if (!group) 
+			return;
 		
 		if (m_bFactionLess && m_FactionAffiliationComponent)
-		{
-			group.SetFaction(m_FactionAffiliationComponent.GetAffiliatedFaction())
-		}
+			group.SetFaction(m_FactionAffiliationComponent.GetAffiliatedFaction());
 		
 		int unitsInGroup = s_AIRandomGenerator.RandInt(m_iMinInGroup, m_iMaxInGroup + 1);
 		while (unitsInGroup > m_iMaxInGroup)
-		{
 			unitsInGroup = s_AIRandomGenerator.RandInt(m_iMinInGroup, m_iMaxInGroup + 1);
-		}
 		
 		group.SetMaxUnitsToSpawn(unitsInGroup);
 		
@@ -332,19 +481,20 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		group.m_aSpawnedWaypoints.Clear();
 		
 		AIWaypointCycle wp = CreateUnitWaypoint();
-		if (!wp) return;
+		if (!wp)
+			return;		
 		
-		
-		if (m_bUseVehicles)
-		{			
+		if (m_bUseVehicles)	
 			SpawnGroupInVehicle(group, unitsInGroup);
-		}
 		
 		group.AddWaypoint(wp);
 		group.SpawnUnits();
 		
 		m_aGroups.Insert(group);
+		m_iGroupsCount = m_aGroups.Count();
 		m_aWaypoints.Insert(wp);
+		
+		Replication.BumpMe();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -365,33 +515,38 @@ class RT_WavesSpawnerEntity: GenericEntity {
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	protected void Spawn_CleanNullUnits()
+	// return bool - changed
+	protected bool Spawn_CleanNullUnits()
 	{		
 		bool allCleared = false;
+		bool changed = false;
 		
 		while (!allCleared)
 		{
 			allCleared = true;
 			
-			foreach(int i, SCR_AIGroup group: m_aGroups)
+			foreach (int i, SCR_AIGroup group: m_aGroups)
 			{
 				if (!group)
 				{
 					m_aGroups.Remove(i);
 					
-					if (m_aWaypoints[i])
+					if (i < m_aWaypoints.Count() && m_aWaypoints[i])
 					{
 						ClearCycleWaypoint(group, m_aWaypoints[i]);
+						m_aWaypoints.Remove(i);
 					}
 					
-					m_aWaypoints.Remove(i);
-					
 					allCleared = false;
+					changed = true;
 					break;
 				}
 			}
-			
 		}
+		
+		m_iGroupsCount = m_aGroups.Count();
+		
+		return changed;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -523,7 +678,7 @@ class RT_WavesSpawnerEntity: GenericEntity {
 	//============================ SPAWN PARAMETERS ============================\\
 	//------------------------------------------------------------------------------------------------
 	void RefreshSpawnParameters()
-	{
+	{				
 		if (!Replication.IsServer() || SCR_Global.IsEditMode()) return;		
 		
 		GetGame().GetCallqueue().Remove(SetSpawnParameters);
@@ -544,6 +699,7 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		{
 			m_bEnabled = false;
 			m_WeightedUnits.Clear();
+			Replication.BumpMe();
 			return;
 		}
 		
@@ -563,7 +719,10 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		
 		m_WeightedUnits.Clear();
 		
-		if (!m_bEnabled || totalCount == 0) return;	
+		if (!m_bEnabled || totalCount == 0) {
+			Replication.BumpMe();
+			return;	
+		}
 		
 		foreach (Tuple2<string, int> setting: m_aUnitsSettings)
 		{
@@ -583,21 +742,20 @@ class RT_WavesSpawnerEntity: GenericEntity {
 				wp.SetCompletionRadius(m_MovePoint.GetAreaRadius());
 			}
 		}
+		
+		Replication.BumpMe();
 	}
 
 	//============================ WAYPOINTS ============================\\
 	//------------------------------------------------------------------------------------------------
 	protected void UpdateWaypoints() {		
 		if (!m_MovePoint) return;		
-				
-		vector movePointTransform[4];
-		m_MovePoint.GetWorldTransform(movePointTransform);
 		
 		CheckGroupsNoWaypoints();
-		if (vector.Distance(movePointTransform[3], m_vLastMovePointPosition[3]) < 1) return;
-		
-		m_vLastMovePointPosition = movePointTransform;
-		
+		if (!UpdateMovePointLastPosition()) {
+			return;
+		}
+						
 		EntitySpawnParams params = new EntitySpawnParams();
 		params.TransformMode = ETransformMode.WORLD;
 		params.Transform[3] = m_MovePoint.GetOrigin();
@@ -608,7 +766,7 @@ class RT_WavesSpawnerEntity: GenericEntity {
 			
 			ClearCycleWaypoint(group, cycleWp);
 			AddMoveWaypointsToCycle(cycleWp, params);
-			cycleWp.SetTransform(movePointTransform);		
+			cycleWp.SetTransform(m_vLastMovePointPosition);		
 			AssignNearbyVehicle(group);
 		}
 	}
@@ -655,7 +813,7 @@ class RT_WavesSpawnerEntity: GenericEntity {
 	}
 
 	//------------------------------------------------------------------------------------------------
-	protected AIWaypointCycle CreateUnitWaypoint()
+	AIWaypointCycle CreateUnitWaypoint()
 	{		
 		EntitySpawnParams params = new EntitySpawnParams();
 		params.TransformMode = ETransformMode.WORLD;
@@ -820,6 +978,14 @@ class RT_WavesSpawnerEntity: GenericEntity {
 	{
 		return !!SCR_ChimeraCharacter.Cast(pEntity);
 	}
+	
+	protected void SetAreaRadius()
+	{
+		if (m_AreaMesh)
+		{
+			m_AreaMesh.SetRadius(m_fSpawnRadius);
+		}
+	}
 
 		
 	//============================ UTILS ============================\\
@@ -832,6 +998,30 @@ class RT_WavesSpawnerEntity: GenericEntity {
 	}
 	
 	//============================ GETTERS - SETTERS ============================\\
+	//------------------------------------------------------------------------------------------------
+	RT_WavesSpawner_MovePointEntity GetMovePoint()
+	{
+		return m_MovePoint;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	array<SCR_AIGroup> GetGroups()
+	{
+		return m_aGroups;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	int GetGroupsCount()
+	{
+		return m_iGroupsCount;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	array<AIWaypointCycle> GetWaypoints()
+	{
+		return m_aWaypoints;
+	}	
+	
 	//------------------------------------------------------------------------------------------------
 	Faction GetFaction()
 	{
@@ -857,6 +1047,12 @@ class RT_WavesSpawnerEntity: GenericEntity {
 			}
 		}
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	bool GetSpawnEnabledBySettings()
+	{
+		return m_bEnabled;
+	}	
 	
 	//------------------------------------------------------------------------------------------------
 	bool GetEnabled()
@@ -901,6 +1097,12 @@ class RT_WavesSpawnerEntity: GenericEntity {
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	float GetSpawnTimer()
+	{
+		return m_fSpawnTimer;
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	int GetMinInGroup()
 	{
 		return m_iMinInGroup;
@@ -939,10 +1141,7 @@ class RT_WavesSpawnerEntity: GenericEntity {
 	{
 		m_fSpawnRadius = pSpawnRadius;
 		
-		if (m_AreaMesh)
-		{
-			m_AreaMesh.SetRadius(pSpawnRadius);
-		}
+		SetAreaRadius();
 		
 		RefreshSpawnParameters();
 	}

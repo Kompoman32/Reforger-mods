@@ -4,6 +4,9 @@ class RT_WavesSpawner_MovePointEntity: GenericEntity {
 	SCR_CustomAreaMeshComponent m_AreaMesh;
 	SCR_EditableEntityComponent m_EditableEntityComponent;
 	
+	bool m_bIsHovered = false;
+	bool m_bIsSelected = false;
+	
 	RT_WavesSpawnerEntity m_Spawner;
 	
 	[RplProp(onRplName: "onRplChangeRadius")]
@@ -11,6 +14,17 @@ class RT_WavesSpawner_MovePointEntity: GenericEntity {
 	
 	void RT_WavesSpawner_MovePointEntity(IEntitySource src, IEntity parent) {
 		SetEventMask(EntityEvent.INIT);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void ~RT_WavesSpawner_MovePointEntity() {		
+		SCR_BaseEditableEntityFilter hoverFilter = SCR_BaseEditableEntityFilter.GetInstance(EEditableEntityState.HOVER);
+		if (hoverFilter)
+			hoverFilter.GetOnChanged().Remove(OnHover);
+		
+		SCR_BaseEditableEntityFilter selectFilter = SCR_BaseEditableEntityFilter.GetInstance(EEditableEntityState.SELECTED);
+		if (selectFilter)
+			selectFilter.GetOnChanged().Remove(OnSelected);
 	}
 	
 	override void EOnInit(IEntity owner)
@@ -21,6 +35,24 @@ class RT_WavesSpawner_MovePointEntity: GenericEntity {
 		if (m_AreaMesh)
 		{
 			m_fRadius = m_AreaMesh.GetRadius();
+		}
+		
+		GetGame().GetCallqueue().Remove(DelayInit);
+		GetGame().GetCallqueue().CallLater(DelayInit, 500, false);
+		
+		SCR_BaseEditableEntityFilter hoverFilter = SCR_BaseEditableEntityFilter.GetInstance(EEditableEntityState.HOVER);
+		if (hoverFilter)
+			hoverFilter.GetOnChanged().Insert(OnHover);
+		
+		SCR_BaseEditableEntityFilter selectFilter = SCR_BaseEditableEntityFilter.GetInstance(EEditableEntityState.SELECTED);
+		if (selectFilter)
+			selectFilter.GetOnChanged().Insert(OnSelected);
+	}
+	
+	void DelayInit()
+	{
+		if (!m_Spawner) {
+			SCR_EntityHelper.DeleteEntityAndChildren(this);
 		}
 	}
 	
@@ -54,5 +86,52 @@ class RT_WavesSpawner_MovePointEntity: GenericEntity {
 		
 		SetAreaRadius(m_fRadius);
 	}
-
+	
+		//------------------------------------------------------------------------------------------------
+	protected void OnHover(EEditableEntityState state, set<SCR_EditableEntityComponent> entitiesInsert, set<SCR_EditableEntityComponent> entitiesRemove)
+	{
+		if (entitiesRemove) {
+			foreach (auto comp: entitiesRemove)
+			{
+				if (comp == m_EditableEntityComponent) {
+					m_bIsHovered = false;
+					return;
+				}
+			}
+		}
+		
+		if (entitiesInsert) {
+			foreach (auto comp: entitiesInsert)
+			{
+				if (comp == m_EditableEntityComponent) {
+					m_bIsHovered = true;
+					return;
+				}
+			}
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected void OnSelected(EEditableEntityState state, set<SCR_EditableEntityComponent> entitiesInsert, set<SCR_EditableEntityComponent> entitiesRemove)
+	{
+		if (entitiesRemove) {
+			foreach (auto comp: entitiesRemove)
+			{
+				if (comp == m_EditableEntityComponent) {
+					m_bIsSelected = false;
+					return;
+				}
+			}
+		}
+		
+		if (entitiesInsert) {
+			foreach (auto comp: entitiesInsert)
+			{
+				if (comp == m_EditableEntityComponent) {
+					m_bIsSelected = true;
+					return;
+				}
+			}
+		}
+	}
 }

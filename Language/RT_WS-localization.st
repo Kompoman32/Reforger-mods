@@ -1,6 +1,30 @@
 StringTable {
  ItemClassName "CustomStringTableItem"
  Items {
+  CustomStringTableItem "{6A5AF2FB859C1D96}" {
+   Id "RT_WS-Editor_TooltipDetail_Groups_Name"
+   Target_en_us "Groups"
+   Target_ru_ru "Группы"
+   Modified 1784350644
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6A5AF2FA474CCB05}" {
+   Id "RT_WS-Editor_TooltipDetail_NextSpawn_Name"
+   Target_en_us "Next spawn"
+   Target_ru_ru "След. спавн"
+   Modified 1784362679
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6A5AF2FEF224B79B}" {
+   Id "RT_WS-Editor_TooltipDetail_UseVehicles_Name"
+   Target_en_us "Use vehicles"
+   Target_ru_ru "Использовать транспорт"
+   Modified 1784351546
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
   CustomStringTableItem "{673AD766CCF9FAB7}" {
    Id "RT_WS-MovePoint_Attribute_Radius_Description"
    Target_en_us "Radius of assembly point area"
@@ -250,6 +274,38 @@ StringTable {
    Target_en_us "Add Nearby Units to Spawner"
    Target_ru_ru "Добавить ближайших юнитов в спавнер"
    Modified 1760242472
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6A5D3E5C0F7B5195}" {
+   Id "RT_WS_ContextAction_CameraMoveToMovePoint_Description"
+   Target_en_us "Instantly teleport the camera to Assembly point"
+   Target_ru_ru "Мнгновенно телепортировать камеру к Точке сбора"
+   Modified 1784508135
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6A5D3E5DF0DF677A}" {
+   Id "RT_WS_ContextAction_CameraMoveToMovePoint_Name"
+   Target_en_us "Move camera to Assembly point"
+   Target_ru_ru "Подвинуть камеру к Точке сбора"
+   Modified 1784508043
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6A5D3E5C0A629BF5}" {
+   Id "RT_WS_ContextAction_CameraMoveToSpawner_Description"
+   Target_en_us "Instantly teleport the camera to Spawner"
+   Target_ru_ru "Мнгновенно телепортировать камеру к Спавнеру"
+   Modified 1784508139
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6A5D3E5DF7FE16B7}" {
+   Id "RT_WS_ContextAction_CameraMoveToSpawner_Name"
+   Target_en_us "Move camera to Spawner"
+   Target_ru_ru "Подвинуть камеру к Спавнеру"
+   Modified 1784508047
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
