@@ -9,8 +9,8 @@ RT_WavesSpawnerEntity : "{01BCDFF34020614D}Prefabs/Systems/WavesSpawner/RT_WS-Wa
     Name "#RT_WS-WavesSpawner_MEI_Name"
     Description "#RT_WS-WavesSpawner_MEI_Description"
     m_sFaction "MEI"
-    m_aAuthoredLabels {
-     ENTITYTYPE_SYSTEM FACTION_MEI CONTENT_MODDED TRAIT_SPAWNPOINT TRAIT_SUPPRESSIVE
+    m_aAuthoredLabels + {
+     FACTION_MEI
     }
    }
   }

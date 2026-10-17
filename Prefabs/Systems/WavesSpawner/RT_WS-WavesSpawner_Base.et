@@ -19,7 +19,7 @@ RT_WavesSpawnerEntity {
     m_Image "{C074811796ED8EAC}UI/Textures/Editor/Toolbar/ToolbarAction_PlaceOccupants.edds"
     m_sFaction "FACTION_NONE"
     m_aAuthoredLabels {
-     ENTITYTYPE_SYSTEM FACTION_NONE CONTENT_MODDED TRAIT_SPAWNPOINT TRAIT_SUPPRESSIVE
+     ENTITYTYPE_SYSTEM CONTENT_MODDED TRAIT_SUPPRESSIVE TRAIT_WAVES_SPAWNER
     }
     m_bFullBackgroundAssetCard 0
    }

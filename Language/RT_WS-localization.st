@@ -25,6 +25,22 @@ StringTable {
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
+  CustomStringTableItem "{6AA30A9F796AC5DB}" {
+   Id "RT_WS-Editor_WavesSpawner_Attribute_Description"
+   Target_en_us "Spawners to generate unit waves"
+   Target_ru_ru "Спавнеры для генерации волн юнитов"
+   Modified 1789070261
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6AA30A9F149C8C89}" {
+   Id "RT_WS-Editor_WavesSpawner_Attribute_Name"
+   Target_en_us "Wave Spawners"
+   Target_ru_ru "Спавнер Волн"
+   Modified 1789070082
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
   CustomStringTableItem "{673AD766CCF9FAB7}" {
    Id "RT_WS-MovePoint_Attribute_Radius_Description"
    Target_en_us "Radius of assembly point area"
