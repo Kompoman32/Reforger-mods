@@ -1,0 +1,22 @@
+SCR_AIGroup : "{256AEA338E84EC28}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Summer/Group_RHS_RF_MSV_VKPO_S_RifleSquad.et" {
+ ID "0000000000000001"
+ components {
+  SCR_EditableGroupComponent "{50D291F6C83FA532}" {
+   m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
+    m_Image "{CA2D71E8A8F8898A}UI/Textures/EditorPreviews/Characters/Factions/INDFOR/ION/Character_RHS_ION_Rifleman.edds"
+    m_sFaction "RHS_ION"
+    m_aAuthoredLabels {
+     4 10546 10513 25 34 38 27
+    }
+   }
+  }
+  SCR_GroupIdentityComponent "{56366C5C50AD3CF2}" {
+   m_MilitarySymbol SCR_MilitarySymbol "{56366C5C4E32A359}" {
+    m_Identity INDFOR
+   }
+  }
+ }
+ m_faction "RHS_ION"
+ m_bSpawnImmediately 0
+ m_fMemberSpawnDelay 250
+}

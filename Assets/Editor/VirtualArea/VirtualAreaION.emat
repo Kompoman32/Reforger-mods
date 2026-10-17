@@ -1,0 +1,4 @@
+MatCommon : "{E65E61D1541003E2}Assets/Editor/VirtualArea/VirtualArea.emat" {
+ Color 0 0.44 0.078 1
+ AlphaMul 0.1
+}

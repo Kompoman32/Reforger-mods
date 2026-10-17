@@ -89,6 +89,54 @@ StringTable {
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
+  CustomStringTableItem "{6AA2FA9F7D1ECF62}" {
+   Id "RT_WS-WavesSpawner_ION_Description"
+   Target_en_us "Spawner to generate waves of ION units"
+   Target_ru_ru "Спавнер для генерации волн ION юнитов"
+   Modified 1789066163
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6AA2FA9F7FE3A2CA}" {
+   Id "RT_WS-WavesSpawner_ION_Name"
+   Target_en_us "ION Spawner"
+   Target_ru_ru "ION Спавнер Волн"
+   Modified 1789066167
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6AA2E22AA201A651}" {
+   Id "RT_WS-WavesSpawner_MEI_Description"
+   Target_en_us "Spawner to generate waves of MEI units"
+   Target_ru_ru "Спавнер для генерации волн MEI юнитов"
+   Modified 1789059963
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6AA2E22ABC25C30A}" {
+   Id "RT_WS-WavesSpawner_MEI_Name"
+   Target_en_us "MEI Waves Spawner"
+   Target_ru_ru "MEI Спавнер Волн"
+   Modified 1789059953
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6AA2FA9F6090009B}" {
+   Id "RT_WS-WavesSpawner_MSV_Description"
+   Target_en_us "Spawner to generate waves of AFRF units"
+   Target_ru_ru "Спавнер для генерации волн AFRF юнитов"
+   Modified 1789066178
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6AA2FA9F670583BF}" {
+   Id "RT_WS-WavesSpawner_MSV_Name"
+   Target_en_us "AFRF Spawner"
+   Target_ru_ru "ВС РФ Спавнер Волн"
+   Modified 1789066184
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
   CustomStringTableItem "{66C522F7DA64C3C9}" {
    Id "RT_WS-WavesSpawner_US_Description"
    Target_en_us "Spawner to generate waves of US units"
@@ -102,6 +150,22 @@ StringTable {
    Target_en_us "US Waves Spawner"
    Target_ru_ru "США Спавнер Волн"
    Modified 1751944689
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6AA2FA9F62D6A791}" {
+   Id "RT_WS-WavesSpawner_USMC_Description"
+   Target_en_us "Spawner to generate waves of USMC units"
+   Target_ru_ru "Спавнер для генерации волн USMC юнитов"
+   Modified 1789066200
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{6AA2FA9F5AF299BD}" {
+   Id "RT_WS-WavesSpawner_USMC_Name"
+   Target_en_us "USMC Spawner"
+   Target_ru_ru "ВС США Спавнер Волн"
+   Modified 1789066062
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }

@@ -1,0 +1,29 @@
+RT_WavesSpawnerEntity : "{01BCDFF34020614D}Prefabs/Systems/WavesSpawner/RT_WS-WavesSpawner_Base.et" {
+ ID "66C4FC0EFDAD2E18"
+ components {
+  SCR_CustomAreaMeshComponent "{66C4FC0EB0AF7F8D}" {
+   m_Material "{2E9AFF015C219573}Assets/Editor/VirtualArea/VirtualAreaMSV.emat"
+  }
+  SCR_EditableSystemComponent "{66C4FC0F24314611}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{66C4FC0F4C80F2C4}" {
+    Name "#RT_WS-WavesSpawner_MSV_Name"
+    Description "#RT_WS-WavesSpawner_MSV_Description"
+    m_sFaction "RHS_AFRF"
+    m_aAuthoredLabels {
+     ENTITYTYPE_SYSTEM FACTION_RHS_AFRF CONTENT_MODDED TRAIT_SPAWNPOINT TRAIT_SUPPRESSIVE
+    }
+   }
+  }
+  SCR_FactionAffiliationComponent "{66C522ED63080FC6}" {
+   "faction affiliation" "RHS_AFRF"
+  }
+ }
+ coords -40.708 33.405 29.819
+ m_sUnitsGroupPrefab "{949A54E9F28D99F9}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Summer/AmbientPatrols/Group_RHS_RF_MSV_VKPO_S_RifleSquad_NotSpawned.et"
+ m_aAvailableResourceNames {
+  "{234A37EC8608DFAC}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/RandomSoldiers/Character_RHS_RF_MSV_VKPO_DS_Rifleman_Random.et" "{E553B736235BCB11}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/RandomSoldiers/Character_RHS_RF_MSV_VKPO_DS_Sharpshooter_Random.et" "{5F894D964A5D5B57}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/RandomSoldiers/Character_RHS_RF_MSV_VKPO_DS_GL_Random.et" "{FE21D24A18D4CC93}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/RandomSoldiers/Character_RHS_RF_MSV_VKPO_DS_MG_Random.et" "{F11CCA20FCC74AA3}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/RandomSoldiers/Character_RHS_RF_MSV_VKPO_DS_AT_Random.et"
+ }
+ m_aAvailableDisplayNames {
+  "#AR-Role_Rifleman" "#AR-Role_Sniper" "#AR-Role_Grenadier" "#AR-Role_MachineGunner" "#AR-Role_AntiTank"
+ }
+}

@@ -1,0 +1,28 @@
+RT_WavesSpawnerEntity : "{01BCDFF34020614D}Prefabs/Systems/WavesSpawner/RT_WS-WavesSpawner_Base.et" {
+ ID "66C4FC0EFDAD2E18"
+ components {
+  SCR_CustomAreaMeshComponent "{66C4FC0EB0AF7F8D}" {
+   m_Material "{68EFA9CBF55F0158}Assets/Editor/VirtualArea/VirtualAreaUSMC.emat"
+  }
+  SCR_EditableSystemComponent "{66C4FC0F24314611}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{66C4FC0F4C80F2C4}" {
+    Name "#RT_WS-WavesSpawner_USMC_Name"
+    Description "#RT_WS-WavesSpawner_USMC_Description"
+    m_sFaction "RHS_USAF"
+    m_aAuthoredLabels {
+     ENTITYTYPE_SYSTEM FACTION_RHS_USAF CONTENT_MODDED TRAIT_SPAWNPOINT TRAIT_SUPPRESSIVE
+    }
+   }
+  }
+  SCR_FactionAffiliationComponent "{66C522ED63080FC6}" {
+   "faction affiliation" "RHS_USAF"
+  }
+ }
+ m_sUnitsGroupPrefab "{99E99A4389ADC0FD}Prefabs/Groups/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/AmbientPatrols/Group_USAF_USMC_MEF_RifleSquad_NotSpawned.et"
+ m_aAvailableResourceNames {
+  "{57D7778DA629BF0F}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/RandomSoldiers/Character_RHS_USAF_USMC_Rifleman_Random.et" "{19678B9267B3574A}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Character_RHS_USAF_USMC_Sniper.et" "{FBD08843D6ECEE72}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/RandomSoldiers/Character_RHS_USAF_USMC_GL_Random.et" "{FD7312CB51653D61}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/RandomSoldiers/Character_RHS_USAF_USMC_MG_Random.et" "{9380B9C47952BDF0}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/RandomSoldiers/Character_RHS_USAF_USMC_AT_Random.et" "{40E763EC857ABAEB}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/RandomSoldiers/Character_RHS_USAF_USMC_Medic_Random.et"
+ }
+ m_aAvailableDisplayNames {
+  "#AR-Role_Rifleman" "#AR-Role_Sniper" "#AR-Role_Grenadier" "#AR-Role_MachineGunner" "#AR-Role_AntiTank" "#AR-Role_Medic"
+ }
+}

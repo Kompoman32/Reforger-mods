@@ -1,0 +1,46 @@
+SCR_ChimeraCharacter : "{6D3138DA846660AE}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_Generic_Base.et" {
+ ID "520EC961A090B1EE"
+ components {
+  FactionAffiliationComponent "{60DC952FF79A02F1}" {
+   "faction affiliation" "MEI"
+  }
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Name "Insurgent Automatic Rifleman Random"
+    Icon "{C431FD61793AA13F}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Random.edds"
+    m_Image "{8E1E15DB2275C7E2}Textures/ImagePreview/RAMMEI.edds"
+    m_sFaction "MEI"
+    m_aAuthoredLabels {
+     TRAIT_RANDOMIZED GROUPSIZE_SMALL ENTITYTYPE_CHARACTER FACTION_MEI TRAIT_UNARMED
+    }
+    m_aAutoLabels {
+     SIZE_M
+    }
+   }
+   m_VariantData SCR_EditableEntityVariantData "{686C828FE294C980}" {
+    m_bRandomizeDefaultVariant 0
+    m_aVariants {
+     SCR_EditableEntityVariant "{686C828FE294C988}" {
+      m_sVariantPrefab "{B582888C61E30624}Prefabs/Characters/Factions/IND/MEI/Character_MEI_LMG1.et"
+     }
+     SCR_EditableEntityVariant "{686C828FE294C98A}" {
+      m_sVariantPrefab "{D9D6BC6CDD27890A}Prefabs/Characters/Factions/IND/MEI/Character_MEI_LMG2.et"
+     }
+    }
+   }
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+     Prefab "{A4C49AAA6A130633}Prefabs/Characters/HeadGear/Hat_FlatCap_01/TakHat01.et"
+    }
+    LoadoutSlotInfo Jacket {
+     Prefab "{5DDFC0CC1EFF5583}Prefabs/Characters/Uniforms/TakShirts/ChilabaFull02.et"
+    }
+    LoadoutSlotInfo Pants {
+     Prefab ""
+    }
+   }
+  }
+ }
+}

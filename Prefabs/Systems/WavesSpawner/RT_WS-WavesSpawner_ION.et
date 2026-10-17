@@ -1,0 +1,28 @@
+RT_WavesSpawnerEntity : "{01BCDFF34020614D}Prefabs/Systems/WavesSpawner/RT_WS-WavesSpawner_Base.et" {
+ ID "66C4FC0EFDAD2E18"
+ components {
+  SCR_CustomAreaMeshComponent "{66C4FC0EB0AF7F8D}" {
+   m_Material "{2AF78C621014CF23}Assets/Editor/VirtualArea/VirtualAreaION.emat"
+  }
+  SCR_EditableSystemComponent "{66C4FC0F24314611}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{66C4FC0F4C80F2C4}" {
+    Name "#RT_WS-WavesSpawner_ION_Name"
+    Description "#RT_WS-WavesSpawner_ION_Description"
+    m_sFaction "RHS_ION"
+    m_aAuthoredLabels {
+     ENTITYTYPE_SYSTEM FACTION_RHS_ION CONTENT_MODDED TRAIT_SPAWNPOINT TRAIT_SUPPRESSIVE
+    }
+   }
+  }
+  SCR_FactionAffiliationComponent "{66C522ED63080FC6}" {
+   "faction affiliation" "RHS_ION"
+  }
+ }
+ m_sUnitsGroupPrefab "{CFB7461F07817B5F}Prefabs/Groups/INDFOR/RHS_ION/Group_RHS_ION_RifleSquad_NotSpawned.et"
+ m_aAvailableResourceNames {
+  "{CBE926A2584FB99D}Prefabs/Characters/Factions/INDFOR/RHS_ION/RandomSoldiers/Character_RHS_ION_Rifleman_Random.et" "{36486F2E69C2B19E}Prefabs/Characters/Factions/INDFOR/RHS_ION/RandomSoldiers/Character_RHS_ION_Marksman_Random.et" "{006311076DB5EE8A}Prefabs/Characters/Factions/INDFOR/RHS_ION/RandomSoldiers/Character_RHS_ION_SL_Random.et" "{9E91A3DF0026F060}Prefabs/Characters/Factions/INDFOR/RHS_ION/RandomSoldiers/Character_RHS_ION_Medic_Random.et" "{1AD22CACD8001744}Prefabs/Characters/Factions/INDFOR/RHS_ION/RandomSoldiers/Character_RHS_ION_Scout_Random.et"
+ }
+ m_aAvailableDisplayNames {
+  "#AR-Role_Rifleman" "#AR-Role_Sniper" "#AR-Role_SquadLeader" "#AR-Role_Medic" "#AR-Role_Scout"
+ }
+}

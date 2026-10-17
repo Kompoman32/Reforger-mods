@@ -1,0 +1,28 @@
+RT_WavesSpawnerEntity : "{01BCDFF34020614D}Prefabs/Systems/WavesSpawner/RT_WS-WavesSpawner_Base.et" {
+ ID "66C4FC0EFDAD2E18"
+ components {
+  SCR_CustomAreaMeshComponent "{66C4FC0EB0AF7F8D}" {
+   m_Material "{A734605FAADD1EE8}Assets/Editor/VirtualArea/VirtualAreaMEI.emat"
+  }
+  SCR_EditableSystemComponent "{66C4FC0F24314611}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{66C4FC0F4C80F2C4}" {
+    Name "#RT_WS-WavesSpawner_MEI_Name"
+    Description "#RT_WS-WavesSpawner_MEI_Description"
+    m_sFaction "MEI"
+    m_aAuthoredLabels {
+     ENTITYTYPE_SYSTEM FACTION_MEI CONTENT_MODDED TRAIT_SPAWNPOINT TRAIT_SUPPRESSIVE
+    }
+   }
+  }
+  SCR_FactionAffiliationComponent "{66C522ED63080FC6}" {
+   "faction affiliation" "MEI"
+  }
+ }
+ m_sUnitsGroupPrefab "{BE77E238E4F92A28}Prefabs/Groups/MEI/AmbientPatrols/Group_MEI_RifleSquad_NotSpawned.et"
+ m_aAvailableResourceNames {
+  "{8EB32C310263B8C4}Prefabs/Characters/Factions/IND/MEI/Character_MEI_RandomizedRifleman.et" "{8F6B34BB2FDEE4CD}Prefabs/Characters/Factions/IND/MEI/Character_MEI_Sniper.et" "{91D9FF2600E080AF}Prefabs/Characters/Factions/IND/MEI/Character_MEI_AG1.et" "{5EE81073CB9039CB}Prefabs/Characters/Factions/IND/MEI/Character_MEI_RandomizedARifleman.et" "{4B5C65083DC1C867}Prefabs/Characters/Factions/IND/MEI/Character_MEI_RandomizedLMG.et" "{657AAEEA10F1A60F}Prefabs/Characters/Factions/IND/MEI/Character_MEI_RandomizedAT.et"
+ }
+ m_aAvailableDisplayNames {
+  "#AR-Role_Rifleman" "#AR-Role_Sniper" "#AR-Role_Grenadier" "#AR-Role_AutomaticRifleman" "#AR-Role_MachineGunner" "#AR-Role_AntiTank"
+ }
+}
