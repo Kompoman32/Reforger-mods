@@ -12,6 +12,7 @@ class RT_WavesSpawnerEntity_Vehicles: RT_WavesSpawnerEntity {
 		super.EOnInit(owner);
 		
 		m_bFactionLess = false;
+		SetFaction(null);
 		m_aVehicles = {};
 		m_iMaxUnits = 4;
 	}
