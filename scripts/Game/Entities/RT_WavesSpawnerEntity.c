@@ -243,10 +243,7 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		
 		SCR_CustomAreaMeshComponent areaMesh = SCR_CustomAreaMeshComponent.Cast(m_MovePoint.FindComponent(SCR_CustomAreaMeshComponent));
 		
-		if (!areaMesh) return;
-		
-		areaMesh.SetMaterial(m_AreaMesh.GetMaterialPublic());
-		areaMesh.GenerateAreaMesh();
+		SetAreaMaterialByCurrentFaction();
 		
 		GetGame().GetCallqueue().Remove(CreateMovePoint_Delayed);
 		GetGame().GetCallqueue().CallLater(CreateMovePoint_Delayed, 500, false);
@@ -273,12 +270,7 @@ class RT_WavesSpawnerEntity: GenericEntity {
 		
 		m_MovePoint.m_Spawner = this;
 		
-		SCR_CustomAreaMeshComponent areaMesh = SCR_CustomAreaMeshComponent.Cast(m_MovePoint.FindComponent(SCR_CustomAreaMeshComponent));
-		
-		if (!areaMesh) return;
-		
-		areaMesh.SetMaterial(m_AreaMesh.GetMaterialPublic());
-		areaMesh.GenerateAreaMesh();
+		SetAreaMaterialByCurrentFaction();
 	}
 	
 	protected bool UpdateMovePointLastPosition()
@@ -1046,6 +1038,75 @@ class RT_WavesSpawnerEntity: GenericEntity {
 				group.SetFaction(faction);				
 			}
 		}
+		
+		SetAreaMaterialByCurrentFaction();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetAreaMaterialByCurrentFaction()
+	{
+		if (!m_FactionAffiliationComponent) return;
+		if (!m_MovePoint) return;
+		
+		SCR_CustomAreaMeshComponent areaMesh = SCR_CustomAreaMeshComponent.Cast(m_MovePoint.FindComponent(SCR_CustomAreaMeshComponent));
+		
+		if (!areaMesh) return;
+				
+		ResourceName materialName = string.Empty;
+		
+		switch (m_FactionAffiliationComponent.GetAffiliatedFactionKey()) {
+			case "US": 
+			{
+				materialName = "{0F5FFCADA046EDF6}Assets/Editor/VirtualArea/VirtualAreaUS.emat";
+				break;
+			}
+			case "USSR":
+			{
+				materialName = "{80473DD6110BFB8E}Assets/Editor/VirtualArea/VirtualAreaUSSR.emat";
+				break;
+			}
+			case "FIA":
+			{
+				materialName = "{A46ECBCEE69A3853}Assets/Editor/VirtualArea/VirtualAreaFIA.emat";
+				break;
+			}
+			case "CIV":
+			{
+				materialName = "{24FF0974E87FC796}Assets/Editor/VirtualArea/VirtualAreaCIV.emat";
+				break;
+			}
+			case "RHS_ION":
+			{
+				materialName = "{2AF78C621014CF23}Assets/Editor/VirtualArea/VirtualAreaION.emat";
+				break;
+			}
+			case "RHS_USAF":
+			{
+				materialName = "{68EFA9CBF55F0158}Assets/Editor/VirtualArea/VirtualAreaUSMC.emat";
+				break;
+			}
+			case "RHS_AFRF":
+			{
+				materialName = "{2E9AFF015C219573}Assets/Editor/VirtualArea/VirtualAreaMSV.emat";
+				break;
+			}
+			case "MEI":
+			{
+				materialName = "{A734605FAADD1EE8}Assets/Editor/VirtualArea/VirtualAreaMEI.emat";
+				break;
+			}
+			default: 
+			{
+				materialName = "{E65E61D1541003E2}Assets/Editor/VirtualArea/VirtualArea.emat";
+				break;
+			}
+		}
+		
+		m_AreaMesh.SetMaterial(materialName);
+		m_AreaMesh.GenerateAreaMesh();
+		
+		areaMesh.SetMaterial(materialName);
+		areaMesh.GenerateAreaMesh();
 	}
 	
 	//------------------------------------------------------------------------------------------------
