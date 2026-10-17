@@ -389,5 +389,109 @@ StringTable {
    Author "Kompoman32"
    LastChanged "Kompoman32"
   }
+  CustomStringTableItem "{6A5D7BE6BD5AF67F}" {
+   Id "RT_WS_V-Editor_TooltipDetail_Groups_Name"
+   Target_en_us "Vehicles"
+   Target_ru_ru "Транспорт"
+   Modified 1784545745
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{695AABA7B484C4AD}" {
+   Id "RT_WS_V-WavesSpawner_Vehicles_Description"
+   Target_en_us "Spawner to generate vehicles in spawner zone"
+   Target_ru_ru "Спавнер для генерации транспорта в зоне спавнера"
+   Modified 1767555119
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{695AABA7B827348C}" {
+   Id "RT_WS_V-WavesSpawner_Vehicles_Name"
+   Target_en_us "Waves Spawner - Vehicles"
+   Target_ru_ru "Спавнер волн - Транспорт"
+   Modified 1767555123
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{695ABB1C12FBB20D}" {
+   Id "RT_WS_V-WavesSpawnerAttribute_Delay_Description"
+   Target_en_us "Delay between spawns of vehicles"
+   Target_ru_ru "Задержка между спавнами транспорта"
+   Modified 1767562179
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{695ABB1C16CC45D1}" {
+   Id "RT_WS_V-WavesSpawnerAttribute_Delay_Name"
+   Target_en_us "Delay"
+   Target_ru_ru "Задержка"
+   Modified 1767562161
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{695ABB00D3CFCCB2}" {
+   Id "RT_WS_V-WavesSpawnerAttribute_MaxEntities_Description"
+   Target_en_us "The maximum number of vehicles that can simultaneously exist in radius of spawner"
+   Target_ru_ru "Максимальное количество машин, которые могут одновременно существовать в радиусе спавнера"
+   Modified 1767560860
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{695ABB00D4485CD5}" {
+   Id "RT_WS_V-WavesSpawnerAttribute_MaxEntities_Name"
+   Target_en_us "Max vehicles spawned"
+   Target_ru_ru "Максимум машин"
+   Modified 1767560734
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{695ABB1DD8143006}" {
+   Id "RT_WS_V-WavesSpawnerAttribute_Radius_Description"
+   Target_en_us "Radius of spawns of vehicle <color rgba=\"226,168,79,255\">(vehicle will spawn in a random point in this radius)</color>"
+   Target_ru_ru "Радиус спавна транспорта <color rgba=\"226,168,79,255\">(транспорт будет заспавнен в случайной точки в пределах радиуса)</color>"
+   Modified 1767562105
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{695ABB1DC1E22121}" {
+   Id "RT_WS_V-WavesSpawnerAttribute_Radius_Name"
+   Target_en_us "Spawn Radius"
+   Target_ru_ru "Радиус спавна"
+   Modified 1767562072
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{695ABB03680B3C48}" {
+   Id "RT_WS_V-WavesSpawnerAttribute_Units_Description"
+   Target_en_us "Adjusting the weights for each type of vehicle"
+   Target_ru_ru "Настройка весов каждого вида транспорта"
+   Modified 1767561008
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{695ABB036A8996C7}" {
+   Id "RT_WS_V-WavesSpawnerAttribute_Units_Name"
+   Target_en_us "Vehicles"
+   Target_ru_ru "Транспорт"
+   Modified 1767560953
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{695ABB0F566F8AFA}" {
+   Id "RT_WS_V_ContextAction_AddNearbyVehicles_Description"
+   Target_en_us "Add nearby vehicles as custom entries"
+   Target_ru_ru "Добавить ближайший транспорт как Custom значение"
+   Modified 1767555309
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
+  CustomStringTableItem "{695ABB0F5B5A9FB9}" {
+   Id "RT_WS_V_ContextAction_AddNearbyVehicles_Name"
+   Target_en_us "Add Nearby Vehicles to Spawner"
+   Target_ru_ru "Добавить ближайший транспорт в спавнер"
+   Modified 1767555296
+   Author "Kompoman32"
+   LastChanged "Kompoman32"
+  }
  }
 }

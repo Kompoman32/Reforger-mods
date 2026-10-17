@@ -1,0 +1,16 @@
+RT_WavesSpawnerEntity_Vehicles : "{01BCDFF34020614D}Prefabs/Systems/WavesSpawner/RT_WS-WavesSpawner_Base.et" {
+ ID "66C4FC0EFDAD2E18"
+ components {
+  SCR_EditableSystemComponent "{66C4FC0F24314611}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{66C4FC0F4C80F2C4}" {
+    Name "#RT_WS_V-WavesSpawner_Vehicles_Name"
+    Description "#RT_WS_V-WavesSpawner_Vehicles_Description"
+    Icon "{943873C801ED95B8}UI/Textures/Editor/EditableEntities/Vehicles/EditableEntity_Vehicle_Offroad.edds"
+    m_Image "{9D08285F22911CFC}UI/Textures/Editor/ContentBrowser/ContentBrowser_Type_Vehicle.edds"
+    m_aAuthoredLabels + {
+     ENTITYTYPE_VEHICLE
+    }
+   }
+  }
+ }
+}
